@@ -29,10 +29,10 @@ if exist %pan% (
     )
     git commit -m "%commitMessage% at %time%"
     echo "set remote repository and push"
-    git remote add origin %repo%
     git push origin master
 
     REM git init
+    REM git remote add origin %repo%
     REM git push -f origin master
 ) else (
     echo "can not find public directory, hugo fail!"
