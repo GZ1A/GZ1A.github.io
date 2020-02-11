@@ -29,7 +29,7 @@ if exist %pan% (
     )
     git commit -m "%commitMessage% at %time%"
     echo "set remote repository and push"
-    git push origin master
+    git push -f origin master
 
     REM git init
     REM git remote add origin %repo%
