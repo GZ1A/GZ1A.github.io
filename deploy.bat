@@ -28,9 +28,10 @@ if exist %pan% (
         set commitMessage=update site
     )
     git commit -m "%commitMessage% at %time%"
-    echo "set remote repository and push forcely"
+    echo "set remote repository and push"
     git remote add origin %repo%
     git push origin master
+
     REM git init
     REM git push -f origin master
 ) else (
@@ -42,3 +43,4 @@ endlocal
 if %default% neq 1 (
     pause
 )
+pause
