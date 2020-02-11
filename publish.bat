@@ -43,4 +43,4 @@ endlocal
 if %default% neq 1 (
     pause
 )
-REM pause
+pause
