@@ -95,7 +95,6 @@ git clone https://github.com/zyro/hyde-x.git
 ```
 cd ..
 hugo server --theme=hyde-x --buildDrafts
-
 ```
 
 最后在浏览器里打开 http://localhost:1313 ，就可以看到博客和文章了。
