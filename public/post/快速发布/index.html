@@ -68,7 +68,7 @@
 <meta itemprop="description" content="hugo 还是挺方便的，但是在写完 markdown 文档到发布到 github 之间还有好多行命令要打，太累了。于是很自然的想到使用bat批处理脚本帮我输入这些命令，自动发布。 搜">
 <meta itemprop="datePublished" content="2020-02-12T00:17:41&#43;08:00" />
 <meta itemprop="dateModified" content="2020-02-12T00:17:41&#43;08:00" />
-<meta itemprop="wordCount" content="1069">
+<meta itemprop="wordCount" content="1070">
 
 
 
@@ -286,7 +286,7 @@
             <a href="https://gz1a.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             
           </div>
-        <span class="more-meta"> 约 1069 字 </span>
+        <span class="more-meta"> 约 1070 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
 
         
@@ -476,6 +476,7 @@ endlocal
 </span><span class="lnt">43
 </span><span class="lnt">44
 </span><span class="lnt">45
+</span><span class="lnt">46
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell">@echo off
@@ -498,8 +499,8 @@ endlocal
 <span class="o">)</span>
 
 setlocal enabledelayedexpansion
-<span class="k">if</span> exist %pan% <span class="o">(</span>
-    <span class="nb">cd</span> %pan%
+<span class="k">if</span> exist !pan! <span class="o">(</span>
+    <span class="nb">cd</span> !pan!
     <span class="nb">echo</span> <span class="s2">&#34;git commit&#34;</span>
     git add -A
     echo.
@@ -507,12 +508,12 @@ setlocal enabledelayedexpansion
     <span class="k">if</span> <span class="s2">&#34;!commitMessage!&#34;</span><span class="o">=</span><span class="o">=</span><span class="s2">&#34;&#34;</span> <span class="o">(</span>
         <span class="nb">set</span> <span class="nv">commitMessage</span><span class="o">=</span>update site
     <span class="o">)</span>
-    git commit -m <span class="s2">&#34;%commitMessage% at %time%&#34;</span>
+    git commit -m <span class="s2">&#34;!commitMessage!&#34;</span>
     <span class="nb">echo</span> <span class="s2">&#34;set remote repository and push&#34;</span>
-    git remote add origin %repo%
     git push origin master
-    
+
     REM git init
+    REM git remote add origin %repo%
     REM git push -f origin master
 <span class="o">)</span> <span class="k">else</span> <span class="o">(</span>
     <span class="nb">echo</span> <span class="s2">&#34;can not find public directory, hugo fail!&#34;</span>
@@ -523,6 +524,7 @@ endlocal
 <span class="k">if</span> %default% neq <span class="m">1</span> <span class="o">(</span>
     pause
 <span class="o">)</span>
+pause
 </code></pre></td></tr></table>
 </div>
 </div><p>终于，单论发布这块已经拿下了。接下来可能还要对博客做点工作。</p>
