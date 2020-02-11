@@ -27,7 +27,7 @@ if exist %pan% (
     if "!commitMessage!"=="" (
         set commitMessage=update site
     )
-    git commit -m "%commitMessage% at %time%"
+    git commit -m "!commitMessage!"
     echo "set remote repository and push"
     git push -f origin master
 
