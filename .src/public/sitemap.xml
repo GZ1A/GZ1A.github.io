@@ -44,6 +44,13 @@
   </url>
   
   <url>
+    <loc>https://gz1a.github.io/post/%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</loc>
+    <lastmod>2020-02-12T00:17:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://gz1a.github.io/post/%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83/</loc>
     <lastmod>2020-02-12T00:17:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -60,6 +67,13 @@
   <url>
     <loc>https://gz1a.github.io/post/%E6%90%AD%E5%BB%BAblog/</loc>
     <lastmod>2020-02-11T09:24:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://gz1a.github.io/about/</loc>
+    <lastmod>2020-02-11T05:44:38+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

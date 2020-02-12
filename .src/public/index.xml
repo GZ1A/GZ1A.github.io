@@ -12,6 +12,408 @@
     
     
     <item>
+      <title>用 bat 实现 Hugo 一键发布至 GitHub</title>
+      <link>https://gz1a.github.io/post/%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</link>
+      <pubDate>Wed, 12 Feb 2020 00:17:41 +0800</pubDate>
+      
+      <guid>https://gz1a.github.io/post/%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</guid>
+      
+        <description>&lt;p&gt;hugo 还是挺方便的，但是在写完 markdown 文档到发布到 github 之间还有好多行命令要打，太累了。于是很自然的想到使用bat批处理脚本帮我输入这些命令，自动发布。&lt;/p&gt;
+&lt;h2 id=&#34;搜索资料&#34;&gt;搜索资料&lt;/h2&gt;
+&lt;p&gt;一开始找到的也是最相关的一篇博客是 &lt;a href=&#34;https://www.yixuju.cn/programming/batch/hugo-push/&#34;&gt;编写bat批处理脚本文件来设置自动推送&lt;/a&gt; ，需求完全一致。为了可能的修改，也找到了一个 &lt;a href=&#34;https://www.w3cschool.cn/pclrmsc/tdsgnn.html&#34;&gt;批处理入门手册&lt;/a&gt; 。&lt;/p&gt;
+&lt;p&gt;还发现了一个可以绑定仓库的 markdown 编辑器， &lt;a href=&#34;https://www.dazhuanlan.com/2019/10/14/5da3e834e0c1d/&#34;&gt;小书匠编辑器&lt;/a&gt; ，还有&lt;a href=&#34;https://www.cnblogs.com/wushuaishuai/p/9308094.html#_label1_3&#34;&gt;快捷键&lt;/a&gt; ，看起来整挺好。但是我也挺喜欢现在在用的 Typora 所以暂且观望。&lt;/p&gt;
+&lt;h2 id=&#34;配置-config&#34;&gt;配置 Config&lt;/h2&gt;
+&lt;p&gt;发布分两步，生成和推送。生成命令很简单，只要一句 &lt;code&gt;hugo&lt;/code&gt; 就可以重新生成当前工作区里的站点——根据站点路径下的 &lt;code&gt;config.toml&lt;/code&gt; 这个文件。我正在使用的主题的&lt;a href=&#34;https://github.com/xianmin/hugo-theme-jane/blob/master/README-zh.md&#34;&gt;文档&lt;/a&gt;中有提到如何进行站点设置，配置站点的 config.toml ，根据注释进行相应的修改就可以了。&lt;/p&gt;
+&lt;h2 id=&#34;设置-bat&#34;&gt;设置 bat&lt;/h2&gt;
+&lt;p&gt;根据资料里的博客，对开头的配置变量进行了以下修改，得到以下的 bat 文件。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;@echo off
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pan&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\p&lt;/span&gt;ublic&lt;span class=&#34;se&#34;&gt;\&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;repo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;https://github.com/GZ1A/GZ1A.github.io.git
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;branch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;master
+&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; exist %pan% &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;clean public directory&amp;#34;&lt;/span&gt;
+    rd /S /Q %pan%
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Hugo again for new site&amp;#34;&lt;/span&gt;
+    hugo
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;can not find public directory&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Hugo again for new site&amp;#34;&lt;/span&gt;
+    hugo
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; exist %pan% &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; %pan%
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;git init and commit&amp;#34;&lt;/span&gt;
+    git init
+    git add -A
+    git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;update site at %time%&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;set remote repository and push&amp;#34;&lt;/span&gt;
+    git remote add origin %repo%
+    git push -f origin master:master -v
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;can not find public directory, hugo fail!&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+pause
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后我发现这段命令中没有位置让我输入commit message，当场就开始魔改了。大概就加了这两句话&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; exist %pan% &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    rem ...
+    &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; /p &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;Commit Message:
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%commitMessage%&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;update site
+    &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; cm:%commitMessage%
+    rem ...
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然而 echo 输出的一直是空的，也就是说我没有输入成功！顿时开始怀疑我这10分钟学的shell。寻思着我哪里写的不对，就开始继续研究基础。研究了一个小时，突然发现了盲点：会不会是这个嵌套出了问题。于是百度。&lt;a href=&#34;https://zhidao.baidu.com/question/454906059021031085.html&#34;&gt;批处理里set语句怎样在if语句中使用&lt;/a&gt; 。只要在 if 外增加两句话，并把引用时的 &lt;code&gt;%&lt;/code&gt; 改为 &lt;code&gt;!&lt;/code&gt; 就可以了。&lt;/p&gt;
+&lt;p&gt;泪，流了下来。我悟了！以后自信点，&lt;del&gt;遇到错误多找找别人的问题，不要老是想着是自己的问题&lt;/del&gt;  &lt;strong&gt;不懂就问  ！！&lt;/strong&gt;（指百度)  还要先提纲挈领，哪怕不细看也得有个大概了解，至少知道可能出现的问题。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;setlocal enabledelayedexpansion
+&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; exist %pan% &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    rem ...
+	&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; /p &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;Commit Message:
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;!commitMessage!&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;update site
+    &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; cm:!commitMessage!
+    rem ...
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+endlocal
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;总之问题是解决了。&lt;/p&gt;
+&lt;p&gt;原来的代码还有别的问题，比如会强制清空这个仓库，搞得云端记录都无了。总之稍微修改了一下。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;@echo off
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pan&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\p&lt;/span&gt;ublic&lt;span class=&#34;se&#34;&gt;\&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;repo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;https://github.com/GZ1A/GZ1A.github.io.git
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;branch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;master
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1
+
+&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; exist %pan% &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;clean public directory&amp;#34;&lt;/span&gt;
+    rd /S /Q %pan%
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Hugo again for new site&amp;#34;&lt;/span&gt;
+    hugo
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;can not find public directory&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Hugo again for new site&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1
+    hugo
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+
+setlocal enabledelayedexpansion
+&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; exist !pan! &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; !pan!
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;git commit&amp;#34;&lt;/span&gt;
+    git add -A
+    echo.
+    &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; /p &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;Commit Message:
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;!commitMessage!&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;update site
+    &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+    git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;!commitMessage!&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;set remote repository and push&amp;#34;&lt;/span&gt;
+    git push origin master
+
+    REM git init
+    REM git remote add origin %repo%
+    REM git push -f origin master
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;can not find public directory, hugo fail!&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+endlocal
+
+&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; %default% neq &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    pause
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+pause
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;del&gt;终于，单论发布这块已经拿下了。接下来可能还要对博客做点工作。&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;update-修复404&#34;&gt;UPDATE 修复404&lt;/h2&gt;
+&lt;p&gt;本来今天高高兴兴。 没想到打开主页却是 404 。明明在本地用 &lt;code&gt;hugo server&lt;/code&gt; 测试的时候没啥问题。&lt;/p&gt;
+&lt;p&gt;百度发现了一样的问题：&lt;a href=&#34;https://segmentfault.com/q/1010000007578473?_ea=1390393&#34;&gt;hexo 搭建个人博客，提交后github后显示404&amp;hellip;&lt;/a&gt; 。感谢 Dont 的解答， &lt;a href=&#34;https://help.github.com/en/github/working-with-github-pages&#34;&gt;GitHub Pages&lt;/a&gt; 实现了在访问 xxx.github.io 时会访问对应用户仓库 master 分支，当没有指定名文件时，HTTP请就会被解释为访问该路径下的 index.html 。&lt;/p&gt;
+&lt;p&gt;文档里的命令只 push 了 public 文件夹，而我 copy 来的代码是把整个工程都 push 上去了（还覆盖了原来的文件）。按照分支的解决方法，试图优雅的分出工程和发布两个分支，但我的 git （还有 bat ）学艺不精，眼看要陷入 debug 地狱了。遂放弃。 选择把工程放到 .src 文件夹里，再把 public 里的内容全部 copy 到外面的方法。&lt;/p&gt;
+&lt;p&gt;经过一个晚上的学习和调试（花了半个晚上领悟 cmd 里 &lt;code&gt;/&lt;/code&gt; 跟着参数，&lt;code&gt;\&lt;/code&gt; 分割目录，这就是Windows标准吗）。最终得到了一键发布的 bat：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;54
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;55
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;56
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;57
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;58
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;59
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;60
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;61
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;62
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;63
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;64
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;65
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;66
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;67
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;68
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;69
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;70
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;71
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;72
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;73
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;74
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;75
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;76
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;77
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;@echo off
+REM dont commit &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;DEBUG&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 1
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;debug&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0
+
+REM Const
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;build&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\p&lt;/span&gt;ublic
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;dst&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;..&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ite
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;repo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;https://github.com/GZ1A/GZ1A.github.io.git
+
+REM Var
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1
+
+&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; exist %build% &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;clean public directory&amp;#34;&lt;/span&gt;
+    rd /S /Q %build%
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Hugo again for new site&amp;#34;&lt;/span&gt;
+    hugo
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;can not find public directory&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Hugo again for new site&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1
+    hugo
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+
+REM delete old build
+&lt;span class=&#34;nb&#34;&gt;pushd&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%dst%&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; %%i in &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;*.*&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; not &lt;span class=&#34;s2&#34;&gt;&amp;#34;%%i&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;.gitignore&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+        del /q &lt;span class=&#34;s2&#34;&gt;&amp;#34;%%i&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; /d %%i in &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;*.*&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; not &lt;span class=&#34;s2&#34;&gt;&amp;#34;%%i&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;.src&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; not &lt;span class=&#34;s2&#34;&gt;&amp;#34;%%i&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;.git&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+        rd /q /s &lt;span class=&#34;s2&#34;&gt;&amp;#34;%%i&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;delete old build&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;popd&lt;/span&gt;
+
+xcopy &lt;span class=&#34;s2&#34;&gt;&amp;#34;%build%&amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%dst%&amp;#34;&lt;/span&gt; /s /q /f /h /y
+
+setlocal enabledelayedexpansion
+&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; exist !build! &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; !build!
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; !debug! neq &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+
+        REM Code &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; first &lt;span class=&#34;nb&#34;&gt;time&lt;/span&gt;
+        REM git init
+        REM git remote add origin %repo%
+        REM git push -f origin master
+
+        &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;git commit&amp;#34;&lt;/span&gt;
+        git add -A
+        echo.
+        &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; /p &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;Commit Message:
+        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;!commitMessage!&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+            &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;update site
+        &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+        git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;!commitMessage!&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;set remote repository and push&amp;#34;&lt;/span&gt;
+        git push origin master
+    &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;can not find public directory, hugo fail!&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+endlocal
+
+&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; %default% neq &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    pause
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; %debug% neq &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    pause
+&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+      
+    </item>
+    
+    <item>
       <title>用 bat 实现 Hugo 博客一键发布</title>
       <link>https://gz1a.github.io/post/%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83/</link>
       <pubDate>Wed, 12 Feb 2020 00:17:41 +0800</pubDate>
@@ -243,7 +645,11 @@ endlocal
 pause
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;终于，单论发布这块已经拿下了。接下来可能还要对博客做点工作。&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;del&gt;终于，单论发布这块已经拿下了。接下来可能还要对博客做点工作。&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;update-修复404&#34;&gt;UPDATE 修复404&lt;/h2&gt;
+&lt;p&gt;本来今天高高兴兴。 没想到打开主页却是 404 。明明在本地用 &lt;code&gt;hugo server&lt;/code&gt; 测试的时候没啥问题。&lt;/p&gt;
+&lt;p&gt;百度发现了一样的问题：&lt;a href=&#34;https://segmentfault.com/q/1010000007578473?_ea=1390393&#34;&gt;hexo 搭建个人博客，提交后github后显示404&amp;hellip;&lt;/a&gt; 。感谢 Dont 的解答， &lt;a href=&#34;https://help.github.com/en/github/working-with-github-pages&#34;&gt;GitHub Pages&lt;/a&gt; 实现了在访问 xxx.github.io 时会访问对应用户仓库 master 分支，当没有指定名文件时，HTTP请就会被解释为访问该路径下的 index.html 。&lt;/p&gt;
+&lt;p&gt;文档里的命令只 push 了 public 文件夹，而我 copy 来的代码是把整个工程都 push 上去了（还覆盖了原来的文件）。按照分支的解决方法，试图优雅的分出工程和发布两个分支，但我的 git （还有 bat ）学艺不精，眼看要陷入 debug 地狱了。遂放弃。 选择把工程放到 .src 文件夹里，再把 public 里的内容全部 copy 到外面的方法。&lt;/p&gt;
 </description>
       
     </item>
@@ -356,6 +762,17 @@ hugo server --theme=hyde-x --buildDrafts
 &lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/4669fb3bf35a&#34;&gt;使用HUGO搭建个人博客&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.gohugo.org/&#34;&gt;Hugo中文文档&lt;/a&gt;&lt;/p&gt;
 </description>
+      
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://gz1a.github.io/about/</link>
+      <pubDate>Tue, 11 Feb 2020 05:44:38 +0800</pubDate>
+      
+      <guid>https://gz1a.github.io/about/</guid>
+      
+        <description></description>
       
     </item>
     
