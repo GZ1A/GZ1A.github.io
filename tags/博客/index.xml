@@ -20,14 +20,5 @@
       <description>hugo 还是挺方便的，但是在写完 markdown 文档到发布到 github 之间还有好多行命令要打，太累了。于是很自然的想到使用bat批处理脚本帮我输入这些命令，自动发布。 搜</description>
     </item>
     
-    <item>
-      <title>用 bat 实现 Hugo 博客一键发布</title>
-      <link>https://gz1a.github.io/post/%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83/</link>
-      <pubDate>Wed, 12 Feb 2020 00:17:41 +0800</pubDate>
-      
-      <guid>https://gz1a.github.io/post/%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83/</guid>
-      <description>hugo 还是挺方便的，但是在写完 markdown 文档到发布到 github 之间还有好多行命令要打，太累了。于是很自然的想到使用bat批处理脚本帮我输入这些命令，自动发布。 搜</description>
-    </item>
-    
   </channel>
 </rss>
