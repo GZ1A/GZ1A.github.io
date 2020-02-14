@@ -68,7 +68,7 @@
 <meta itemprop="description" content="为了让博客更炫酷（装X），决定再进行一点升级。首先想到的就是域名。然后在写文章的时候深刻体会到了图片的重要性，有时一张图胜过千言万语。虽然 Typora">
 <meta itemprop="datePublished" content="2020-02-13T23:58:48&#43;08:00" />
 <meta itemprop="dateModified" content="2020-02-13T23:58:48&#43;08:00" />
-<meta itemprop="wordCount" content="1448">
+<meta itemprop="wordCount" content="1463">
 
 
 
@@ -286,7 +286,7 @@
             <a href="https://gz1a.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             
           </div>
-        <span class="more-meta"> 约 1448 字 </span>
+        <span class="more-meta"> 约 1463 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
 
         
@@ -384,7 +384,10 @@ git push origin master -u
 <p>参考<a href="https://help.github.com/en/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site">官方文档</a>，在 repo 的 settings 里填上自定义域名，点几下鼠标就行了。</p>
 <p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214185412.png" alt=""></p>
 <h3 id="添加解析">添加解析</h3>
-<p>打开cmd，ping一下原本博客 example.github.io ，就可以得到 github 分配的 ip 入口了。在阿里云的域名控制台里选择新的域名，然后在左边菜单里找到域名解析。点下添加记录右边的新手引导，输入 ip 就可以了。</p>
+<p>在阿里云的域名控制台里选择新的域名，然后在左边菜单里找到域名解析。</p>
+<p><del>打开cmd，ping一下原本博客 example.github.io ，就可以得到 github 分配的 ip 入口了。点下添加记录右边的新手引导，输入 ip 就可以了。</del></p>
+<p>建议使用 CNAME 类型，如图</p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214234143.png" alt=""></p>
 <h3 id="验证">验证</h3>
 <p>要验证是否成功，只要等个10分钟再分别 ping 一下原来的地址和新的地址，如果 ip 一致就算是完成了。然而我 ping 不通啊。</p>
 <div class="highlight"><div class="chroma">
@@ -410,7 +413,7 @@ Ping 请求找不到主机 disorder.ink。请检查该名称，然后重试。
 </blockquote>
 <p>在此期间原来的地址建议不要跳转。把 CNAME 删掉之后试着访问了一下，然而还是会跳转。感谢这位同学的解决办法 <a href="https://www.cnblogs.com/MakeView660/p/9072971.html">放在github pages上的静态网站怎么取消绑定自定义域名？</a> 虽然 <a href="https://www.runoob.com/w3cnote/chrome-clear-dns-cache.html">Chrome 浏览器清除 DNS 缓存</a> 失败了，但是换个浏览器确实可以了。总之别急，<del>等等就好</del>。</p>
 <p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214190340.png" alt="域名效果"></p>
-<p>最后一步就是要记得在本地也增加 CNAME 。Pull 到本地一次之后再 Push 。</p>
+<p>最后一步就是要记得在本地也增加 CNAME 。Pull 到本地一次之后再 Push ，惨痛教训。</p>
 
     </div>
 

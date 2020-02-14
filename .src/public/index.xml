@@ -76,7 +76,10 @@ git push origin master -u
 &lt;p&gt;参考&lt;a href=&#34;https://help.github.com/en/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site&#34;&gt;官方文档&lt;/a&gt;，在 repo 的 settings 里填上自定义域名，点几下鼠标就行了。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214185412.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;添加解析&#34;&gt;添加解析&lt;/h3&gt;
-&lt;p&gt;打开cmd，ping一下原本博客 example.github.io ，就可以得到 github 分配的 ip 入口了。在阿里云的域名控制台里选择新的域名，然后在左边菜单里找到域名解析。点下添加记录右边的新手引导，输入 ip 就可以了。&lt;/p&gt;
+&lt;p&gt;在阿里云的域名控制台里选择新的域名，然后在左边菜单里找到域名解析。&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;打开cmd，ping一下原本博客 example.github.io ，就可以得到 github 分配的 ip 入口了。点下添加记录右边的新手引导，输入 ip 就可以了。&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;建议使用 CNAME 类型，如图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214234143.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;验证&#34;&gt;验证&lt;/h3&gt;
 &lt;p&gt;要验证是否成功，只要等个10分钟再分别 ping 一下原来的地址和新的地址，如果 ip 一致就算是完成了。然而我 ping 不通啊。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -102,7 +105,7 @@ Ping 请求找不到主机 disorder.ink。请检查该名称，然后重试。
 &lt;/blockquote&gt;
 &lt;p&gt;在此期间原来的地址建议不要跳转。把 CNAME 删掉之后试着访问了一下，然而还是会跳转。感谢这位同学的解决办法 &lt;a href=&#34;https://www.cnblogs.com/MakeView660/p/9072971.html&#34;&gt;放在github pages上的静态网站怎么取消绑定自定义域名？&lt;/a&gt; 虽然 &lt;a href=&#34;https://www.runoob.com/w3cnote/chrome-clear-dns-cache.html&#34;&gt;Chrome 浏览器清除 DNS 缓存&lt;/a&gt; 失败了，但是换个浏览器确实可以了。总之别急，&lt;del&gt;等等就好&lt;/del&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214190340.png&#34; alt=&#34;域名效果&#34;&gt;&lt;/p&gt;
-&lt;p&gt;最后一步就是要记得在本地也增加 CNAME 。Pull 到本地一次之后再 Push 。&lt;/p&gt;
+&lt;p&gt;最后一步就是要记得在本地也增加 CNAME 。Pull 到本地一次之后再 Push ，惨痛教训。&lt;/p&gt;
 </description>
       
     </item>
