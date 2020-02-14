@@ -5,7 +5,7 @@ set debug=0
 REM Const
 set build=.\public
 set dst=..\..\site
-set repo=https://github.com/GZ1A/GZ1A.github.io.git
+set repo=git@github.com:GZ1A/GZ1A.github.io.git
 
 REM Var
 set default=1

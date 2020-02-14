@@ -149,7 +149,7 @@ git push origin master -u
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;@echo off
 &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pan&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\p&lt;/span&gt;ublic&lt;span class=&#34;se&#34;&gt;\&lt;/span&gt;
-&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;repo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;https://github.com/GZ1A/GZ1A.github.io.git
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;repo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;git@github.com:GZ1A/GZ1A.github.io.git
 &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;branch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;master
 &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; exist %pan% &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
     
@@ -286,7 +286,7 @@ endlocal
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;@echo off
 &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pan&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\p&lt;/span&gt;ublic&lt;span class=&#34;se&#34;&gt;\&lt;/span&gt;
-&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;repo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;https://github.com/GZ1A/GZ1A.github.io.git
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;repo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;git@github.com:GZ1A/GZ1A.github.io.git
 &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;branch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;master
 &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1
 
@@ -426,7 +426,7 @@ REM dont commit &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#3
 REM Const
 &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;build&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\p&lt;/span&gt;ublic
 &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;dst&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;..&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ite
-&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;repo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;https://github.com/GZ1A/GZ1A.github.io.git
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;repo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;git@github.com:GZ1A/GZ1A.github.io.git
 
 REM Var
 &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1
