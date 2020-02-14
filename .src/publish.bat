@@ -27,7 +27,9 @@ echo "delete old build"
 pushd "%dst%"
 for %%i in ("*.*") do (
     if not "%%i"==".gitignore" (
+    if not "%%i"=="CNAME" (
         del /q "%%i"
+    )
     )
 )
 for /d %%i in ("*.*") do (

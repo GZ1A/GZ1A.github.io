@@ -68,7 +68,7 @@
 <meta itemprop="description" content="hugo 还是挺方便的，但是在写完 markdown 文档到发布到 github 之间还有好多行命令要打，太累了。于是很自然的想到使用bat批处理脚本帮我输入这些命令，自动发布。 搜">
 <meta itemprop="datePublished" content="2020-02-12T00:17:41&#43;08:00" />
 <meta itemprop="dateModified" content="2020-02-12T00:17:41&#43;08:00" />
-<meta itemprop="wordCount" content="1702">
+<meta itemprop="wordCount" content="2332">
 
 
 
@@ -286,8 +286,8 @@
             <a href="https://gz1a.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             
           </div>
-        <span class="more-meta"> 约 1702 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span class="more-meta"> 约 2332 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
 
         
         
@@ -528,90 +528,248 @@ pause
 </code></pre></td></tr></table>
 </div>
 </div><p><del>终于，单论发布这块已经拿下了。接下来可能还要对博客做点工作。</del></p>
-<h2 id="update-修复404">UPDATE 修复404</h2>
+<h2 id="update-200213-修复404">UPDATE 200213 修复404</h2>
 <p>本来今天高高兴兴。 没想到打开主页却是 404 。明明在本地用 <code>hugo server</code> 测试的时候没啥问题。</p>
 <p>百度发现了一样的问题：<a href="https://segmentfault.com/q/1010000007578473?_ea=1390393">hexo 搭建个人博客，提交后github后显示404&hellip;</a> 。感谢 Dont 的解答， <a href="https://help.github.com/en/github/working-with-github-pages">GitHub Pages</a> 实现了在访问 xxx.github.io 时会访问对应用户仓库 master 分支，当没有指定名文件时，HTTP请就会被解释为访问该路径下的 index.html 。</p>
 <p>文档里的命令只 push 了 public 文件夹，而我 copy 来的代码是把整个工程都 push 上去了（还覆盖了原来的文件）。按照分支的解决方法，试图优雅的分出工程和发布两个分支，但我的 git （还有 bat ）学艺不精，眼看要陷入 debug 地狱了。遂放弃。 选择把工程放到 .src 文件夹里，再把 public 里的内容全部 copy 到外面的方法。</p>
-<p>经过一个晚上的学习和调试（花了半个晚上领悟 cmd 里 <code>/</code> 跟着参数，<code>\</code> 分割目录，这就是Windows标准吗）。最终得到了一键发布的 bat：</p>
+<p>经过一个晚上的学习和调试（花了半个晚上领悟 cmd 里 <code>/</code> 跟着参数，<code>\</code> 分割目录，这就是Windows标准吗）。最终得到了一键发布的 bat。</p>
+<h2 id="update-200214-添加-cname">UPDATE 200214 添加 CNAME</h2>
+<p>在添加域名后就又有了新的文件 CNAME ，为了防止重新生成时自动清除了 CNAME ，需要再进行一下判断。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span><span class="lnt">67
-</span><span class="lnt">68
-</span><span class="lnt">69
-</span><span class="lnt">70
-</span><span class="lnt">71
-</span><span class="lnt">72
-</span><span class="lnt">73
-</span><span class="lnt">74
-</span><span class="lnt">75
-</span><span class="lnt">76
-</span><span class="lnt">77
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="lnt">206
+</span><span class="lnt">207
+</span><span class="lnt">208
+</span><span class="lnt">209
+</span><span class="lnt">210
+</span><span class="lnt">211
+</span><span class="lnt">212
+</span><span class="lnt">213
+</span><span class="lnt">214
+</span><span class="lnt">215
+</span><span class="lnt">216
+</span><span class="lnt">217
+</span><span class="lnt">218
+</span><span class="lnt">219
+</span><span class="lnt">220
+</span><span class="lnt">221
+</span><span class="lnt">222
+</span><span class="lnt">223
+</span><span class="lnt">224
+</span><span class="lnt">225
+</span><span class="lnt">226
+</span><span class="lnt">227
+</span><span class="lnt">228
+</span><span class="lnt">229
+</span><span class="lnt">230
+</span><span class="lnt">231
+</span><span class="lnt">232
+</span><span class="lnt">233
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell">@echo off
@@ -639,10 +797,166 @@ REM Var
 <span class="o">)</span>
 
 REM delete old build
+<span class="nb">echo</span> <span class="s2">&#34;delete old build&#34;</span>
 <span class="nb">pushd</span> <span class="s2">&#34;%dst%&#34;</span>
 <span class="k">for</span> %%i in <span class="o">(</span><span class="s2">&#34;*.*&#34;</span><span class="o">)</span> <span class="k">do</span> <span class="o">(</span>
     <span class="k">if</span> not <span class="s2">&#34;%%i&#34;</span><span class="o">=</span><span class="o">=</span><span class="s2">&#34;.gitignore&#34;</span> <span class="o">(</span>
+    <span class="k">if</span> not <span class="s2">&#34;%%i&#34;</span><span class="o">=</span><span class="o">=</span><span class="s2">&#34;CNAME&#34;</span> <span class="o">(</span>
         del /q <span class="s2">&#34;%%i&#34;</span>
+    <span class="o">)</span>
+    <span class="o">)</span>
+<span class="o">)</span>
+<span class="k">for</span> /d %%i in <span class="o">(</span><span class="s2">&#34;*.*&#34;</span><span class="o">)</span> <span class="k">do</span> <span class="o">(</span>
+    <span class="k">if</span> not <span class="s2">&#34;%%i&#34;</span><span class="o">=</span><span class="o">=</span><span class="s2">&#34;.src&#34;</span> <span class="o">(</span>
+    <span class="k">if</span> not <span class="s2">&#34;%%i&#34;</span><span class="o">=</span><span class="o">=</span><span class="s2">&#34;.git&#34;</span> <span class="o">(</span>
+        rd /q /s <span class="s2">&#34;%%i&#34;</span>
+    <span class="o">)</span>
+    <span class="o">)</span>
+<span class="o">)</span>
+<span class="nb">popd</span>
+
+xcopy <span class="s2">&#34;%build%&#34;</span> <span class="s2">&#34;%dst%&#34;</span> /s /q /f /h /y
+
+setlocal enabledelayedexpansion
+<span class="k">if</span> exist !build! <span class="o">(</span>
+    <span class="nb">cd</span> !build!
+    <span class="k">if</span> !debug! neq <span class="m">1</span> <span class="o">(</span>
+
+        REM Code <span class="k">for</span> first <span class="nb">time</span>
+        REM git init
+        REM git remote add origin %repo%
+        REM git push -f origin master
+
+        <span class="nb">echo</span> <span class="s2">&#34;git commit&#34;</span>
+        git add -A
+        echo.
+        <span class="nb">set</span> /p <span class="nv">commitMessage</span><span class="o">=</span>Commit Message:
+        <span class="k">if</span> <span class="s2">&#34;!commitMessage!&#34;</span><span class="o">=</span><span class="o">=</span><span class="s2">&#34;&#34;</span> <span class="o">(</span>
+            <span class="nb">set</span> <span class="nv">commitMessage</span><span class="o">=</span>update site
+        <span class="o">)</span>
+        git commit -m <span class="s2">&#34;!commitMessage!&#34;</span>
+        <span class="nb">echo</span> <span class="s2">&#34;git push&#34;</span>
+        git push origin master
+    <span class="o">)</span>
+
+<span class="o">)</span> <span class="k">else</span> <span class="o">(</span>
+    <span class="nb">echo</span> <span class="s2">&#34;can not find public directory, hugo fail!&#34;</span>
+    <span class="nb">set</span> <span class="nv">default</span><span class="o">=</span>0
+<span class="o">)</span>
+endlocal
+
+<span class="k">if</span> %default% neq <span class="m">1</span> <span class="o">(</span>
+    pause
+<span class="o">)</span>
+<span class="k">if</span> %debug% neq <span class="m">0</span> <span class="o">(</span>
+    pause
+<span class="o">)</span>@echo off
+REM dont commit <span class="k">if</span> <span class="nv">DEBUG</span> <span class="o">=</span> 1
+<span class="nb">set</span> <span class="nv">debug</span><span class="o">=</span>0
+
+REM Const
+<span class="nb">set</span> <span class="nv">build</span><span class="o">=</span>.<span class="se">\p</span>ublic
+<span class="nb">set</span> <span class="nv">dst</span><span class="o">=</span>..<span class="se">\.</span>.<span class="se">\s</span>ite
+<span class="nb">set</span> <span class="nv">repo</span><span class="o">=</span>git@github.com:GZ1A/GZ1A.github.io.git
+
+REM Var
+<span class="nb">set</span> <span class="nv">default</span><span class="o">=</span>1
+
+<span class="k">if</span> exist %build% <span class="o">(</span>
+    <span class="nb">echo</span> <span class="s2">&#34;clean public directory&#34;</span>
+    rd /S /Q %build%
+    <span class="nb">echo</span> <span class="s2">&#34;Hugo again for new site&#34;</span>
+    hugo
+<span class="o">)</span> <span class="k">else</span> <span class="o">(</span>
+    <span class="nb">echo</span> <span class="s2">&#34;can not find public directory&#34;</span>
+    <span class="nb">echo</span> <span class="s2">&#34;Hugo again for new site&#34;</span>
+    <span class="nb">set</span> <span class="nv">default</span><span class="o">=</span>1
+    hugo
+<span class="o">)</span>
+
+REM delete old build
+<span class="nb">pushd</span> <span class="s2">&#34;%dst%&#34;</span>
+<span class="k">for</span> %%i in <span class="o">(</span><span class="s2">&#34;*.*&#34;</span><span class="o">)</span> <span class="k">do</span> <span class="o">(</span>
+    <span class="k">if</span> not <span class="s2">&#34;%%i&#34;</span><span class="o">=</span><span class="o">=</span><span class="s2">&#34;.gitignore&#34;</span> <span class="o">(</span>
+        del /q <span class="s2">&#34;%%i&#34;</span>@echo off
+REM dont commit <span class="k">if</span> <span class="nv">DEBUG</span> <span class="o">=</span> 1
+<span class="nb">set</span> <span class="nv">debug</span><span class="o">=</span>0
+
+REM Const
+<span class="nb">set</span> <span class="nv">build</span><span class="o">=</span>.<span class="se">\p</span>ublic
+<span class="nb">set</span> <span class="nv">dst</span><span class="o">=</span>..<span class="se">\.</span>.<span class="se">\s</span>ite
+<span class="nb">set</span> <span class="nv">repo</span><span class="o">=</span>git@github.com:GZ1A/GZ1A.github.io.git
+
+REM Var
+<span class="nb">set</span> <span class="nv">default</span><span class="o">=</span>1
+
+<span class="k">if</span> exist %build% <span class="o">(</span>
+    <span class="nb">echo</span> <span class="s2">&#34;clean public directory&#34;</span>
+    rd /S /Q %build%
+    <span class="nb">echo</span> <span class="s2">&#34;Hugo again for new site&#34;</span>
+    hugo
+<span class="o">)</span> <span class="k">else</span> <span class="o">(</span>
+    <span class="nb">echo</span> <span class="s2">&#34;can not find public directory&#34;</span>
+    <span class="nb">echo</span> <span class="s2">&#34;Hugo again for new site&#34;</span>
+    <span class="nb">set</span> <span class="nv">default</span><span class="o">=</span>1
+    hugo
+<span class="o">)</span>
+
+REM delete old build
+<span class="nb">echo</span> <span class="s2">&#34;delete old build&#34;</span>
+<span class="nb">pushd</span> <span class="s2">&#34;%dst%&#34;</span>
+<span class="k">for</span> %%i in <span class="o">(</span><span class="s2">&#34;*.*&#34;</span><span class="o">)</span> <span class="k">do</span> <span class="o">(</span>
+    <span class="k">if</span> not <span class="s2">&#34;%%i&#34;</span><span class="o">=</span><span class="o">=</span><span class="s2">&#34;.gitignore&#34;</span> <span class="o">(</span>
+    <span class="k">if</span> not <span class="s2">&#34;%%i&#34;</span><span class="o">=</span><span class="o">=</span><span class="s2">&#34;CNAME&#34;</span> <span class="o">(</span>
+        del /q <span class="s2">&#34;%%i&#34;</span>
+    <span class="o">)</span>
+    <span class="o">)</span>
+<span class="o">)</span>
+<span class="k">for</span> /d %%i in <span class="o">(</span><span class="s2">&#34;*.*&#34;</span><span class="o">)</span> <span class="k">do</span> <span class="o">(</span>
+    <span class="k">if</span> not <span class="s2">&#34;%%i&#34;</span><span class="o">=</span><span class="o">=</span><span class="s2">&#34;.src&#34;</span> <span class="o">(</span>
+    <span class="k">if</span> not <span class="s2">&#34;%%i&#34;</span><span class="o">=</span><span class="o">=</span><span class="s2">&#34;.git&#34;</span> <span class="o">(</span>
+        rd /q /s <span class="s2">&#34;%%i&#34;</span>
+    <span class="o">)</span>
+    <span class="o">)</span>
+<span class="o">)</span>
+<span class="nb">popd</span>
+
+xcopy <span class="s2">&#34;%build%&#34;</span> <span class="s2">&#34;%dst%&#34;</span> /s /q /f /h /y
+
+setlocal enabledelayedexpansion
+<span class="k">if</span> exist !build! <span class="o">(</span>
+    <span class="nb">cd</span> !build!
+    <span class="k">if</span> !debug! neq <span class="m">1</span> <span class="o">(</span>
+
+        REM Code <span class="k">for</span> first <span class="nb">time</span>
+        REM git init
+        REM git remote add origin %repo%
+        REM git push -f origin master
+
+        <span class="nb">echo</span> <span class="s2">&#34;git commit&#34;</span>
+        git add -A
+        echo.
+        <span class="nb">set</span> /p <span class="nv">commitMessage</span><span class="o">=</span>Commit Message:
+        <span class="k">if</span> <span class="s2">&#34;!commitMessage!&#34;</span><span class="o">=</span><span class="o">=</span><span class="s2">&#34;&#34;</span> <span class="o">(</span>
+            <span class="nb">set</span> <span class="nv">commitMessage</span><span class="o">=</span>update site
+        <span class="o">)</span>
+        git commit -m <span class="s2">&#34;!commitMessage!&#34;</span>
+        <span class="nb">echo</span> <span class="s2">&#34;git push&#34;</span>
+        git push origin master
+    <span class="o">)</span>
+
+<span class="o">)</span> <span class="k">else</span> <span class="o">(</span>
+    <span class="nb">echo</span> <span class="s2">&#34;can not find public directory, hugo fail!&#34;</span>
+    <span class="nb">set</span> <span class="nv">default</span><span class="o">=</span>0
+<span class="o">)</span>
+endlocal
+
+<span class="k">if</span> %default% neq <span class="m">1</span> <span class="o">(</span>
+    pause
+<span class="o">)</span>
+<span class="k">if</span> %debug% neq <span class="m">0</span> <span class="o">(</span>
+    pause
+<span class="o">)</span>
     <span class="o">)</span>
 <span class="o">)</span>
 <span class="k">for</span> /d %%i in <span class="o">(</span><span class="s2">&#34;*.*&#34;</span><span class="o">)</span> <span class="k">do</span> <span class="o">(</span>
