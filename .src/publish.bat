@@ -59,7 +59,7 @@ if exist !build! (
             set commitMessage=update site
         )
         git commit -m "!commitMessage!"
-        echo "set remote repository and push"
+        echo "git push"
         git push origin master
     )
 
