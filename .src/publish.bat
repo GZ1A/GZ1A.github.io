@@ -23,6 +23,7 @@ if exist %build% (
 )
 
 REM delete old build
+echo "delete old build"
 pushd "%dst%"
 for %%i in ("*.*") do (
     if not "%%i"==".gitignore" (
@@ -36,7 +37,6 @@ for /d %%i in ("*.*") do (
     )
     )
 )
-echo "delete old build"
 popd
 
 xcopy "%build%" "%dst%" /s /q /f /h /y

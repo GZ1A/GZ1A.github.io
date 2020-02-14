@@ -6,49 +6,19 @@
     <description>Recent content on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 12 Feb 2020 23:58:48 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 13 Feb 2020 23:58:48 +0800</lastBuildDate>
     
         <atom:link href="https://gz1a.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>博客升级:域名和图床</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%92%8C%E5%9B%BE%E5%BA%8A/</link>
-      <pubDate>Wed, 12 Feb 2020 23:58:48 +0800</pubDate>
+      <title>博客升级:图床和域名</title>
+      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A%E5%92%8C%E5%9F%9F%E5%90%8D/</link>
+      <pubDate>Thu, 13 Feb 2020 23:58:48 +0800</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%92%8C%E5%9B%BE%E5%BA%8A/</guid>
+      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A%E5%92%8C%E5%9F%9F%E5%90%8D/</guid>
       
         <description>&lt;p&gt;为了让博客更炫酷（装X），决定再进行一点升级。首先想到的就是域名。然后在写文章的时候深刻体会到了图片的重要性，有时一张图胜过千言万语。虽然 Typora 支持把图片便捷的保存到相对路径，但考虑到可能的多平台发布（以及 github 的访问困难），还是决定找一个比较成熟的图床解决方案，让博客里可以方便的插入图片。&lt;/p&gt;
-&lt;h2 id=&#34;域名&#34;&gt;域名&lt;/h2&gt;
-&lt;p&gt;先上前人指路 &lt;a href=&#34;https://blog.csdn.net/yuan3065/article/details/51594454&#34;&gt;Github 域名绑定&lt;/a&gt;  。&lt;/p&gt;
-&lt;p&gt;绑定域名分三步：买域名、github上添加 CNAME、域名处添加解析。买域名很好懂。github 上添加 CNAME 是为了让 github 服务器将 example.github.io 重定向到自定义域名。域名处添加解析是让自定义域名重定向到 example.github.io上的页面。&lt;/p&gt;
-&lt;h3 id=&#34;买域名&#34;&gt;买域名&lt;/h3&gt;
-&lt;p&gt;经过各个域名商间的比价，选定了在&lt;a href=&#34;https://www.aliyun.com/&#34;&gt;阿里云&lt;/a&gt;买域名。disorder.ink，第一年19块钱，后续每年49。有点小贵。&lt;del&gt;但是帅&lt;/del&gt;&lt;/p&gt;
-&lt;h3 id=&#34;添加-cname&#34;&gt;添加 CNAME&lt;/h3&gt;
-&lt;p&gt;参考&lt;a href=&#34;https://help.github.com/en/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site&#34;&gt;官方文档&lt;/a&gt;，在 repo 的 settings 里填上自定义域名，点几下鼠标就行了。&lt;/p&gt;
-&lt;h3 id=&#34;添加解析&#34;&gt;添加解析&lt;/h3&gt;
-&lt;p&gt;打开cmd，ping一下原本博客 example.github.io ，就可以得到 ip 了。在阿里云的域名控制台里选择新的域名，然后在左边菜单里找到域名解析。点下添加记录右边的新手引导，输入 ip 就可以了。&lt;/p&gt;
-&lt;h3 id=&#34;验证&#34;&gt;验证&lt;/h3&gt;
-&lt;p&gt;要验证是否成功，只要等个10分钟再分别 ping 一下原来的地址和新的地址，如果 ip 一致就算是完成了。然而我 ping 不通啊。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;ping disorder.ink
-Ping 请求找不到主机 disorder.ink。请检查该名称，然后重试。
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;再回到阿里云一看，&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;温馨提示：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;据监管要求，域名注册成功后需完成实名认证，否则域名会处于Serverhold状态，无法正常使用。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;行吧，那就实名认证一下，等个3-5天。&lt;/p&gt;
-&lt;p&gt;在此期间原来的地址建议不要跳转。把 CNAME 删掉之后试着访问了一下，然而还是会跳转。感谢这位同学的解决办法 &lt;a href=&#34;https://www.cnblogs.com/MakeView660/p/9072971.html&#34;&gt;放在github pages上的静态网站怎么取消绑定自定义域名？&lt;/a&gt; 虽然 &lt;a href=&#34;https://www.runoob.com/w3cnote/chrome-clear-dns-cache.html&#34;&gt;Chrome 浏览器清除 DNS 缓存&lt;/a&gt; 失败了，但是换个浏览器确实可以了。总之域名再等几天看结果吧。&lt;/p&gt;
 &lt;h2 id=&#34;图床&#34;&gt;图床&lt;/h2&gt;
 &lt;h3 id=&#34;建立图床--配置picgo&#34;&gt;建立图床 &amp;amp; 配置PicGo&lt;/h3&gt;
 &lt;p&gt;首先是技术选型。虽然 SM.MS 免费好用限制少（老哥家里肯定有矿），但是现阶段空间需求应该不太大，又寻思着找个方便备份和管理的，就倾向于 Gitee 了。&lt;/p&gt;
@@ -96,6 +66,43 @@ git push origin master -u
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214070516.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;顺便一提，Snipaste 确实比 TIM / QQ 的截图好用，建议下载 @&lt;a href=&#34;https://zh.snipaste.com/&#34;&gt;Snipaste&lt;/a&gt; 。突然想到还有一个截 GIF 工具 ScreenToGif @&lt;a href=&#34;https://www.screentogif.com/?l=z&#34;&gt;ScreenToGif&lt;/a&gt;  ，虽然由于码云的限制，图片大小必须要控制到 1M 以内。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/ETO.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;域名&#34;&gt;域名&lt;/h2&gt;
+&lt;p&gt;先上前人指路 &lt;a href=&#34;https://blog.csdn.net/yuan3065/article/details/51594454&#34;&gt;Github 域名绑定&lt;/a&gt;  。&lt;/p&gt;
+&lt;p&gt;绑定域名分三步：买域名、github上添加 CNAME、域名处添加解析。买域名很好懂。域名处添加解析是让自定义域名重定向到 example.github.io上的页面。而 CNAME 呢？并没有找到有人解释 CNAME 。然而在我尝试没有添加 CNAME 直接访问，发现是 github pages 的 404 后，我悟到了。这个 CNAME 文件的作用是大概是让 github 的服务器明白这个重定向可以安排上。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214185018.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;买域名&#34;&gt;买域名&lt;/h3&gt;
+&lt;p&gt;经过各个域名商间的比价，选定了在&lt;a href=&#34;https://www.aliyun.com/&#34;&gt;阿里云&lt;/a&gt;买域名。&lt;code&gt;disorder.ink&lt;/code&gt; ，第一年19块钱，后续每年49。有点小贵。&lt;del&gt;但是帅&lt;/del&gt;&lt;/p&gt;
+&lt;h3 id=&#34;添加-cname&#34;&gt;添加 CNAME&lt;/h3&gt;
+&lt;p&gt;参考&lt;a href=&#34;https://help.github.com/en/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site&#34;&gt;官方文档&lt;/a&gt;，在 repo 的 settings 里填上自定义域名，点几下鼠标就行了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214185412.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;添加解析&#34;&gt;添加解析&lt;/h3&gt;
+&lt;p&gt;打开cmd，ping一下原本博客 example.github.io ，就可以得到 github 分配的 ip 入口了。在阿里云的域名控制台里选择新的域名，然后在左边菜单里找到域名解析。点下添加记录右边的新手引导，输入 ip 就可以了。&lt;/p&gt;
+&lt;h3 id=&#34;验证&#34;&gt;验证&lt;/h3&gt;
+&lt;p&gt;要验证是否成功，只要等个10分钟再分别 ping 一下原来的地址和新的地址，如果 ip 一致就算是完成了。然而我 ping 不通啊。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;ping disorder.ink
+Ping 请求找不到主机 disorder.ink。请检查该名称，然后重试。
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;再回到阿里云一看，&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;温馨提示：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;据监管要求，域名注册成功后需完成实名认证，否则域名会处于Serverhold状态，无法正常使用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;行吧，那就实名认证一下，等个3-5天。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;然而事实上认证加 Serverhold 后摇总共只花了不到一天，睡了一觉起来就可以访问了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在此期间原来的地址建议不要跳转。把 CNAME 删掉之后试着访问了一下，然而还是会跳转。感谢这位同学的解决办法 &lt;a href=&#34;https://www.cnblogs.com/MakeView660/p/9072971.html&#34;&gt;放在github pages上的静态网站怎么取消绑定自定义域名？&lt;/a&gt; 虽然 &lt;a href=&#34;https://www.runoob.com/w3cnote/chrome-clear-dns-cache.html&#34;&gt;Chrome 浏览器清除 DNS 缓存&lt;/a&gt; 失败了，但是换个浏览器确实可以了。总之别急，&lt;del&gt;等等就好&lt;/del&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214190340.png&#34; alt=&#34;域名效果&#34;&gt;&lt;/p&gt;
+&lt;p&gt;最后一步就是要记得在本地也增加 CNAME 。Pull 到本地一次之后再 Push 。&lt;/p&gt;
 </description>
       
     </item>
