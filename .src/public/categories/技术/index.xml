@@ -6,10 +6,19 @@
     <description>Recent content in 技术 on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 12 Feb 2020 00:17:41 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 12 Feb 2020 23:58:48 +0800</lastBuildDate>
     
 	<atom:link href="https://gz1a.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>博客升级:域名和图床</title>
+      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%92%8C%E5%9B%BE%E5%BA%8A/</link>
+      <pubDate>Wed, 12 Feb 2020 23:58:48 +0800</pubDate>
+      
+      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%92%8C%E5%9B%BE%E5%BA%8A/</guid>
+      <description>为了让博客更炫酷（装X），决定再进行一点升级。首先想到的就是域名。然后在写文章的时候深刻体会到了图片的重要性，有时一张图胜过千言万语。虽然 Typora</description>
+    </item>
     
     <item>
       <title>用 bat 实现 Hugo 一键发布至 GitHub</title>

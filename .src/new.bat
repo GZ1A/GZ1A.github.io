@@ -1,7 +1,8 @@
 @echo off
-pushd ..\..\
+set siteSrcPath=.\
+pushd %siteSrcPath%
 echo.
-set /p name=  new article title:
-hugo new post\\"%name%".md
+set /p name="  new article title:"
+hugo new post\\"%name%.md"
 popd
-"%name%.md"
+"content\post\%name%.md"

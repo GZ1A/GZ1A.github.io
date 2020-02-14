@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>前端 on 昼阴夜阳</title>
+    <link>https://gz1a.github.io/tags/%E5%89%8D%E7%AB%AF/</link>
+    <description>Recent content in 前端 on 昼阴夜阳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 12 Feb 2020 23:58:48 +0800</lastBuildDate>
+    
+	<atom:link href="https://gz1a.github.io/tags/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>博客升级:域名和图床</title>
+      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%92%8C%E5%9B%BE%E5%BA%8A/</link>
+      <pubDate>Wed, 12 Feb 2020 23:58:48 +0800</pubDate>
+      
+      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%92%8C%E5%9B%BE%E5%BA%8A/</guid>
+      <description>为了让博客更炫酷（装X），决定再进行一点升级。首先想到的就是域名。然后在写文章的时候深刻体会到了图片的重要性，有时一张图胜过千言万语。虽然 Typora</description>
+    </item>
+    
+  </channel>
+</rss>
