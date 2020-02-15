@@ -6,25 +6,181 @@
     <description>Recent content on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 13 Feb 2020 23:58:48 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 15 Feb 2020 22:28:10 +0900</lastBuildDate>
     
         <atom:link href="https://gz1a.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>博客升级:图床和域名</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A%E5%92%8C%E5%9F%9F%E5%90%8D/</link>
-      <pubDate>Thu, 13 Feb 2020 23:58:48 +0800</pubDate>
+      <title>博客升级：网易云外链</title>
+      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</link>
+      <pubDate>Sat, 15 Feb 2020 22:28:10 +0900</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A%E5%92%8C%E5%9F%9F%E5%90%8D/</guid>
+      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</guid>
       
-        <description>&lt;p&gt;为了让博客更炫酷（装X），决定再进行一点升级。首先想到的就是域名。然后在写文章的时候深刻体会到了图片的重要性，有时一张图胜过千言万语。虽然 Typora 支持把图片便捷的保存到相对路径，但考虑到可能的多平台发布（以及 github 的访问困难），还是决定找一个比较成熟的图床解决方案，让博客里可以方便的插入图片。&lt;/p&gt;
-&lt;h2 id=&#34;图床&#34;&gt;图床&lt;/h2&gt;
-&lt;h3 id=&#34;建立图床--配置picgo&#34;&gt;建立图床 &amp;amp; 配置PicGo&lt;/h3&gt;
-&lt;p&gt;首先是技术选型。虽然 SM.MS 免费好用限制少（老哥家里肯定有矿），但是现阶段空间需求应该不太大，又寻思着找个方便备份和管理的，就倾向于 Gitee 了。&lt;/p&gt;
-&lt;p&gt;感谢 LeonG 同学于一个月前写的 &lt;a href=&#34;https://blog.csdn.net/disilll/article/details/103962241&#34;&gt;PicGo + Gitee(码云)实现markdown图床&lt;/a&gt; ，十分详尽，一文满足！跟着配置完了 Gitee 和 PicGo，无坑可踩，就上个图以表敬意吧。&lt;/p&gt;
+        <description>&lt;p&gt;想在文章里插入网易云音乐，遂找教程。
+逛博客总是能发现很多大佬，比如 &lt;a href=&#34;https://saquarius.com/2019/07/%E7%BB%99hugo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E5%A4%96%E9%93%BE/&#34;&gt;Hugo博客添加音乐外链&lt;/a&gt; @ &lt;a href=&#34;https://saquarius.github.io/&#34;&gt;SAquarius &lt;/a&gt; 。看了 about 好像在武汉，而且1月以后就没有更新了，希望只是寒假在鸽吧。然后还有一个 &lt;a href=&#34;https://wap.a9vg.com/thread-5363888-1-1.html&#34;&gt;网易云音乐如何生成flash和mp3外链&lt;/a&gt; （&lt;del&gt;论坛时泪&lt;/del&gt;，解释了外链的代码。不多废话了，先上效果。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;↓↓ 此处应有音乐&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=298 height=52 src=&#34;//music.163.com/outchain/player?type=2&amp;id=1411548222&amp;auto=1&amp;height=32&#34;&gt;
+&lt;/iframe&gt;
+&lt;blockquote&gt;
+&lt;p&gt;↑↑ 此处应有音乐&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;创建外链&#34;&gt;创建外链&lt;/h2&gt;
+&lt;p&gt;网易云外链其实只要 &lt;strong&gt;复制粘贴&lt;/strong&gt; 就好了。用浏览器打开 &lt;a href=&#34;https://music.163.com/&#34;&gt;网易云音乐&lt;/a&gt; ，搜索一首歌，比如这首R组的 &lt;a href=&#34;https://music.163.com/#/song?id=1411548222&#34;&gt;This game&lt;/a&gt; 。然后点击生成外链播放器。（歌单外链也是同理）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200216004720.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;然后如果这首歌没有版权问题的话，就直接生成好了外链。复制下来并粘贴到博客中就可以得到开头的效果了。当然也可以先切换成 flash插件来兼容更多的网站（但是 chrome 不支持）或者进行尺寸、播放模式的修改。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200216005038.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;测试&#34;&gt;测试&lt;/h2&gt;
+&lt;p&gt;启动 Hugo 的本地调试尝试一下。然而音乐并没有显示出来，很奇怪了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200216025427.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200216025319.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;于是在 Chrome 里按下 F12 打开了开发者选项，选中了音乐应该在的位置查看了一下 HTML 。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;blockquote&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;↓↓ 此处应有音乐&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;blockquote&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;c&#34;&gt;&amp;lt;!--&lt;/span&gt;&lt;span class=&#34;c&#34;&gt; raw HTML omitted &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;blockquote&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;↑↑ 此处应有音乐&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;blockquote&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt; &amp;lt;!-- raw HTML omitted --&amp;gt;&lt;/code&gt;，翻译一下就是&lt;code&gt;&amp;lt;!-- 原始 HTML 忽略 --&amp;gt;&lt;/code&gt;。震惊！看起来是 &lt;strong&gt;Hugo&lt;/strong&gt; 生成网页的时候&lt;strong&gt;自动忽略&lt;/strong&gt;了我的外链。手动插入外链试一下呢？确实就有了……&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200216031246.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;配置--hugo&#34;&gt;配置  Hugo&lt;/h2&gt;
+&lt;p&gt;所以问题的关键就在于如何让 Hugo 在生成时保留 markdown 里的 HTML 代码不变。很自然的就想到要去 config 里找找看有没有相应的设置。Hugo 中文文档在2015年以后就没有烤肉man更新了，迫不得已去看 &lt;a href=&#34;https://gohugo.io/getting-started/configuration-markup/&#34;&gt;Hugo 英文文档&lt;/a&gt; 。还好一下子就看到了。给大家翻译一下。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;goldmark-金标记&#34;&gt;Goldmark 金标记&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/yuin/goldmark/&#34;&gt;Goldmark&lt;/a&gt; is from Hugo 0.60 the default library used for Markdown&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/yuin/goldmark/&#34;&gt;金标记&lt;/a&gt; 是从 Hugo 0.60 开始的 Markdown 默认库&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;unsafe&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;By default, Goldmark does not render raw HTMLs and potentially dangerous links. If you have lots of inline HTML and/or JavaScript, you may need to turn this on.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;不安全&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;默认情况下，金标记不渲染原始 HTML 和有潜在危险的链接。如果你有很多行内的 HTML 或很多 JavaScript 代码，你可能需要把这个打开。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;那么问题就解决了。根据 &lt;strong&gt;项目&lt;/strong&gt;下的 &lt;code&gt;config&lt;/code&gt; 文件格式复制上方的代码，打开 &lt;code&gt;unsafe&lt;/code&gt; 开关。我的是 toml 格式的，所以就在 &lt;strong&gt;config.toml&lt;/strong&gt; 里增加了这一段。终于舒服了~&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;markup&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;markup&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;goldmark&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;markup&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;goldmark&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;renderer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+      &lt;span class=&#34;nx&#34;&gt;unsafe&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;优化流程&#34;&gt;优化流程&lt;/h2&gt;
+&lt;p&gt;这个外链已经足够方便了。唯一能做的就是为了以后方便调用，把链接加入&lt;code&gt;Front Matter&lt;/code&gt;了。打开工程下的 archetypes 文件夹。里面的 md 文件就是使用 hugo 创建文档时的模板文件。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200216013136.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;打开并插入常用链接。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;c&#34;&gt;# 常用定义&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;draft&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;	                		&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 是否是草稿？&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;{{ replace .Name &amp;#34;&lt;/span&gt;-&lt;span class=&#34;s2&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34; | title }}&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;{{&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;.Date&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;}}&lt;span class=&#34;w&#34;&gt;					&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 创建时间&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;author&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;昼阴夜阳&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;             		&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 作者&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 分类和标签&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;categories&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;		               &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 分类&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;tags&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;			&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 标签&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# ...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 常用链接&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 网易云 https://music.163.com/#/search/m/?s=%20&amp;amp;type=1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这样以后插入歌就可以快一点吧?&lt;del&gt;并不能&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;typora-bug&#34;&gt;Typora Bug&lt;/h2&gt;
+&lt;p&gt;突然发现 Typora 有个小 bug ，或者是 feature ？如果这段 HTML 没有换行，从源代码模式切换到实时渲染的时候下一段就会被吸引上去，如图。恰巧 Hugo 在生成的时候好像会把这整一段的代码都作为 HTML 渲染，实际效果就是这样：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;k&#34;&gt;&amp;gt; &lt;/span&gt;&lt;span class=&#34;ge&#34;&gt;↓↓ 此处应有音乐
+&lt;/span&gt;&lt;span class=&#34;ge&#34;&gt;&lt;/span&gt;
+&amp;lt;iframe frameborder=&amp;#34;no&amp;#34; border=&amp;#34;0&amp;#34; marginwidth=&amp;#34;0&amp;#34; marginheight=&amp;#34;0&amp;#34; width=2980 height=52 src=&amp;#34;//music.163.com/outchain/player?type=2&amp;amp;id=1411548222&amp;amp;auto=0&amp;amp;height=32&amp;#34;&amp;gt;&amp;lt;/iframe&amp;gt;
+&lt;span class=&#34;k&#34;&gt;&amp;gt; &lt;/span&gt;&lt;span class=&#34;ge&#34;&gt;↑↑ 此处应有音乐 
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200216045147.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;解决办法是把&lt;strong&gt;&lt;code&gt;&amp;lt;/iframe&amp;gt;&lt;/code&gt;换到下一行&lt;/strong&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;k&#34;&gt;&amp;gt; &lt;/span&gt;&lt;span class=&#34;ge&#34;&gt;↓↓ 此处应有音乐
+&lt;/span&gt;&lt;span class=&#34;ge&#34;&gt;&lt;/span&gt;
+&amp;lt;iframe frameborder=&amp;#34;no&amp;#34; border=&amp;#34;0&amp;#34; marginwidth=&amp;#34;0&amp;#34; marginheight=&amp;#34;0&amp;#34; width=2980 height=52 src=&amp;#34;//music.163.com/outchain/player?type=2&amp;amp;id=1411548222&amp;amp;auto=0&amp;amp;height=32&amp;#34;&amp;gt;
+&amp;lt;/iframe&amp;gt;
+&lt;span class=&#34;k&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;&amp;gt; &lt;/span&gt;&lt;span class=&#34;ge&#34;&gt;↑↑ 此处应有音乐 
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>博客升级：图床</title>
+      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/</link>
+      <pubDate>Fri, 14 Feb 2020 23:58:48 +0800</pubDate>
+      
+      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/</guid>
+      
+        <description>&lt;p&gt;在写文章的时候深刻体会到了图片的重要性，有时一张图胜过千言万语。虽然 Typora 支持把图片便捷的保存到相对路径，但考虑到可能的多平台发布（以及 github 载图的访问困难），还是决定找一个比较成熟的图床解决方案，让博客里可以方便的插入图片。&lt;/p&gt;
+&lt;h2 id=&#34;建立图床--配置picgo&#34;&gt;建立图床 &amp;amp; 配置PicGo&lt;/h2&gt;
+&lt;p&gt;首先是技术选型。虽然 SM.MS 免费好用限制少（这&lt;del&gt;美妈&lt;/del&gt;老哥家里肯定有矿），但是现阶段空间需求应该不太大，又寻思着找个方便备份和管理的，就倾向于 Gitee 了。&lt;/p&gt;
+&lt;p&gt;感谢 LeonG 同学于一个月前写的 &lt;a href=&#34;https://blog.csdn.net/disilll/article/details/103962241&#34;&gt;PicGo + Gitee(码云)实现markdown图床&lt;/a&gt; ，十分详尽，一文满足！&lt;/p&gt;
+&lt;p&gt;跟着配置完了 Gitee 和 PicGo，无坑可踩，就上个图以表敬意吧。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214063339.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;克隆&#34;&gt;克隆&lt;/h3&gt;
+&lt;h2 id=&#34;克隆&#34;&gt;克隆&lt;/h2&gt;
 &lt;p&gt;Gitee 做的图床，当然也要克隆到本地一份了。这样就算挂了也可以用本地备份快速顶上，也方便管理图床（虽然没啥必要）。CMD 进入目标文件夹:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -46,8 +202,8 @@ git push origin master -u
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;就可以完成对图床的备份。&lt;/p&gt;
-&lt;h3 id=&#34;优化&#34;&gt;优化&lt;/h3&gt;
-&lt;h4 id=&#34;文件路径&#34;&gt;文件路径&lt;/h4&gt;
+&lt;h2 id=&#34;优化&#34;&gt;优化&lt;/h2&gt;
+&lt;h3 id=&#34;文件路径&#34;&gt;文件路径&lt;/h3&gt;
 &lt;p&gt;关于配置 &lt;strong&gt;gitee-uploader&lt;/strong&gt; 插件，这里放一个插件的文档 &lt;a href=&#34;https://github.com/lizhuangs/picgo-plugin-gitee-uploader#readme&#34;&gt;picgo-plugin-gitee-uploader&lt;/a&gt; ，里面介绍了 customPath 的用法：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;自动配置path路径 示例：path：&lt;code&gt;blog/$customPath&lt;/code&gt;&lt;/p&gt;
@@ -58,29 +214,44 @@ git push origin master -u
 &lt;/blockquote&gt;
 &lt;p&gt;这样可以起到图片归档的效果，方便日后处理，所以建议如图配置。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214065424.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h4 id=&#34;快捷键&#34;&gt;快捷键&lt;/h4&gt;
+&lt;h3 id=&#34;快捷键&#34;&gt;快捷键&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Typora 写文档，Snipaste 一键截图，PicGo 一键上传图片返回链接。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;统一快捷键之后，这些工具的组合提供了如丝滑般顺畅的工作体验。&lt;code&gt;Ctrl+Alt+A&lt;/code&gt;  的截图快捷键已经深入我心，再用 &lt;code&gt;Ctrl+Alt+S&lt;/code&gt; 的快捷键将剪切板里的截图保存到云端。最后 &lt;code&gt;Ctrl+V&lt;/code&gt; 将 MarkDown 格式的图片链接粘贴到文档里。破费~&lt;/p&gt;
+&lt;p&gt;统一快捷键之后，这些工具的组合提供了如丝滑般顺畅的工作体验。&lt;/p&gt;
+&lt;p&gt;**&lt;code&gt;Ctrl+Alt+A&lt;/code&gt;  的截图快捷键 **已经深入我心，在截图之后&lt;/p&gt;
+&lt;p&gt;**&lt;code&gt;Ctrl+Alt+S&lt;/code&gt; 的上传快捷键 **将剪切板里的截图保存到云端。最后一步&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;Ctrl+V&lt;/code&gt; 粘贴&lt;/strong&gt; ，将 MarkDown 格式的图片链接粘贴到文档里。破费~&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214070516.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;顺便一提，Snipaste 确实比 TIM / QQ 的截图好用，建议下载 @&lt;a href=&#34;https://zh.snipaste.com/&#34;&gt;Snipaste&lt;/a&gt; 。突然想到还有一个截 GIF 工具 ScreenToGif @&lt;a href=&#34;https://www.screentogif.com/?l=z&#34;&gt;ScreenToGif&lt;/a&gt;  ，虽然由于码云的限制，图片大小必须要控制到 1M 以内。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/ETO.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;域名&#34;&gt;域名&lt;/h2&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>博客升级：域名</title>
+      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D/</link>
+      <pubDate>Thu, 13 Feb 2020 23:58:48 +0800</pubDate>
+      
+      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D/</guid>
+      
+        <description>&lt;p&gt;为了让博客更炫酷（装X），决定再进行一点升级。首先想到的就是域名。&lt;/p&gt;
 &lt;p&gt;先上前人指路 &lt;a href=&#34;https://blog.csdn.net/yuan3065/article/details/51594454&#34;&gt;Github 域名绑定&lt;/a&gt;  。&lt;/p&gt;
-&lt;p&gt;绑定域名分三步：买域名、github上添加 CNAME、域名处添加解析。买域名很好懂。域名处添加解析是让自定义域名重定向到 example.github.io上的页面。而 CNAME 呢？并没有找到有人解释 CNAME 。然而在我尝试没有添加 CNAME 直接访问，发现是 github pages 的 404 后，我悟到了。这个 CNAME 文件的作用是大概是让 github 的服务器明白这个重定向可以安排上。&lt;/p&gt;
+&lt;h2 id=&#34;流程&#34;&gt;流程&lt;/h2&gt;
+&lt;p&gt;绑定域名分三步：买域名、github上添加 CNAME、域名处添加解析。买域名很好懂。域名处添加解析是让自定义域名重定向到 example.github.io上的页面。而 CNAME 呢？并没有找到有人解释 CNAME 。然而在我尝试没有添加 CNAME 直接访问，发现是 github pages 的 404 后，我悟到了。这个 CNAME 文件的作用是大概是让 github 的服务器明白这个重定向可以安排上。于是当访问是从新域名到达对应 ip 的时候就会跳转到这个仓库。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214185018.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;买域名&#34;&gt;买域名&lt;/h3&gt;
+&lt;h2 id=&#34;买域名&#34;&gt;买域名&lt;/h2&gt;
 &lt;p&gt;经过各个域名商间的比价，选定了在&lt;a href=&#34;https://www.aliyun.com/&#34;&gt;阿里云&lt;/a&gt;买域名。&lt;code&gt;disorder.ink&lt;/code&gt; ，第一年19块钱，后续每年49。有点小贵。&lt;del&gt;但是帅&lt;/del&gt;&lt;/p&gt;
-&lt;h3 id=&#34;添加-cname&#34;&gt;添加 CNAME&lt;/h3&gt;
+&lt;h2 id=&#34;添加-cname&#34;&gt;添加 CNAME&lt;/h2&gt;
 &lt;p&gt;参考&lt;a href=&#34;https://help.github.com/en/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site&#34;&gt;官方文档&lt;/a&gt;，在 repo 的 settings 里填上自定义域名，点几下鼠标就行了。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214185412.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;添加解析&#34;&gt;添加解析&lt;/h3&gt;
+&lt;h2 id=&#34;添加解析&#34;&gt;添加解析&lt;/h2&gt;
 &lt;p&gt;在阿里云的域名控制台里选择新的域名，然后在左边菜单里找到域名解析。&lt;/p&gt;
 &lt;p&gt;&lt;del&gt;打开cmd，ping一下原本博客 example.github.io ，就可以得到 github 分配的 ip 入口了。点下添加记录右边的新手引导，输入 ip 就可以了。&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;建议使用 CNAME 类型，如图&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214234143.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;验证&#34;&gt;验证&lt;/h3&gt;
+&lt;h2 id=&#34;验证&#34;&gt;验证&lt;/h2&gt;
 &lt;p&gt;要验证是否成功，只要等个10分钟再分别 ping 一下原来的地址和新的地址，如果 ip 一致就算是完成了。然而我 ping 不通啊。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -111,11 +282,11 @@ Ping 请求找不到主机 disorder.ink。请检查该名称，然后重试。
     </item>
     
     <item>
-      <title>用 bat 实现 Hugo 一键发布至 GitHub</title>
-      <link>https://gz1a.github.io/post/%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</link>
+      <title>博客升级：用 bat 实现 Hugo 一键发布至 GitHub</title>
+      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</link>
       <pubDate>Wed, 12 Feb 2020 00:17:41 +0800</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</guid>
+      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</guid>
       
         <description>&lt;p&gt;hugo 还是挺方便的，但是在写完 markdown 文档到发布到 github 之间还有好多行命令要打，太累了。于是很自然的想到使用bat批处理脚本帮我输入这些命令，自动发布。&lt;/p&gt;
 &lt;h2 id=&#34;搜索资料&#34;&gt;搜索资料&lt;/h2&gt;
@@ -827,11 +998,11 @@ endlocal
     </item>
     
     <item>
-      <title>用Hugo搭建博客</title>
-      <link>https://gz1a.github.io/post/%E6%90%AD%E5%BB%BAblog/</link>
+      <title>博客升级：搭建 Hugo 博客</title>
+      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Tue, 11 Feb 2020 09:24:01 +0800</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E6%90%AD%E5%BB%BAblog/</guid>
+      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
       
         <description>&lt;p&gt;想正式写写博客已经很久了，但是一直没有实际行动。年初这波疫情宅在家里足足一个月，整天吃吃喝喝玩玩睡睡，闲着没事建议搞事。孩子不爱写博客，一定是因为博客不好看！&lt;del&gt;（指CSDN）&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;于是寻觅搭建博客的方法，在这里也记录一下踩过的坑。&lt;/p&gt;
@@ -902,7 +1073,7 @@ endlocal
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;就可以检查是否安装成功了。&lt;/p&gt;
 &lt;h2 id=&#34;生成站点--创建文章&#34;&gt;生成站点 &amp;amp; 创建文章&lt;/h2&gt;
-&lt;p&gt;一路跟随文档的快速开始走就可以了。具体的文档内容都会存储在目录结构中的 content 文件夹，所以站点的存储路径会比较常用，建议选个好记的或者拉个快捷方式。&lt;/p&gt;
+&lt;p&gt;一路跟随 &lt;a href=&#34;https://www.gohugo.org/&#34;&gt;Hugo中文文档&lt;/a&gt; 的快速开始走就可以了。具体的文档内容都会存储在目录结构中的 content 文件夹，所以站点的存储路径会比较常用，建议选个好记的或者拉个快捷方式。&lt;/p&gt;
 &lt;h2 id=&#34;安装主题并测试&#34;&gt;安装主题并测试&lt;/h2&gt;
 &lt;p&gt;除了中文文档里的主题列表，补充一个&lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;官方的主题列表&lt;/a&gt;,不仅种类繁多，还可以用右边的标签筛选一下。暂且先选个文档里选择的主题[ ](&lt;a href=&#34;https://github.com/xianmin/hugo-theme-jane&#34;&gt;https://github.com/xianmin/hugo-theme-jane&lt;/a&gt;)。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
