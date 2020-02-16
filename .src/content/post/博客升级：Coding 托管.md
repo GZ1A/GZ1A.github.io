@@ -115,13 +115,9 @@ and the repository exists.
 
 ## 自动化
 
-增加了一个仓库，自然要在我的一键发布脚本里添加下对应代码（虽然感觉 github pages 的仓库无意义了）
+增加了一个仓库，自然要在我的一键发布脚本里添加下对应代码 `git push coding_repo master`（虽然感觉 github pages 的仓库无意义了）
 
-update 见[传送门](https://disorder.ink/post/博客升级一键发布/)。
-
-
-
-
+[原文传送门](https://disorder.ink/post/博客升级一键发布/)。
 
 ## 参考
 
