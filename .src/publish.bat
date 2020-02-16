@@ -53,6 +53,11 @@ if exist !build! (
         REM git remote add origin %repo%
         REM git push -f origin master
 
+        echo "git pull"
+        git pull origin master
+        REM another remote repo
+        git pull coding_repo master
+
         echo "git commit"
         git add -A
         echo.
@@ -61,8 +66,11 @@ if exist !build! (
             set commitMessage=update site
         )
         git commit -m "!commitMessage!"
+
         echo "git push"
         git push origin master
+        REM another remote repo
+        git push coding_repo master
     )
 
 ) else (

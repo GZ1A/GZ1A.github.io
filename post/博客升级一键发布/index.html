@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>博客升级：用 bat 实现 Hugo 一键发布至 GitHub - 昼阴夜阳</title>
+  <title>【博客升级】用 bat 实现 Hugo 一键发布至 GitHub - 昼阴夜阳</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -58,22 +58,22 @@
 
 
 
-<meta property="og:title" content="博客升级：用 bat 实现 Hugo 一键发布至 GitHub" />
+<meta property="og:title" content="【博客升级】用 bat 实现 Hugo 一键发布至 GitHub" />
 <meta property="og:description" content="hugo 还是挺方便的，但是在写完 markdown 文档到发布到 github 之间还有好多行命令要打，太累了。于是很自然的想到使用bat批处理脚本帮我输入这些命令，自动发布。 搜" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/" />
 <meta property="article:published_time" content="2020-02-12T00:17:41+08:00" />
 <meta property="article:modified_time" content="2020-02-12T00:17:41+08:00" />
-<meta itemprop="name" content="博客升级：用 bat 实现 Hugo 一键发布至 GitHub">
+<meta itemprop="name" content="【博客升级】用 bat 实现 Hugo 一键发布至 GitHub">
 <meta itemprop="description" content="hugo 还是挺方便的，但是在写完 markdown 文档到发布到 github 之间还有好多行命令要打，太累了。于是很自然的想到使用bat批处理脚本帮我输入这些命令，自动发布。 搜">
 <meta itemprop="datePublished" content="2020-02-12T00:17:41&#43;08:00" />
 <meta itemprop="dateModified" content="2020-02-12T00:17:41&#43;08:00" />
-<meta itemprop="wordCount" content="2332">
+<meta itemprop="wordCount" content="2408">
 
 
 
 <meta itemprop="keywords" content="博客升级,bat,Hugo," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="博客升级：用 bat 实现 Hugo 一键发布至 GitHub"/>
+<meta name="twitter:title" content="【博客升级】用 bat 实现 Hugo 一键发布至 GitHub"/>
 <meta name="twitter:description" content="hugo 还是挺方便的，但是在写完 markdown 文档到发布到 github 之间还有好多行命令要打，太累了。于是很自然的想到使用bat批处理脚本帮我输入这些命令，自动发布。 搜"/>
 
 <!--[if lte IE 9]>
@@ -276,7 +276,7 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">博客升级：用 bat 实现 Hugo 一键发布至 GitHub</h1>
+      <h1 class="post-title">【博客升级】用 bat 实现 Hugo 一键发布至 GitHub</h1>
       
       <div class="post-meta">
         <time datetime="2020-02-12" class="post-time">
@@ -286,7 +286,7 @@
             <a href="https://gz1a.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             
           </div>
-        <span class="more-meta"> 约 2332 字 </span>
+        <span class="more-meta"> 约 2408 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
 
         
@@ -303,6 +303,7 @@
 
     
     
+
 
     
     <div class="post-content">
@@ -532,13 +533,18 @@ pause
 </code></pre></td></tr></table>
 </div>
 </div><p><del>终于，单论发布这块已经拿下了。接下来可能还要对博客做点工作。</del></p>
-<h2 id="update-200213-修复404">UPDATE 200213 修复404</h2>
+<h2 id="update">UPDATE</h2>
+<h3 id="20200213-修复404">20200213 修复404</h3>
 <p>本来今天高高兴兴。 没想到打开主页却是 404 。明明在本地用 <code>hugo server</code> 测试的时候没啥问题。</p>
 <p>百度发现了一样的问题：<a href="https://segmentfault.com/q/1010000007578473?_ea=1390393">hexo 搭建个人博客，提交后github后显示404&hellip;</a> 。感谢 Dont 的解答， <a href="https://help.github.com/en/github/working-with-github-pages">GitHub Pages</a> 实现了在访问 xxx.github.io 时会访问对应用户仓库 master 分支，当没有指定名文件时，HTTP请就会被解释为访问该路径下的 index.html 。</p>
 <p>文档里的命令只 push 了 public 文件夹，而我 copy 来的代码是把整个工程都 push 上去了（还覆盖了原来的文件）。按照分支的解决方法，试图优雅的分出工程和发布两个分支，但我的 git （还有 bat ）学艺不精，眼看要陷入 debug 地狱了。遂放弃。 选择把工程放到 .src 文件夹里，再把 public 里的内容全部 copy 到外面的方法。</p>
 <p>经过一个晚上的学习和调试（花了半个晚上领悟 cmd 里 <code>/</code> 跟着参数，<code>\</code> 分割目录，这就是Windows标准吗）。最终得到了一键发布的 bat。</p>
-<h2 id="update-200214-添加-cname">UPDATE 200214 添加 CNAME</h2>
+<h3 id="20200214-添加-cname">20200214 添加 CNAME</h3>
 <p>在添加域名后就又有了新的文件 CNAME ，为了防止重新生成时自动清除了 CNAME ，需要再进行一下判断。</p>
+<h3 id="20200217--添加远程仓库">20200217  添加远程仓库</h3>
+<p>添加了 Coding 的仓库，在发布的时候就要推送两次。顺便在推送前对远程仓库分别进行一次 Pull ，防止在多个电脑上写博客时可能出现的问题。</p>
+<h2 id="最后结果">最后结果</h2>
+<p><a href="https://github.com/GZ1A/GZ1A.github.io/blob/master/.src/publish.bat">github 仓库里的 publish.bat</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">  1
@@ -1060,12 +1066,12 @@ endlocal
 </svg>
 
             </i>
-            <span class="prev-text nav-default">博客升级：域名</span>
+            <span class="prev-text nav-default">【博客升级】自定义域名</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         
           <a class="next" href="/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
-            <span class="next-text nav-default">博客升级：搭建 Hugo 博客</span>
+            <span class="next-text nav-default">【博客升级】搭建 Hugo 博客</span>
             <span class="prev-text nav-mobile">下一篇</span>
             
             <i class="iconfont">
@@ -1128,7 +1134,7 @@ endlocal
 </svg>
 
   </a>
-   
+  
 </div>
 
 <div class="copyright">
@@ -1161,9 +1167,7 @@ endlocal
 
   
   
-    <span id="busuanzi_container">
-      访客数/访问量：<span id="busuanzi_value_site_uv"></span>/<span id="busuanzi_value_site_pv"></span>
-    </span>
+    
   
 
   

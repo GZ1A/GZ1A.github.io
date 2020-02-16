@@ -5,4 +5,4 @@ echo.
 set /p name="  new article title:"
 hugo new post\\"%name%.md"
 popd
-"content\post\%name%.md"
+start "" "content\post\%name%.md"

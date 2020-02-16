@@ -6,13 +6,22 @@
     <description>Recent content in 技术 on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 15 Feb 2020 22:28:10 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 16 Feb 2020 23:04:27 +0900</lastBuildDate>
     
 	<atom:link href="https://gz1a.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>博客升级：网易云外链</title>
+      <title>【博客升级】Coding 托管</title>
+      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</link>
+      <pubDate>Sun, 16 Feb 2020 23:04:27 +0900</pubDate>
+      
+      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</guid>
+      <description>辛辛苦苦写的博客当然想让别人看到了，最可行的方法就是被搜索引擎收录。然而 Github 屏蔽了百度爬虫，导致 Github Pages 无法被百度收录，就很难受。除开这个因素，为</description>
+    </item>
+    
+    <item>
+      <title>【博客升级】网易云外链</title>
       <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</link>
       <pubDate>Sat, 15 Feb 2020 22:28:10 +0900</pubDate>
       
@@ -21,7 +30,7 @@
     </item>
     
     <item>
-      <title>博客升级：图床</title>
+      <title>【博客升级】图床</title>
       <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/</link>
       <pubDate>Fri, 14 Feb 2020 23:58:48 +0800</pubDate>
       
@@ -30,7 +39,7 @@
     </item>
     
     <item>
-      <title>博客升级：域名</title>
+      <title>【博客升级】自定义域名</title>
       <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D/</link>
       <pubDate>Thu, 13 Feb 2020 23:58:48 +0800</pubDate>
       
@@ -39,7 +48,7 @@
     </item>
     
     <item>
-      <title>博客升级：用 bat 实现 Hugo 一键发布至 GitHub</title>
+      <title>【博客升级】用 bat 实现 Hugo 一键发布至 GitHub</title>
       <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</link>
       <pubDate>Wed, 12 Feb 2020 00:17:41 +0800</pubDate>
       
@@ -48,7 +57,7 @@
     </item>
     
     <item>
-      <title>博客升级：搭建 Hugo 博客</title>
+      <title>【博客升级】搭建 Hugo 博客</title>
       <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Tue, 11 Feb 2020 09:24:01 +0800</pubDate>
       
