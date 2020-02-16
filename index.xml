@@ -623,7 +623,7 @@ pause
 &lt;p&gt;在添加域名后就又有了新的文件 CNAME ，为了防止重新生成时自动清除了 CNAME ，需要再进行一下判断。&lt;/p&gt;
 &lt;h3 id=&#34;20200217--添加远程仓库&#34;&gt;20200217  添加远程仓库&lt;/h3&gt;
 &lt;p&gt;添加了 Coding 的仓库，在发布的时候就要推送两次。顺便在推送前对远程仓库分别进行一次 Pull ，防止在多个电脑上写博客时可能出现的问题。&lt;/p&gt;
-&lt;h2 id=&#34;最后结果&#34;&gt;最后结果&lt;/h2&gt;
+&lt;h2 id=&#34;成果&#34;&gt;成果&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/GZ1A/GZ1A.github.io/blob/master/.src/publish.bat&#34;&gt;github 仓库里的 publish.bat&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
