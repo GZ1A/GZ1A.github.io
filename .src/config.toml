@@ -156,13 +156,13 @@ defaultContentLanguage = "zh-cn"           # Default language to use
   # You can get your appid and appkey from https://leancloud.cn
   # more info please open https://valine.js.org
   [params.valine]
-    enable = false
-    appId = ''
-    appKey = ''
+    enable = true
+    appId = 'L7mdz4FQ5SsDYXfrMj2XGOhY-gzGzoHsz'
+    appKey = 'wzMrloJf0lMSI98LuVMXas0o'
     notify = false  # If you are using valine-admin(https://github.com/DesertsP/Valine-Admin) to notify users, do NOT enable this.
     verify = false # Verification code
-    avatar = 'mm'
-    placeholder = ''
+    avatar = 'retro'
+    placeholder = '随便说点什么吧~（填写邮箱可以收到回复提醒哦）'
 
   [params.search.google]    # google custom search, see https://cse.google.com
     enable = false

@@ -72,7 +72,7 @@
 
 
 
-<meta itemprop="keywords" content="博客升级,coding," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="博客升级,Coding," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="【博客升级】Coding 托管"/>
 <meta name="twitter:description" content="辛辛苦苦写的博客当然想让别人看到了，最可行的方法就是被搜索引擎收录。然而 Github 屏蔽了百度爬虫，导致 Github Pages 无法被百度收录，就很难受。除开这个因素，为"/>
 
@@ -442,17 +442,47 @@ and the repository exists.
 
     
     
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/wechat-qr-code.png">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/alipay-qr-code.png">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
 
     <footer class="post-footer">
       <div class="post-tags">
           <a href="https://gz1a.github.io/tags/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7/">博客升级</a>
-          <a href="https://gz1a.github.io/tags/coding/">coding</a>
+          <a href="https://gz1a.github.io/tags/coding/">Coding</a>
           
         </div>
 
       
       <nav class="post-nav">
         
+          <a class="prev" href="/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/">
+            
+            <i class="iconfont">
+              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+            </i>
+            <span class="prev-text nav-default">【博客升级】Valine 评论系统</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         
           <a class="next" href="/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/">
             <span class="next-text nav-default">【博客升级】网易云外链</span>
@@ -478,6 +508,45 @@ and the repository exists.
 
   
   
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+    
+
+  <div id="comments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+            if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 700);
+              clearInterval(checkExist);
+            }
+        }, 10);
+    }
+  </script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#comments' ,
+        appId: 'L7mdz4FQ5SsDYXfrMj2XGOhY-gzGzoHsz',
+        appKey: 'wzMrloJf0lMSI98LuVMXas0o',
+        notify:  false , 
+        verify:  false , 
+        avatar:'retro', 
+        placeholder: '随便说点什么吧~（填写邮箱可以收到回复提醒哦）',
+        visitor:  false 
+    });
+  </script>
 
         </div>
       </div>

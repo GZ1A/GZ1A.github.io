@@ -448,6 +448,23 @@ hugo server --theme=hyde-x --buildDrafts
 
     
     
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/wechat-qr-code.png">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/alipay-qr-code.png">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
 
     <footer class="post-footer">
       <div class="post-tags">
@@ -499,7 +516,31 @@ hugo server --theme=hyde-x --buildDrafts
 
     
 
-  
+  <div id="comments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+            if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 700);
+              clearInterval(checkExist);
+            }
+        }, 10);
+    }
+  </script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#comments' ,
+        appId: 'L7mdz4FQ5SsDYXfrMj2XGOhY-gzGzoHsz',
+        appKey: 'wzMrloJf0lMSI98LuVMXas0o',
+        notify:  false , 
+        verify:  false , 
+        avatar:'retro', 
+        placeholder: '随便说点什么吧~（填写邮箱可以收到回复提醒哦）',
+        visitor:  false 
+    });
+  </script>
 
         </div>
       </div>

@@ -11,10 +11,10 @@ categories: [""]		            # 分类
 tags: [""]  						# 标签
 
 # 自定义
-comment: false   # 评论
+comment: true	 # 评论
 toc: true        # 文章目录
 contentCopyright: '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'	#版权规则
-reward: false	 # 打赏
+reward: true	 # 打赏
 mathjax: true    # 打开 mathjax
 
 # 常用链接

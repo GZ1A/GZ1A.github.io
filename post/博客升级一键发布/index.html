@@ -303,6 +303,26 @@
 
     
     
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title" style="text-align:center;">文章目录</h2>
+  <div class="post-toc-content" style="text-align:left;">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#搜索资料">搜索资料</a></li>
+    <li><a href="#配置-config">配置 Config</a></li>
+    <li><a href="#设置-bat">设置 bat</a></li>
+    <li><a href="#update">UPDATE</a>
+      <ul>
+        <li><a href="#20200213-修复404">20200213 修复404</a></li>
+        <li><a href="#20200214-添加-cname">20200214 添加 CNAME</a></li>
+        <li><a href="#20200217--添加远程仓库">20200217  添加远程仓库</a></li>
+      </ul>
+    </li>
+    <li><a href="#成果">成果</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
 
 
     
@@ -752,6 +772,23 @@ endlocal
 
     
     
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/wechat-qr-code.png">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/alipay-qr-code.png">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
 
     <footer class="post-footer">
       <div class="post-tags">
@@ -802,6 +839,45 @@ endlocal
 
   
   
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+    
+
+  <div id="comments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+            if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 700);
+              clearInterval(checkExist);
+            }
+        }, 10);
+    }
+  </script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#comments' ,
+        appId: 'L7mdz4FQ5SsDYXfrMj2XGOhY-gzGzoHsz',
+        appKey: 'wzMrloJf0lMSI98LuVMXas0o',
+        notify:  false , 
+        verify:  false , 
+        avatar:'retro', 
+        placeholder: '随便说点什么吧~（填写邮箱可以收到回复提醒哦）',
+        visitor:  false 
+    });
+  </script>
 
         </div>
       </div>
