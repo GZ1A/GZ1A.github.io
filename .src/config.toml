@@ -143,6 +143,11 @@ defaultContentLanguage = "zh-cn"           # Default language to use
     repo = "xianmin/comments-for-hugo-theme-jane"    # The repo to store comments
     issueTerm = "pathname"
 
+  [params.live2D]           # https://www.fghrsh.net/post/170.html
+	enable = true
+  [params.background]       # https://www.jianshu.com/p/6051077119d1
+	enable = true
+
   [params.gitment]          # Gitment is a comment system based on GitHub issues. see https://github.com/imsun/gitment
     owner = ""              # Your GitHub ID
     repo = ""               # The repo to store comments

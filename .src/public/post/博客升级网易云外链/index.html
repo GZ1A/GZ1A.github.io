@@ -68,7 +68,7 @@
 <meta itemprop="description" content="想在文章里插入网易云音乐，遂找教程。 逛博客总是能发现很多大佬，比如 Hugo博客添加音乐外链 @ SAquarius 。看了 about 好像在武汉，而且1月以后就没有更新了，">
 <meta itemprop="datePublished" content="2020-02-15T22:28:10&#43;09:00" />
 <meta itemprop="dateModified" content="2020-02-15T22:28:10&#43;09:00" />
-<meta itemprop="wordCount" content="1217">
+<meta itemprop="wordCount" content="1750">
 
 
 
@@ -208,6 +208,9 @@
     
       昼阴夜阳
     
+
+  
+
   </a>
 </div>
 
@@ -286,8 +289,8 @@
             <a href="https://gz1a.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             
           </div>
-        <span class="more-meta"> 约 1217 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span class="more-meta"> 约 1750 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
 
         
         
@@ -313,6 +316,7 @@
     <li><a href="#配置--hugo">配置  Hugo</a></li>
     <li><a href="#优化流程">优化流程</a></li>
     <li><a href="#typora-bug">Typora Bug</a></li>
+    <li><a href="#使用-shortcode">使用 shortcode</a></li>
   </ul>
 </nav>
   </div>
@@ -331,6 +335,7 @@
 <blockquote>
 <p>↑↑ 此处应有音乐</p>
 </blockquote>
+<p>2020/2/19 更新：随着了解的深入，才发现原来直接插入原始 HTML 是野路子。优雅的做法应该是使用 Hugo 的 shortcode 来实现这一功能。详见 <a href="https://www.disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/#%E4%BD%BF%E7%94%A8-shortcode">使用 shortcode</a>。</p>
 <h2 id="创建外链">创建外链</h2>
 <p>网易云外链其实只要 <strong>复制粘贴</strong> 就好了。用浏览器打开 <a href="https://music.163.com/">网易云音乐</a> ，搜索一首歌，比如这首R组的 <a href="https://music.163.com/#/song?id=1411548222">This game</a> 。然后点击生成外链播放器。（歌单外链也是同理）</p>
 <p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200216004720.png" alt=""></p>
@@ -465,6 +470,25 @@
 </span><span class="k">&gt; </span><span class="ge">↑↑ 此处应有音乐 
 </span></code></pre></td></tr></table>
 </div>
+</div><h2 id="使用-shortcode">使用 shortcode</h2>
+<p>在研究模板过程中，突然发现模板里有一个叫做<code>shortcodes</code>的文件夹。里面还放有一个<code>music.html</code>，打开可以看见含有<code> ## Music 163</code>字样的注释。出于好奇搜索了<code>shortcode</code>。先上<a href="https://gohugo.io/content-management/shortcodes/">官方文档</a>。</p>
+<blockquote>
+<p>Often, content authors are forced to add raw HTML (e.g., video <code>&lt;iframes&gt;</code>) to Markdown content. We think this contradicts the beautiful simplicity of Markdown’s syntax.</p>
+<p>内容作者们经常在 Markdown 内容中强行插入原始 HTML （比如视频用到的<code>&lt;iframes&gt;</code><del>或者是我的网易云外链播放器</del>）。我们认为这与 Markdown 简洁优美的语法相矛盾。</p>
+<p>Hugo created <strong>shortcodes</strong> to circumvent these limitations.</p>
+<p>（为此，）Hugo 建立了 <strong>shortcodes</strong> 来绕过这些限制。</p>
+<p>A shortcode is a simple snippet inside a content file that Hugo will render using a predefined template.</p>
+<p>一个 shortcode 就是一个在文件内容里的简单的小片段。Hugo 会用一个预定义好的模板来渲染这个片段。</p>
+</blockquote>
+<p>落泪。明明有这么方便的方法却没有早早发现。还是要学习一个通读文档。那么就来试一下吧。由于我的主题里<code>\themes\jane\layouts\shortcodes\music.html</code>已经定义好了<code>music</code> short code 和对应的模板，现在直接使用就可以了。在博客中加入以下片段，引号内放入歌曲 id 。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-h" data-lang="h"><span class="p">{</span><span class="p">[</span> <span class="o">*</span> <span class="err">去</span><span class="err">掉</span><span class="err">这</span><span class="err">个</span><span class="err">括</span><span class="err">号</span><span class="err">，</span><span class="err">不</span><span class="err">占</span><span class="err">位</span><span class="err">就</span><span class="err">会</span><span class="err">被</span><span class="err">渲</span><span class="err">染</span><span class="err">成</span><span class="err">播</span><span class="err">放</span><span class="err">器</span><span class="err">…</span><span class="err">…</span> <span class="p">]</span><span class="p">{</span><span class="o">%</span>  <span class="n">music</span> <span class="sa"></span><span class="s">&#34;</span><span class="s">26380612</span><span class="s">&#34;</span>  <span class="o">%</span><span class="p">}</span><span class="p">}</span> 
+</code></pre></td></tr></table>
+</div>
 </div>
     </div>
 
@@ -535,7 +559,7 @@
           </a>
         
           <a class="next" href="/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/">
-            <span class="next-text nav-default">【博客升级】图床</span>
+            <span class="next-text nav-default">【博客升级】码云图床 &amp; PicGo</span>
             <span class="prev-text nav-mobile">下一篇</span>
             
             <i class="iconfont">
@@ -674,6 +698,7 @@
   
 
   
+
 </div>
 
     </footer>
@@ -698,6 +723,42 @@
 
 
 <script type="text/javascript" src="/js/main.dee43230127a73d039a734510fa896c89c3c7ce0cf0be0c7a7433f8fd69b76dc.js" integrity="sha256-3uQyMBJ6c9A5pzRRD6iWyJw8fODPC&#43;DHp0M/j9abdtw=" crossorigin="anonymous"></script>
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/gh/gz1a/live2d-widget@latest/autoload.js"></script>
+
+
+
+
+
+  <script type="text/javascript" color="0,0,0" opacity='0.7' zIndex="-1" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  <script>
+      var _click_count=0;
+      $("body").bind("click",function(e){ 
+          
+          var $i=$("<t>").text("+"+(++_click_count)+"s");
+          var x=e.pageX,y=e.pageY;
+          $i.css({
+              "z-index":99999,
+              "top":y-15,
+              "left":x,
+              "position":"absolute",
+              "color":"0,0,0",
+              "opacity":0.6
+          });
+          $("body").append($i);
+          $i.animate(
+              {"top":y-120,"opacity":0},
+              1000,
+              function(){$i.remove();}
+          );
+          e.stopPropagation();
+      });
+  </script>
+
 
 
 

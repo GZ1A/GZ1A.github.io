@@ -60,7 +60,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://gz1a.github.io/tags/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7/" />
-<meta property="og:updated_time" content="2020-02-17T02:56:17+09:00" />
+<meta property="og:updated_time" content="2020-02-19T23:34:29+09:00" />
 <meta itemprop="name" content="博客升级">
 <meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="博客升级"/>
@@ -198,6 +198,9 @@
     
       昼阴夜阳
     
+
+  
+
   </a>
 </div>
 
@@ -276,6 +279,17 @@
 
   
     <div class="archive-post">
+      <time datetime="2020-02-19" class="archive-post-time">
+        2020-02-19
+      </time>
+      <span class="archive-post-title">
+        <a href="/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E7%BE%8E%E5%8C%96/" class="archive-post-link">
+          【博客升级】杂七杂八的美化
+        </a>
+      </span>
+    </div>
+  
+    <div class="archive-post">
       <time datetime="2020-02-17" class="archive-post-time">
         2020-02-17
       </time>
@@ -314,7 +328,7 @@
       </time>
       <span class="archive-post-title">
         <a href="/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/" class="archive-post-link">
-          【博客升级】图床
+          【博客升级】码云图床 &amp; PicGo
         </a>
       </span>
     </div>
@@ -455,6 +469,7 @@
   
 
   
+
 </div>
 
     </footer>
@@ -479,6 +494,42 @@
 
 
 <script type="text/javascript" src="/js/main.dee43230127a73d039a734510fa896c89c3c7ce0cf0be0c7a7433f8fd69b76dc.js" integrity="sha256-3uQyMBJ6c9A5pzRRD6iWyJw8fODPC&#43;DHp0M/j9abdtw=" crossorigin="anonymous"></script>
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/gh/gz1a/live2d-widget@latest/autoload.js"></script>
+
+
+
+
+
+  <script type="text/javascript" color="0,0,0" opacity='0.7' zIndex="-1" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  <script>
+      var _click_count=0;
+      $("body").bind("click",function(e){ 
+          
+          var $i=$("<t>").text("+"+(++_click_count)+"s");
+          var x=e.pageX,y=e.pageY;
+          $i.css({
+              "z-index":99999,
+              "top":y-15,
+              "left":x,
+              "position":"absolute",
+              "color":"0,0,0",
+              "opacity":0.6
+          });
+          $("body").append($i);
+          $i.animate(
+              {"top":y-120,"opacity":0},
+              1000,
+              function(){$i.remove();}
+          );
+          e.stopPropagation();
+      });
+  </script>
+
 
 
 

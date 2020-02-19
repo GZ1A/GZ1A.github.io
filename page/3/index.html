@@ -60,7 +60,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://gz1a.github.io/" />
-<meta property="og:updated_time" content="2020-02-17T02:56:17+09:00" />
+<meta property="og:updated_time" content="2020-02-19T23:34:29+09:00" />
 <meta itemprop="name" content="昼阴夜阳">
 <meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="昼阴夜阳"/>
@@ -198,6 +198,9 @@
     
       昼阴夜阳
     
+
+  
+
   </a>
 </div>
 
@@ -270,6 +273,42 @@
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/">【博客升级】用 bat 实现 Hugo 一键发布至 GitHub</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2020-02-12" class="post-time">
+        2020-02-12
+      </time>
+      <div class="post-category">
+          <a href="https://gz1a.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+        </div>
+      <span class="more-meta"> 约 1859 字 </span>
+      <span class="more-meta"> 预计阅读 4 分钟 </span>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      hugo 还是挺方便的，但是在写完 markdown 文档到发布到 github 之间还有好多行命令要打，太累了。于是很自然的想到使用bat批处理脚本帮我输入这些命令，自动发布。 搜
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -430,6 +469,7 @@
   
 
   
+
 </div>
 
     </footer>
@@ -454,6 +494,42 @@
 
 
 <script type="text/javascript" src="/js/main.dee43230127a73d039a734510fa896c89c3c7ce0cf0be0c7a7433f8fd69b76dc.js" integrity="sha256-3uQyMBJ6c9A5pzRRD6iWyJw8fODPC&#43;DHp0M/j9abdtw=" crossorigin="anonymous"></script>
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/gh/gz1a/live2d-widget@latest/autoload.js"></script>
+
+
+
+
+
+  <script type="text/javascript" color="0,0,0" opacity='0.7' zIndex="-1" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  <script>
+      var _click_count=0;
+      $("body").bind("click",function(e){ 
+          
+          var $i=$("<t>").text("+"+(++_click_count)+"s");
+          var x=e.pageX,y=e.pageY;
+          $i.css({
+              "z-index":99999,
+              "top":y-15,
+              "left":x,
+              "position":"absolute",
+              "color":"0,0,0",
+              "opacity":0.6
+          });
+          $("body").append($i);
+          $i.animate(
+              {"top":y-120,"opacity":0},
+              1000,
+              function(){$i.remove();}
+          );
+          e.stopPropagation();
+      });
+  </script>
+
 
 
 

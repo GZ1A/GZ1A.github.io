@@ -9,3 +9,5 @@ draft: true
 wwwwww
 
 this is my first blog with hugo.
+
+[](https://www.disorder.ink/post/博客升级valine-评论/)

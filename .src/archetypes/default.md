@@ -16,7 +16,4 @@ toc: true        # 文章目录
 contentCopyright: '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'	#版权规则
 reward: true	 # 打赏
 mathjax: true    # 打开 mathjax
-
-# 常用链接
-# 网易云 https://music.163.com/#/search/m/?s=%20&type=1
 ---

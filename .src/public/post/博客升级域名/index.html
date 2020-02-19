@@ -208,6 +208,9 @@
     
       昼阴夜阳
     
+
+  
+
   </a>
 </div>
 
@@ -427,7 +430,7 @@ Ping 请求找不到主机 disorder.ink。请检查该名称，然后重试。
 </svg>
 
             </i>
-            <span class="prev-text nav-default">【博客升级】图床</span>
+            <span class="prev-text nav-default">【博客升级】码云图床 &amp; PicGo</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         
@@ -571,6 +574,7 @@ Ping 请求找不到主机 disorder.ink。请检查该名称，然后重试。
   
 
   
+
 </div>
 
     </footer>
@@ -595,6 +599,42 @@ Ping 请求找不到主机 disorder.ink。请检查该名称，然后重试。
 
 
 <script type="text/javascript" src="/js/main.dee43230127a73d039a734510fa896c89c3c7ce0cf0be0c7a7433f8fd69b76dc.js" integrity="sha256-3uQyMBJ6c9A5pzRRD6iWyJw8fODPC&#43;DHp0M/j9abdtw=" crossorigin="anonymous"></script>
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/gh/gz1a/live2d-widget@latest/autoload.js"></script>
+
+
+
+
+
+  <script type="text/javascript" color="0,0,0" opacity='0.7' zIndex="-1" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  <script>
+      var _click_count=0;
+      $("body").bind("click",function(e){ 
+          
+          var $i=$("<t>").text("+"+(++_click_count)+"s");
+          var x=e.pageX,y=e.pageY;
+          $i.css({
+              "z-index":99999,
+              "top":y-15,
+              "left":x,
+              "position":"absolute",
+              "color":"0,0,0",
+              "opacity":0.6
+          });
+          $("body").append($i);
+          $i.animate(
+              {"top":y-120,"opacity":0},
+              1000,
+              function(){$i.remove();}
+          );
+          e.stopPropagation();
+      });
+  </script>
+
 
 
 

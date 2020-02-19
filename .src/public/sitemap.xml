@@ -3,21 +3,56 @@
   
   <url>
     <loc>https://gz1a.github.io/categories/</loc>
-    <lastmod>2020-02-17T02:56:17+09:00</lastmod>
+    <lastmod>2020-02-19T23:34:29+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://gz1a.github.io/tags/javascript/</loc>
+    <lastmod>2020-02-19T23:34:29+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://gz1a.github.io/post/</loc>
-    <lastmod>2020-02-17T02:56:17+09:00</lastmod>
+    <lastmod>2020-02-19T23:34:29+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://gz1a.github.io/tags/</loc>
-    <lastmod>2020-02-17T02:56:17+09:00</lastmod>
+    <lastmod>2020-02-19T23:34:29+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E7%BE%8E%E5%8C%96/</loc>
+    <lastmod>2020-02-19T23:34:29+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://gz1a.github.io/tags/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7/</loc>
+    <lastmod>2020-02-19T23:34:29+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://gz1a.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2020-02-19T23:34:29+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://gz1a.github.io/</loc>
+    <lastmod>2020-02-19T23:34:29+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -31,27 +66,6 @@
   
   <url>
     <loc>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</loc>
-    <lastmod>2020-02-17T02:56:17+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://gz1a.github.io/tags/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7/</loc>
-    <lastmod>2020-02-17T02:56:17+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://gz1a.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2020-02-17T02:56:17+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://gz1a.github.io/</loc>
     <lastmod>2020-02-17T02:56:17+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
