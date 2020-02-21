@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 昼阴夜阳</title>
-    <link>http://localhost:1313/categories/</link>
+    <link>https://gz1a.github.io/categories/</link>
     <description>Recent content in Categories on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 19 Feb 2020 23:34:29 +0900</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://gz1a.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>技术</title>
-      <link>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF/</link>
+      <link>https://gz1a.github.io/categories/%E6%8A%80%E6%9C%AF/</link>
       <pubDate>Wed, 19 Feb 2020 23:34:29 +0900</pubDate>
       
-      <guid>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF/</guid>
+      <guid>https://gz1a.github.io/categories/%E6%8A%80%E6%9C%AF/</guid>
       <description></description>
     </item>
     

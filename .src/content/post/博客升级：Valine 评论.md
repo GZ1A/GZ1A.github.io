@@ -21,9 +21,9 @@ mathjax: true    # 打开 mathjax
 # 网易云 https://music.163.com/#/search/m/?s=%20&type=1
 ---
 
-托管到 `Coding` 之后，这个站点已经可以被百度收录了。虽然感觉不会什么人看，但是万一呢 : ) 为了更好的交流，此处应有一个评论系统。恰好我用的主题`Jane`已经配置好了多种评论系统，只需要启用一下就可以了。
+托管到 `Coding` 之后，这个站点已经可以被百度收录了。虽然感觉不会有什么人看，但是万一呢 : ) 为了更好的交流，此处应有一个评论系统。恰好我用的主题`Jane`已经配置好了几种评论系统，只需要启用一下就可以了。
 
-先上一个 [Valine 官方文档](https://valine.js.org/) ，可以参考。还有 [hugo博客添加评论系统Valine](https://www.smslit.top/2018/07/08/hugo-valine/) 。
+先上一个 [Valine 官方文档](https://valine.js.org/) ，可以参考。还有这篇 [hugo博客添加评论系统Valine](https://www.smslit.top/2018/07/08/hugo-valine/) 。
 
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=41651113&auto=0&height=66">
 </iframe>

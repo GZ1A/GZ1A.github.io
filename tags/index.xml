@@ -2,102 +2,102 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 昼阴夜阳</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://gz1a.github.io/tags/</link>
     <description>Recent content in Tags on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 19 Feb 2020 23:34:29 +0900</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://gz1a.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JavaScript</title>
-      <link>http://localhost:1313/tags/javascript/</link>
+      <link>https://gz1a.github.io/tags/javascript/</link>
       <pubDate>Wed, 19 Feb 2020 23:34:29 +0900</pubDate>
       
-      <guid>http://localhost:1313/tags/javascript/</guid>
+      <guid>https://gz1a.github.io/tags/javascript/</guid>
       <description></description>
     </item>
     
     <item>
       <title>博客升级</title>
-      <link>http://localhost:1313/tags/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7/</link>
+      <link>https://gz1a.github.io/tags/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7/</link>
       <pubDate>Wed, 19 Feb 2020 23:34:29 +0900</pubDate>
       
-      <guid>http://localhost:1313/tags/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7/</guid>
+      <guid>https://gz1a.github.io/tags/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Valine</title>
-      <link>http://localhost:1313/tags/valine/</link>
+      <link>https://gz1a.github.io/tags/valine/</link>
       <pubDate>Mon, 17 Feb 2020 02:56:17 +0900</pubDate>
       
-      <guid>http://localhost:1313/tags/valine/</guid>
+      <guid>https://gz1a.github.io/tags/valine/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Coding</title>
-      <link>http://localhost:1313/tags/coding/</link>
+      <link>https://gz1a.github.io/tags/coding/</link>
       <pubDate>Sun, 16 Feb 2020 23:04:27 +0900</pubDate>
       
-      <guid>http://localhost:1313/tags/coding/</guid>
+      <guid>https://gz1a.github.io/tags/coding/</guid>
       <description></description>
     </item>
     
     <item>
       <title>网易云音乐</title>
-      <link>http://localhost:1313/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/</link>
+      <link>https://gz1a.github.io/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/</link>
       <pubDate>Sat, 15 Feb 2020 22:28:10 +0900</pubDate>
       
-      <guid>http://localhost:1313/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/</guid>
+      <guid>https://gz1a.github.io/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Gitee</title>
-      <link>http://localhost:1313/tags/gitee/</link>
+      <link>https://gz1a.github.io/tags/gitee/</link>
       <pubDate>Fri, 14 Feb 2020 23:58:48 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/gitee/</guid>
+      <guid>https://gz1a.github.io/tags/gitee/</guid>
       <description></description>
     </item>
     
     <item>
       <title>PicGo</title>
-      <link>http://localhost:1313/tags/picgo/</link>
+      <link>https://gz1a.github.io/tags/picgo/</link>
       <pubDate>Fri, 14 Feb 2020 23:58:48 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/picgo/</guid>
+      <guid>https://gz1a.github.io/tags/picgo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>GitHub</title>
-      <link>http://localhost:1313/tags/github/</link>
+      <link>https://gz1a.github.io/tags/github/</link>
       <pubDate>Thu, 13 Feb 2020 23:58:48 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/github/</guid>
+      <guid>https://gz1a.github.io/tags/github/</guid>
       <description></description>
     </item>
     
     <item>
       <title>bat</title>
-      <link>http://localhost:1313/tags/bat/</link>
+      <link>https://gz1a.github.io/tags/bat/</link>
       <pubDate>Wed, 12 Feb 2020 00:17:41 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/bat/</guid>
+      <guid>https://gz1a.github.io/tags/bat/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hugo</title>
-      <link>http://localhost:1313/tags/hugo/</link>
+      <link>https://gz1a.github.io/tags/hugo/</link>
       <pubDate>Wed, 12 Feb 2020 00:17:41 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/hugo/</guid>
+      <guid>https://gz1a.github.io/tags/hugo/</guid>
       <description></description>
     </item>
     
