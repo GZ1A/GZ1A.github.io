@@ -2,53 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>昼阴夜阳</title>
-    <link>https://gz1a.github.io/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 19 Feb 2020 23:34:29 +0900</lastBuildDate>
     
-        <atom:link href="https://gz1a.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>【博客升级】杂七杂八的美化</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E7%BE%8E%E5%8C%96/</link>
+      <title>【博客升级】点击计数和动态背景</title>
+      <link>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF.md/</link>
       <pubDate>Wed, 19 Feb 2020 23:34:29 +0900</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E7%BE%8E%E5%8C%96/</guid>
+      <guid>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF.md/</guid>
       
-        <description>&lt;p&gt;啥事没干，甚是愧疚，就做点杂七杂八的美化吧。&lt;/p&gt;
-&lt;h2 id=&#34;今日诗词&#34;&gt;今日诗词&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.jinrishici.com/doc/#json-fast&#34;&gt;今日诗词文档&lt;/a&gt;网站快速安装。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;span&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;jinrishici-sentence&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;正在加载今日诗词....&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;span&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://sdk.jinrishici.com/v2/browser/jinrishici.js&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;charset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;utf-8&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;动态背景&#34;&gt;动态背景&lt;/h2&gt;
-&lt;p&gt;在&lt;code&gt;scripts.html &lt;/code&gt;中加入canvas-next.js](&lt;a href=&#34;https://github.com/hustcc/canvas-nest.js/blob/master/README-zh.md&#34;&gt;https://github.com/hustcc/canvas-nest.js/blob/master/README-zh.md&lt;/a&gt;)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!--&lt;/span&gt;&lt;span class=&#34;c&#34;&gt; 动态背景 &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;--&amp;gt;&lt;/span&gt;
-{{ if .Site.Params.background.enable }}
-  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;text/javascript&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;color&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;0,0,255&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;opacity&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;0.7&amp;#39;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;zIndex&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;-1&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;99&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-{{ end }}
-&lt;span class=&#34;c&#34;&gt;&amp;lt;!--&lt;/span&gt;&lt;span class=&#34;c&#34;&gt; End &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;--&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200220025400.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+        <description>&lt;p&gt;啥事没干，甚是愧疚，看到别人的博客都有花里胡哨的东西，我也整点杂七杂八的美化一下吧。收集了一下资料， 试图寻找方便快捷效果好的特效。于是清单上列出了点击效果、动态背景和看板娘。今天先完成点击计数和动态背景。&lt;/p&gt;
 &lt;h2 id=&#34;点击计数&#34;&gt;点击计数&lt;/h2&gt;
+&lt;h3 id=&#34;基础代码&#34;&gt;基础代码&lt;/h3&gt;
 &lt;p&gt;在&lt;code&gt;scripts.html &lt;/code&gt;中加入&lt;a href=&#34;http://caibaojian.com/clickcount.html&#34;&gt;点击次数特效&lt;/a&gt;。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -103,16 +75,161 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200220025550.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;添加-cookie&#34;&gt;添加 cookie&lt;/h3&gt;
+&lt;p&gt;然而这个&lt;del&gt;时间&lt;/del&gt;点击次数不能无限累加，甚至只要切换了一个界面就会重置为 0。这可不行！原文里提到：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;还可以给这个计数增加一个cookie，这个就是后话了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;那么现在就来增加一个 cookie 吧。首先要把 js 代码单独抽成一个文件，方便修改。参考了 Hugo 文档里的 &lt;a href=&#34;https://gohugo.io/content-management/static-files/#readout&#34;&gt;Static Files&lt;/a&gt;，按说如果把 example.js 文件放在 static 目录下，直接使用 &lt;code&gt;/example.js&lt;/code&gt; 的路径就可以访问到这个文件了，子目录同理。研究了一下它的展开规则并对比了我生成仓库的目录，就可以使用相对路径引用资源了。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!--&lt;/span&gt;&lt;span class=&#34;c&#34;&gt; +1s &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;--&amp;gt;&lt;/span&gt;
+{{ if .Site.Params.background.enable }}
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;text/javascript&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;{{&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;js&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;click-counter&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;js&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;relURL&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+{{ end }}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;接下来添加 cookie 。先上 RUNOOB 的 &lt;a href=&#34;https://www.runoob.com/js/js-cookies.html&#34;&gt;cookie 教程&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;这个工作说白了就是在电脑上存一下总共点击的次数，这样就可以一直累加了。首先把教程里写好的 cookie 相关函数 copy 来。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;setCookie&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;cname&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;cvalue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;exdays&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;d&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;setTime&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;getTime&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;exdays&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;60&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;60&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;expires&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;expires=&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;toGMTString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;cookie&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cname&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;=&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;cvalue&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;; &amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;expires&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;getCookie&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;cname&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cname&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;=&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;ca&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;cookie&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;split&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;ca&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;ca&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;trim&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;indexOf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;substring&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后修改初始化环节，在载入脚本之后先尝试读取 cookie，如果没有再初始化为 0。同时也要在每次点击之后都要把当前的点击次数存到 cookie 里。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// init
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cookie_count&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;getCookie&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;click_count&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;_click_count&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cookie_count&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;undefined&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;cookie_count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// click event
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;body&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;bind&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;click&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//直接给body一个事件好了.
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;// ... 播放动画并迭代（指 _click_count++ ）...
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;nx&#34;&gt;setCookie&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;click_count&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;_click_count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;36500&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200222000726.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;然而虽然刷新不会重置了，切换页面却又会从 0 开始。输出后发现原来每个子域名都有自己的 cookie 。根据这篇 &lt;a href=&#34;https://blog.csdn.net/caseywei/article/details/86539208&#34;&gt;cookie 的 path 和 domain&lt;/a&gt;，再进行一下修改。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;name=&lt;value&gt;[; expires=&lt;date&gt;][; domain=&amp;lt;域&amp;gt;][; path=&amp;lt;路径&amp;gt;][; 安全]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;setCookie&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;cname&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cvalue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;exdays&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;d&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;setTime&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;getTime&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;exdays&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;24&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;60&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;60&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;expires&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;expires=&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;toGMTString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;c1&#34;&gt;// 增加了 path
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;path=&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;nb&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;cookie&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cname&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;=&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cvalue&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;; &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;expires&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;; &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// ...
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 在 path 处填入 &amp;#39;/&amp;#39; 使全站都可以访问到这个 cookie
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;nx&#34;&gt;setCookie&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;click_count&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;_click_count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;36500&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这样就完成了可以一直叠加的 &lt;a href=&#34;https://github.com/GZ1A/GZ1A.github.io/tree/master/js&#34;&gt;click-counter.js&lt;/a&gt; 。&lt;/p&gt;
+&lt;h2 id=&#34;动态背景&#34;&gt;动态背景&lt;/h2&gt;
+&lt;p&gt;动态背景超出了我的 level，就直接拿来用了。只需要在&lt;code&gt;scripts.html &lt;/code&gt;中加入 &lt;a href=&#34;https://github.com/hustcc/canvas-nest.js/blob/master/README-zh.md&#34;&gt;canvas-next.js&lt;/a&gt; 就可以在顶部的菜单栏展现出动态的效果。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!--&lt;/span&gt;&lt;span class=&#34;c&#34;&gt; 动态背景 &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;--&amp;gt;&lt;/span&gt;
+{{ if .Site.Params.background.enable }}
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;text/javascript&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;color&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;0,0,255&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;opacity&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;0.7&amp;#39;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;zIndex&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;-1&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;99&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+{{ end }}
+&lt;span class=&#34;c&#34;&gt;&amp;lt;!--&lt;/span&gt;&lt;span class=&#34;c&#34;&gt; End &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;--&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200220025400.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;然而我并不能让它出现在文章容器的上方。如果&lt;code&gt;z-index&lt;/code&gt;改成 0，这些动态线条就会高于整个页面，但同时也会覆盖掉正常的交互。猜测修改样式表，让其他元素的&lt;code&gt;z-index&lt;/code&gt;更高应该可以解决，研究了一小会儿无果。感觉又是一个泥淖，而且现在效果也不错，就暂且搁置覆盖背景的想法了。&lt;/p&gt;
 </description>
       
     </item>
     
     <item>
       <title>【博客升级】Valine 评论系统</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</link>
+      <link>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</link>
       <pubDate>Mon, 17 Feb 2020 02:56:17 +0900</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</guid>
+      <guid>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</guid>
       
         <description>&lt;p&gt;托管到 &lt;code&gt;Coding&lt;/code&gt; 之后，这个站点已经可以被百度收录了。虽然感觉不会什么人看，但是万一呢 : ) 为了更好的交流，此处应有一个评论系统。恰好我用的主题&lt;code&gt;Jane&lt;/code&gt;已经配置好了多种评论系统，只需要启用一下就可以了。&lt;/p&gt;
 &lt;p&gt;先上一个 &lt;a href=&#34;https://valine.js.org/&#34;&gt;Valine 官方文档&lt;/a&gt; ，可以参考。还有 &lt;a href=&#34;https://www.smslit.top/2018/07/08/hugo-valine/&#34;&gt;hugo博客添加评论系统Valine&lt;/a&gt; 。&lt;/p&gt;
@@ -290,10 +407,10 @@
     
     <item>
       <title>【博客升级】Coding 托管</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</link>
+      <link>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</link>
       <pubDate>Sun, 16 Feb 2020 23:04:27 +0900</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</guid>
+      <guid>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</guid>
       
         <description>&lt;p&gt;辛辛苦苦写的博客当然想让别人看到了，最可行的方法就是被搜索引擎收录。然而 Github 屏蔽了百度爬虫，导致 Github Pages 无法被百度收录，就很难受。除开这个因素，为了更快收录或是更高的权重，还有一些工作可以做。今天就先让博客可以被百度收录吧。&lt;/p&gt;
 &lt;p&gt;先上前人指路：&lt;a href=&#34;https://blog.csdn.net/sunshine940326/article/details/70936988&#34;&gt;想让你的博客被更多的人在搜索引擎中搜到吗？&lt;/a&gt;&lt;/p&gt;
@@ -390,10 +507,10 @@ and the repository exists.
     
     <item>
       <title>【博客升级】网易云外链</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</link>
+      <link>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</link>
       <pubDate>Sat, 15 Feb 2020 22:28:10 +0900</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</guid>
+      <guid>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</guid>
       
         <description>&lt;p&gt;想在文章里插入网易云音乐，遂找教程。
 逛博客总是能发现很多大佬，比如 &lt;a href=&#34;https://saquarius.com/2019/07/%E7%BB%99hugo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E5%A4%96%E9%93%BE/&#34;&gt;Hugo博客添加音乐外链&lt;/a&gt; @ &lt;a href=&#34;https://saquarius.github.io/&#34;&gt;SAquarius &lt;/a&gt; 。看了 about 好像在武汉，而且1月以后就没有更新了，希望只是寒假在鸽吧。然后还有一个 &lt;a href=&#34;https://wap.a9vg.com/thread-5363888-1-1.html&#34;&gt;网易云音乐如何生成flash和mp3外链&lt;/a&gt; （&lt;del&gt;论坛时泪&lt;/del&gt;，解释了外链的代码。不多废话了，先上效果。&lt;/p&gt;
@@ -565,10 +682,10 @@ and the repository exists.
     
     <item>
       <title>【博客升级】码云图床 &amp; PicGo</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/</link>
+      <link>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/</link>
       <pubDate>Fri, 14 Feb 2020 23:58:48 +0800</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/</guid>
+      <guid>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/</guid>
       
         <description>&lt;p&gt;在写文章的时候深刻体会到了图片的重要性，有时一张图胜过千言万语。虽然 Typora 支持把图片便捷的保存到相对路径，但考虑到可能的多平台发布（以及 github 载图的访问困难），还是决定找一个比较成熟的图床解决方案，让博客里可以方便的插入图片。&lt;/p&gt;
 &lt;h2 id=&#34;建立图床--配置picgo&#34;&gt;建立图床 &amp;amp; 配置PicGo&lt;/h2&gt;
@@ -627,10 +744,10 @@ git push origin master -u
     
     <item>
       <title>【博客升级】自定义域名</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D/</link>
+      <link>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D/</link>
       <pubDate>Thu, 13 Feb 2020 23:58:48 +0800</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D/</guid>
+      <guid>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D/</guid>
       
         <description>&lt;p&gt;为了让博客更炫酷（装X），决定再进行一点升级。首先想到的就是域名。&lt;/p&gt;
 &lt;p&gt;先上前人指路 &lt;a href=&#34;https://blog.csdn.net/yuan3065/article/details/51594454&#34;&gt;Github 域名绑定&lt;/a&gt;  。&lt;/p&gt;
@@ -679,10 +796,10 @@ Ping 请求找不到主机 disorder.ink。请检查该名称，然后重试。
     
     <item>
       <title>【博客升级】用 bat 实现 Hugo 一键发布至 GitHub</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</link>
+      <link>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</link>
       <pubDate>Wed, 12 Feb 2020 00:17:41 +0800</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</guid>
+      <guid>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</guid>
       
         <description>&lt;p&gt;hugo 还是挺方便的，但是在写完 markdown 文档到发布到 github 之间还有好多行命令要打，太累了。于是很自然的想到使用bat批处理脚本帮我输入这些命令，自动发布。&lt;/p&gt;
 &lt;h2 id=&#34;搜索资料&#34;&gt;搜索资料&lt;/h2&gt;
@@ -1108,10 +1225,10 @@ endlocal
     
     <item>
       <title>【博客升级】搭建 Hugo 博客</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
+      <link>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Tue, 11 Feb 2020 09:24:01 +0800</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <guid>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
       
         <description>&lt;p&gt;想正式写写博客已经很久了，但是一直没有实际行动。年初这波疫情宅在家里足足一个月，整天吃吃喝喝玩玩睡睡，闲着没事建议搞事。孩子不爱写博客，一定是因为博客不好看！&lt;del&gt;（指CSDN）&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;于是寻觅搭建博客的方法，在这里也记录一下踩过的坑。&lt;/p&gt;

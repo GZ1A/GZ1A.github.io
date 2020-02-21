@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JavaScript on 昼阴夜阳</title>
-    <link>https://gz1a.github.io/tags/javascript/</link>
+    <link>http://localhost:1313/tags/javascript/</link>
     <description>Recent content in JavaScript on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 19 Feb 2020 23:34:29 +0900</lastBuildDate>
     
-	<atom:link href="https://gz1a.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>【博客升级】杂七杂八的美化</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E7%BE%8E%E5%8C%96/</link>
+      <title>【博客升级】点击计数和动态背景</title>
+      <link>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF.md/</link>
       <pubDate>Wed, 19 Feb 2020 23:34:29 +0900</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E7%BE%8E%E5%8C%96/</guid>
-      <description>啥事没干，甚是愧疚，就做点杂七杂八的美化吧。 今日诗词 今日诗词文档网站快速安装。 1 &amp;lt;span id=&amp;#34;jinrishici-sentence&amp;#</description>
+      <guid>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF.md/</guid>
+      <description>啥事没干，甚是愧疚，看到别人的博客都有花里胡哨的东西，我也整点杂七杂八的美化一下吧。收集了一下资料， 试图寻找方便快捷效果好的特效。于是清单上</description>
     </item>
     
   </channel>

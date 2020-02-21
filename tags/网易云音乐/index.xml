@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>网易云音乐 on 昼阴夜阳</title>
-    <link>https://gz1a.github.io/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/</link>
+    <link>http://localhost:1313/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/</link>
     <description>Recent content in 网易云音乐 on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 15 Feb 2020 22:28:10 +0900</lastBuildDate>
     
-	<atom:link href="https://gz1a.github.io/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>【博客升级】网易云外链</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</link>
+      <link>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</link>
       <pubDate>Sat, 15 Feb 2020 22:28:10 +0900</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</guid>
+      <guid>http://localhost:1313/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</guid>
       <description>想在文章里插入网易云音乐，遂找教程。 逛博客总是能发现很多大佬，比如 Hugo博客添加音乐外链 @ SAquarius 。看了 about 好像在武汉，而且1月以后就没有更新了，</description>
     </item>
     
