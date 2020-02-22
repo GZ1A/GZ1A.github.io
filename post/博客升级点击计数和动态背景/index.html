@@ -68,7 +68,7 @@
 <meta itemprop="description" content="啥事没干，甚是愧疚。想到别家博客都有花里胡哨的东西，我也整点来美化一下吧。 调研了一下各个效果的难度， 试图寻找方便快捷效果好的活。于是列了个清">
 <meta itemprop="datePublished" content="2020-02-19T23:34:29&#43;09:00" />
 <meta itemprop="dateModified" content="2020-02-19T23:34:29&#43;09:00" />
-<meta itemprop="wordCount" content="1259">
+<meta itemprop="wordCount" content="1377">
 
 
 
@@ -289,7 +289,7 @@
             <a href="https://disorder.ink/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             
           </div>
-        <span class="more-meta"> 约 1259 字 </span>
+        <span class="more-meta"> 约 1377 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
 
         
@@ -315,6 +315,8 @@
       <ul>
         <li><a href="#基础代码">基础代码</a></li>
         <li><a href="#添加-cookie">添加 cookie</a></li>
+        <li><a href="#修改-path">修改 path</a></li>
+        <li><a href="#修改-domain">修改 domain</a></li>
       </ul>
     </li>
     <li><a href="#动态背景">动态背景</a></li>
@@ -349,63 +351,23 @@
 <p>在<code>scripts.html </code>中加入<a href="http://caibaojian.com/clickcount.html">点击次数特效</a>。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span><span class="p"></span><span class="p">&gt;</span>
-    <span class="kd">var</span> <span class="nx">_click_count</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;body&#34;</span><span class="p">)</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&#34;click&#34;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="p">{</span> <span class="c1">//直接给body一个事件好了.
-</span><span class="c1"></span>        <span class="c1">//var n=Math.round(Math.random()*100);//随机数
-</span><span class="c1"></span>        <span class="kd">var</span> <span class="nx">$i</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="s2">&#34;&lt;b&gt;&#34;</span><span class="p">)</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s2">&#34;+&#34;</span><span class="o">+</span><span class="p">(</span><span class="o">++</span><span class="nx">_click_count</span><span class="p">)</span><span class="p">)</span><span class="p">;</span><span class="c1">//添加到页面的元素
-</span><span class="c1"></span>        <span class="kd">var</span> <span class="nx">x</span><span class="o">=</span><span class="nx">e</span><span class="p">.</span><span class="nx">pageX</span><span class="p">,</span><span class="nx">y</span><span class="o">=</span><span class="nx">e</span><span class="p">.</span><span class="nx">pageY</span><span class="p">;</span><span class="c1">//鼠标点击的位置
-</span><span class="c1"></span>        <span class="nx">$i</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="p">{</span>
-            <span class="s2">&#34;z-index&#34;</span><span class="o">:</span><span class="mi">99999</span><span class="p">,</span>
-            <span class="s2">&#34;top&#34;</span><span class="o">:</span><span class="nx">y</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span>
-            <span class="s2">&#34;left&#34;</span><span class="o">:</span><span class="nx">x</span><span class="p">,</span>
-            <span class="s2">&#34;position&#34;</span><span class="o">:</span><span class="s2">&#34;absolute&#34;</span><span class="p">,</span>
-            <span class="s2">&#34;color&#34;</span><span class="o">:</span><span class="s2">&#34;100,100,100&#34;</span><span class="p">,</span>
-            <span class="s2">&#34;opacity&#34;</span><span class="o">:</span><span class="mf">0.5</span>
-        <span class="p">}</span><span class="p">)</span><span class="p">;</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;body&#34;</span><span class="p">)</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$i</span><span class="p">)</span><span class="p">;</span>
-        <span class="nx">$i</span><span class="p">.</span><span class="nx">animate</span><span class="p">(</span>
-            <span class="p">{</span><span class="s2">&#34;top&#34;</span><span class="o">:</span><span class="nx">y</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span><span class="s2">&#34;opacity&#34;</span><span class="o">:</span><span class="mi">0</span><span class="p">}</span><span class="p">,</span>
-            <span class="mi">1500</span><span class="p">,</span>
-            <span class="kd">function</span><span class="p">(</span><span class="p">)</span><span class="p">{</span><span class="nx">$i</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="p">)</span><span class="p">;</span><span class="p">}</span>
-        <span class="p">)</span><span class="p">;</span>
-        <span class="nx">e</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
-    <span class="p">}</span><span class="p">)</span><span class="p">;</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="c1">// 具体代码
+</span><span class="c1"></span><span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200220025550.png" alt=""></p>
 <h3 id="添加-cookie">添加 cookie</h3>
 <p>然而这个<del>时间</del>点击次数不能无限累加，甚至只要切换了一个界面就会重置为 0。这可不行！原文里提到：</p>
 <blockquote>
-<p>还可以给这个计数增加一个cookie，这个就是后话了。</p>
+<p>还可以给这个计数增加一个 Cookie，这个就是后话了。</p>
 </blockquote>
-<p>那么现在就来增加一个 cookie 吧。首先要把 js 代码单独抽成一个文件，方便修改。参考了 Hugo 文档里的 <a href="https://gohugo.io/content-management/static-files/#readout">Static Files</a>，按说如果把 example.js 文件放在 static 目录下，直接使用 <code>/example.js</code> 的路径就可以访问到这个文件了，子目录同理。研究了一下它的展开规则并对比了我生成仓库的目录，就可以使用相对路径引用资源了。</p>
+<p>那么现在就来增加一个 Cookie 吧。首先要把 js 代码单独抽成一个文件，方便修改。参考了 Hugo 文档里的 <a href="https://gohugo.io/content-management/static-files/#readout">Static Files</a>，按说如果把 example.js 文件放在 static 目录下，直接使用 <code>/example.js</code> 的路径就可以访问到这个文件了，子目录同理。研究了一下它的展开规则并对比了我生成仓库的目录，就可以使用相对路径引用资源了。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -420,8 +382,8 @@
 {{ end }}
 </code></pre></td></tr></table>
 </div>
-</div><p>接下来添加 cookie 。先上 RUNOOB 的 <a href="https://www.runoob.com/js/js-cookies.html">cookie 教程</a>。</p>
-<p>这个工作说白了就是在电脑上存一下总共点击的次数，这样就可以一直累加了。首先把教程里写好的 cookie 相关函数 copy 来。</p>
+</div><p>接下来添加 cookie 。先上 RUNOOB 的 <a href="https://www.runoob.com/js/js-cookies.html">Cookie 教程</a>。</p>
+<p>这个工作说白了就是在电脑上存一下总共点击的次数，这样就可以一直累加了。首先把教程里写好的 Cookie 相关函数 copy 来。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -466,7 +428,7 @@
 
 </code></pre></td></tr></table>
 </div>
-</div><p>然后修改初始化环节，在载入脚本之后先尝试读取 cookie，如果没有再初始化为 0。同时也要在每次点击之后都要把当前的点击次数存到 cookie 里。</p>
+</div><p>然后修改初始化环节，在载入脚本之后先尝试读取 Cookie，如果没有再初始化为 0。同时也要在每次点击之后都要把当前的点击次数存到 Cookie 里。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -492,30 +454,27 @@
 </code></pre></td></tr></table>
 </div>
 </div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200222000726.png" alt=""></p>
+<h3 id="修改-path">修改 path</h3>
 <p>然而虽然刷新不会重置了，切换页面却又会从 0 开始。输出后发现原来每个子域名都有自己的 cookie 。根据这篇 <a href="https://blog.csdn.net/caseywei/article/details/86539208">cookie 的 path 和 domain</a>，再进行一下修改。</p>
 <blockquote>
 <p>name=<value>[; expires=<date>][; domain=&lt;域&gt;][; path=&lt;路径&gt;][; 安全]</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">setCookie</span><span class="p">(</span><span class="nx">cname</span><span class="p">,</span> <span class="nx">cvalue</span><span class="p">,</span> <span class="nx">exdays</span><span class="p">,</span> <span class="nx">path</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
-  <span class="nx">d</span><span class="p">.</span><span class="nx">setTime</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">getTime</span><span class="p">(</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="nx">exdays</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span><span class="p">)</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">expires</span> <span class="o">=</span> <span class="s2">&#34;expires=&#34;</span> <span class="o">+</span> <span class="nx">d</span><span class="p">.</span><span class="nx">toGMTString</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
-  <span class="c1">// 增加了 path
+  <span class="c1">// ..
+</span><span class="c1"></span>  <span class="c1">// 增加了 path
 </span><span class="c1"></span>  <span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="s2">&#34;path=&#34;</span> <span class="o">+</span> <span class="nx">path</span><span class="p">;</span>
   <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="nx">cname</span> <span class="o">+</span> <span class="s2">&#34;=&#34;</span> <span class="o">+</span> <span class="nx">cvalue</span> <span class="o">+</span> <span class="s2">&#34;; &#34;</span> <span class="o">+</span> <span class="nx">expires</span> <span class="o">+</span> <span class="s2">&#34;; &#34;</span> <span class="o">+</span> <span class="nx">path</span><span class="p">;</span>
 <span class="p">}</span>
@@ -524,7 +483,15 @@
 </span><span class="c1"></span>  <span class="nx">setCookie</span><span class="p">(</span><span class="s1">&#39;click_count&#39;</span><span class="p">,</span> <span class="nx">_click_count</span><span class="p">,</span> <span class="mi">36500</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>这样就完成了可以一直叠加的 <a href="https://github.com/GZ1A/GZ1A.github.io/tree/master/js">click-counter.js</a> 。</p>
+</div><p>这样就完成了可以跨页面累计的 <a href="https://github.com/GZ1A/GZ1A.github.io/tree/master/js">click-counter.js</a> 。</p>
+<h3 id="修改-domain">修改 domain</h3>
+<p>推送到云端后，在实际使用的时候还是发现有问题，有两种数字会左右横跳。当然按照现在的程序，如果同时使用两个页面就会出现类似数据库里的脏写情况，导致更新丢失，但是问题不大没必要管。现在出现的问题是即使只同时打开一个页面，在不同的页面里的点击数据也不一样。</p>
+<p>通过查看 Cookie 找到了问题的原因。</p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200223031607.png" alt=""></p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200223032856.png" alt=""></p>
+<p>在不同的域名下，使用的是不同的 Cookie。而本地调试的时候只有一种域名，实际环境中却有两种域名。根据这篇<a href="https://segmentfault.com/a/1190000006932934">思否专栏</a>，再次增加了 Domain 的参数之后就可以解决。然而这里又暴露出一个问题，博客有两套域名，而我的链接现在并不统一。</p>
+<p>究其原因，是我在 Coding 托管的时候设置的首选域名和我在站点的 <code>Config.toml</code> 里配置的 baseURL 并不一致，使得网页上出现了两种链接。通过修改让两边保持一致之后也就不会出现两种域名了。</p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200223035541.png" alt=""></p>
 <h2 id="动态背景">动态背景</h2>
 <p>动态背景超出了我的 level，就直接拿来用了。只需要在<code>scripts.html </code>中加入 <a href="https://github.com/hustcc/canvas-nest.js/blob/master/README-zh.md">canvas-next.js</a> 就可以在顶部的菜单栏展现出动态的效果。</p>
 <div class="highlight"><div class="chroma">

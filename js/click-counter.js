@@ -1,9 +1,10 @@
-function setCookie(cname, cvalue, exdays, path) {
+function setCookie(cname, cvalue, exdays, path, domain) {
   var d = new Date();
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
   var expires = "expires=" + d.toGMTString();
   var path = "path=" + path;
-  document.cookie = cname + "=" + cvalue + "; " + expires + "; " + path;
+  var domain = "domain=" + domain;
+  document.cookie = cname + "=" + cvalue + "; " + expires + "; " + domain + "; " + path;
 }
 
 function getCookie(cname) {
@@ -17,6 +18,7 @@ function getCookie(cname) {
 }
 
 // init
+let domain = "disorder.ink";
 let cookie_count = getCookie('click_count');
 var _click_count = cookie_count == undefined ? 0 : cookie_count;
 console.log("_click_count = " + _click_count);
@@ -45,5 +47,6 @@ $("body").bind("click", function (e) { //直接给body一个事件好了.
     }
   );
   e.stopPropagation();
-  setCookie('click_count', _click_count, 36500, '/')
+  setCookie('click_count', _click_count, 36500, '/');
+  // setCookie('click_count', _click_count, 36500, '/', domain);
 });
