@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>昼阴夜阳</title>
-    <link>https://gz1a.github.io/</link>
+    <link>https://disorder.ink/</link>
     <description>Recent content on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 19 Feb 2020 23:34:29 +0900</lastBuildDate>
     
-        <atom:link href="https://gz1a.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://disorder.ink/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>【博客升级】点击计数和动态背景</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/</link>
+      <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/</link>
       <pubDate>Wed, 19 Feb 2020 23:34:29 +0900</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/</guid>
+      <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/</guid>
       
         <description>&lt;p&gt;啥事没干，甚是愧疚。想到别家博客都有花里胡哨的东西，我也整点来美化一下吧。&lt;/p&gt;
 &lt;p&gt;调研了一下各个效果的难度， 试图寻找方便快捷效果好的活。于是列了个清单：&lt;/p&gt;
@@ -26,8 +26,16 @@
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt;&lt;a href=&#34;../%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%9C%8B%E6%9D%BF%E5%A8%98/&#34;&gt;看板娘&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;今天先完成点击效果和动态背景。&lt;/p&gt;
-&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=449402984&amp;auto=0&amp;height=66&#34;&gt;
-&lt;/iframe&gt;
+  &lt;iframe style=&#34;max-width: 100%&#34;
+      class=&#34;music163&#34;
+      frameborder=&#34;no&#34;
+      border=&#34;0&#34;
+      marginwidth=&#34;0&#34;
+      marginheight=&#34;0&#34;
+      width=&#34;330&#34;
+      height=&#34;86&#34;
+      src=&#34;//music.163.com/outchain/player?type=2&amp;id=449402984&amp;auto=0&amp;height=66&#34;&gt;
+    &lt;/iframe&gt;
 &lt;h2 id=&#34;点击计数&#34;&gt;点击计数&lt;/h2&gt;
 &lt;h3 id=&#34;基础代码&#34;&gt;基础代码&lt;/h3&gt;
 &lt;p&gt;在&lt;code&gt;scripts.html &lt;/code&gt;中加入&lt;a href=&#34;http://caibaojian.com/clickcount.html&#34;&gt;点击次数特效&lt;/a&gt;。&lt;/p&gt;
@@ -235,10 +243,10 @@
     
     <item>
       <title>【博客升级】Valine 评论系统</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</link>
+      <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</link>
       <pubDate>Mon, 17 Feb 2020 02:56:17 +0900</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</guid>
+      <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</guid>
       
         <description>&lt;p&gt;托管到 &lt;code&gt;Coding&lt;/code&gt; 之后，这个站点已经可以被百度收录了。虽然感觉不会有什么人看，但是万一呢 : ) 为了更好的交流，此处应有一个评论系统。恰好我用的主题&lt;code&gt;Jane&lt;/code&gt;已经配置好了几种评论系统，只需要启用一下就可以了。&lt;/p&gt;
 &lt;p&gt;先上一个 &lt;a href=&#34;https://valine.js.org/&#34;&gt;Valine 官方文档&lt;/a&gt; ，可以参考。还有这篇 &lt;a href=&#34;https://www.smslit.top/2018/07/08/hugo-valine/&#34;&gt;hugo博客添加评论系统Valine&lt;/a&gt; 。&lt;/p&gt;
@@ -416,10 +424,10 @@
     
     <item>
       <title>【博客升级】Coding 托管</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</link>
+      <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</link>
       <pubDate>Sun, 16 Feb 2020 23:04:27 +0900</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</guid>
+      <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</guid>
       
         <description>&lt;p&gt;辛辛苦苦写的博客当然想让别人看到了，最可行的方法就是被搜索引擎收录。然而 Github 屏蔽了百度爬虫，导致 Github Pages 无法被百度收录，就很难受。除开这个因素，为了更快收录或是更高的权重，还有一些工作可以做。今天就先让博客可以被百度收录吧。&lt;/p&gt;
 &lt;p&gt;先上前人指路：&lt;a href=&#34;https://blog.csdn.net/sunshine940326/article/details/70936988&#34;&gt;想让你的博客被更多的人在搜索引擎中搜到吗？&lt;/a&gt;&lt;/p&gt;
@@ -516,10 +524,10 @@ and the repository exists.
     
     <item>
       <title>【博客升级】网易云外链</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</link>
+      <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</link>
       <pubDate>Sat, 15 Feb 2020 22:28:10 +0900</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</guid>
+      <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</guid>
       
         <description>&lt;p&gt;想在文章里插入网易云音乐，遂找教程。
 逛博客总是能发现很多大佬，比如 &lt;a href=&#34;https://saquarius.com/2019/07/%E7%BB%99hugo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E5%A4%96%E9%93%BE/&#34;&gt;Hugo博客添加音乐外链&lt;/a&gt; @ &lt;a href=&#34;https://saquarius.github.io/&#34;&gt;SAquarius &lt;/a&gt; 。看了 about 好像在武汉，而且1月以后就没有更新了，希望只是寒假在鸽吧。然后还有一个 &lt;a href=&#34;https://wap.a9vg.com/thread-5363888-1-1.html&#34;&gt;网易云音乐如何生成flash和mp3外链&lt;/a&gt; （&lt;del&gt;论坛时泪&lt;/del&gt;，解释了外链的代码。不多废话了，先上效果。&lt;/p&gt;
@@ -691,10 +699,10 @@ and the repository exists.
     
     <item>
       <title>【博客升级】码云图床 &amp; PicGo</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/</link>
+      <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/</link>
       <pubDate>Fri, 14 Feb 2020 23:58:48 +0800</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/</guid>
+      <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/</guid>
       
         <description>&lt;p&gt;在写文章的时候深刻体会到了图片的重要性，有时一张图胜过千言万语。虽然 Typora 支持把图片便捷的保存到相对路径，但考虑到可能的多平台发布（以及 github 载图的访问困难），还是决定找一个比较成熟的图床解决方案，让博客里可以方便的插入图片。&lt;/p&gt;
 &lt;h2 id=&#34;建立图床--配置picgo&#34;&gt;建立图床 &amp;amp; 配置PicGo&lt;/h2&gt;
@@ -753,10 +761,10 @@ git push origin master -u
     
     <item>
       <title>【博客升级】自定义域名</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D/</link>
+      <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D/</link>
       <pubDate>Thu, 13 Feb 2020 23:58:48 +0800</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D/</guid>
+      <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D/</guid>
       
         <description>&lt;p&gt;为了让博客更炫酷（装X），决定再进行一点升级。首先想到的就是域名。&lt;/p&gt;
 &lt;p&gt;先上前人指路 &lt;a href=&#34;https://blog.csdn.net/yuan3065/article/details/51594454&#34;&gt;Github 域名绑定&lt;/a&gt;  。&lt;/p&gt;
@@ -805,10 +813,10 @@ Ping 请求找不到主机 disorder.ink。请检查该名称，然后重试。
     
     <item>
       <title>【博客升级】用 bat 实现 Hugo 一键发布至 GitHub</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</link>
+      <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</link>
       <pubDate>Wed, 12 Feb 2020 00:17:41 +0800</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</guid>
+      <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</guid>
       
         <description>&lt;p&gt;hugo 还是挺方便的，但是在写完 markdown 文档到发布到 github 之间还有好多行命令要打，太累了。于是很自然的想到使用bat批处理脚本帮我输入这些命令，自动发布。&lt;/p&gt;
 &lt;h2 id=&#34;搜索资料&#34;&gt;搜索资料&lt;/h2&gt;
@@ -1234,10 +1242,10 @@ endlocal
     
     <item>
       <title>【博客升级】搭建 Hugo 博客</title>
-      <link>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
+      <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Tue, 11 Feb 2020 09:24:01 +0800</pubDate>
       
-      <guid>https://gz1a.github.io/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
       
         <description>&lt;p&gt;想正式写写博客已经很久了，但是一直没有实际行动。年初这波疫情宅在家里足足一个月，整天吃吃喝喝玩玩睡睡，闲着没事建议搞事。孩子不爱写博客，一定是因为博客不好看！&lt;del&gt;（指CSDN）&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;于是寻觅搭建博客的方法，在这里也记录一下踩过的坑。&lt;/p&gt;

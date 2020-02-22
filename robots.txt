@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://gz1a.github.io/sitemap.xml
+Sitemap: https://disorder.ink/sitemap.xml
