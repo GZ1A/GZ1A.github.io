@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>【博客升级】Coding 托管和百度收录 - 昼阴夜阳</title>
+  <title>【笔记】Shader 入门精要（二）Unity Shader - 昼阴夜阳</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="昼阴夜阳" />
-  <meta name="description" content="辛辛苦苦写的博客当然想让别人看到了，最可行的方法就是被搜索引擎收录。然而 Github 屏蔽了百度爬虫，导致 Github Pages 无法被百度收录，就很难受。除开这个因素，为" />
+  <meta name="description" content="定义 Unity Shader 就是一个文本文件。通过将其赋予材质，可以改变该材质在渲染时的行为。主要是顶点、片元等着色器部分。 Shader Lab Unity 为编写 Unity Shader 提供的说明性语言，定" />
 
 
 
@@ -34,7 +34,7 @@
 <meta name="generator" content="Hugo 0.64.1" />
 
 
-<link rel="canonical" href="https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/" />
+<link rel="canonical" href="https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/" />
 
 
 
@@ -58,23 +58,23 @@
 
 
 
-<meta property="og:title" content="【博客升级】Coding 托管和百度收录" />
-<meta property="og:description" content="辛辛苦苦写的博客当然想让别人看到了，最可行的方法就是被搜索引擎收录。然而 Github 屏蔽了百度爬虫，导致 Github Pages 无法被百度收录，就很难受。除开这个因素，为" />
+<meta property="og:title" content="【笔记】Shader 入门精要（二）Unity Shader" />
+<meta property="og:description" content="定义 Unity Shader 就是一个文本文件。通过将其赋予材质，可以改变该材质在渲染时的行为。主要是顶点、片元等着色器部分。 Shader Lab Unity 为编写 Unity Shader 提供的说明性语言，定" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/" />
-<meta property="article:published_time" content="2020-02-16T23:04:27+09:00" />
-<meta property="article:modified_time" content="2020-02-16T23:04:27+09:00" />
-<meta itemprop="name" content="【博客升级】Coding 托管和百度收录">
-<meta itemprop="description" content="辛辛苦苦写的博客当然想让别人看到了，最可行的方法就是被搜索引擎收录。然而 Github 屏蔽了百度爬虫，导致 Github Pages 无法被百度收录，就很难受。除开这个因素，为">
-<meta itemprop="datePublished" content="2020-02-16T23:04:27&#43;09:00" />
-<meta itemprop="dateModified" content="2020-02-16T23:04:27&#43;09:00" />
-<meta itemprop="wordCount" content="1272">
+<meta property="og:url" content="https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/" />
+<meta property="article:published_time" content="2020-02-26T02:08:40+09:00" />
+<meta property="article:modified_time" content="2020-02-26T02:08:40+09:00" />
+<meta itemprop="name" content="【笔记】Shader 入门精要（二）Unity Shader">
+<meta itemprop="description" content="定义 Unity Shader 就是一个文本文件。通过将其赋予材质，可以改变该材质在渲染时的行为。主要是顶点、片元等着色器部分。 Shader Lab Unity 为编写 Unity Shader 提供的说明性语言，定">
+<meta itemprop="datePublished" content="2020-02-26T02:08:40&#43;09:00" />
+<meta itemprop="dateModified" content="2020-02-26T02:08:40&#43;09:00" />
+<meta itemprop="wordCount" content="838">
 
 
 
-<meta itemprop="keywords" content="博客升级,Coding," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="【博客升级】Coding 托管和百度收录"/>
-<meta name="twitter:description" content="辛辛苦苦写的博客当然想让别人看到了，最可行的方法就是被搜索引擎收录。然而 Github 屏蔽了百度爬虫，导致 Github Pages 无法被百度收录，就很难受。除开这个因素，为"/>
+<meta itemprop="keywords" content="Shader,Shader 入门精要," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="【笔记】Shader 入门精要（二）Unity Shader"/>
+<meta name="twitter:description" content="定义 Unity Shader 就是一个文本文件。通过将其赋予材质，可以改变该材质在渲染时的行为。主要是顶点、片元等着色器部分。 Shader Lab Unity 为编写 Unity Shader 提供的说明性语言，定"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -279,18 +279,18 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">【博客升级】Coding 托管和百度收录</h1>
+      <h1 class="post-title">【笔记】Shader 入门精要（二）Unity Shader</h1>
       
       <div class="post-meta">
-        <time datetime="2020-02-16" class="post-time">
-          2020-02-16
+        <time datetime="2020-02-26" class="post-time">
+          2020-02-26
         </time>
         <div class="post-category">
-            <a href="https://disorder.ink/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            <a href="https://disorder.ink/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
             
           </div>
-        <span class="more-meta"> 约 1272 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span class="more-meta"> 约 838 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
 
         
         
@@ -311,17 +311,27 @@
   <div class="post-toc-content" style="text-align:left;">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#用-coding-托管博客">用 Coding 托管博客</a>
+    <li><a href="#定义">定义</a></li>
+    <li><a href="#shader-lab">Shader Lab</a></li>
+    <li><a href="#结构">结构</a>
       <ul>
-        <li><a href="#创建仓库">创建仓库</a></li>
-        <li><a href="#推送仓库">推送仓库</a></li>
-        <li><a href="#部署">部署</a></li>
+        <li><a href="#名字">名字</a></li>
+        <li><a href="#属性properties">属性（Properties)</a></li>
+        <li><a href="#subshader">SubShader</a></li>
+        <li><a href="#渲染状态设置-rendersetup">渲染状态设置 RenderSetup</a></li>
+        <li><a href="#标签-tags">标签 Tags</a></li>
+        <li><a href="#pass-语义块">Pass 语义块</a></li>
+        <li><a href="#fallback">FallBack</a></li>
       </ul>
     </li>
-    <li><a href="#绑定域名到-coding">绑定域名到 Coding</a></li>
-    <li><a href="#自动化">自动化</a></li>
-    <li><a href="#提交-sitemap">提交 sitemap</a></li>
-    <li><a href="#参考">参考</a></li>
+    <li><a href="#形式">形式</a>
+      <ul>
+        <li><a href="#整体结构">整体结构</a></li>
+        <li><a href="#表面着色器">表面着色器</a></li>
+        <li><a href="#顶点片元着色器">顶点/片元着色器</a></li>
+        <li><a href="#固定函数着色器">固定函数着色器</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -330,30 +340,22 @@
 
     
     <div class="post-content">
-      <p>辛辛苦苦写的博客当然想让别人看到了，最可行的方法就是被搜索引擎收录。然而 Github 屏蔽了百度爬虫，导致 Github Pages 无法被百度收录，就很难受。除开这个因素，为了更快收录或是更高的权重，还有一些工作可以做。今天就先让博客可以被百度收录吧。</p>
-<p>先上前人指路：<a href="https://blog.csdn.net/sunshine940326/article/details/70936988">想让你的博客被更多的人在搜索引擎中搜到吗？</a></p>
-<h2 id="用-coding-托管博客">用 Coding 托管博客</h2>
-<blockquote>
-<p>前面已经提到过一个惨绝人寰的消息，那就是github是不允许百度的爬虫爬取内容的，所以我们的项目如果是托管在github上的话基本是不会被百度收录的</p>
-</blockquote>
-<h3 id="创建仓库">创建仓库</h3>
-<p>打开 <a href="https://coding.net/">CODING</a> ，注册团队和个人账号。</p>
-<p>在团队里创建一个项目，新建一个<strong>代码托管项目</strong>。</p>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200216231429.png" alt=""></p>
-<p>这个项目里可以创建<strong>多个代码仓库</strong>，也就是说和 github 上的个人账户是同一级的。填写必要的信息后就初始化好第一个代码仓库了。</p>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200216233353.png" alt=""></p>
-<h3 id="推送仓库">推送仓库</h3>
-<p>接下来就需要把本地的文件推送到仓库。首先打开博客仓库的目录，根据链接添加一个新的远程仓库：</p>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200216234657.png" alt=""></p>
+      <h2 id="定义">定义</h2>
+<p>Unity Shader 就是一个文本文件。通过将其赋予材质，可以改变该材质在渲染时的行为。主要是顶点、片元等着色器部分。</p>
+<h2 id="shader-lab">Shader Lab</h2>
+<p>Unity 为编写 Unity Shader 提供的说明性语言，定义了<strong>着色器代码</strong>以及<strong>渲染所需的数据</strong>。Unity 渲染引擎会根据平台将 Unity Shader 编译成相应代码和 Shader 文件。</p>
+<h2 id="结构">结构</h2>
+<h3 id="名字">名字</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">git remote add coding_repo <span class="o">[</span>链接 git@e.coding.net:gz1a/Blog.git<span class="o">]</span>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Shader &#34;Custom/MyShader&#34; {	}
 </code></pre></td></tr></table>
 </div>
-</div><p>用 <code>git remote -v</code> 验证一下是否成功。可以看到两个仓库都被添加上了。</p>
+</div><p>用一个字符串定义 Unity Shader 的名字（及路径）</p>
+<h3 id="属性properties">属性（Properties)</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -362,22 +364,37 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">coding_repo     git@e.coding.net:gz1a/Blog.git <span class="o">(</span>fetch<span class="o">)</span>
-coding_repo     git@e.coding.net:gz1a/Blog.git <span class="o">(</span>push<span class="o">)</span>
-origin  git@github.com:GZ1A/GZ1A.github.io.git <span class="o">(</span>fetch<span class="o">)</span>
-origin  git@github.com:GZ1A/GZ1A.github.io.git <span class="o">(</span>push<span class="o">)</span>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Properties {
+	PropName (&#34;display name&#34;, PropertyType) = DefaultValue
+	// ...
+}
 </code></pre></td></tr></table>
 </div>
-</div><p>然后进行推送。因为是第一次推送会有冲突，添加<code>-f</code> 参数强制推送。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">git push coding_repo master -f
-</code></pre></td></tr></table>
-</div>
-</div><p>返回了以下信息，才发现忘记添加公钥了。</p>
+</div><p>可以定义材质属性（渲染数据）的属性名、显示名、对应变量类型和初始值。在这里定义的属性会在材质面板中出现，便于修改。</p>
+<table>
+<thead>
+<tr>
+<th align="center">PropertyType</th>
+<th align="center">DefaultValue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Int / Float / Range(min,max)</td>
+<td align="center">number</td>
+</tr>
+<tr>
+<td align="center">Color / Vector</td>
+<td align="center">（num,num,num,num)</td>
+</tr>
+<tr>
+<td align="center">2D / Cube / 3D</td>
+<td align="center">&ldquo;defaultTexture&rdquo; {}</td>
+</tr>
+</tbody>
+</table>
+<h3 id="subshader">SubShader</h3>
+<p>为了兼容不同能力的硬件而产生。加载时 Unity 会选择第一个可在目标环境运行的 <a href="https://docs.unity3d.com/Manual/SL-SubShader.html">SubShader</a>。一个 Unity Shader 中必须要有一个 SubShader 语义块。每个语义块中包含了多个 Pass，每个 Pass 定义了一次完整的渲染流程。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -385,48 +402,201 @@ origin  git@github.com:GZ1A/GZ1A.github.io.git <span class="o">(</span>push<span
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">git@e.coding.net: Permission denied <span class="o">(</span>publickey<span class="o">)</span>.
-fatal: Could not <span class="nb">read</span> from remote repository.
-
-Please make sure you have the correct access rights
-and the repository exists.
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">SubShader {
+	// optional
+	[Tags]			// 标签
+	[CommonState]	// 通用状态
+	
+	Pass{	}
+	// other Passes
+}
 </code></pre></td></tr></table>
 </div>
-</div><p>用过 git 同学应该生成过公钥了吧，没有的建议<a href="https://www.baidu.com/">百度</a>。我的公钥在 <code>C:\Users\GZ1A\.ssh</code> 里，id_rsa.pub 用文本方式打开，复制出来，添加到个人账户里。</p>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200217000519.png" alt=""></p>
-<p>再推送一次，就成功了。</p>
-<h3 id="部署">部署</h3>
-<p>原来的 Coding Pages <a href="https://coding.net/help/doc/coding-service/coding-pages-introduction.html">官方文档</a> 还没有更新，就说一下开启流程吧。先在项目设置里手动打开部署功能。</p>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200217002239.png" alt=""></p>
-<p>然后新建一个静态网站：</p>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200217002457.png" alt=""></p>
-<p>最后手动部署一下，然后点击访问地址就可以看到自己的页面啦。当然，以后推送的时候是会自动部署的。</p>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200217002806.png" alt=""></p>
-<h2 id="绑定域名到-coding">绑定域名到 Coding</h2>
-<p>先上<a href="https://coding.net/help/doc/pages/domain.html">官方文档</a>。打开这个网页的设置界面，可以看到自定义域名相关的选项。</p>
-<blockquote>
-<p>您可为此网站指定自定义域名，用以代替 3ehq79.coding-pages.com作为网站的访问地址。 最多可绑定 5 个自定义域名，绑定前请在域名 DNS 设置中添加 CNAME 记录指向 3ehq79.coding-pages.com</p>
-</blockquote>
-<p>首先打开控制台，&ldquo;在域名 DNS 设置中添加 CNAME 记录指向 3ehq79.coding-pages.com&rdquo;。同时停用其他的解析线路，以免安全证书申请失败，像我一样进入<a href="https://letsencrypt.org/zh-cn/docs/rate-limits/">速率限制 CD</a> ( 每个账户每小时每域名有最多<strong>验证失败</strong> 5 次的限制)  。又因为我闲着没事打开了强制 HTTPS ，现在就没办法访问了&hellip; 惨痛教训</p>
-<p>原因参见官方 <a href="https://coding.net/help/faq/pages/coding-pages-faq.html#Hexo">常见问题</a> ：证书错误的第5条。</p>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200217010104.png" alt=""></p>
-<p>那么摸了一个小时的鱼 ，证书终于通过了。尝试访问一下，我的博客成功出现！</p>
-<h2 id="自动化">自动化</h2>
-<p>增加了一个仓库，自然要在我的一键发布脚本里添加下对应代码 <code>git push coding_repo master</code>（虽然感觉 github pages 的仓库无意义了）<a href="https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/">一键发布传送门</a></p>
-<h2 id="提交-sitemap">提交 sitemap</h2>
-<p>听说提交 sitemap 可以大幅提高收录速度，也不用倒腾，肯定要试试啊。</p>
+</div><h3 id="渲染状态设置-rendersetup">渲染状态设置 RenderSetup</h3>
+<p>同<a href="https://docs.unity3d.com/Manual/SL-Pass.html"> Pass 渲染状态设置</a>，但会对所有 Pass 生效。如：</p>
 <ul>
-<li>首先要有一个 <a href="https://disorder.ink/sitemap.xml">sitemap</a> 。我是通过 Hugo 自动生成，也可以使用其他工具或者插件根据搜索引擎（百度）进行有针对性的生成</li>
-<li>然后是提交，在<a href="https://ziyuan.baidu.com/">百度搜索资源平台</a>注册一个账户，完成所有权认证等设置。然后在<a href="https://ziyuan.baidu.com/linksubmit/">链接提交</a>页面里提交 sitemap 的地址</li>
-<li>最后只要等待就好了 <del>闲着没事可以进行<a href="http://tool.chinaz.com/baidu/">自我搜寻</a></del></li>
+<li>
+<p>Cull 剔除模式</p>
+</li>
+<li>
+<p>ZTest 深度测试</p>
+</li>
+<li>
+<p>ZWrite 深度写入</p>
+</li>
+<li>
+<p>Blend 混合模式</p>
+</li>
+<li>
+<p>&hellip;</p>
+</li>
 </ul>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200226022247.png" alt=""></p>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200226023922.png" alt="丸山添彩"></p>
-<h2 id="参考">参考</h2>
-<p><a href="https://blog.csdn.net/sunshine940326/article/details/70936988">想让你的博客被更多的人在搜索引擎中搜到吗？</a></p>
-<p><a href="https://saquarius.com/2019/07/github%E5%8D%9A%E5%AE%A2%E5%90%8C%E6%AD%A5%E5%88%B0coding%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%8F%8C%E7%BA%BF%E8%A7%A3%E6%9E%90/">Github博客同步到Coding,自定义域名双线解析</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Cull Front
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="标签-tags">标签 Tags</h3>
+<p><a href="https://docs.unity3d.com/Manual/SL-SubShaderTags.html">Shader Tags</a> 是两个字符串类型组成的<strong>键值对</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Tags { &#34;TagName1&#34; = &#34;Value1&#34; &#34;TagName2&#34; = &#34;Value&#34; = &#34;Value2&#34; }
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="pass-语义块">Pass 语义块</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Pass {
+	[Name]
+	Name &#34;MyPassName&#34;	// 定义名称以便复用
+	[Tags]
+	Tags { &#34;TagName1&#34; = &#34;Value1&#34; &#34;TagName2&#34; = &#34;Value&#34; = &#34;Value2&#34; }
+	[RenderSetup]
+	// other code
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>还有些特殊的 Pass。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">UsePass &#34;MyShader/MYPASSNAME&#34;	// 复用其他Pass *必须要全部大写
+GrabPass { &#34;TexPropName&#34; }		// 负责抓取屏幕并储存
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="fallback">FallBack</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Fallback &#34;name&#34;	/ OFF
+</code></pre></td></tr></table>
+</div>
+</div><p>最低级 Shader，类似 Switch 语句的 default 情况。</p>
+<h2 id="形式">形式</h2>
+<h3 id="整体结构">整体结构</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Shader &#34;MyShader&#34; {
+	Properties {
+		// props
+	}
+	SubShader {
+		// Shader 代码
+		Pass {	}
+	}
+	SubShader {
+		// ...
+	}
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="表面着色器">表面着色器</h3>
+<p>Unity 自己创造的，<strong>更抽象</strong>的着色器代码类型，会被<strong>转换为顶点/片元着色器</strong>。</p>
+<p>使用 CG/HLSL 编写，直接定义在 SubShader 语义块中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">SubShader {
+	Tags { &#34;RanderType&#34; = &#34;Opaque&#34; }
+	CGPROGRAM
+	#pragma surface surf Lambert
+	struct Input {
+		float4 color : COLOR;
+	};
+	void surf (Input IN,inout SurfaceOutput o) {
+		o.Albedo = 1;
+	}
+	ENDCG
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="顶点片元着色器">顶点/片元着色器</h3>
+<p>使用 CG/HLSL 编写在 Pass 语义块内。相对复杂而灵活。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Pass{
+	CGPROGRAM
+	#pragma vertex vert
+	#pragma fragment frag
+	float4 vert(float4 v:POSITION) : SV_POSITION{
+		return mul (UITY_MATRIX_MVP, v);
+	}
+	fixed frag() : SV_Target {
+		return fixed4(1.0,0,0,0,0,1,0);
+	}
+	ENDCG
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="固定函数着色器">固定函数着色器</h3>
+<p>定义在 Pass 内，纯 ShaderLab 渲染设置（不可编程）（<del>不能编程的GPU现已不存在</del>）。</p>
 
     </div>
 
@@ -440,7 +610,7 @@ and the repository exists.
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-      2020-02-16
+      2020-02-26
       
     </span>
   </p>
@@ -474,30 +644,16 @@ and the repository exists.
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="https://disorder.ink/tags/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7/">博客升级</a>
-          <a href="https://disorder.ink/tags/coding/">Coding</a>
+          <a href="https://disorder.ink/tags/shader/">Shader</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/">
-            
-            <i class="iconfont">
-              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-            </i>
-            <span class="prev-text nav-default">【博客升级】Valine 评论系统</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/">
-            <span class="next-text nav-default">【博客升级】网易云外链</span>
+          <a class="next" href="/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/">
+            <span class="next-text nav-default">【笔记】Shader 入门精要（一）渲染流水线</span>
             <span class="prev-text nav-mobile">下一篇</span>
             
             <i class="iconfont">

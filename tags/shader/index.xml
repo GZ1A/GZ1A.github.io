@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shader on 昼阴夜阳</title>
+    <link>https://disorder.ink/tags/shader/</link>
+    <description>Recent content in Shader on 昼阴夜阳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 26 Feb 2020 02:08:40 +0900</lastBuildDate>
+    
+	<atom:link href="https://disorder.ink/tags/shader/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>【笔记】Shader 入门精要（二）Unity Shader</title>
+      <link>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</link>
+      <pubDate>Wed, 26 Feb 2020 02:08:40 +0900</pubDate>
+      
+      <guid>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
+      <description>定义 Unity Shader 就是一个文本文件。通过将其赋予材质，可以改变该材质在渲染时的行为。主要是顶点、片元等着色器部分。 Shader Lab Unity 为编写 Unity Shader 提供的说明性语言，定</description>
+    </item>
+    
+    <item>
+      <title>【笔记】Shader 入门精要（一）渲染流水线</title>
+      <link>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</link>
+      <pubDate>Tue, 25 Feb 2020 08:47:07 +0900</pubDate>
+      
+      <guid>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</guid>
+      <description>汤老师确实心系学生，在群里发了网易雷火的实习内推链接。在雷火的宣传页看到前辈新人5周做出来的游戏，完成度可以说是很高了，震撼花花。点开岗位，</description>
+    </item>
+    
+  </channel>
+</rss>

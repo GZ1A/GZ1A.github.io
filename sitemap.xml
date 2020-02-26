@@ -3,27 +3,69 @@
   
   <url>
     <loc>https://disorder.ink/categories/</loc>
-    <lastmod>2020-02-19T23:34:29+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://disorder.ink/tags/javascript/</loc>
-    <lastmod>2020-02-19T23:34:29+09:00</lastmod>
+    <lastmod>2020-02-26T02:08:40+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://disorder.ink/post/</loc>
-    <lastmod>2020-02-19T23:34:29+09:00</lastmod>
+    <lastmod>2020-02-26T02:08:40+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/tags/shader/</loc>
+    <lastmod>2020-02-26T02:08:40+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/tags/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81/</loc>
+    <lastmod>2020-02-26T02:08:40+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://disorder.ink/tags/</loc>
+    <lastmod>2020-02-26T02:08:40+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</loc>
+    <lastmod>2020-02-26T02:08:40+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/</loc>
+    <lastmod>2020-02-26T02:08:40+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/categories/%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2020-02-26T02:08:40+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</loc>
+    <lastmod>2020-02-25T08:47:07+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/tags/javascript/</loc>
     <lastmod>2020-02-19T23:34:29+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -45,13 +87,6 @@
   
   <url>
     <loc>https://disorder.ink/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2020-02-19T23:34:29+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://disorder.ink/</loc>
     <lastmod>2020-02-19T23:34:29+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

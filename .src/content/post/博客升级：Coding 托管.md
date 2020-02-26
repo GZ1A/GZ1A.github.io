@@ -2,7 +2,7 @@
 # 常用定义
 draft: false
 
-title: "【博客升级】Coding 托管"
+title: "【博客升级】Coding 托管和百度收录"
 date: 2020-02-16T23:04:27+09:00					# 创建时间
 author: "昼阴夜阳"             		# 作者
 
@@ -115,9 +115,19 @@ and the repository exists.
 
 ## 自动化
 
-增加了一个仓库，自然要在我的一键发布脚本里添加下对应代码 `git push coding_repo master`（虽然感觉 github pages 的仓库无意义了）
+增加了一个仓库，自然要在我的一键发布脚本里添加下对应代码 `git push coding_repo master`（虽然感觉 github pages 的仓库无意义了）[一键发布传送门](https://disorder.ink/post/博客升级一键发布/)
 
-[原文传送门](https://disorder.ink/post/博客升级一键发布/)。
+## 提交 sitemap
+
+听说提交 sitemap 可以大幅提高收录速度，也不用倒腾，肯定要试试啊。
+
+* 首先要有一个 [sitemap](https://disorder.ink/sitemap.xml) 。我是通过 Hugo 自动生成，也可以使用其他工具或者插件根据搜索引擎（百度）进行有针对性的生成
+* 然后是提交，在[百度搜索资源平台](https://ziyuan.baidu.com/)注册一个账户，完成所有权认证等设置。然后在[链接提交](https://ziyuan.baidu.com/linksubmit/)页面里提交 sitemap 的地址
+* 最后只要等待就好了 ~~闲着没事可以进行[自我搜寻](http://tool.chinaz.com/baidu/)~~
+
+![](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200226022247.png)
+
+![~~丸山添彩~~](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200226023922.png)
 
 ## 参考
 

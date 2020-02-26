@@ -6,10 +6,346 @@
     <description>Recent content on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 19 Feb 2020 23:34:29 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 26 Feb 2020 02:08:40 +0900</lastBuildDate>
     
         <atom:link href="https://disorder.ink/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【笔记】Shader 入门精要（二）Unity Shader</title>
+      <link>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</link>
+      <pubDate>Wed, 26 Feb 2020 02:08:40 +0900</pubDate>
+      
+      <guid>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
+      
+        <description>&lt;h2 id=&#34;定义&#34;&gt;定义&lt;/h2&gt;
+&lt;p&gt;Unity Shader 就是一个文本文件。通过将其赋予材质，可以改变该材质在渲染时的行为。主要是顶点、片元等着色器部分。&lt;/p&gt;
+&lt;h2 id=&#34;shader-lab&#34;&gt;Shader Lab&lt;/h2&gt;
+&lt;p&gt;Unity 为编写 Unity Shader 提供的说明性语言，定义了&lt;strong&gt;着色器代码&lt;/strong&gt;以及&lt;strong&gt;渲染所需的数据&lt;/strong&gt;。Unity 渲染引擎会根据平台将 Unity Shader 编译成相应代码和 Shader 文件。&lt;/p&gt;
+&lt;h2 id=&#34;结构&#34;&gt;结构&lt;/h2&gt;
+&lt;h3 id=&#34;名字&#34;&gt;名字&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Shader &amp;#34;Custom/MyShader&amp;#34; {	}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;用一个字符串定义 Unity Shader 的名字（及路径）&lt;/p&gt;
+&lt;h3 id=&#34;属性properties&#34;&gt;属性（Properties)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Properties {
+	PropName (&amp;#34;display name&amp;#34;, PropertyType) = DefaultValue
+	// ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;可以定义材质属性（渲染数据）的属性名、显示名、对应变量类型和初始值。在这里定义的属性会在材质面板中出现，便于修改。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;PropertyType&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;DefaultValue&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;Int / Float / Range(min,max)&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;number&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;Color / Vector&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;（num,num,num,num)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;2D / Cube / 3D&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;ldquo;defaultTexture&amp;rdquo; {}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;subshader&#34;&gt;SubShader&lt;/h3&gt;
+&lt;p&gt;为了兼容不同能力的硬件而产生。加载时 Unity 会选择第一个可在目标环境运行的 &lt;a href=&#34;https://docs.unity3d.com/Manual/SL-SubShader.html&#34;&gt;SubShader&lt;/a&gt;。一个 Unity Shader 中必须要有一个 SubShader 语义块。每个语义块中包含了多个 Pass，每个 Pass 定义了一次完整的渲染流程。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;SubShader {
+	// optional
+	[Tags]			// 标签
+	[CommonState]	// 通用状态
+	
+	Pass{	}
+	// other Passes
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;渲染状态设置-rendersetup&#34;&gt;渲染状态设置 RenderSetup&lt;/h3&gt;
+&lt;p&gt;同&lt;a href=&#34;https://docs.unity3d.com/Manual/SL-Pass.html&#34;&gt; Pass 渲染状态设置&lt;/a&gt;，但会对所有 Pass 生效。如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Cull 剔除模式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ZTest 深度测试&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ZWrite 深度写入&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Blend 混合模式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Cull Front
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;标签-tags&#34;&gt;标签 Tags&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.unity3d.com/Manual/SL-SubShaderTags.html&#34;&gt;Shader Tags&lt;/a&gt; 是两个字符串类型组成的&lt;strong&gt;键值对&lt;/strong&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Tags { &amp;#34;TagName1&amp;#34; = &amp;#34;Value1&amp;#34; &amp;#34;TagName2&amp;#34; = &amp;#34;Value&amp;#34; = &amp;#34;Value2&amp;#34; }
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;pass-语义块&#34;&gt;Pass 语义块&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Pass {
+	[Name]
+	Name &amp;#34;MyPassName&amp;#34;	// 定义名称以便复用
+	[Tags]
+	Tags { &amp;#34;TagName1&amp;#34; = &amp;#34;Value1&amp;#34; &amp;#34;TagName2&amp;#34; = &amp;#34;Value&amp;#34; = &amp;#34;Value2&amp;#34; }
+	[RenderSetup]
+	// other code
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;还有些特殊的 Pass。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;UsePass &amp;#34;MyShader/MYPASSNAME&amp;#34;	// 复用其他Pass *必须要全部大写
+GrabPass { &amp;#34;TexPropName&amp;#34; }		// 负责抓取屏幕并储存
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;fallback&#34;&gt;FallBack&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Fallback &amp;#34;name&amp;#34;	/ OFF
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;最低级 Shader，类似 Switch 语句的 default 情况。&lt;/p&gt;
+&lt;h2 id=&#34;形式&#34;&gt;形式&lt;/h2&gt;
+&lt;h3 id=&#34;整体结构&#34;&gt;整体结构&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Shader &amp;#34;MyShader&amp;#34; {
+	Properties {
+		// props
+	}
+	SubShader {
+		// Shader 代码
+		Pass {	}
+	}
+	SubShader {
+		// ...
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;表面着色器&#34;&gt;表面着色器&lt;/h3&gt;
+&lt;p&gt;Unity 自己创造的，&lt;strong&gt;更抽象&lt;/strong&gt;的着色器代码类型，会被&lt;strong&gt;转换为顶点/片元着色器&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;使用 CG/HLSL 编写，直接定义在 SubShader 语义块中。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;SubShader {
+	Tags { &amp;#34;RanderType&amp;#34; = &amp;#34;Opaque&amp;#34; }
+	CGPROGRAM
+	#pragma surface surf Lambert
+	struct Input {
+		float4 color : COLOR;
+	};
+	void surf (Input IN,inout SurfaceOutput o) {
+		o.Albedo = 1;
+	}
+	ENDCG
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;顶点片元着色器&#34;&gt;顶点/片元着色器&lt;/h3&gt;
+&lt;p&gt;使用 CG/HLSL 编写在 Pass 语义块内。相对复杂而灵活。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Pass{
+	CGPROGRAM
+	#pragma vertex vert
+	#pragma fragment frag
+	float4 vert(float4 v:POSITION) : SV_POSITION{
+		return mul (UITY_MATRIX_MVP, v);
+	}
+	fixed frag() : SV_Target {
+		return fixed4(1.0,0,0,0,0,1,0);
+	}
+	ENDCG
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;固定函数着色器&#34;&gt;固定函数着色器&lt;/h3&gt;
+&lt;p&gt;定义在 Pass 内，纯 ShaderLab 渲染设置（不可编程）（&lt;del&gt;不能编程的GPU现已不存在&lt;/del&gt;）。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>【笔记】Shader 入门精要（一）渲染流水线</title>
+      <link>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</link>
+      <pubDate>Tue, 25 Feb 2020 08:47:07 +0900</pubDate>
+      
+      <guid>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</guid>
+      
+        <description>&lt;p&gt;汤老师确实心系学生，在群里发了网易雷火的实习内推链接。在雷火的&lt;a href=&#34;http://leihuo.163.com/2019/rencai/&#34;&gt;宣传页&lt;/a&gt;看到前辈新人5周做出来的游戏，完成度可以说是很高了，震撼花花。点开岗位，看到了&lt;a href=&#34;https://campus.163.com/app/jobDetail/index?projectId=25&amp;amp;id=625&#34;&gt;技术美术工程师&lt;/a&gt;，想起选专业的时候就研究过&lt;del&gt;数媒对口岗位&lt;/del&gt; TA，感觉相性很好所以在持续关注，看过拳头的&lt;a href=&#34;https://www.bilibili.com/video/av41216445?from=search&amp;amp;seid=15641735924452657164&#34;&gt;技术美术介绍&lt;/a&gt;，又在B站收藏过霜狼大佬的 &lt;a href=&#34;https://www.bilibili.com/video/av77755500&#34;&gt;TA 学习体系框架&lt;/a&gt;，甚至还加了群。然而也就仅限于此了，并没有更进一步的实际的努力过。总感觉是无法做到的事情所以不去做，自我设限也要有个限度啊！&lt;del&gt;禁止套娃&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;于是就想努力往这个方向做做尝试。离校招（实习）截止还有一个多月，我也要加油了。就算不去提前实习，只要不停下来，（知识的）道路就会不断延伸！&lt;/p&gt;
+&lt;p&gt;脚踏实地，第一步就是打开《Unity Shader 入门精要》啃。为了提高效率，建议做下笔记。400页，每天 10 页起步，上不封顶。&lt;/p&gt;
+&lt;h1 id=&#34;渲染流水线&#34;&gt;渲染流水线&lt;/h1&gt;
+&lt;h2 id=&#34;什么是渲染&#34;&gt;什么是渲染&lt;/h2&gt;
+&lt;p&gt;输入三维场景数据（顶点、纹理、摄像机坐标等信息），输出二维图像。&lt;/p&gt;
+&lt;h2 id=&#34;概念阶段&#34;&gt;概念阶段&lt;/h2&gt;
+&lt;h3 id=&#34;应用阶段cpu&#34;&gt;应用阶段（CPU）&lt;/h3&gt;
+&lt;p&gt;输入：场景数据（相机、模型、光源），模型的渲染状态（材质、纹理、Shader）&lt;/p&gt;
+&lt;p&gt;输出：渲染图元（点、线、三角面等）&lt;/p&gt;
+&lt;h3 id=&#34;几何阶段gpu&#34;&gt;几何阶段（GPU）&lt;/h3&gt;
+&lt;p&gt;输出：屏幕空间中的&lt;strong&gt;二维顶点坐标&lt;/strong&gt;、对应的深度、着色等信息。&lt;/p&gt;
+&lt;h3 id=&#34;光栅化阶段gpu&#34;&gt;光栅化阶段（GPU）&lt;/h3&gt;
+&lt;p&gt;输出：屏幕上的像素（二维图像）&lt;/p&gt;
+&lt;h2 id=&#34;gpu-流水线&#34;&gt;GPU 流水线&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;http://static.zybuluo.com/candycat/jundxsf604yuoy2zr3r1qkzp/GPU%E6%B5%81%E6%B0%B4%E7%BA%BF.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;顶点着色器&#34;&gt;顶点着色器&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;坐标变换&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;计算颜色&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;从模型空间转换到齐次裁剪空间&lt;/strong&gt;（必要）输出后硬件会做透视除法，得到归一化设备坐标（Nocmalized Device Coordinates）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;裁剪&#34;&gt;裁剪&lt;/h3&gt;
+&lt;p&gt;将单位立方体外的图元舍弃。&lt;/p&gt;
+&lt;h3 id=&#34;屏幕映射&#34;&gt;屏幕映射&lt;/h3&gt;
+&lt;p&gt;将图元的 xy 坐标转换到屏幕坐标系（2维）。这和 z 坐标一起构成了窗口坐标系（3维）。&lt;/p&gt;
+&lt;h3 id=&#34;三角形设置&#34;&gt;三角形设置&lt;/h3&gt;
+&lt;p&gt;计算三角网格表示数据。&lt;/p&gt;
+&lt;h3 id=&#34;三角形遍历&#34;&gt;三角形遍历&lt;/h3&gt;
+&lt;p&gt;根据三角网格数据检查每个像素是否被三角网格覆盖，如果被覆盖则插值后在窗口坐标系中生成一个片元（fragment）&lt;/p&gt;
+&lt;h3 id=&#34;片元着色器&#34;&gt;片元着色器&lt;/h3&gt;
+&lt;p&gt;将片元着色。完成纹理采样等渲染技术。&lt;/p&gt;
+&lt;h3 id=&#34;逐片元操作&#34;&gt;逐片元操作&lt;/h3&gt;
+&lt;p&gt;输出合并阶段。对每一个片元进行操作。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通过深度测试、模板测试等工作决定片元的可见性（实践中可能在着色之前进行以提高性能）&lt;/li&gt;
+&lt;li&gt;将片元的颜色值和颜色缓冲区中的颜色合并&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;draw-call&#34;&gt;Draw Call&lt;/h2&gt;
+&lt;h3 id=&#34;定义&#34;&gt;定义&lt;/h3&gt;
+&lt;p&gt;CPU 对图像编程接口的调用，以命令 GPU 进行渲染相关操作。&lt;strong&gt;渲染速度往往快于 CPU 提交命令的速度&lt;/strong&gt;，所以性能问题的元凶通常是 CPU 发送指令改变渲染状态的次数过多。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://static.zybuluo.com/candycat/h9oh7t35lbjrgogxywarmu55/CommandBuffer.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;减少开销&#34;&gt;减少开销&lt;/h3&gt;
+&lt;p&gt;使用批处理（Batching）的方法，减少 DrawCall 的调用次数。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;合并小的网格&lt;/li&gt;
+&lt;li&gt;避免使用过多的材质&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;shader&#34;&gt;Shader&lt;/h2&gt;
+&lt;p&gt;Shader 就是 GPU 流水线上的一些可高度编程的阶段。我们可以通过修改 Shader 实现对流水线中渲染细节的控制。&lt;/p&gt;
+&lt;p&gt;同时，一个出色的效果需要包括 Shader 在内的所有渲染流水线阶段的共同参与。&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>【博客升级】点击计数和动态背景</title>
@@ -388,7 +724,7 @@
     </item>
     
     <item>
-      <title>【博客升级】Coding 托管</title>
+      <title>【博客升级】Coding 托管和百度收录</title>
       <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</link>
       <pubDate>Sun, 16 Feb 2020 23:04:27 +0900</pubDate>
       
@@ -478,8 +814,16 @@ and the repository exists.
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200217010104.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;那么摸了一个小时的鱼 ，证书终于通过了。尝试访问一下，我的博客成功出现！&lt;/p&gt;
 &lt;h2 id=&#34;自动化&#34;&gt;自动化&lt;/h2&gt;
-&lt;p&gt;增加了一个仓库，自然要在我的一键发布脚本里添加下对应代码 &lt;code&gt;git push coding_repo master&lt;/code&gt;（虽然感觉 github pages 的仓库无意义了）&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/&#34;&gt;原文传送门&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;增加了一个仓库，自然要在我的一键发布脚本里添加下对应代码 &lt;code&gt;git push coding_repo master&lt;/code&gt;（虽然感觉 github pages 的仓库无意义了）&lt;a href=&#34;https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/&#34;&gt;一键发布传送门&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;提交-sitemap&#34;&gt;提交 sitemap&lt;/h2&gt;
+&lt;p&gt;听说提交 sitemap 可以大幅提高收录速度，也不用倒腾，肯定要试试啊。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先要有一个 &lt;a href=&#34;https://disorder.ink/sitemap.xml&#34;&gt;sitemap&lt;/a&gt; 。我是通过 Hugo 自动生成，也可以使用其他工具或者插件根据搜索引擎（百度）进行有针对性的生成&lt;/li&gt;
+&lt;li&gt;然后是提交，在&lt;a href=&#34;https://ziyuan.baidu.com/&#34;&gt;百度搜索资源平台&lt;/a&gt;注册一个账户，完成所有权认证等设置。然后在&lt;a href=&#34;https://ziyuan.baidu.com/linksubmit/&#34;&gt;链接提交&lt;/a&gt;页面里提交 sitemap 的地址&lt;/li&gt;
+&lt;li&gt;最后只要等待就好了 &lt;del&gt;闲着没事可以进行&lt;a href=&#34;http://tool.chinaz.com/baidu/&#34;&gt;自我搜寻&lt;/a&gt;&lt;/del&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200226022247.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200226023922.png&#34; alt=&#34;丸山添彩&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/sunshine940326/article/details/70936988&#34;&gt;想让你的博客被更多的人在搜索引擎中搜到吗？&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://saquarius.com/2019/07/github%E5%8D%9A%E5%AE%A2%E5%90%8C%E6%AD%A5%E5%88%B0coding%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%8F%8C%E7%BA%BF%E8%A7%A3%E6%9E%90/&#34;&gt;Github博客同步到Coding,自定义域名双线解析&lt;/a&gt;&lt;/p&gt;
@@ -790,7 +1134,7 @@ Ping 请求找不到主机 disorder.ink。请检查该名称，然后重试。
 &lt;h2 id=&#34;配置-config&#34;&gt;配置 Config&lt;/h2&gt;
 &lt;p&gt;发布分两步，生成和推送。生成命令很简单，只要一句 &lt;code&gt;hugo&lt;/code&gt; 就可以重新生成当前工作区里的站点——根据站点路径下的 &lt;code&gt;config.toml&lt;/code&gt; 这个文件。我正在使用的主题的&lt;a href=&#34;https://github.com/xianmin/hugo-theme-jane/blob/master/README-zh.md&#34;&gt;文档&lt;/a&gt;中有提到如何进行站点设置，配置站点的 config.toml ，根据注释进行相应的修改就可以了。&lt;/p&gt;
 &lt;h2 id=&#34;设置-bat&#34;&gt;设置 bat&lt;/h2&gt;
-&lt;p&gt;根据资料里的博客，对开头的配置变量进行了以下修改，得到以下的 bat 文件。&lt;/p&gt;
+&lt;p&gt;根据资料里的博客，对开头的变量进行了修改，得到以下的 bat 文件。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -856,30 +1200,34 @@ pause
 &lt;/div&gt;&lt;p&gt;然后我发现这段命令中没有位置让我输入commit message，当场就开始魔改了。大概就加了这两句话&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; exist %pan% &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
     rem ...
-    &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; /p &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;Commit Message:
+    rem 输入提交信息
+    &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; /p &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;Commit Message:	
     &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%commitMessage%&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
         &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;update site
     &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+    rem 输出信息来给大家伙看看
     &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; cm:%commitMessage%
     rem ...
 &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;然而 echo 输出的一直是空的，也就是说我没有输入成功！顿时开始怀疑我这10分钟学的shell。寻思着我哪里写的不对，就开始继续研究基础。研究了一个小时，突然发现了盲点：会不会是这个嵌套出了问题。于是百度。&lt;a href=&#34;https://zhidao.baidu.com/question/454906059021031085.html&#34;&gt;批处理里set语句怎样在if语句中使用&lt;/a&gt; 。只要在 if 外增加两句话，并把引用时的 &lt;code&gt;%&lt;/code&gt; 改为 &lt;code&gt;!&lt;/code&gt; 就可以了。&lt;/p&gt;
-&lt;p&gt;泪，流了下来。我悟了！以后自信点，&lt;del&gt;遇到错误多找找别人的问题，不要老是想着是自己的问题&lt;/del&gt;  &lt;strong&gt;不懂就问  ！！&lt;/strong&gt;（指百度)  还要先提纲挈领，哪怕不细看也得有个大概了解，至少知道可能出现的问题。&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;然而 echo 输出的一直是空的，也就是说我没有输入成功！顿时开始怀疑我这10分钟速成的批处理命令。寻思着我哪里写的不对，就开始继续研究基础。研究了一个小时，突然发现了盲点：会不会是这个嵌套出了问题。于是百度。&lt;a href=&#34;https://zhidao.baidu.com/question/454906059021031085.html&#34;&gt;批处理里set语句怎样在if语句中使用&lt;/a&gt; 。只要在 if 外增加两句话，并把引用时的 &lt;code&gt;%&lt;/code&gt; 改为 &lt;code&gt;!&lt;/code&gt; 就可以了。&lt;/p&gt;
+&lt;p&gt;泪，流了下来。我悟了！以后自信点，&lt;del&gt;遇到错误多找找别人的问题，不要老是想着是自己的问题&lt;/del&gt;  &lt;strong&gt;不懂就问  ！！&lt;/strong&gt;（指百度)  还要先&lt;strong&gt;提纲挈领&lt;/strong&gt;，哪怕不细看也得有个大概了解，至少知道可能出现的问题。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -1020,7 +1368,7 @@ pause
 &lt;h3 id=&#34;20200217--添加远程仓库&#34;&gt;20200217  添加远程仓库&lt;/h3&gt;
 &lt;p&gt;添加了 Coding 的仓库，在发布的时候就要推送两次。顺便在推送前对远程仓库分别进行一次 Pull ，防止在多个电脑上写博客时可能出现的问题。&lt;/p&gt;
 &lt;h2 id=&#34;成果&#34;&gt;成果&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/GZ1A/GZ1A.github.io/blob/master/.src/publish.bat&#34;&gt;github 仓库里的 publish.bat&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;（以 github 仓库里的  &lt;a href=&#34;https://github.com/GZ1A/GZ1A.github.io/blob/master/.src/publish.bat&#34;&gt;publish.bat&lt;/a&gt; 为准）&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1

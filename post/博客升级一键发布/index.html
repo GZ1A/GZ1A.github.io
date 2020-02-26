@@ -68,7 +68,7 @@
 <meta itemprop="description" content="hugo 还是挺方便的，但是在写完 markdown 文档到发布到 github 之间还有好多行命令要打，太累了。于是很自然的想到使用bat批处理脚本帮我输入这些命令，自动发布。 搜">
 <meta itemprop="datePublished" content="2020-02-12T00:17:41&#43;08:00" />
 <meta itemprop="dateModified" content="2020-02-12T00:17:41&#43;08:00" />
-<meta itemprop="wordCount" content="1859">
+<meta itemprop="wordCount" content="1882">
 
 
 
@@ -289,7 +289,7 @@
             <a href="https://disorder.ink/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             
           </div>
-        <span class="more-meta"> 约 1859 字 </span>
+        <span class="more-meta"> 约 1882 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
 
         
@@ -337,7 +337,7 @@
 <h2 id="配置-config">配置 Config</h2>
 <p>发布分两步，生成和推送。生成命令很简单，只要一句 <code>hugo</code> 就可以重新生成当前工作区里的站点——根据站点路径下的 <code>config.toml</code> 这个文件。我正在使用的主题的<a href="https://github.com/xianmin/hugo-theme-jane/blob/master/README-zh.md">文档</a>中有提到如何进行站点设置，配置站点的 config.toml ，根据注释进行相应的修改就可以了。</p>
 <h2 id="设置-bat">设置 bat</h2>
-<p>根据资料里的博客，对开头的配置变量进行了以下修改，得到以下的 bat 文件。</p>
+<p>根据资料里的博客，对开头的变量进行了修改，得到以下的 bat 文件。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -403,30 +403,34 @@ pause
 </div><p>然后我发现这段命令中没有位置让我输入commit message，当场就开始魔改了。大概就加了这两句话</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="k">if</span> exist %pan% <span class="o">(</span>
     rem ...
-    <span class="nb">set</span> /p <span class="nv">commitMessage</span><span class="o">=</span>Commit Message:
+    rem 输入提交信息
+    <span class="nb">set</span> /p <span class="nv">commitMessage</span><span class="o">=</span>Commit Message:	
     <span class="k">if</span> <span class="s2">&#34;%commitMessage%&#34;</span><span class="o">=</span><span class="o">=</span><span class="s2">&#34;&#34;</span> <span class="o">(</span>
         <span class="nb">set</span> <span class="nv">commitMessage</span><span class="o">=</span>update site
     <span class="o">)</span>
+    rem 输出信息来给大家伙看看
     <span class="nb">echo</span> cm:%commitMessage%
     rem ...
 <span class="o">)</span> 
 </code></pre></td></tr></table>
 </div>
-</div><p>然而 echo 输出的一直是空的，也就是说我没有输入成功！顿时开始怀疑我这10分钟学的shell。寻思着我哪里写的不对，就开始继续研究基础。研究了一个小时，突然发现了盲点：会不会是这个嵌套出了问题。于是百度。<a href="https://zhidao.baidu.com/question/454906059021031085.html">批处理里set语句怎样在if语句中使用</a> 。只要在 if 外增加两句话，并把引用时的 <code>%</code> 改为 <code>!</code> 就可以了。</p>
-<p>泪，流了下来。我悟了！以后自信点，<del>遇到错误多找找别人的问题，不要老是想着是自己的问题</del>  <strong>不懂就问  ！！</strong>（指百度)  还要先提纲挈领，哪怕不细看也得有个大概了解，至少知道可能出现的问题。</p>
+</div><p>然而 echo 输出的一直是空的，也就是说我没有输入成功！顿时开始怀疑我这10分钟速成的批处理命令。寻思着我哪里写的不对，就开始继续研究基础。研究了一个小时，突然发现了盲点：会不会是这个嵌套出了问题。于是百度。<a href="https://zhidao.baidu.com/question/454906059021031085.html">批处理里set语句怎样在if语句中使用</a> 。只要在 if 外增加两句话，并把引用时的 <code>%</code> 改为 <code>!</code> 就可以了。</p>
+<p>泪，流了下来。我悟了！以后自信点，<del>遇到错误多找找别人的问题，不要老是想着是自己的问题</del>  <strong>不懂就问  ！！</strong>（指百度)  还要先<strong>提纲挈领</strong>，哪怕不细看也得有个大概了解，至少知道可能出现的问题。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -567,7 +571,7 @@ pause
 <h3 id="20200217--添加远程仓库">20200217  添加远程仓库</h3>
 <p>添加了 Coding 的仓库，在发布的时候就要推送两次。顺便在推送前对远程仓库分别进行一次 Pull ，防止在多个电脑上写博客时可能出现的问题。</p>
 <h2 id="成果">成果</h2>
-<p><a href="https://github.com/GZ1A/GZ1A.github.io/blob/master/.src/publish.bat">github 仓库里的 publish.bat</a></p>
+<p>（以 github 仓库里的  <a href="https://github.com/GZ1A/GZ1A.github.io/blob/master/.src/publish.bat">publish.bat</a> 为准）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
