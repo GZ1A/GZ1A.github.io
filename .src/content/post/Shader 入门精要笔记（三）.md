@@ -8,7 +8,7 @@ author: "昼阴夜阳"             		# 作者
 
 # 分类和标签
 categories: ["笔记"]		            # 分类
-tags: ["Shader","Shader 入门精要"]  						# 标签
+tags: ["Shader","Shader入门精要"]  						# 标签
 
 # 自定义
 comment: true	 # 评论
@@ -94,17 +94,17 @@ Unity 中通常将矢量转换为**列矩阵**$(x\quad y\quad z)^T $进行计算
 
 ### 空间转换
 
-给定子坐标空间 C 中一点 $A_c = (a,b,c)$。已知自坐标空间原点 $O_c$，及坐标轴在父坐标空间 P 下的表示$x_c,y_c,z_c$。要确定 $A_p$ ，需要从原点开始，分别向 x,y,z 轴方向平移 a,b,c 个单位。
+给定子坐标空间 C 中一点 $A_c = (a,b,c)$。已知自坐标空间原点 $O_c$，及坐标轴在父坐标空间 P 下的表示 $x_c,y_c,z_c$。要确定 $A_p$ ，需要从原点开始，分别向 x,y,z 轴方向平移 a,b,c 个单位。有
 
 $$ A_p = M_{c\rightarrow p}A_c$$
 
-$$M_{c\rightarrow p}= \begin{bmatrix}| & | & | & |\\  x_c & y_c & z_c & O_c\\ | & | & | & |\\ 0 & 0 & 0 & 1 \end{bmatrix}$$
+$$M_{c\rightarrow p}= \begin{bmatrix}| & | & | & | \\\  x_c & y_c & z_c & O_c\\\ | & | & | & |\\\ 0 & 0 & 0 & 1 \end{bmatrix}$$
 
-$$ M_{p\rightarrow c} =M_{c\rightarrow p}^{-1} $$ 。
+$$ M_{p\rightarrow c} =M_{c\rightarrow p}^{-1} $$ 
 
 当对方向的坐标空间进行变换时，原点变换可以忽略。故仅需左上角的 3×3 矩阵。
 
-当原点不变时，转换矩阵是正交矩阵，有 $$ M_{p\rightarrow c} =M_{c\rightarrow p}^{-1}= M_{c\rightarrow p}^T $$ 。
+当原点不变时，转换矩阵是正交矩阵，有 $ M_{p\rightarrow c} =M_{c\rightarrow p}^{-1}= M_{c\rightarrow p}^T $ 。
 
 ### 转换流程
 

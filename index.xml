@@ -59,12 +59,12 @@
 &lt;p&gt;在旋转中， Unity 的三轴旋转顺序是 &lt;strong&gt;zxy&lt;/strong&gt;（虽然是右乘，但不旋转坐标系，直接表示为$M_{Z\theta }M_{X\theta }M_{Y\theta }$）&lt;/p&gt;
 &lt;h2 id=&#34;坐标空间&#34;&gt;坐标空间&lt;/h2&gt;
 &lt;h3 id=&#34;空间转换&#34;&gt;空间转换&lt;/h3&gt;
-&lt;p&gt;给定子坐标空间 C 中一点 $A_c = (a,b,c)$。已知自坐标空间原点 $O_c$，及坐标轴在父坐标空间 P 下的表示$x_c,y_c,z_c$。要确定 $A_p$ ，需要从原点开始，分别向 x,y,z 轴方向平移 a,b,c 个单位。&lt;/p&gt;
+&lt;p&gt;给定子坐标空间 C 中一点 $A_c = (a,b,c)$。已知自坐标空间原点 $O_c$，及坐标轴在父坐标空间 P 下的表示 $x_c,y_c,z_c$。要确定 $A_p$ ，需要从原点开始，分别向 x,y,z 轴方向平移 a,b,c 个单位。有&lt;/p&gt;
 &lt;p&gt;$$ A_p = M_{c\rightarrow p}A_c$$&lt;/p&gt;
-&lt;p&gt;$$M_{c\rightarrow p}= \begin{bmatrix}| &amp;amp; | &amp;amp; | &amp;amp; |\  x_c &amp;amp; y_c &amp;amp; z_c &amp;amp; O_c\ | &amp;amp; | &amp;amp; | &amp;amp; |\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \end{bmatrix}$$&lt;/p&gt;
-&lt;p&gt;$$ M_{p\rightarrow c} =M_{c\rightarrow p}^{-1} $$ 。&lt;/p&gt;
+&lt;p&gt;$$M_{c\rightarrow p}= \begin{bmatrix}| &amp;amp; | &amp;amp; | &amp;amp; | \\  x_c &amp;amp; y_c &amp;amp; z_c &amp;amp; O_c\\ | &amp;amp; | &amp;amp; | &amp;amp; |\\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \end{bmatrix}$$&lt;/p&gt;
+&lt;p&gt;$$ M_{p\rightarrow c} =M_{c\rightarrow p}^{-1} $$&lt;/p&gt;
 &lt;p&gt;当对方向的坐标空间进行变换时，原点变换可以忽略。故仅需左上角的 3×3 矩阵。&lt;/p&gt;
-&lt;p&gt;当原点不变时，转换矩阵是正交矩阵，有 $$ M_{p\rightarrow c} =M_{c\rightarrow p}^{-1}= M_{c\rightarrow p}^T $$ 。&lt;/p&gt;
+&lt;p&gt;当原点不变时，转换矩阵是正交矩阵，有 $ M_{p\rightarrow c} =M_{c\rightarrow p}^{-1}= M_{c\rightarrow p}^T $ 。&lt;/p&gt;
 &lt;h3 id=&#34;转换流程&#34;&gt;转换流程&lt;/h3&gt;
 &lt;h4 id=&#34;模型空间&#34;&gt;模型空间&lt;/h4&gt;
 &lt;p&gt;模型的顶点信息里使用的的坐标空间。&lt;/p&gt;
