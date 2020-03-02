@@ -651,6 +651,19 @@ GrabPass { &#34;TexPropName&#34; }		// 负责抓取屏幕并储存
       
       <nav class="post-nav">
         
+          <a class="prev" href="/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/">
+            
+            <i class="iconfont">
+              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+            </i>
+            <span class="prev-text nav-default">【笔记】Shader 入门精要（三）数学基础</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         
           <a class="next" href="/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/">
             <span class="next-text nav-default">【笔记】Shader 入门精要（一）渲染流水线</span>
@@ -811,59 +824,76 @@ GrabPass { &#34;TexPropName&#34; }		// 负责抓取屏幕并储存
   </div>
   
 <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
 
 
 
 
-<script type="text/javascript" src="/js/main.dee43230127a73d039a734510fa896c89c3c7ce0cf0be0c7a7433f8fd69b76dc.js" integrity="sha256-3uQyMBJ6c9A5pzRRD6iWyJw8fODPC&#43;DHp0M/j9abdtw=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/main.dee43230127a73d039a734510fa896c89c3c7ce0cf0be0c7a7433f8fd69b76dc.js" integrity="sha256-3uQyMBJ6c9A5pzRRD6iWyJw8fODPC&#43;DHp0M/j9abdtw="
+  crossorigin="anonymous"></script>
 
 
 
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
-  <script src="https://cdn.jsdelivr.net/gh/gz1a/live2d-widget@latest/autoload.js"></script>
-
-
-
-
-
-  <script type="text/javascript" color="0,0,0" opacity='0.7' zIndex="-1" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+<script src="https://cdn.jsdelivr.net/gh/gz1a/live2d-widget@latest/autoload.js"></script>
 
 
 
 
 
-  <script type="text/javascript" src=/js/click-counter.js></script>
-
-
-
-  <script type="text/javascript">
-    window.MathJax = {
-      showProcessingMessages: false,
-      messageStyle: 'none'
-    };
-  </script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+<script type="text/javascript" color="0,0,0" opacity='0.7' zIndex="-1" count="99"
+  src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
 
 
 
 
+<script type="text/javascript" src=/js/click-counter.js></script>
 
 
 
 
-  
-    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
-    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
-    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
-  
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
 
 
 
 
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+<script type="text/javascript" src="/js/load-photoswipe.js"></script>
+<script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+<script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 

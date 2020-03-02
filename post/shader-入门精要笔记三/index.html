@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>【笔记】Shader 入门精要（一）渲染流水线 - 昼阴夜阳</title>
+  <title>【笔记】Shader 入门精要（三）数学基础 - 昼阴夜阳</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="昼阴夜阳" />
-  <meta name="description" content="汤老师确实心系学生，在群里发了网易雷火的实习内推链接。在雷火的宣传页看到前辈新人5周做出来的游戏，完成度可以说是很高了，震撼花花。点开岗位，" />
+  <meta name="description" content="笛卡尔坐标系 二维 略。 三维 基矢量 basis vector 正交基 orthogonal basis 标准正交基 orthonormal basis Unity 模型空间、世界空间左手坐标系（相机前向为z轴负方向，即观察空间中为右手坐标系） 点" />
 
 
 
@@ -34,7 +34,7 @@
 <meta name="generator" content="Hugo 0.64.1" />
 
 
-<link rel="canonical" href="https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/" />
+<link rel="canonical" href="https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/" />
 
 
 
@@ -58,23 +58,23 @@
 
 
 
-<meta property="og:title" content="【笔记】Shader 入门精要（一）渲染流水线" />
-<meta property="og:description" content="汤老师确实心系学生，在群里发了网易雷火的实习内推链接。在雷火的宣传页看到前辈新人5周做出来的游戏，完成度可以说是很高了，震撼花花。点开岗位，" />
+<meta property="og:title" content="【笔记】Shader 入门精要（三）数学基础" />
+<meta property="og:description" content="笛卡尔坐标系 二维 略。 三维 基矢量 basis vector 正交基 orthogonal basis 标准正交基 orthonormal basis Unity 模型空间、世界空间左手坐标系（相机前向为z轴负方向，即观察空间中为右手坐标系） 点" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/" />
-<meta property="article:published_time" content="2020-02-25T08:47:07+09:00" />
-<meta property="article:modified_time" content="2020-02-25T08:47:07+09:00" />
-<meta itemprop="name" content="【笔记】Shader 入门精要（一）渲染流水线">
-<meta itemprop="description" content="汤老师确实心系学生，在群里发了网易雷火的实习内推链接。在雷火的宣传页看到前辈新人5周做出来的游戏，完成度可以说是很高了，震撼花花。点开岗位，">
-<meta itemprop="datePublished" content="2020-02-25T08:47:07&#43;09:00" />
-<meta itemprop="dateModified" content="2020-02-25T08:47:07&#43;09:00" />
-<meta itemprop="wordCount" content="1034">
+<meta property="og:url" content="https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/" />
+<meta property="article:published_time" content="2020-02-27T01:02:33+09:00" />
+<meta property="article:modified_time" content="2020-02-27T01:02:33+09:00" />
+<meta itemprop="name" content="【笔记】Shader 入门精要（三）数学基础">
+<meta itemprop="description" content="笛卡尔坐标系 二维 略。 三维 基矢量 basis vector 正交基 orthogonal basis 标准正交基 orthonormal basis Unity 模型空间、世界空间左手坐标系（相机前向为z轴负方向，即观察空间中为右手坐标系） 点">
+<meta itemprop="datePublished" content="2020-02-27T01:02:33&#43;09:00" />
+<meta itemprop="dateModified" content="2020-02-27T01:02:33&#43;09:00" />
+<meta itemprop="wordCount" content="1298">
 
 
 
 <meta itemprop="keywords" content="Shader,Shader 入门精要," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="【笔记】Shader 入门精要（一）渲染流水线"/>
-<meta name="twitter:description" content="汤老师确实心系学生，在群里发了网易雷火的实习内推链接。在雷火的宣传页看到前辈新人5周做出来的游戏，完成度可以说是很高了，震撼花花。点开岗位，"/>
+<meta name="twitter:title" content="【笔记】Shader 入门精要（三）数学基础"/>
+<meta name="twitter:description" content="笛卡尔坐标系 二维 略。 三维 基矢量 basis vector 正交基 orthogonal basis 标准正交基 orthonormal basis Unity 模型空间、世界空间左手坐标系（相机前向为z轴负方向，即观察空间中为右手坐标系） 点"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -279,17 +279,17 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">【笔记】Shader 入门精要（一）渲染流水线</h1>
+      <h1 class="post-title">【笔记】Shader 入门精要（三）数学基础</h1>
       
       <div class="post-meta">
-        <time datetime="2020-02-25" class="post-time">
-          2020-02-25
+        <time datetime="2020-02-27" class="post-time">
+          2020-02-27
         </time>
         <div class="post-category">
             <a href="https://disorder.ink/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
             
           </div>
-        <span class="more-meta"> 约 1034 字 </span>
+        <span class="more-meta"> 约 1298 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
 
         
@@ -311,32 +311,45 @@
   <div class="post-toc-content" style="text-align:left;">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#什么是渲染">什么是渲染</a></li>
-    <li><a href="#概念阶段">概念阶段</a>
+    <li><a href="#笛卡尔坐标系">笛卡尔坐标系</a>
       <ul>
-        <li><a href="#应用阶段cpu">应用阶段（CPU）</a></li>
-        <li><a href="#几何阶段gpu">几何阶段（GPU）</a></li>
-        <li><a href="#光栅化阶段gpu">光栅化阶段（GPU）</a></li>
+        <li><a href="#二维">二维</a></li>
+        <li><a href="#三维">三维</a></li>
       </ul>
     </li>
-    <li><a href="#gpu-流水线">GPU 流水线</a>
+    <li><a href="#点和矢量">点和矢量</a>
       <ul>
-        <li><a href="#顶点着色器">顶点着色器</a></li>
-        <li><a href="#裁剪">裁剪</a></li>
-        <li><a href="#屏幕映射">屏幕映射</a></li>
-        <li><a href="#三角形设置">三角形设置</a></li>
-        <li><a href="#三角形遍历">三角形遍历</a></li>
-        <li><a href="#片元着色器">片元着色器</a></li>
-        <li><a href="#逐片元操作">逐片元操作</a></li>
+        <li><a href="#矢量间乘法">矢量间乘法</a></li>
       </ul>
     </li>
-    <li><a href="#draw-call">Draw Call</a>
+    <li><a href="#矩阵">矩阵</a>
       <ul>
-        <li><a href="#定义">定义</a></li>
-        <li><a href="#减少开销">减少开销</a></li>
+        <li><a href="#矩阵乘法">矩阵乘法</a></li>
+        <li><a href="#逆矩阵">逆矩阵</a></li>
+        <li><a href="#正交矩阵">正交矩阵</a></li>
+        <li><a href="#行列矩阵">行/列矩阵</a></li>
       </ul>
     </li>
-    <li><a href="#shader">Shader</a></li>
+    <li><a href="#变换">变换</a>
+      <ul>
+        <li><a href="#线性变换">线性变换</a></li>
+        <li><a href="#仿射变换">仿射变换</a></li>
+        <li><a href="#复合变换">复合变换</a></li>
+      </ul>
+    </li>
+    <li><a href="#坐标空间">坐标空间</a>
+      <ul>
+        <li><a href="#空间转换">空间转换</a></li>
+        <li><a href="#转换流程">转换流程</a></li>
+      </ul>
+    </li>
+    <li><a href="#法线变换">法线变换</a></li>
+    <li><a href="#unity-shader-的内置变量">Unity Shader 的内置变量</a>
+      <ul>
+        <li><a href="#变换矩阵">变换矩阵</a></li>
+        <li><a href="#内置参数">内置参数</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -345,63 +358,77 @@
 
     
     <div class="post-content">
-      <p>汤老师确实心系学生，在群里发了网易雷火的实习内推链接。在雷火的<a href="http://leihuo.163.com/2019/rencai/">宣传页</a>看到前辈新人5周做出来的游戏，完成度可以说是很高了，震撼花花。点开岗位，看到了<a href="https://campus.163.com/app/jobDetail/index?projectId=25&amp;id=625">技术美术工程师</a>，想起选专业的时候就研究过<del>数媒对口岗位</del> TA，感觉相性很好所以在持续关注，看过拳头的<a href="https://www.bilibili.com/video/av41216445?from=search&amp;seid=15641735924452657164">技术美术介绍</a>，又在B站收藏过霜狼大佬的 <a href="https://www.bilibili.com/video/av77755500">TA 学习体系框架</a>，甚至还加了群。然而也就仅限于此了，并没有更进一步的实际的努力过。总感觉是无法做到的事情所以不去做，自我设限也要有个限度啊！<del>禁止套娃</del></p>
-<p>于是就想努力往这个方向做做尝试。离校招（实习）截止还有一个多月，我也要加油了。就算不去提前实习，只要不停下来，（知识的）道路就会不断延伸！</p>
-<p>脚踏实地，第一步就是打开《Unity Shader 入门精要》啃。为了提高效率，建议做下笔记。400页，每天 10 页起步，上不封顶。</p>
-<h1 id="渲染流水线">渲染流水线</h1>
-<h2 id="什么是渲染">什么是渲染</h2>
-<p>输入三维场景数据（顶点、纹理、摄像机坐标等信息），输出二维图像。</p>
-<h2 id="概念阶段">概念阶段</h2>
-<h3 id="应用阶段cpu">应用阶段（CPU）</h3>
-<p>输入：场景数据（相机、模型、光源），模型的渲染状态（材质、纹理、Shader）</p>
-<p>输出：渲染图元（点、线、三角面等）</p>
-<h3 id="几何阶段gpu">几何阶段（GPU）</h3>
-<p>输出：屏幕空间中的<strong>二维顶点坐标</strong>、对应的深度、着色等信息。</p>
-<h3 id="光栅化阶段gpu">光栅化阶段（GPU）</h3>
-<p>输出：屏幕上的像素（二维图像）</p>
-<h2 id="gpu-流水线">GPU 流水线</h2>
-<p><img src="http://static.zybuluo.com/candycat/jundxsf604yuoy2zr3r1qkzp/GPU%E6%B5%81%E6%B0%B4%E7%BA%BF.png" alt=""></p>
-<h3 id="顶点着色器">顶点着色器</h3>
+      <h2 id="笛卡尔坐标系">笛卡尔坐标系</h2>
+<h3 id="二维">二维</h3>
+<p>略。</p>
+<h3 id="三维">三维</h3>
 <ul>
-<li>
-<p>坐标变换</p>
-</li>
-<li>
-<p>计算颜色</p>
-</li>
-<li>
-<p><strong>从模型空间转换到齐次裁剪空间</strong>（必要）输出后硬件会做透视除法，得到归一化设备坐标（Nocmalized Device Coordinates）</p>
-</li>
+<li>基矢量 basis vector</li>
+<li>正交基 orthogonal basis</li>
+<li>标准正交基 orthonormal basis</li>
 </ul>
-<h3 id="裁剪">裁剪</h3>
-<p>将单位立方体外的图元舍弃。</p>
-<h3 id="屏幕映射">屏幕映射</h3>
-<p>将图元的 xy 坐标转换到屏幕坐标系（2维）。这和 z 坐标一起构成了窗口坐标系（3维）。</p>
-<h3 id="三角形设置">三角形设置</h3>
-<p>计算三角网格表示数据。</p>
-<h3 id="三角形遍历">三角形遍历</h3>
-<p>根据三角网格数据检查每个像素是否被三角网格覆盖，如果被覆盖则插值后在窗口坐标系中生成一个片元（fragment）</p>
-<h3 id="片元着色器">片元着色器</h3>
-<p>将片元着色。完成纹理采样等渲染技术。</p>
-<h3 id="逐片元操作">逐片元操作</h3>
-<p>输出合并阶段。对每一个片元进行操作。</p>
-<ul>
-<li>通过深度测试、模板测试等工作决定片元的可见性（实践中可能在着色之前进行以提高性能）</li>
-<li>将片元的颜色值和颜色缓冲区中的颜色合并</li>
-</ul>
-<h2 id="draw-call">Draw Call</h2>
-<h3 id="定义">定义</h3>
-<p>CPU 对图像编程接口的调用，以命令 GPU 进行渲染相关操作。<strong>渲染速度往往快于 CPU 提交命令的速度</strong>，所以性能问题的元凶通常是 CPU 发送指令改变渲染状态的次数过多。</p>
-<p><img src="http://static.zybuluo.com/candycat/h9oh7t35lbjrgogxywarmu55/CommandBuffer.png" alt=""></p>
-<h3 id="减少开销">减少开销</h3>
-<p>使用批处理（Batching）的方法，减少 DrawCall 的调用次数。</p>
-<ul>
-<li>合并小的网格</li>
-<li>避免使用过多的材质</li>
-</ul>
-<h2 id="shader">Shader</h2>
-<p>Shader 就是 GPU 流水线上的一些可高度编程的阶段。我们可以通过修改 Shader 实现对流水线中渲染细节的控制。</p>
-<p>同时，一个出色的效果需要包括 Shader 在内的所有渲染流水线阶段的共同参与。</p>
+<p>Unity 模型空间、世界空间左手坐标系（相机前向为z轴负方向，即观察空间中为右手坐标系）</p>
+<h2 id="点和矢量">点和矢量</h2>
+<h3 id="矢量间乘法">矢量间乘法</h3>
+<h4 id="点积dot-product-内积inner-product">点积（dot product）| 内积（inner product）</h4>
+<p>$$ a\cdot b= (|a|\hat a)\cdot (|b|\hat b) = |a||b|(\hat a\cdot\hat b) =|a||b|\cos\theta $$</p>
+<p>$$ a \cdot b=(a_x,a_y,a_z)\cdot (b_x,b_y,b_z)=a_xb_x+a_yb_y+a_zb_z $$</p>
+<p>二式可由一式、余弦定理及距离公式推得。</p>
+<h4 id="叉积corss-product-外积outer-product">叉积（corss product）| 外积（outer product）</h4>
+<p>$$ a\times b=(a_x,a_y,a_z)\times(b_x,b_y,b_z)=(a_yb_z-a_zb_y,a_zb_x-a_xb_z,a_xb_y-a_yb_x) $$</p>
+<p>$$ |a\times b|=|a||b|\sin\theta $$</p>
+<h2 id="矩阵">矩阵</h2>
+<h3 id="矩阵乘法">矩阵乘法</h3>
+<p>结果矩阵中的每个元素等于对应行矩阵和列矩阵的矢量点积。</p>
+<h3 id="逆矩阵">逆矩阵</h3>
+<p>可逆性：行列式不为 0（满秩）。（可通过累加任意一行展开后项与代数余子式积得到）</p>
+<p>求逆：初等行变换。</p>
+<p>不可逆说明变换降维丢失信息。</p>
+<h3 id="正交矩阵">正交矩阵</h3>
+<p>每行都是单位矢量。行与行间互相垂直。（列即行的转置）例如一组<strong>标准正交基</strong>。</p>
+<p>和其转置矩阵乘积为单位矩阵的矩阵。即逆矩阵等于转置矩阵。</p>
+<h3 id="行列矩阵">行/列矩阵</h3>
+<p>Unity 中通常将矢量转换为<strong>列矩阵</strong>$(x\quad y\quad z)^T $进行计算。因此通常是<strong>右乘</strong>，即$CBAv=(C(B(Av)))$ 。</p>
+<h2 id="变换">变换</h2>
+<h3 id="线性变换">线性变换</h3>
+<p>指可以保留矢量加和标量乘的变换。包括<strong>旋转</strong>、<strong>缩放</strong>、错切、镜像、正交投影等。使用 3×3 的矩阵就可以表示。</p>
+<h3 id="仿射变换">仿射变换</h3>
+<p>在线性变换的基础上增加了平移变换。需要把矢量扩展到齐次坐标空间（四维）。使用 4×4 的矩阵。</p>
+<h3 id="复合变换">复合变换</h3>
+<p>多个仿射变换的组合。为便于理解和使用，通常先<strong>缩放</strong>，再<strong>旋转</strong>，最后<strong>平移</strong>。</p>
+<p>在旋转中， Unity 的三轴旋转顺序是 <strong>zxy</strong>（虽然是右乘，但不旋转坐标系，直接表示为$M_{Z\theta }M_{X\theta }M_{Y\theta }$）</p>
+<h2 id="坐标空间">坐标空间</h2>
+<h3 id="空间转换">空间转换</h3>
+<p>给定子坐标空间 C 中一点 $A_c = (a,b,c)$。已知自坐标空间原点 $O_c$，及坐标轴在父坐标空间 P 下的表示$x_c,y_c,z_c$。要确定 $A_p$ ，需要从原点开始，分别向 x,y,z 轴方向平移 a,b,c 个单位。</p>
+<p>$$ A_p = M_{c\rightarrow p}A_c$$</p>
+<p>$$M_{c\rightarrow p}= \begin{bmatrix}| &amp; | &amp; | &amp; |\  x_c &amp; y_c &amp; z_c &amp; O_c\ | &amp; | &amp; | &amp; |\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}$$</p>
+<p>$$ M_{p\rightarrow c} =M_{c\rightarrow p}^{-1} $$ 。</p>
+<p>当对方向的坐标空间进行变换时，原点变换可以忽略。故仅需左上角的 3×3 矩阵。</p>
+<p>当原点不变时，转换矩阵是正交矩阵，有 $$ M_{p\rightarrow c} =M_{c\rightarrow p}^{-1}= M_{c\rightarrow p}^T $$ 。</p>
+<h3 id="转换流程">转换流程</h3>
+<h4 id="模型空间">模型空间</h4>
+<p>模型的顶点信息里使用的的坐标空间。</p>
+<h4 id="世界空间">世界空间</h4>
+<p>我们所关心的最外层的坐标空间，用来描述绝对位置。</p>
+<h4 id="观察空间">观察空间</h4>
+<p>以相机为原点，<strong>右手坐标系</strong>，-z 轴指向摄像机前方（对编程无太大影响）。除了计算坐标系后求得转换矩阵的逆矩阵，还可以想象平移整个观察空间，将相机反向变换到原点且坐标轴重合，以获得变换矩阵。</p>
+<h4 id="裁剪空间">裁剪空间</h4>
+<p>通过投影矩阵将顶点转换到裁剪空间，为投影（三维到二维）做准备。</p>
+<h4 id="屏幕空间">屏幕空间</h4>
+<p>经过透视除法，得到 NDC （范围为 [-1,1] ） 。然后进行屏幕映射。（视口空间范围为 [0,1] ）</p>
+<h4 id="总结">总结</h4>
+<p><img src="http://static.zybuluo.com/candycat/z0ibvp779phr1hb0l902n1qy/vertex_conversion.png" alt="vertex_conversion.png-100.9kB"></p>
+<h2 id="法线变换">法线变换</h2>
+<p>切线和法线都是模型顶点携带的额外信息。如果直接使用变换矩阵对法线进行变换，可能使新法线不与表面垂直了 。变换矩阵有如下关系</p>
+<p>$$G = (M^T_{A\rightarrow B}) ^{-1} = (M^{-1}_{A\rightarrow B}) ^{T}  $$</p>
+<p>当 $M_{A\rightarrow B}$ 为正交矩阵（只包含旋转变换），则可使用原变换矩阵。</p>
+<h2 id="unity-shader-的内置变量">Unity Shader 的内置变量</h2>
+<p>先上参考路径<code>U3D\2020.1.0a12\Editor\Data\CGIncludes\UnityShaderVariables.cginc</code></p>
+<h3 id="变换矩阵">变换矩阵</h3>
+<p>UNITY_MATRIX_MVP 指经过 模型（M）观察（V）投影（P）变换的矩阵。</p>
+<p>UNITY_MATRIX_IT_MV 指经过 逆（I）转置（T）的模型·观察矩阵。可以用来变换法线。</p>
+<h3 id="内置参数">内置参数</h3>
+<p>见参考文件内注释。</p>
 
     </div>
 
@@ -415,7 +442,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-      2020-02-25
+      2020-02-27
       
     </span>
   </p>
@@ -456,22 +483,9 @@
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/">
-            
-            <i class="iconfont">
-              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-            </i>
-            <span class="prev-text nav-default">【笔记】Shader 入门精要（二）Unity Shader</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/">
-            <span class="next-text nav-default">【博客升级】点击计数和动态背景</span>
+          <a class="next" href="/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/">
+            <span class="next-text nav-default">【笔记】Shader 入门精要（二）Unity Shader</span>
             <span class="prev-text nav-mobile">下一篇</span>
             
             <i class="iconfont">

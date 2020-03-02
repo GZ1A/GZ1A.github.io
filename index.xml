@@ -6,10 +6,92 @@
     <description>Recent content on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 26 Feb 2020 02:08:40 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 27 Feb 2020 01:02:33 +0900</lastBuildDate>
     
         <atom:link href="https://disorder.ink/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【笔记】Shader 入门精要（三）数学基础</title>
+      <link>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/</link>
+      <pubDate>Thu, 27 Feb 2020 01:02:33 +0900</pubDate>
+      
+      <guid>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/</guid>
+      
+        <description>&lt;h2 id=&#34;笛卡尔坐标系&#34;&gt;笛卡尔坐标系&lt;/h2&gt;
+&lt;h3 id=&#34;二维&#34;&gt;二维&lt;/h3&gt;
+&lt;p&gt;略。&lt;/p&gt;
+&lt;h3 id=&#34;三维&#34;&gt;三维&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;基矢量 basis vector&lt;/li&gt;
+&lt;li&gt;正交基 orthogonal basis&lt;/li&gt;
+&lt;li&gt;标准正交基 orthonormal basis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Unity 模型空间、世界空间左手坐标系（相机前向为z轴负方向，即观察空间中为右手坐标系）&lt;/p&gt;
+&lt;h2 id=&#34;点和矢量&#34;&gt;点和矢量&lt;/h2&gt;
+&lt;h3 id=&#34;矢量间乘法&#34;&gt;矢量间乘法&lt;/h3&gt;
+&lt;h4 id=&#34;点积dot-product-内积inner-product&#34;&gt;点积（dot product）| 内积（inner product）&lt;/h4&gt;
+&lt;p&gt;$$ a\cdot b= (|a|\hat a)\cdot (|b|\hat b) = |a||b|(\hat a\cdot\hat b) =|a||b|\cos\theta $$&lt;/p&gt;
+&lt;p&gt;$$ a \cdot b=(a_x,a_y,a_z)\cdot (b_x,b_y,b_z)=a_xb_x+a_yb_y+a_zb_z $$&lt;/p&gt;
+&lt;p&gt;二式可由一式、余弦定理及距离公式推得。&lt;/p&gt;
+&lt;h4 id=&#34;叉积corss-product-外积outer-product&#34;&gt;叉积（corss product）| 外积（outer product）&lt;/h4&gt;
+&lt;p&gt;$$ a\times b=(a_x,a_y,a_z)\times(b_x,b_y,b_z)=(a_yb_z-a_zb_y,a_zb_x-a_xb_z,a_xb_y-a_yb_x) $$&lt;/p&gt;
+&lt;p&gt;$$ |a\times b|=|a||b|\sin\theta $$&lt;/p&gt;
+&lt;h2 id=&#34;矩阵&#34;&gt;矩阵&lt;/h2&gt;
+&lt;h3 id=&#34;矩阵乘法&#34;&gt;矩阵乘法&lt;/h3&gt;
+&lt;p&gt;结果矩阵中的每个元素等于对应行矩阵和列矩阵的矢量点积。&lt;/p&gt;
+&lt;h3 id=&#34;逆矩阵&#34;&gt;逆矩阵&lt;/h3&gt;
+&lt;p&gt;可逆性：行列式不为 0（满秩）。（可通过累加任意一行展开后项与代数余子式积得到）&lt;/p&gt;
+&lt;p&gt;求逆：初等行变换。&lt;/p&gt;
+&lt;p&gt;不可逆说明变换降维丢失信息。&lt;/p&gt;
+&lt;h3 id=&#34;正交矩阵&#34;&gt;正交矩阵&lt;/h3&gt;
+&lt;p&gt;每行都是单位矢量。行与行间互相垂直。（列即行的转置）例如一组&lt;strong&gt;标准正交基&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;和其转置矩阵乘积为单位矩阵的矩阵。即逆矩阵等于转置矩阵。&lt;/p&gt;
+&lt;h3 id=&#34;行列矩阵&#34;&gt;行/列矩阵&lt;/h3&gt;
+&lt;p&gt;Unity 中通常将矢量转换为&lt;strong&gt;列矩阵&lt;/strong&gt;$(x\quad y\quad z)^T $进行计算。因此通常是&lt;strong&gt;右乘&lt;/strong&gt;，即$CBAv=(C(B(Av)))$ 。&lt;/p&gt;
+&lt;h2 id=&#34;变换&#34;&gt;变换&lt;/h2&gt;
+&lt;h3 id=&#34;线性变换&#34;&gt;线性变换&lt;/h3&gt;
+&lt;p&gt;指可以保留矢量加和标量乘的变换。包括&lt;strong&gt;旋转&lt;/strong&gt;、&lt;strong&gt;缩放&lt;/strong&gt;、错切、镜像、正交投影等。使用 3×3 的矩阵就可以表示。&lt;/p&gt;
+&lt;h3 id=&#34;仿射变换&#34;&gt;仿射变换&lt;/h3&gt;
+&lt;p&gt;在线性变换的基础上增加了平移变换。需要把矢量扩展到齐次坐标空间（四维）。使用 4×4 的矩阵。&lt;/p&gt;
+&lt;h3 id=&#34;复合变换&#34;&gt;复合变换&lt;/h3&gt;
+&lt;p&gt;多个仿射变换的组合。为便于理解和使用，通常先&lt;strong&gt;缩放&lt;/strong&gt;，再&lt;strong&gt;旋转&lt;/strong&gt;，最后&lt;strong&gt;平移&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;在旋转中， Unity 的三轴旋转顺序是 &lt;strong&gt;zxy&lt;/strong&gt;（虽然是右乘，但不旋转坐标系，直接表示为$M_{Z\theta }M_{X\theta }M_{Y\theta }$）&lt;/p&gt;
+&lt;h2 id=&#34;坐标空间&#34;&gt;坐标空间&lt;/h2&gt;
+&lt;h3 id=&#34;空间转换&#34;&gt;空间转换&lt;/h3&gt;
+&lt;p&gt;给定子坐标空间 C 中一点 $A_c = (a,b,c)$。已知自坐标空间原点 $O_c$，及坐标轴在父坐标空间 P 下的表示$x_c,y_c,z_c$。要确定 $A_p$ ，需要从原点开始，分别向 x,y,z 轴方向平移 a,b,c 个单位。&lt;/p&gt;
+&lt;p&gt;$$ A_p = M_{c\rightarrow p}A_c$$&lt;/p&gt;
+&lt;p&gt;$$M_{c\rightarrow p}= \begin{bmatrix}| &amp;amp; | &amp;amp; | &amp;amp; |\  x_c &amp;amp; y_c &amp;amp; z_c &amp;amp; O_c\ | &amp;amp; | &amp;amp; | &amp;amp; |\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \end{bmatrix}$$&lt;/p&gt;
+&lt;p&gt;$$ M_{p\rightarrow c} =M_{c\rightarrow p}^{-1} $$ 。&lt;/p&gt;
+&lt;p&gt;当对方向的坐标空间进行变换时，原点变换可以忽略。故仅需左上角的 3×3 矩阵。&lt;/p&gt;
+&lt;p&gt;当原点不变时，转换矩阵是正交矩阵，有 $$ M_{p\rightarrow c} =M_{c\rightarrow p}^{-1}= M_{c\rightarrow p}^T $$ 。&lt;/p&gt;
+&lt;h3 id=&#34;转换流程&#34;&gt;转换流程&lt;/h3&gt;
+&lt;h4 id=&#34;模型空间&#34;&gt;模型空间&lt;/h4&gt;
+&lt;p&gt;模型的顶点信息里使用的的坐标空间。&lt;/p&gt;
+&lt;h4 id=&#34;世界空间&#34;&gt;世界空间&lt;/h4&gt;
+&lt;p&gt;我们所关心的最外层的坐标空间，用来描述绝对位置。&lt;/p&gt;
+&lt;h4 id=&#34;观察空间&#34;&gt;观察空间&lt;/h4&gt;
+&lt;p&gt;以相机为原点，&lt;strong&gt;右手坐标系&lt;/strong&gt;，-z 轴指向摄像机前方（对编程无太大影响）。除了计算坐标系后求得转换矩阵的逆矩阵，还可以想象平移整个观察空间，将相机反向变换到原点且坐标轴重合，以获得变换矩阵。&lt;/p&gt;
+&lt;h4 id=&#34;裁剪空间&#34;&gt;裁剪空间&lt;/h4&gt;
+&lt;p&gt;通过投影矩阵将顶点转换到裁剪空间，为投影（三维到二维）做准备。&lt;/p&gt;
+&lt;h4 id=&#34;屏幕空间&#34;&gt;屏幕空间&lt;/h4&gt;
+&lt;p&gt;经过透视除法，得到 NDC （范围为 [-1,1] ） 。然后进行屏幕映射。（视口空间范围为 [0,1] ）&lt;/p&gt;
+&lt;h4 id=&#34;总结&#34;&gt;总结&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;http://static.zybuluo.com/candycat/z0ibvp779phr1hb0l902n1qy/vertex_conversion.png&#34; alt=&#34;vertex_conversion.png-100.9kB&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;法线变换&#34;&gt;法线变换&lt;/h2&gt;
+&lt;p&gt;切线和法线都是模型顶点携带的额外信息。如果直接使用变换矩阵对法线进行变换，可能使新法线不与表面垂直了 。变换矩阵有如下关系&lt;/p&gt;
+&lt;p&gt;$$G = (M^T_{A\rightarrow B}) ^{-1} = (M^{-1}_{A\rightarrow B}) ^{T}  $$&lt;/p&gt;
+&lt;p&gt;当 $M_{A\rightarrow B}$ 为正交矩阵（只包含旋转变换），则可使用原变换矩阵。&lt;/p&gt;
+&lt;h2 id=&#34;unity-shader-的内置变量&#34;&gt;Unity Shader 的内置变量&lt;/h2&gt;
+&lt;p&gt;先上参考路径&lt;code&gt;U3D\2020.1.0a12\Editor\Data\CGIncludes\UnityShaderVariables.cginc&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;变换矩阵&#34;&gt;变换矩阵&lt;/h3&gt;
+&lt;p&gt;UNITY_MATRIX_MVP 指经过 模型（M）观察（V）投影（P）变换的矩阵。&lt;/p&gt;
+&lt;p&gt;UNITY_MATRIX_IT_MV 指经过 逆（I）转置（T）的模型·观察矩阵。可以用来变换法线。&lt;/p&gt;
+&lt;h3 id=&#34;内置参数&#34;&gt;内置参数&lt;/h3&gt;
+&lt;p&gt;见参考文件内注释。&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>【笔记】Shader 入门精要（二）Unity Shader</title>
@@ -1007,7 +1089,7 @@ and the repository exists.
     </item>
     
     <item>
-      <title>【博客升级】码云图床 &amp; PicGo</title>
+      <title>【博客升级】插入图片吧！码云图床 &amp; PicGo</title>
       <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/</link>
       <pubDate>Fri, 14 Feb 2020 23:58:48 +0800</pubDate>
       
@@ -1054,16 +1136,41 @@ git push origin master -u
 &lt;p&gt;这样可以起到图片归档的效果，方便日后处理，所以建议如图配置。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214065424.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;快捷键&#34;&gt;快捷键&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Update 20200302&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;建议使用下一种方法&lt;/em&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Typora 写文档，Snipaste 一键截图，PicGo 一键上传图片返回链接。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;统一快捷键之后，这些工具的组合提供了如丝滑般顺畅的工作体验。&lt;/p&gt;
-&lt;p&gt;**&lt;code&gt;Ctrl+Alt+A&lt;/code&gt;  的截图快捷键 **已经深入我心，在截图之后&lt;/p&gt;
-&lt;p&gt;**&lt;code&gt;Ctrl+Alt+S&lt;/code&gt; 的上传快捷键 **将剪切板里的截图保存到云端。最后一步&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;Ctrl+Alt+A&lt;/code&gt; 的截图快捷键&lt;/strong&gt; 已经深入我心，在截图之后&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;Ctrl+Alt+S&lt;/code&gt; 的上传快捷键&lt;/strong&gt; 将剪切板里的截图保存到云端。最后一步&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;code&gt;Ctrl+V&lt;/code&gt; 粘贴&lt;/strong&gt; ，将 MarkDown 格式的图片链接粘贴到文档里。破费~&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214070516.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;顺便一提，Snipaste 确实比 TIM / QQ 的截图好用，建议下载 @&lt;a href=&#34;https://zh.snipaste.com/&#34;&gt;Snipaste&lt;/a&gt; 。突然想到还有一个截 GIF 工具 ScreenToGif @&lt;a href=&#34;https://www.screentogif.com/?l=z&#34;&gt;ScreenToGif&lt;/a&gt;  ，虽然由于码云的限制，图片大小必须要控制到 1M 以内。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/ETO.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/ETO.gif&#34;  /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;自动上传&#34;&gt;自动上传&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Update 20200302&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;人民群众喜闻乐见 &lt;del&gt;指点了忽略所以直到又更新了才发现上个版本有新功能&lt;/del&gt; 的 Typora 下载更新来了！&lt;a href=&#34;https://support.typora.io/What&#39;s-New-0.9.84/&#34;&gt;0.9.84更新日志&lt;/a&gt;里提到的第一项就是新增&lt;strong&gt;上传图片&lt;/strong&gt;功能。还说明了可以用 PicGo。当然是要赶紧试一下了。先上&lt;a href=&#34;https://support.typora.io/Upload-Image/#picgoapp-chinese-language-only&#34;&gt;官方文档&lt;/a&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;配置&#34;&gt;配置&lt;/h4&gt;
+&lt;p&gt;以上文配置完成的 PicGo(app) 为例，尝试一下上传图片。首先打开 Typora ，从左上角菜单栏进入&lt;code&gt;文件-&amp;gt;偏好设置-&amp;gt;图像&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://support.typora.io/media/image-upload/picgo.PNG&#34; alt=&#34;picgo&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;上传服务&lt;/code&gt;中选择上传服务为 &lt;code&gt;PicGo(app)&lt;/code&gt;。根据安装位置配置好 &lt;code&gt;PicGo 路径&lt;/code&gt;。（只有编辑器语言为中文时才会出现 PicGo）然后点击&lt;code&gt;验证图片上传选项&lt;/code&gt;。如果测试成功，那就没事了。然而我失败了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200302083120.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;这里测试使用的是本地的 36677 端口。再打开 PicGo 对照一下&lt;code&gt;PicGo设置-&amp;gt;设置Server&lt;/code&gt;里的监听端口。确实不一样。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200302083705.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;那么只要把这里的端口也改为 &lt;code&gt;36677&lt;/code&gt; 就可以了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200302083815.png&#34;  /&gt;&lt;/p&gt;
+&lt;h4 id=&#34;使用方法&#34;&gt;使用方法&lt;/h4&gt;
+&lt;h5 id=&#34;全文一键上传推荐&#34;&gt;全文一键上传（推荐）&lt;/h5&gt;
+&lt;p&gt;通过 &lt;code&gt;格式-&amp;gt;图像-&amp;gt;上传所有本地图片&lt;/code&gt; 来完成上传。可以减少写作时的操作和网络需求，只需要在发布前进行一次上传就可以了。同时本地修改完善时用到的图片不会被上传到云端。安全且快捷。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/image-20200302093729324.png&#34; alt=&#34;image-20200302093729324&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;右键上传&#34;&gt;右键上传&lt;/h5&gt;
+&lt;p&gt;在文档内的图片上右键呼出菜单，就可以通过 &lt;code&gt;上传图片&lt;/code&gt; 完成对 PicGo 的调用。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/image-20200302090139020.png&#34; alt=&#34;image-20200302090139020&#34;  /&gt;&lt;/p&gt;
+&lt;h5 id=&#34;插入时上传&#34;&gt;插入时上传&lt;/h5&gt;
+&lt;p&gt;如图修改 Typora 的图像设置。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/image-20200302084027027.png&#34; alt=&#34;image-20200302084027027&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;这样在截图或者使用本地图片的时候不用手动上传，只需要把图片粘贴到文档里就会自动调用 PicGo 上传。减少一个快捷键可以提供更加顺畅的工作体验。然而个人有一点不可控的感觉，且没有网的时候就会主动报错。&lt;/p&gt;
 </description>
       
     </item>
