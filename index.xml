@@ -6,10 +6,321 @@
     <description>Recent content on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 27 Feb 2020 01:02:33 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 02 Mar 2020 22:03:49 +0900</lastBuildDate>
     
         <atom:link href="https://disorder.ink/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【笔记】Shader 入门精要（四） Shader 基础</title>
+      <link>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/</link>
+      <pubDate>Mon, 02 Mar 2020 22:03:49 +0900</pubDate>
+      
+      <guid>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/</guid>
+      
+        <description>&lt;p&gt;终于来到实践环节了！可喜可贺可喜可贺。&lt;/p&gt;
+&lt;h2 id=&#34;顶点片元着色器&#34;&gt;顶点/片元着色器&lt;/h2&gt;
+&lt;p&gt;模型的每个顶点会调用顶点着色器。顶点间插值得到许多片元（像素）。每个片元会调用片元着色器。&lt;/p&gt;
+&lt;h3 id=&#34;整体结构&#34;&gt;整体结构&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Shader &amp;#34;MyShader&amp;#34; {
+	Properties {
+		// props
+	}
+	SubShader {
+		// 针对显卡 A 的 SubShader
+		Pass {
+        	// 设置渲染状态和标签
+        	
+        	// CG 代码片段
+        	CGPROGRAM
+        	// 编译指令 
+        	// 通知 Unity 包含 vertex shader 的函数名
+        	#pragma vertex vert
+        	// 通知 Unity 包含 fragment Shader 的函数名
+        	#pragma fragment frag
+        	
+        	// CG 代码
+        	
+        	ENDCG
+        	
+        	//其他设置
+        }
+	}
+	SubShader {
+		// 针对显卡 B 的 SubShader
+	}
+	
+	Fallback &amp;#34;VertexLit&amp;#34; // 保底 Shader
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;语义&#34;&gt;语义&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;float4 vert(float4 v : POSITION) : SV_POSITION {
+	// return mul (UNITY_MATRIX_MVP, v);
+	// 新版被替换为如下代码
+	return UnityObjectToClipPos (v);
+}
+fixed3 frag() : SV_Target {
+	return fixed4(1,1,1,1);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;语义（semantics），CG/HLSL 中的语法，如 &lt;code&gt;POSITION&lt;/code&gt;,&lt;code&gt;SV_POSITION&lt;/code&gt;,&lt;code&gt;SV_Target&lt;/code&gt;。语义可以告诉系统，用户的输入和输出是什么，并&lt;strong&gt;交由系统赋值&lt;/strong&gt;。这里的&lt;code&gt;POSITION&lt;/code&gt;告知了 Unity 要把模型的顶点坐标赋给参数 v，&lt;code&gt;SV_POSITION&lt;/code&gt;告知了顶点着色器输出的是裁剪空间中的的顶点坐标，&lt;code&gt;SV_Target&lt;/code&gt;让渲染器把输出存储到一个渲染目标中（这里是帧缓存）。&lt;/p&gt;
+&lt;p&gt;对于自定义的结构体，创建时变量也会被赋值。在每帧的 Draw Call 时， Mesh Render 组件会把它赋值的模型数据发送给 Unity Shader。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;struct a2v { // application to vertex shader
+    float4 vertex : POSITION;	// 位置
+    float3 normal : NORMAL;		// 顶点法向量
+    float4 texcoord : TEXCOORD0;// 第0个纹理坐标
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;struct v2f { // vertex to fragment
+	float4 pos : SV_POSITION;	// 裁剪空间内位置
+	fixed3 color : COLOR0;		// 第0个颜色
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;属性&#34;&gt;属性&lt;/h3&gt;
+&lt;p&gt;在 Shader 开头的属性语义块中声明的变量可以在 Unity 的材质面板中方便的操控。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Properties{
+	_Color (&amp;#34;Color Tint&amp;#34;, Color) = (1.0,1.0,1.0,1.0)
+}
+// ...
+fixed4 _Color;	// 在 CG 代码中定义变量
+// ...
+fixed3 frag(v2f i) : SV_Target {
+	fixed3 c = i.color;
+	c *= _Color.rgb;
+	return fixed4(c,1.0);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;定义一个属性需要在属性语义块中按照格式进行定义。同时还要在 CG 代码中&lt;strong&gt;定义一个同名变量&lt;/strong&gt;以访问属性。Unity 会把属性的值赋给这个 CG 变量。&lt;/p&gt;
+&lt;h2 id=&#34;内置文件和变量&#34;&gt;内置文件和变量&lt;/h2&gt;
+&lt;p&gt;包含文件（include file）含有一些变量和帮助函数。可通过 #include 将 .cginc 文件包含进 Shader 中的 CG 代码从而使用其中内容。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;#include &amp;#34;UnityCG.cginc&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;有很多不同的包含文件。最常用的是 UnityCG.cginc 。其中包含的结构体定义、变量和函数的具体说明建议直接查看 &lt;code&gt;安装路径/Data/CGIncludes/UnityCG.cginc&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;语义-1&#34;&gt;语义&lt;/h2&gt;
+&lt;h3 id=&#34;定义&#34;&gt;定义&lt;/h3&gt;
+&lt;p&gt;表达参数含义的字符串。有时输入和输出的语义名字一样但含义不一样，如&lt;code&gt;TEXCOORD0&lt;/code&gt;作为输入语义指第一组纹理坐标，作为输出语义就不是了。&lt;/p&gt;
+&lt;p&gt;DirectX 10 以后定义了系统数值语义（system-value semantics），以 SV 开头。在某些平台，这些语义代表了该变量是流水线要用到的变量。为了更好的跨平台性，建议使用。&lt;/p&gt;
+&lt;h3 id=&#34;unity-常用语义&#34;&gt;Unity 常用语义&lt;/h3&gt;
+&lt;p&gt;虽然没有使用 SV 开头，但 Unity 内部赋予了特殊含义的语义。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;语义&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;描述&lt;/th&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;POSITION&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;模型空间中的顶点位置 (以下是 a2v)&lt;/td&gt;
+&lt;td&gt;float4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;NORMAL&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;顶点法线&lt;/td&gt;
+&lt;td&gt;float3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;TANGENT&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;顶点切线&lt;/td&gt;
+&lt;td&gt;float4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;TEXCOORDn&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;纹理坐标，n为纹理下标&lt;/td&gt;
+&lt;td&gt;float2 / float4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;COLOR&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;顶点颜色&lt;/td&gt;
+&lt;td&gt;fixed4 / float4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;SV_POSITION&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;裁剪空间中的顶点位置 (以下是 v2f)&lt;/td&gt;
+&lt;td&gt;float4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;COLOR0 / 1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;输出第一 / 第二组顶点颜色&lt;/td&gt;
+&lt;td&gt;fixed4 / float4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;TEXCOORD0 ~ 7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;输出纹理坐标&lt;/td&gt;
+&lt;td&gt;float2 / float4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;SV_Target&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;渲染目标，等同 COLOR 语义（f 输出）&lt;/td&gt;
+&lt;td&gt;fixed4 / float4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;debug&#34;&gt;Debug&lt;/h2&gt;
+&lt;p&gt;Shader 由于不能输出，很难 Debug 。&lt;/p&gt;
+&lt;h3 id=&#34;假彩色图像&#34;&gt;假彩色图像&lt;/h3&gt;
+&lt;p&gt;最原始的方法，通过把变量映射到 0 到 1 间并作为颜色输出到屏幕上，进行数据可视化。例如可视化法线信息，使用&lt;a href=&#34;https://github.com/candycat1992/Unity_Shaders_Book/blob/master/Assets/Scripts/Chapter5/ColorPicker.cs&#34;&gt;拾色器&lt;/a&gt;脚本在屏幕上获取对应数据。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;v2f vert (appdata_full v) {
+	// ... 
+	o.color = v.normal * 0.5 + fixed3(0.5, 0.5, 0.5);
+	return o;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;C:/Users/GZ1A/AppData/Roaming/Typora/typora-user-images/image-20200305062550133.png&#34; alt=&#34;可视化法线信息&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;visual-studio&#34;&gt;Visual Studio&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.unity3d.com/Manual/SL-DebuggingD3D11ShadersWithVS.html&#34;&gt;Unity 官方文档&lt;/a&gt; 里写了。&lt;/p&gt;
+&lt;h1 id=&#34;等待填充&#34;&gt;【等待填充】&lt;/h1&gt;
+&lt;h3 id=&#34;帧调试器&#34;&gt;帧调试器&lt;/h3&gt;
+&lt;p&gt;停止渲染，精确到每一个渲染事件，可以实时查看效果，建议使用。但并没有很多过程信息。真需要信息还得看外部工具。不过帅就完事了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;C:/Users/GZ1A/AppData/Roaming/Typora/typora-user-images/image-20200305063715619.png&#34; alt=&#34;image-20200305063715619&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;代码规范&#34;&gt;代码规范&lt;/h2&gt;
+&lt;h3 id=&#34;数值类型&#34;&gt;数值类型&lt;/h3&gt;
+&lt;p&gt;CG / HLSL 中有 3 种精度的数值类型。通常的定义如下&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;数值类型&lt;/th&gt;
+&lt;th&gt;存储位数&lt;/th&gt;
+&lt;th&gt;精度范围&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;float&lt;/td&gt;
+&lt;td&gt;32&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;half&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;-60000 ~ 60000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;fixed&lt;/td&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;-2.0 ~ +2.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;在 PC 上，大多数 GPU 一律以最高精度计算。在移动平台上则会有不同范围和计算速度。尽可能使用精度较低的类型。&lt;/p&gt;
+&lt;h3 id=&#34;语法&#34;&gt;语法&lt;/h3&gt;
+&lt;p&gt;严格要求语法以更好的跨平台。&lt;/p&gt;
+&lt;h3 id=&#34;减少不必要的计算&#34;&gt;减少不必要的计算&lt;/h3&gt;
+&lt;p&gt;Shader Model 是微软提出的 Shader 能力分级。不同的 Shader Target 和着色器阶段可用的临时寄存器和指令数目都是不同的。&lt;/p&gt;
+&lt;p&gt;可通过指定更高等级的 Shader Target 消除错误（降低兼容性），但更好的方法是减少 Shader 中的运算。&lt;/p&gt;
+&lt;h3 id=&#34;慎用分支和循环&#34;&gt;慎用分支和循环&lt;/h3&gt;
+&lt;p&gt;由于底层实现不同， Shader 中大量流程控制可能导致性能成倍下降。尽量把计算向流水线上游移动或预计算，同时&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;条件变量多用常数&lt;/li&gt;
+&lt;li&gt;减少分支内指令&lt;/li&gt;
+&lt;li&gt;减少嵌套&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;不要除-0&#34;&gt;不要除 0&lt;/h3&gt;
+&lt;p&gt;rt&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>【笔记】Shader 入门精要（三）数学基础</title>
