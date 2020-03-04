@@ -162,7 +162,9 @@ v2f vert (appdata_full v) {
 }
 ```
 
-![可视化法线信息](C:/Users/GZ1A/AppData/Roaming/Typora/typora-user-images/image-20200305062550133.png)
+![可视化法线信息](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200305062550133.png)
+
+
 
 ### Visual Studio
 
@@ -174,7 +176,7 @@ v2f vert (appdata_full v) {
 
 停止渲染，精确到每一个渲染事件，可以实时查看效果，建议使用。但并没有很多过程信息。真需要信息还得看外部工具。不过帅就完事了。
 
-![image-20200305063715619](C:/Users/GZ1A/AppData/Roaming/Typora/typora-user-images/image-20200305063715619.png)
+![image-20200305063715619](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200305063715619.png)
 
 ## 代码规范
 
@@ -211,3 +213,10 @@ Shader Model 是微软提出的 Shader 能力分级。不同的 Shader Target �
 ### 不要除 0
 
 rt
+
+---
+
+![image-20200305071748712](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200305071417478.png)
+
+
+

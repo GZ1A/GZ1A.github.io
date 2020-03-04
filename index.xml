@@ -267,13 +267,13 @@ fixed3 frag(v2f i) : SV_Target {
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;C:/Users/GZ1A/AppData/Roaming/Typora/typora-user-images/image-20200305062550133.png&#34; alt=&#34;可视化法线信息&#34;&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200305062550133.png&#34; alt=&#34;可视化法线信息&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;visual-studio&#34;&gt;Visual Studio&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://docs.unity3d.com/Manual/SL-DebuggingD3D11ShadersWithVS.html&#34;&gt;Unity 官方文档&lt;/a&gt; 里写了。&lt;/p&gt;
 &lt;h1 id=&#34;等待填充&#34;&gt;【等待填充】&lt;/h1&gt;
 &lt;h3 id=&#34;帧调试器&#34;&gt;帧调试器&lt;/h3&gt;
 &lt;p&gt;停止渲染，精确到每一个渲染事件，可以实时查看效果，建议使用。但并没有很多过程信息。真需要信息还得看外部工具。不过帅就完事了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:/Users/GZ1A/AppData/Roaming/Typora/typora-user-images/image-20200305063715619.png&#34; alt=&#34;image-20200305063715619&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200305063715619.png&#34; alt=&#34;image-20200305063715619&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;代码规范&#34;&gt;代码规范&lt;/h2&gt;
 &lt;h3 id=&#34;数值类型&#34;&gt;数值类型&lt;/h3&gt;
 &lt;p&gt;CG / HLSL 中有 3 种精度的数值类型。通常的定义如下&lt;/p&gt;
@@ -318,6 +318,8 @@ fixed3 frag(v2f i) : SV_Target {
 &lt;/ul&gt;
 &lt;h3 id=&#34;不要除-0&#34;&gt;不要除 0&lt;/h3&gt;
 &lt;p&gt;rt&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200305071417478.png&#34; alt=&#34;image-20200305071748712&#34;&gt;&lt;/p&gt;
 </description>
       
     </item>
