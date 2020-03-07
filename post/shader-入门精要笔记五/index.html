@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>【笔记】Shader 入门精要（四）Shader 基础 - 昼阴夜阳</title>
+  <title>【笔记】Shader 入门精要（五）基础光照 - 昼阴夜阳</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="昼阴夜阳" />
-  <meta name="description" content="终于来到实践环节了！可喜可贺可喜可贺。 顶点/片元着色器 模型的每个顶点会调用顶点着色器。顶点间插值得到许多片元（像素）。每个片元会调用片元着色" />
+  <meta name="description" content="又是复习又是复习又是复习。可能这就是前置课程吧（指计算机图形学）。 原来复习完原理还要自己写着色器的啊，这波我的。图形学作业只要求了光追，确实" />
 
 
 
@@ -34,7 +34,7 @@
 <meta name="generator" content="Hugo 0.64.1" />
 
 
-<link rel="canonical" href="https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/" />
+<link rel="canonical" href="https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/" />
 
 
 
@@ -58,23 +58,23 @@
 
 
 
-<meta property="og:title" content="【笔记】Shader 入门精要（四）Shader 基础" />
-<meta property="og:description" content="终于来到实践环节了！可喜可贺可喜可贺。 顶点/片元着色器 模型的每个顶点会调用顶点着色器。顶点间插值得到许多片元（像素）。每个片元会调用片元着色" />
+<meta property="og:title" content="【笔记】Shader 入门精要（五）基础光照" />
+<meta property="og:description" content="又是复习又是复习又是复习。可能这就是前置课程吧（指计算机图形学）。 原来复习完原理还要自己写着色器的啊，这波我的。图形学作业只要求了光追，确实" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/" />
-<meta property="article:published_time" content="2020-03-02T22:03:49+09:00" />
-<meta property="article:modified_time" content="2020-03-02T22:03:49+09:00" />
-<meta itemprop="name" content="【笔记】Shader 入门精要（四）Shader 基础">
-<meta itemprop="description" content="终于来到实践环节了！可喜可贺可喜可贺。 顶点/片元着色器 模型的每个顶点会调用顶点着色器。顶点间插值得到许多片元（像素）。每个片元会调用片元着色">
-<meta itemprop="datePublished" content="2020-03-02T22:03:49&#43;09:00" />
-<meta itemprop="dateModified" content="2020-03-02T22:03:49&#43;09:00" />
-<meta itemprop="wordCount" content="1660">
+<meta property="og:url" content="https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/" />
+<meta property="article:published_time" content="2020-03-05T07:22:34+09:00" />
+<meta property="article:modified_time" content="2020-03-05T07:22:34+09:00" />
+<meta itemprop="name" content="【笔记】Shader 入门精要（五）基础光照">
+<meta itemprop="description" content="又是复习又是复习又是复习。可能这就是前置课程吧（指计算机图形学）。 原来复习完原理还要自己写着色器的啊，这波我的。图形学作业只要求了光追，确实">
+<meta itemprop="datePublished" content="2020-03-05T07:22:34&#43;09:00" />
+<meta itemprop="dateModified" content="2020-03-05T07:22:34&#43;09:00" />
+<meta itemprop="wordCount" content="2236">
 
 
 
 <meta itemprop="keywords" content="Shader,Shader入门精要," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="【笔记】Shader 入门精要（四）Shader 基础"/>
-<meta name="twitter:description" content="终于来到实践环节了！可喜可贺可喜可贺。 顶点/片元着色器 模型的每个顶点会调用顶点着色器。顶点间插值得到许多片元（像素）。每个片元会调用片元着色"/>
+<meta name="twitter:title" content="【笔记】Shader 入门精要（五）基础光照"/>
+<meta name="twitter:description" content="又是复习又是复习又是复习。可能这就是前置课程吧（指计算机图形学）。 原来复习完原理还要自己写着色器的啊，这波我的。图形学作业只要求了光追，确实"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -279,18 +279,18 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">【笔记】Shader 入门精要（四）Shader 基础</h1>
+      <h1 class="post-title">【笔记】Shader 入门精要（五）基础光照</h1>
       
       <div class="post-meta">
-        <time datetime="2020-03-02" class="post-time">
-          2020-03-02
+        <time datetime="2020-03-05" class="post-time">
+          2020-03-05
         </time>
         <div class="post-category">
             <a href="https://disorder.ink/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
             
           </div>
-        <span class="more-meta"> 约 1660 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span class="more-meta"> 约 2236 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
 
         
         
@@ -311,43 +311,34 @@
   <div class="post-toc-content" style="text-align:left;">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#顶点片元着色器">顶点/片元着色器</a>
+    <li><a href="#光照模型原理">光照模型原理</a>
       <ul>
-        <li><a href="#整体结构">整体结构</a></li>
-        <li><a href="#语义">语义</a></li>
-        <li><a href="#属性">属性</a></li>
+        <li><a href="#光源">光源</a></li>
+        <li><a href="#吸收和散射">吸收和散射</a></li>
+        <li><a href="#着色">着色</a></li>
+        <li><a href="#brdf">BRDF</a></li>
       </ul>
     </li>
-    <li><a href="#内置文件和变量">内置文件和变量</a></li>
-    <li><a href="#语义-1">语义</a>
+    <li><a href="#标准光照模型">标准光照模型</a>
       <ul>
-        <li><a href="#定义">定义</a></li>
-        <li><a href="#unity-常用语义">Unity 常用语义</a></li>
+        <li><a href="#环境光">环境光</a></li>
+        <li><a href="#自发光">自发光</a></li>
+        <li><a href="#漫反射">漫反射</a></li>
+        <li><a href="#高光反射">高光反射</a></li>
+        <li><a href="#计算位置">计算位置</a></li>
+        <li><a href="#不足">不足</a></li>
       </ul>
     </li>
-    <li><a href="#debug">Debug</a>
+    <li><a href="#在-unity-中实现标准光照模型">在 Unity 中实现标准光照模型</a>
       <ul>
-        <li><a href="#假彩色图像">假彩色图像</a></li>
-        <li><a href="#visual-studio">Visual Studio</a></li>
+        <li><a href="#环境光-1">环境光</a></li>
+        <li><a href="#自发光-1">自发光</a></li>
+        <li><a href="#漫反射-1">漫反射</a></li>
+        <li><a href="#高光反射-1">高光反射</a></li>
+        <li><a href="#总结">总结</a></li>
       </ul>
     </li>
-  </ul>
-
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#帧调试器">帧调试器</a></li>
-      </ul>
-    </li>
-    <li><a href="#代码规范">代码规范</a>
-      <ul>
-        <li><a href="#数值类型">数值类型</a></li>
-        <li><a href="#语法">语法</a></li>
-        <li><a href="#减少不必要的计算">减少不必要的计算</a></li>
-        <li><a href="#慎用分支和循环">慎用分支和循环</a></li>
-        <li><a href="#不要除-0">不要除 0</a></li>
-      </ul>
-    </li>
+    <li><a href="#内置函数">内置函数</a></li>
   </ul>
 </nav>
   </div>
@@ -356,10 +347,149 @@
 
     
     <div class="post-content">
-      <p>终于来到实践环节了！可喜可贺可喜可贺。</p>
-<h2 id="顶点片元着色器">顶点/片元着色器</h2>
-<p>模型的每个顶点会调用顶点着色器。顶点间插值得到许多片元（像素）。每个片元会调用片元着色器。</p>
-<h3 id="整体结构">整体结构</h3>
+      <p><del>又是复习又是复习又是复习。可能这就是前置课程吧（指计算机图形学）。</del></p>
+<p>原来复习完原理还要自己写着色器的啊，这波我的。图形学作业只要求了光追，确实没有实现过标准光照模型，建议写。</p>
+<h2 id="光照模型原理">光照模型原理</h2>
+<p>通过模拟以下现象，来模拟真实的光照环境。</p>
+<ul>
+<li>光源发射光线</li>
+<li>光线和场景相交，发生吸收或散射。</li>
+<li>摄像机吸收光，产生图像</li>
+</ul>
+<h3 id="光源">光源</h3>
+<p>通常被抽象成一个点。通过**辐照度（irradiance）**量化强度。在垂直于光线方向的单位面积上单位时间内穿过的能量。</p>
+<h3 id="吸收和散射">吸收和散射</h3>
+<p><strong>吸收</strong>（absorption）：只改变光线的密度和颜色，不改变方向。</p>
+<p><strong>散射</strong>（scattering） ：只改变光线的方向，不改变密度和颜色。</p>
+<p>散射包括<strong>折射</strong>（refraction）（也称透射（transmmision））和<strong>反射</strong>（reflection）。</p>
+<p>辐照度经过高光反射和漫反射表示<strong>出射度</strong>（exitance）</p>
+<p><strong>高光反射</strong>（specular）：表示镜面反射。</p>
+<p><strong>漫反射</strong>（diffuse）：表示折射、吸收和非镜面反射。</p>
+<h3 id="着色">着色</h3>
+<p>**着色（shading）**指根据材质属性、光源信息，计算出沿某个观察方向的出射度的过程。<strong>光照模型</strong>就是用来计算的等式。</p>
+<h3 id="brdf">BRDF</h3>
+<p>双向反射分布函数（Bidirectional Reflectance Distribution Function）是 用来给出 在给定（反射）情况下 某个出射方向上的光照能量分布 的函数 这一类函数的统称。</p>
+<h2 id="标准光照模型">标准光照模型</h2>
+<p>即 Bui Tuong Phong (越) 提出的 Phong 模型，或是改进后的 Blinn-Phong 光照模型。是只关心直接光照的局部光模型，将摄像机捕捉到的光线分为四部分。包括</p>
+<ul>
+<li>环境光（ambient）</li>
+<li>自发光（emissive）</li>
+<li>高光反射（specular）</li>
+<li>漫反射（diffuse）</li>
+</ul>
+<h3 id="环境光">环境光</h3>
+<p>模拟间接光照。</p>
+<p>$$ c_{ambient} = g _{ambient} m_{diffuse} $$</p>
+<h3 id="自发光">自发光</h3>
+<p>光源直接发射进入摄像机。</p>
+<p>$$ c_{emmisive}=m_{emmisive} $$</p>
+<h3 id="漫反射">漫反射</h3>
+<p>根据兰伯特定律，反射光线的强度与表面法线和**光源方向（指向光源的方向）**间夹角余弦值成正比。（就是入射光辐照度低了）</p>
+<p>入射光强可由$ c_{light}\cdot \max (0,n\cdot I) $ 得到。其中 $\max$ 是为了防止法线 $ n $ 与光源方向 $I$ 点积为负而进行的截取。</p>
+<p>$$ c_{diffuse} = (c_{light} m_{diffuse}) max(0,n\cdot I) $$</p>
+<h3 id="高光反射">高光反射</h3>
+<p>主要有两种<strong>经验模型</strong>。</p>
+<h4 id="phong-模型">Phong 模型</h4>
+<p>计算沿着完全镜面反射方向反射的光线。需要知道表面法线 n、视角方向 v、光源方向 I、反射方向 r。</p>
+<p>反射方向可通过计算得到：$r = 2(\hat{n} \cdot I )\hat{n} - I$ 。从而计算高光反射有</p>
+<p>$$ c_{specular}=(c_{light}m_{specular})max(0,\hat v\cdot r)^{m_{gloss}} $$</p>
+<p>$m_{gloss}$ 是材质的**光泽度**（gloss），又称反光度（shininess），控制着高光区域&quot;亮点&quot;范围。</p>
+<h4 id="blinn-模型">Blinn 模型</h4>
+<p>避免了直接计算反射方向 $\hat r$ ，而用视角方向和光源方向平均后归一的 $\hat h$ 与法线 $\hat n$ 参与计算。</p>
+<p>$$ \hat h = { {\hat v + I}\over{|\hat v + I|} } $$</p>
+<p>$$ c_{specular}=(c_{light}\cdot m_{specular}max(0,\hat n \cdot \hat h)) ^{m_{gloss}}$$</p>
+<p><img src="http://static.zybuluo.com/candycat/nntler7jilkso6zufrbw447c/Blinn.png" alt="Blinn.png-32.1kB"></p>
+<p>在<strong>摄像机和光源距离都够远</strong>的情况下，这两个矢量可以看做是常量而实现硬件层面的加速。否则可能反而是 Phong 模型快。</p>
+<h3 id="计算位置">计算位置</h3>
+<h4 id="片元着色器">片元着色器</h4>
+<p>逐像素光照（per-pixel lighting)。对每个像素根据法线进行着色。法线可以用顶点法线插值或是法线纹理采样。在面片间通过顶点法线插值的技术被称为 <strong>Phong 着色（Phong shading）</strong>。</p>
+<h4 id="顶点着色器">顶点着色器</h4>
+<p>逐顶点光照，<strong>高洛德着色（Gouraud shading）</strong>。顶点计算光照，图元内部插值。计算量少，效果差。</p>
+<h3 id="不足">不足</h3>
+<p>无法表现许多物理现象，如<strong>菲涅尔反射（Fresnel reflection）</strong>。同时标准模型是**各向同性（isotropic）<strong>的，无法表现如拉丝金属，毛发等</strong>各向异性（anisotropic）**的表面。</p>
+<h2 id="在-unity-中实现标准光照模型">在 Unity 中实现标准光照模型</h2>
+<h3 id="环境光-1">环境光</h3>
+<p>通过 <code>UNITY_LIGHTMODEL_AMBIENT</code> 就可以得到环境光的颜色和强度信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">v2f vert(a2f v) {
+    v2f o;
+    o.pos = UnityObjectToClipPos(v.vertex);
+    fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
+
+    o.color = ambient*_Diffuse; 
+
+    return o;
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>简单的实现了对环境光照的反射。</p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307035456958.png" alt="image-20200307035456958"></p>
+<h3 id="自发光-1">自发光</h3>
+<p>在片元着色器输出前增加材质的自发光颜色。</p>
+<h3 id="漫反射-1">漫反射</h3>
+<h4 id="逐顶点">逐顶点</h4>
+<p>首先实现逐顶点的漫反射光照。在着色过程加入<strong>漫反射项</strong>的计算。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">v2f vert(a2f v) {
+
+    v2f o;
+    // transform the vertex from object space to projection space
+    o.pos = UnityObjectToClipPos(v.vertex);
+
+    // get ambient term
+    fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
+
+    // get world space normal / light direction
+    fixed3 worldNormal = UnityObjectToWorldNormal(v.normal);
+    fixed3 worldLight = normalize(_WorldSpaceLightPos0.xyz);
+
+    // get diffuse term
+    fixed3 diffuse = _LightColor0.rgb * saturate(dot(worldLight,worldNormal)); 
+
+    o.color = (diffuse + ambient) *_Diffuse;
+
+    return o;
+}
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307043558002.png" alt="image-20200307043558002"></p>
+<h4 id="逐片元">逐片元</h4>
+<p>将对光照的计算放到片元着色器中，使用插值后的法线进行着色计算，从而得到更细腻的结果。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -385,48 +515,41 @@
 </span><span class="lnt">21
 </span><span class="lnt">22
 </span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Shader &#34;MyShader&#34; {
-	Properties {
-		// props
-	}
-	SubShader {
-		// 针对显卡 A 的 SubShader
-		Pass {
-        	// 设置渲染状态和标签
-        	
-        	// CG 代码片段
-        	CGPROGRAM
-        	// 编译指令 
-        	// 通知 Unity 包含 vertex shader 的函数名
-        	#pragma vertex vert
-        	// 通知 Unity 包含 fragment Shader 的函数名
-        	#pragma fragment frag
-        	
-        	// CG 代码
-        	
-        	ENDCG
-        	
-        	//其他设置
-        }
-	}
-	SubShader {
-		// 针对显卡 B 的 SubShader
-	}
-	
-	Fallback &#34;VertexLit&#34; // 保底 Shader
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">v2f vert(a2f v) {
+    v2f o;
+    o.pos = UnityObjectToClipPos(v.vertex);                
+    o.worldNormal = UnityObjectToWorldNormal(v.normal);
+    return o;
 }
+
+fixed4 frag(v2f i) : SV_TARGET{
+
+    // get ambient term
+    fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
+
+    // get world space normal / light direction
+    fixed3 worldNormal = normalize(i.worldNormal);
+    fixed3 worldLightDir = normalize(_WorldSpaceLightPos0.xyz);
+
+    // get diffuse term
+    fixed3 diffuse = _LightColor0.rgb * saturate(dot(worldLightDir,worldNormal)); 
+
+    fixed3 color = (ambient + diffuse) * _Diffuse;
+    return fixed4(color,1.0);
+}
+
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="语义">语义</h3>
+</div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307045426632.png" alt="image-20200307045426632"></p>
+<h4 id="半兰伯特模型">半兰伯特模型</h4>
+<p>半兰伯特模型是一种没有物理依据的视觉加强技术。通过修改<del>映射函数</del>模型，允许法向量与光源方向的点积为负数，使得背光面也会有明暗变化。常用公式为</p>
+<p>$$ c_{diffuse} = (c_{light}\cdot m_{diffuse} )(0.5(\hat n \cdot I) + 0.5)$$</p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307235740774.png" alt="image-20200307050656944"></p>
+<h3 id="高光反射-1">高光反射</h3>
+<h4 id="顶点着色器-1">顶点着色器</h4>
+<p>通过在顶点着色器中计算高光反射分量，增加高光效果。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -435,54 +558,20 @@
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">float4 vert(float4 v : POSITION) : SV_POSITION {
-	// return mul (UNITY_MATRIX_MVP, v);
-	// 新版被替换为如下代码
-	return UnityObjectToClipPos (v);
-}
-fixed3 frag() : SV_Target {
-	return fixed4(1,1,1,1);
-}
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"> // get specular term
+ fixed3 reflectDir = normalize(reflect(-worldLightDir,worldNormal));
+ fixed3 viewDir = normalize(_WorldSpaceCameraPos.xyz - mul(unity_ObjectToWorld,v.vertex).xyz);
+ fixed3 specular = _LightColor0.rgb * _Specular * pow (saturate(dot(reflectDir,viewDir)),_Gloss);
+ 
+ o.color = specular + (diffuse + ambient) *_Diffuse;
 </code></pre></td></tr></table>
 </div>
-</div><p>语义（semantics），CG/HLSL 中的语法，如 <code>POSITION</code>,<code>SV_POSITION</code>,<code>SV_Target</code>。语义可以告诉系统，用户的输入和输出是什么，并<strong>交由系统赋值</strong>。这里的<code>POSITION</code>告知了 Unity 要把模型的顶点坐标赋给参数 v，<code>SV_POSITION</code>告知了顶点着色器输出的是裁剪空间中的的顶点坐标，<code>SV_Target</code>让渲染器把输出存储到一个渲染目标中（这里是帧缓存）。</p>
-<p>对于自定义的结构体，创建时变量也会被赋值。在每帧的 Draw Call 时， Mesh Render 组件会把它赋值的模型数据发送给 Unity Shader。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">struct a2v { // application to vertex shader
-    float4 vertex : POSITION;	// 位置
-    float3 normal : NORMAL;		// 顶点法向量
-    float4 texcoord : TEXCOORD0;// 第0个纹理坐标
-};
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">struct v2f { // vertex to fragment
-	float4 pos : SV_POSITION;	// 裁剪空间内位置
-	fixed3 color : COLOR0;		// 第0个颜色
-};
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="属性">属性</h3>
-<p>在 Shader 开头的属性语义块中声明的变量可以在 Unity 的材质面板中方便的操控。</p>
+</div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307050656944.png" alt="image-20200307235740774"></p>
+<p>由于高光反射是非线性的，而顶点计算高光后在片元着色器中经过的插值是线性的，很明显出现了偏差。</p>
+<h4 id="片元着色器-1">片元着色器</h4>
+<p>将计算移至片元着色器，实现逐像素光照。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -496,168 +585,62 @@ fixed3 frag() : SV_Target {
 </span><span class="lnt"> 9
 </span><span class="lnt">10
 </span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Properties{
-	_Color (&#34;Color Tint&#34;, Color) = (1.0,1.0,1.0,1.0)
-}
-// ...
-fixed4 _Color;	// 在 CG 代码中定义变量
-// ...
-fixed3 frag(v2f i) : SV_Target {
-	fixed3 c = i.color;
-	c *= _Color.rgb;
-	return fixed4(c,1.0);
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">fixed4 frag(v2f i) : SV_TARGET{
+    // get ambient term
+    fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
+
+    fixed3 worldNormal = normalize(i.worldNormal);
+    fixed3 worldLightDir = normalize(_WorldSpaceLightPos0.xyz);
+
+    // get diffuse term
+    fixed3 diffuse = _LightColor0.rgb * saturate(dot(worldLightDir,worldNormal)); 
+
+    // get specular term
+    fixed3 reflectDir = reflect(-worldLightDir,worldNormal);
+    fixed3 viewDir = normalize(_WorldSpaceCameraPos.xyz - i.worldPos);
+    fixed3 specular = _LightColor0.rgb * _Specular * pow(saturate(dot(viewDir,reflectDir)),_Gloss);
+
+    fixed3 color = specular+(ambient + diffuse) * _Diffuse;
+    return fixed4(color,1.0);
 }
 </code></pre></td></tr></table>
 </div>
-</div><p>定义一个属性需要在属性语义块中按照格式进行定义。同时还要在 CG 代码中<strong>定义一个同名变量</strong>以访问属性。Unity 会把属性的值赋给这个 CG 变量。</p>
-<h2 id="内置文件和变量">内置文件和变量</h2>
-<p>包含文件（include file）含有一些变量和帮助函数。可通过 #include 将 .cginc 文件包含进 Shader 中的 CG 代码从而使用其中内容。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">#include &#34;UnityCG.cginc&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>有很多不同的包含文件。最常用的是 UnityCG.cginc 。其中包含的结构体定义、变量和函数的具体说明建议直接查看 <code>安装路径/Data/CGIncludes/UnityCG.cginc</code>。</p>
-<h2 id="语义-1">语义</h2>
-<h3 id="定义">定义</h3>
-<p>表达参数含义的字符串。有时输入和输出的语义名字一样但含义不一样，如<code>TEXCOORD0</code>作为输入语义指第一组纹理坐标，作为输出语义就不是了。</p>
-<p>DirectX 10 以后定义了系统数值语义（system-value semantics），以 SV 开头。在某些平台，这些语义代表了该变量是流水线要用到的变量。为了更好的跨平台性，建议使用。</p>
-<h3 id="unity-常用语义">Unity 常用语义</h3>
-<p>虽然没有使用 SV 开头，但 Unity 内部赋予了特殊含义的语义。</p>
-<table>
-<thead>
-<tr>
-<th align="left">语义</th>
-<th align="left">描述</th>
-<th>类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">POSITION</td>
-<td align="left">模型空间中的顶点位置 (以下是 a2v)</td>
-<td>float4</td>
-</tr>
-<tr>
-<td align="left">NORMAL</td>
-<td align="left">顶点法线</td>
-<td>float3</td>
-</tr>
-<tr>
-<td align="left">TANGENT</td>
-<td align="left">顶点切线</td>
-<td>float4</td>
-</tr>
-<tr>
-<td align="left">TEXCOORDn</td>
-<td align="left">纹理坐标，n为纹理下标</td>
-<td>float2 / float4</td>
-</tr>
-<tr>
-<td align="left">COLOR</td>
-<td align="left">顶点颜色</td>
-<td>fixed4 / float4</td>
-</tr>
-<tr>
-<td align="left">SV_POSITION</td>
-<td align="left">裁剪空间中的顶点位置 (以下是 v2f)</td>
-<td>float4</td>
-</tr>
-<tr>
-<td align="left">COLOR0 / 1</td>
-<td align="left">输出第一 / 第二组顶点颜色</td>
-<td>fixed4 / float4</td>
-</tr>
-<tr>
-<td align="left">TEXCOORD0 ~ 7</td>
-<td align="left">输出纹理坐标</td>
-<td>float2 / float4</td>
-</tr>
-<tr>
-<td align="left">SV_Target</td>
-<td align="left">渲染目标，等同 COLOR 语义（f 输出）</td>
-<td>fixed4 / float4</td>
-</tr>
-</tbody>
-</table>
-<h2 id="debug">Debug</h2>
-<p>Shader 由于不能输出，很难 Debug 。</p>
-<h3 id="假彩色图像">假彩色图像</h3>
-<p>最原始的方法，通过把变量映射到 0 到 1 间并作为颜色输出到屏幕上，进行数据可视化。例如可视化法线信息，使用<a href="https://github.com/candycat1992/Unity_Shaders_Book/blob/master/Assets/Scripts/Chapter5/ColorPicker.cs">拾色器</a>脚本在屏幕上获取对应数据。</p>
+</div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200308011744227.png" alt="image-20200308004151307"></p>
+<h4 id="blinn-光照模型">Blinn 光照模型</h4>
+<p>Blinn 光照模型使用将视角方向和光照方向相加的 $\hat h$ 参与运算，实践中用的更多。在原先的 shader 上修改高光计算方法。</p>
+<p>$$ \hat h = { {\hat v + I}\over{|\hat v + I|} } $$</p>
+<p>$$ c_{specular}=(c_{light}\cdot m_{specular}max(0,\hat n \cdot \hat h))^{m_{gloss}}$$</p>
+<p>翻译成 cg 就是</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">v2f vert (appdata_full v) {
-	// ... 
-	o.color = v.normal * 0.5 + fixed3(0.5, 0.5, 0.5);
-	return o;
-}
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">fixed3 h = normalize(viewDir + worldLightDir);
+fixed3 specular = _LightColor0.rgb * _Specular * pow(saturate(dot(worldNormal,h)),_Gloss);
 </code></pre></td></tr></table>
 </div>
-</div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200305062550133.png" alt="可视化法线信息"></p>
-<h3 id="visual-studio">Visual Studio</h3>
-<p><a href="https://docs.unity3d.com/Manual/SL-DebuggingD3D11ShadersWithVS.html">Unity 官方文档</a> 里写了。</p>
-<h1 id="等待填充">【等待填充】</h1>
-<h3 id="帧调试器">帧调试器</h3>
-<p>停止渲染，精确到每一个渲染事件，可以实时查看效果，建议使用。但并没有很多过程信息。真需要信息还得看外部工具。不过帅就完事了。</p>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200305063715619.png" alt="image-20200305063715619"></p>
-<h2 id="代码规范">代码规范</h2>
-<h3 id="数值类型">数值类型</h3>
-<p>CG / HLSL 中有 3 种精度的数值类型。通常的定义如下</p>
-<table>
-<thead>
-<tr>
-<th>数值类型</th>
-<th>存储位数</th>
-<th>精度范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>float</td>
-<td>32</td>
-<td></td>
-</tr>
-<tr>
-<td>half</td>
-<td>16</td>
-<td>-60000 ~ 60000</td>
-</tr>
-<tr>
-<td>fixed</td>
-<td>11</td>
-<td>-2.0 ~ +2.0</td>
-</tr>
-</tbody>
-</table>
-<p>在 PC 上，大多数 GPU 一律以最高精度计算。在移动平台上则会有不同范围和计算速度。尽可能使用精度较低的类型。</p>
-<h3 id="语法">语法</h3>
-<p>严格要求语法以更好的跨平台。</p>
-<h3 id="减少不必要的计算">减少不必要的计算</h3>
-<p>Shader Model 是微软提出的 Shader 能力分级。不同的 Shader Target 和着色器阶段可用的临时寄存器和指令数目都是不同的。</p>
-<p>可通过指定更高等级的 Shader Target 消除错误（降低兼容性），但更好的方法是减少 Shader 中的运算。</p>
-<h3 id="慎用分支和循环">慎用分支和循环</h3>
-<p>由于底层实现不同， Shader 中大量流程控制可能导致性能成倍下降。尽量把计算向流水线上游移动或预计算，同时</p>
+</div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200308005321554.png" alt="image-20200308005321554"></p>
+<h3 id="总结">总结</h3>
+<p>如图。</p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200308004151307.png" alt="image-20200308011744227"></p>
+<h2 id="内置函数">内置函数</h2>
+<p>面对更多更复杂的光照类型，计算要分类讨论，相对麻烦。而 UnityCG.cginc 中定义了许多有用的帮助函数，可以不那么底层。包括了</p>
 <ul>
-<li>条件变量多用常数</li>
-<li>减少分支内指令</li>
-<li>减少嵌套</li>
+<li>取观察方向（ViewDir)</li>
+<li>取光照方向（LightDir）</li>
+<li>法线/矢量在模型空间和世界空间间转换（ObjectToWorld）</li>
 </ul>
-<h3 id="不要除-0">不要除 0</h3>
-<p>rt</p>
-<hr>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200305071417478.png" alt="image-20200305071748712"></p>
 
     </div>
 
@@ -671,7 +654,7 @@ fixed3 frag(v2f i) : SV_Target {
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-      2020-03-02
+      2020-03-05
       
     </span>
   </p>
@@ -713,22 +696,9 @@ fixed3 frag(v2f i) : SV_Target {
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/">
-            
-            <i class="iconfont">
-              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-            </i>
-            <span class="prev-text nav-default">【笔记】Shader 入门精要（五）基础光照</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/">
-            <span class="next-text nav-default">【笔记】Shader 入门精要（三）数学基础</span>
+          <a class="next" href="/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/">
+            <span class="next-text nav-default">【笔记】Shader 入门精要（四）Shader 基础</span>
             <span class="prev-text nav-mobile">下一篇</span>
             
             <i class="iconfont">

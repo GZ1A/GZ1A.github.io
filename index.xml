@@ -6,13 +6,318 @@
     <description>Recent content on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 02 Mar 2020 22:03:49 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 05 Mar 2020 07:22:34 +0900</lastBuildDate>
     
         <atom:link href="https://disorder.ink/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>【笔记】Shader 入门精要（四） Shader 基础</title>
+      <title>【笔记】Shader 入门精要（五）基础光照</title>
+      <link>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/</link>
+      <pubDate>Thu, 05 Mar 2020 07:22:34 +0900</pubDate>
+      
+      <guid>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/</guid>
+      
+        <description>&lt;p&gt;&lt;del&gt;又是复习又是复习又是复习。可能这就是前置课程吧（指计算机图形学）。&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;原来复习完原理还要自己写着色器的啊，这波我的。图形学作业只要求了光追，确实没有实现过标准光照模型，建议写。&lt;/p&gt;
+&lt;h2 id=&#34;光照模型原理&#34;&gt;光照模型原理&lt;/h2&gt;
+&lt;p&gt;通过模拟以下现象，来模拟真实的光照环境。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;光源发射光线&lt;/li&gt;
+&lt;li&gt;光线和场景相交，发生吸收或散射。&lt;/li&gt;
+&lt;li&gt;摄像机吸收光，产生图像&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;光源&#34;&gt;光源&lt;/h3&gt;
+&lt;p&gt;通常被抽象成一个点。通过**辐照度（irradiance）**量化强度。在垂直于光线方向的单位面积上单位时间内穿过的能量。&lt;/p&gt;
+&lt;h3 id=&#34;吸收和散射&#34;&gt;吸收和散射&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;吸收&lt;/strong&gt;（absorption）：只改变光线的密度和颜色，不改变方向。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;散射&lt;/strong&gt;（scattering） ：只改变光线的方向，不改变密度和颜色。&lt;/p&gt;
+&lt;p&gt;散射包括&lt;strong&gt;折射&lt;/strong&gt;（refraction）（也称透射（transmmision））和&lt;strong&gt;反射&lt;/strong&gt;（reflection）。&lt;/p&gt;
+&lt;p&gt;辐照度经过高光反射和漫反射表示&lt;strong&gt;出射度&lt;/strong&gt;（exitance）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;高光反射&lt;/strong&gt;（specular）：表示镜面反射。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;漫反射&lt;/strong&gt;（diffuse）：表示折射、吸收和非镜面反射。&lt;/p&gt;
+&lt;h3 id=&#34;着色&#34;&gt;着色&lt;/h3&gt;
+&lt;p&gt;**着色（shading）**指根据材质属性、光源信息，计算出沿某个观察方向的出射度的过程。&lt;strong&gt;光照模型&lt;/strong&gt;就是用来计算的等式。&lt;/p&gt;
+&lt;h3 id=&#34;brdf&#34;&gt;BRDF&lt;/h3&gt;
+&lt;p&gt;双向反射分布函数（Bidirectional Reflectance Distribution Function）是 用来给出 在给定（反射）情况下 某个出射方向上的光照能量分布 的函数 这一类函数的统称。&lt;/p&gt;
+&lt;h2 id=&#34;标准光照模型&#34;&gt;标准光照模型&lt;/h2&gt;
+&lt;p&gt;即 Bui Tuong Phong (越) 提出的 Phong 模型，或是改进后的 Blinn-Phong 光照模型。是只关心直接光照的局部光模型，将摄像机捕捉到的光线分为四部分。包括&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;环境光（ambient）&lt;/li&gt;
+&lt;li&gt;自发光（emissive）&lt;/li&gt;
+&lt;li&gt;高光反射（specular）&lt;/li&gt;
+&lt;li&gt;漫反射（diffuse）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;环境光&#34;&gt;环境光&lt;/h3&gt;
+&lt;p&gt;模拟间接光照。&lt;/p&gt;
+&lt;p&gt;$$ c_{ambient} = g _{ambient} m_{diffuse} $$&lt;/p&gt;
+&lt;h3 id=&#34;自发光&#34;&gt;自发光&lt;/h3&gt;
+&lt;p&gt;光源直接发射进入摄像机。&lt;/p&gt;
+&lt;p&gt;$$ c_{emmisive}=m_{emmisive} $$&lt;/p&gt;
+&lt;h3 id=&#34;漫反射&#34;&gt;漫反射&lt;/h3&gt;
+&lt;p&gt;根据兰伯特定律，反射光线的强度与表面法线和**光源方向（指向光源的方向）**间夹角余弦值成正比。（就是入射光辐照度低了）&lt;/p&gt;
+&lt;p&gt;入射光强可由$ c_{light}\cdot \max (0,n\cdot I) $ 得到。其中 $\max$ 是为了防止法线 $ n $ 与光源方向 $I$ 点积为负而进行的截取。&lt;/p&gt;
+&lt;p&gt;$$ c_{diffuse} = (c_{light} m_{diffuse}) max(0,n\cdot I) $$&lt;/p&gt;
+&lt;h3 id=&#34;高光反射&#34;&gt;高光反射&lt;/h3&gt;
+&lt;p&gt;主要有两种&lt;strong&gt;经验模型&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;phong-模型&#34;&gt;Phong 模型&lt;/h4&gt;
+&lt;p&gt;计算沿着完全镜面反射方向反射的光线。需要知道表面法线 n、视角方向 v、光源方向 I、反射方向 r。&lt;/p&gt;
+&lt;p&gt;反射方向可通过计算得到：$r = 2(\hat{n} \cdot I )\hat{n} - I$ 。从而计算高光反射有&lt;/p&gt;
+&lt;p&gt;$$ c_{specular}=(c_{light}m_{specular})max(0,\hat v\cdot r)^{m_{gloss}} $$&lt;/p&gt;
+&lt;p&gt;$m_{gloss}$ 是材质的**光泽度**（gloss），又称反光度（shininess），控制着高光区域&amp;quot;亮点&amp;quot;范围。&lt;/p&gt;
+&lt;h4 id=&#34;blinn-模型&#34;&gt;Blinn 模型&lt;/h4&gt;
+&lt;p&gt;避免了直接计算反射方向 $\hat r$ ，而用视角方向和光源方向平均后归一的 $\hat h$ 与法线 $\hat n$ 参与计算。&lt;/p&gt;
+&lt;p&gt;$$ \hat h = { {\hat v + I}\over{|\hat v + I|} } $$&lt;/p&gt;
+&lt;p&gt;$$ c_{specular}=(c_{light}\cdot m_{specular}max(0,\hat n \cdot \hat h)) ^{m_{gloss}}$$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://static.zybuluo.com/candycat/nntler7jilkso6zufrbw447c/Blinn.png&#34; alt=&#34;Blinn.png-32.1kB&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在&lt;strong&gt;摄像机和光源距离都够远&lt;/strong&gt;的情况下，这两个矢量可以看做是常量而实现硬件层面的加速。否则可能反而是 Phong 模型快。&lt;/p&gt;
+&lt;h3 id=&#34;计算位置&#34;&gt;计算位置&lt;/h3&gt;
+&lt;h4 id=&#34;片元着色器&#34;&gt;片元着色器&lt;/h4&gt;
+&lt;p&gt;逐像素光照（per-pixel lighting)。对每个像素根据法线进行着色。法线可以用顶点法线插值或是法线纹理采样。在面片间通过顶点法线插值的技术被称为 &lt;strong&gt;Phong 着色（Phong shading）&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;顶点着色器&#34;&gt;顶点着色器&lt;/h4&gt;
+&lt;p&gt;逐顶点光照，&lt;strong&gt;高洛德着色（Gouraud shading）&lt;/strong&gt;。顶点计算光照，图元内部插值。计算量少，效果差。&lt;/p&gt;
+&lt;h3 id=&#34;不足&#34;&gt;不足&lt;/h3&gt;
+&lt;p&gt;无法表现许多物理现象，如&lt;strong&gt;菲涅尔反射（Fresnel reflection）&lt;/strong&gt;。同时标准模型是**各向同性（isotropic）&lt;strong&gt;的，无法表现如拉丝金属，毛发等&lt;/strong&gt;各向异性（anisotropic）**的表面。&lt;/p&gt;
+&lt;h2 id=&#34;在-unity-中实现标准光照模型&#34;&gt;在 Unity 中实现标准光照模型&lt;/h2&gt;
+&lt;h3 id=&#34;环境光-1&#34;&gt;环境光&lt;/h3&gt;
+&lt;p&gt;通过 &lt;code&gt;UNITY_LIGHTMODEL_AMBIENT&lt;/code&gt; 就可以得到环境光的颜色和强度信息。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;v2f vert(a2f v) {
+    v2f o;
+    o.pos = UnityObjectToClipPos(v.vertex);
+    fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
+
+    o.color = ambient*_Diffuse; 
+
+    return o;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;简单的实现了对环境光照的反射。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307035456958.png&#34; alt=&#34;image-20200307035456958&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;自发光-1&#34;&gt;自发光&lt;/h3&gt;
+&lt;p&gt;在片元着色器输出前增加材质的自发光颜色。&lt;/p&gt;
+&lt;h3 id=&#34;漫反射-1&#34;&gt;漫反射&lt;/h3&gt;
+&lt;h4 id=&#34;逐顶点&#34;&gt;逐顶点&lt;/h4&gt;
+&lt;p&gt;首先实现逐顶点的漫反射光照。在着色过程加入&lt;strong&gt;漫反射项&lt;/strong&gt;的计算。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;v2f vert(a2f v) {
+
+    v2f o;
+    // transform the vertex from object space to projection space
+    o.pos = UnityObjectToClipPos(v.vertex);
+
+    // get ambient term
+    fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
+
+    // get world space normal / light direction
+    fixed3 worldNormal = UnityObjectToWorldNormal(v.normal);
+    fixed3 worldLight = normalize(_WorldSpaceLightPos0.xyz);
+
+    // get diffuse term
+    fixed3 diffuse = _LightColor0.rgb * saturate(dot(worldLight,worldNormal)); 
+
+    o.color = (diffuse + ambient) *_Diffuse;
+
+    return o;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307043558002.png&#34; alt=&#34;image-20200307043558002&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;逐片元&#34;&gt;逐片元&lt;/h4&gt;
+&lt;p&gt;将对光照的计算放到片元着色器中，使用插值后的法线进行着色计算，从而得到更细腻的结果。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;v2f vert(a2f v) {
+    v2f o;
+    o.pos = UnityObjectToClipPos(v.vertex);                
+    o.worldNormal = UnityObjectToWorldNormal(v.normal);
+    return o;
+}
+
+fixed4 frag(v2f i) : SV_TARGET{
+
+    // get ambient term
+    fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
+
+    // get world space normal / light direction
+    fixed3 worldNormal = normalize(i.worldNormal);
+    fixed3 worldLightDir = normalize(_WorldSpaceLightPos0.xyz);
+
+    // get diffuse term
+    fixed3 diffuse = _LightColor0.rgb * saturate(dot(worldLightDir,worldNormal)); 
+
+    fixed3 color = (ambient + diffuse) * _Diffuse;
+    return fixed4(color,1.0);
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307045426632.png&#34; alt=&#34;image-20200307045426632&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;半兰伯特模型&#34;&gt;半兰伯特模型&lt;/h4&gt;
+&lt;p&gt;半兰伯特模型是一种没有物理依据的视觉加强技术。通过修改&lt;del&gt;映射函数&lt;/del&gt;模型，允许法向量与光源方向的点积为负数，使得背光面也会有明暗变化。常用公式为&lt;/p&gt;
+&lt;p&gt;$$ c_{diffuse} = (c_{light}\cdot m_{diffuse} )(0.5(\hat n \cdot I) + 0.5)$$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307235740774.png&#34; alt=&#34;image-20200307050656944&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;高光反射-1&#34;&gt;高光反射&lt;/h3&gt;
+&lt;h4 id=&#34;顶点着色器-1&#34;&gt;顶点着色器&lt;/h4&gt;
+&lt;p&gt;通过在顶点着色器中计算高光反射分量，增加高光效果。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt; // get specular term
+ fixed3 reflectDir = normalize(reflect(-worldLightDir,worldNormal));
+ fixed3 viewDir = normalize(_WorldSpaceCameraPos.xyz - mul(unity_ObjectToWorld,v.vertex).xyz);
+ fixed3 specular = _LightColor0.rgb * _Specular * pow (saturate(dot(reflectDir,viewDir)),_Gloss);
+ 
+ o.color = specular + (diffuse + ambient) *_Diffuse;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307050656944.png&#34; alt=&#34;image-20200307235740774&#34;&gt;&lt;/p&gt;
+&lt;p&gt;由于高光反射是非线性的，而顶点计算高光后在片元着色器中经过的插值是线性的，很明显出现了偏差。&lt;/p&gt;
+&lt;h4 id=&#34;片元着色器-1&#34;&gt;片元着色器&lt;/h4&gt;
+&lt;p&gt;将计算移至片元着色器，实现逐像素光照。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;fixed4 frag(v2f i) : SV_TARGET{
+    // get ambient term
+    fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
+
+    fixed3 worldNormal = normalize(i.worldNormal);
+    fixed3 worldLightDir = normalize(_WorldSpaceLightPos0.xyz);
+
+    // get diffuse term
+    fixed3 diffuse = _LightColor0.rgb * saturate(dot(worldLightDir,worldNormal)); 
+
+    // get specular term
+    fixed3 reflectDir = reflect(-worldLightDir,worldNormal);
+    fixed3 viewDir = normalize(_WorldSpaceCameraPos.xyz - i.worldPos);
+    fixed3 specular = _LightColor0.rgb * _Specular * pow(saturate(dot(viewDir,reflectDir)),_Gloss);
+
+    fixed3 color = specular+(ambient + diffuse) * _Diffuse;
+    return fixed4(color,1.0);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200308011744227.png&#34; alt=&#34;image-20200308004151307&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;blinn-光照模型&#34;&gt;Blinn 光照模型&lt;/h4&gt;
+&lt;p&gt;Blinn 光照模型使用将视角方向和光照方向相加的 $\hat h$ 参与运算，实践中用的更多。在原先的 shader 上修改高光计算方法。&lt;/p&gt;
+&lt;p&gt;$$ \hat h = { {\hat v + I}\over{|\hat v + I|} } $$&lt;/p&gt;
+&lt;p&gt;$$ c_{specular}=(c_{light}\cdot m_{specular}max(0,\hat n \cdot \hat h))^{m_{gloss}}$$&lt;/p&gt;
+&lt;p&gt;翻译成 cg 就是&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;fixed3 h = normalize(viewDir + worldLightDir);
+fixed3 specular = _LightColor0.rgb * _Specular * pow(saturate(dot(worldNormal,h)),_Gloss);
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200308005321554.png&#34; alt=&#34;image-20200308005321554&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;总结&#34;&gt;总结&lt;/h3&gt;
+&lt;p&gt;如图。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200308004151307.png&#34; alt=&#34;image-20200308011744227&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;内置函数&#34;&gt;内置函数&lt;/h2&gt;
+&lt;p&gt;面对更多更复杂的光照类型，计算要分类讨论，相对麻烦。而 UnityCG.cginc 中定义了许多有用的帮助函数，可以不那么底层。包括了&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;取观察方向（ViewDir)&lt;/li&gt;
+&lt;li&gt;取光照方向（LightDir）&lt;/li&gt;
+&lt;li&gt;法线/矢量在模型空间和世界空间间转换（ObjectToWorld）&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>【笔记】Shader 入门精要（四）Shader 基础</title>
       <link>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/</link>
       <pubDate>Mon, 02 Mar 2020 22:03:49 +0900</pubDate>
       

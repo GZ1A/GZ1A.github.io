@@ -38,7 +38,7 @@ Shader "Custom/MyShader" {	}
 
 ### 属性（Properties)
 
-``` properties
+``` 
 Properties {
 	PropName ("display name", PropertyType) = DefaultValue
 	// ...

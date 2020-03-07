@@ -2,7 +2,7 @@
 # 常用定义
 draft: false
 
-title: "【笔记】Shader 入门精要（四） Shader 基础"
+title: "【笔记】Shader 入门精要（四）Shader 基础"
 date: 2020-03-02T22:03:49+09:00		# 创建时间
 author: "昼阴夜阳"             		# 作者
 
