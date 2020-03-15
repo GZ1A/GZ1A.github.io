@@ -32,7 +32,7 @@ mathjax: true    # 打开 mathjax
 
 ### 光源
 
-通常被抽象成一个点。通过**辐照度（irradiance）**量化强度。在垂直于光线方向的单位面积上单位时间内穿过的能量。
+通常被抽象成一个点。通过 **辐照度（irradiance）** 量化强度。在垂直于光线方向的单位面积上单位时间内穿过的能量。
 
 ### 吸收和散射
 
@@ -50,7 +50,7 @@ mathjax: true    # 打开 mathjax
 
 ### 着色
 
-**着色（shading）**指根据材质属性、光源信息，计算出沿某个观察方向的出射度的过程。**光照模型**就是用来计算的等式。
+**着色（shading）** 指根据材质属性、光源信息，计算出沿某个观察方向的出射度的过程。**光照模型**就是用来计算的等式。
 
 ### BRDF
 
@@ -79,7 +79,7 @@ $$ c_{emmisive}=m_{emmisive} $$
 
 ### 漫反射
 
-根据兰伯特定律，反射光线的强度与表面法线和**光源方向（指向光源的方向）**间夹角余弦值成正比。（就是入射光辐照度低了）
+根据兰伯特定律，反射光线的强度与表面法线和 **光源方向（指向光源的方向）** 间夹角余弦值成正比。（就是入射光辐照度低了）
 
 入射光强可由$ c_{light}\cdot \max (0,n\cdot I) $ 得到。其中 $\max$ 是为了防止法线 $ n $ 与光源方向 $I$ 点积为负而进行的截取。
 
@@ -93,11 +93,13 @@ $$ c_{diffuse} = (c_{light} m_{diffuse}) max(0,n\cdot I) $$
 
 计算沿着完全镜面反射方向反射的光线。需要知道表面法线 n、视角方向 v、光源方向 I、反射方向 r。
 
-反射方向可通过计算得到：$r = 2(\hat{n} \cdot I )\hat{n} - I$ 。从而计算高光反射有
+反射方向可通过计算得到：$$r = 2(\hat{n} \cdot I )\hat{n} - I$$
+
+从而计算高光反射有
 
 $$ c_{specular}=(c_{light}m_{specular})max(0,\hat v\cdot r)^{m_{gloss}} $$
 
-$m_{gloss}$ 是材质的**光泽度**（gloss），又称反光度（shininess），控制着高光区域"亮点"范围。
+gloss 是材质的 **光泽度（gloss)** ，又称反光度（shininess），控制着高光区域"亮点"范围。
 
 #### Blinn 模型
 
@@ -123,7 +125,7 @@ $$ c_{specular}=(c_{light}\cdot m_{specular}max(0,\hat n \cdot \hat h)) ^{m_{glo
 
 ### 不足
 
-无法表现许多物理现象，如**菲涅尔反射（Fresnel reflection）**。同时标准模型是**各向同性（isotropic）**的，无法表现如拉丝金属，毛发等**各向异性（anisotropic）**的表面。
+无法表现许多物理现象，如**菲涅尔反射（Fresnel reflection）**。同时标准模型是 **各向同性（isotropic）** 的，无法表现如拉丝金属，毛发等 **各向异性（anisotropic）** 的表面。
 
 ## 在 Unity 中实现标准光照模型
 
@@ -268,7 +270,7 @@ fixed4 frag(v2f i) : SV_TARGET{
 }
 ```
 
-![image-20200308004151307](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200308011744227.png)
+![image-20200308004151307](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200308004151307.png)
 
 #### Blinn 光照模型
 
@@ -291,7 +293,7 @@ fixed3 specular = _LightColor0.rgb * _Specular * pow(saturate(dot(worldNormal,h)
 
 如图。
 
-![image-20200308011744227](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200308004151307.png)
+![image-20200308011744227](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200308011744227.png)
 
 ## 内置函数
 

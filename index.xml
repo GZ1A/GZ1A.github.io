@@ -6,10 +6,194 @@
     <description>Recent content on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 05 Mar 2020 07:22:34 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 08 Mar 2020 03:06:23 +0900</lastBuildDate>
     
         <atom:link href="https://disorder.ink/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【笔记】Shader 入门精要（六）基础纹理</title>
+      <link>https://disorder.ink/post/shaderbook-note-6/</link>
+      <pubDate>Sun, 08 Mar 2020 03:06:23 +0900</pubDate>
+      
+      <guid>https://disorder.ink/post/shaderbook-note-6/</guid>
+      
+        <description>&lt;p&gt;纹理最初的目的就是通过 &lt;strong&gt;纹理映射（texture mapping)&lt;/strong&gt; 控制模型的外观，逐纹素（texel） 控制模型的颜色。保存了映射关系的 纹理映射坐标（texture-mapping coordinates）由于通常使用&lt;code&gt;（u,v）&lt;/code&gt;表示，又被称为 &lt;strong&gt;UV 坐标&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;单张纹理&#34;&gt;单张纹理&lt;/h2&gt;
+&lt;h3 id=&#34;实现&#34;&gt;实现&lt;/h3&gt;
+&lt;p&gt;使用一张纹理来代替物体的漫反射颜色。首先定义一个纹理属性和对应的 CG 变量。其中 &lt;code&gt;_MainTex_ST&lt;/code&gt; 的 &lt;code&gt;xy&lt;/code&gt; 坐标传递了该纹理的缩放（Scale），&lt;code&gt;zw&lt;/code&gt; 传递了平移（Translation）。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;// properties
+_MainTex (&amp;#34;Main Tex&amp;#34;, 2D) = &amp;#34;white&amp;#34; {}
+
+// in cg program
+sampler2D _MainTex;
+float4 _MainTex_ST;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在顶点着色器中计算根据 模型的 uv 坐标 和 纹理的 ST 变换 计算出对应顶点的 UV 值并传入像素着色器。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;o.uv = v.texcoord.xy * _MainTex_ST.xy + _MainTex_ST.zw;
+// or call function
+// o.uv = TRANSFORM_TEX(v.texcoord, _MainTex_ST);
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;像素着色器根据插值之后的 UV 值对纹理进行采样，并将得到的纹素值作为反射率使用。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;// use texture to sample diffuse color
+fixed3 albedo = tex2D(_MainTex, i.uv).rgb * _Color.rgb; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;效果如下&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200308045417756.png&#34; alt=&#34;image-20200308045417756&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;纹理属性&#34;&gt;纹理属性&lt;/h3&gt;
+&lt;h4 id=&#34;纹理类型&#34;&gt;纹理类型&lt;/h4&gt;
+&lt;p&gt;包括 Texture、Normal map、Cubemap 等不同类型的纹理。Unity 可以进行对应的限制和优化。&lt;/p&gt;
+&lt;h4 id=&#34;纹理格式&#34;&gt;纹理格式&lt;/h4&gt;
+&lt;p&gt;图片的存储格式。&lt;/p&gt;
+&lt;h4 id=&#34;warp-mode&#34;&gt;Warp Mode&lt;/h4&gt;
+&lt;p&gt;决定了纹理坐标在 [0，1] 以外的 &lt;strong&gt;平铺（Tiling）&lt;/strong&gt; 方式。（Unity 的纹理坐标系原点在左下角，和 OpenGL 一样） Clamp 模式在超出范围时会截取到 0 或 1，从而产生边缘填充的效果。Repeat 模式会舍弃整数部分后采样，使得纹理不断重复。&lt;/p&gt;
+&lt;h4 id=&#34;filter-mode&#34;&gt;Filter Mode&lt;/h4&gt;
+&lt;p&gt;决定了纹理变换拉伸时用到的滤波模式，改变变换后的纹理质量。Point，Bilinear 和 Trilinear 性能开销和效果都依次提升。&lt;/p&gt;
+&lt;h4 id=&#34;mip-mapping&#34;&gt;Mip Mapping&lt;/h4&gt;
+&lt;p&gt;多层渐远纹理。通过预处理，将降采样的纹理保存下来从而在实际运行时快速得到结果像素。&lt;/p&gt;
+&lt;h4 id=&#34;最大尺寸&#34;&gt;最大尺寸&lt;/h4&gt;
+&lt;p&gt;过大的纹理会被缩放为最大分辨率的大小。为了性能和空间，尽量使用 2 的幂大小的纹理。&lt;/p&gt;
+&lt;h2 id=&#34;凹凸映射&#34;&gt;凹凸映射&lt;/h2&gt;
+&lt;p&gt;凹凸映射是使用一张纹理来修改模型表面的法线从而为模型提供更多细节。使用&lt;strong&gt;高度纹理&lt;/strong&gt;来模拟 &lt;strong&gt;表面位移（displacement）&lt;/strong&gt; 或者使用&lt;strong&gt;法线纹理&lt;/strong&gt;直接存储法线。&lt;/p&gt;
+&lt;h3 id=&#34;原理&#34;&gt;原理&lt;/h3&gt;
+&lt;h4 id=&#34;高度纹理&#34;&gt;高度纹理&lt;/h4&gt;
+&lt;p&gt;高度图中存储的 &lt;strong&gt;强度值（intensity）&lt;/strong&gt; 用于表示模型表面的海拔高度，越浅越高。直观但要实时计算法线，性能开销大。&lt;/p&gt;
+&lt;h4 id=&#34;法线纹理&#34;&gt;法线纹理&lt;/h4&gt;
+&lt;p&gt;法线要保存到像素中要经过映射，通常是 $ \text pixel = {{\text normal +1 } \over 2}  $ 。而 Shader 中纹理采样后就要用逆函数反映射。&lt;/p&gt;
+&lt;p&gt;实际制作中，模型空间的法线纹理用的很少。往往使用 &lt;strong&gt;切线空间（tangent space）&lt;/strong&gt; 来存储法线。&lt;/p&gt;
+&lt;h5 id=&#34;切线空间&#34;&gt;切线空间&lt;/h5&gt;
+&lt;p&gt;每个顶点都有自己的切线空间，x 轴是切线方向（t），z 轴是法线方向（n），y 轴是法线和切线叉积（左手坐标系），被称为副切线（bitangent）。（&lt;a href=&#34;https://www.zhihu.com/question/23706933&#34;&gt;存疑&lt;/a&gt;）&lt;/p&gt;
+&lt;p&gt;当法线为（0,0,1），映射后的像素为（0.5,0.5,1），即常见的浅蓝色。这说明大部分法线与原先相比没有偏移或偏移不大。&lt;/p&gt;
+&lt;h5 id=&#34;模型空间优点&#34;&gt;模型空间优点&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;简单直观，不需要模型信息。&lt;/li&gt;
+&lt;li&gt;尖锐边角部分法线可以插值，更平滑。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;切线空间-1&#34;&gt;切线空间&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;相对信息，可以复用。&lt;/li&gt;
+&lt;li&gt;可以进行 uv 动画&lt;/li&gt;
+&lt;li&gt;可以压缩&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;实践&#34;&gt;实践&lt;/h3&gt;
+&lt;p&gt;由于法线信息存储在切线空间，要参与光照运算的话就需要变换。一种选择是在切线空间下进行计算，把光照、视角方向变换到切线空间。还有一种是把法线变换到世界空间。&lt;/p&gt;
+&lt;p&gt;效率上来说，第一种选择快。光照视角方向可以在顶点着色器进行运算。而法线信息需要在片元着色器才能采样得到并变换。&lt;/p&gt;
+&lt;p&gt;兼容上来说，第二种选择好。cubemap 等技术需要这种方式。但由于需要存储变换矩阵，占用的插值寄存器更多。&lt;/p&gt;
+&lt;h4 id=&#34;切线空间-2&#34;&gt;切线空间&lt;/h4&gt;
+&lt;p&gt;在 vertex shader 中计算模型空间切线空间的变换矩阵。然后使用这个矩阵将光源方向和视角方向变换到切线空间，然后传入 fragment shader。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;// compute binormal
+float3 binormal = cross( normalize(v.normal), normalize(v.tangent.xyz) ) * v.tangent.w;
+// construct a matrix which transform vec from obj space to tangent space
+float3x3 rotation = float3x3(v.tangent.xyz,binormal,v.normal);
+
+// transform light dir and view dir from object space to tangent space
+o.lightDir = mul(rotation,ObjSpaceLightDir(v.vertex)).xyz;
+o.viewDir = mul(rotation,ObjSpaceViewDir(v.vertex)).xyz;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后在 fragment shader 中根据对应的 uv &lt;del&gt;（但是存储在 zw 里）&lt;/del&gt; 读取出切线空间下的法线。在使用bump scale 变量调整凹凸程度，对法线的 xy 坐标（切线 和 切线法线叉积方向）进行调节后归一化。最后使用这个法线和切线空间的光源方向、视角方向一同参与光照模型运算。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;// Get texel in normal map
+fixed4 packedNormal = tex2D(_BumpMap, i.uv.zw);
+fixed3 tangentNormal;
+tangentNormal = UnpackNormal(packedNormal);
+tangentNormal.xy *= _BumpScale;
+tangentNormal.z = sqrt(1.0 - saturate(dot(tangentNormal.xy, tangentNormal.xy)));
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200312064513716.png&#34; alt=&#34;image-20200312064513716&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;世界空间&#34;&gt;世界空间&lt;/h4&gt;
+&lt;p&gt;将切线坐标系在世界坐标下的表示按列排列，构成 TtoW **转换矩阵 **并传入片元着色器。同时传入顶点的 &lt;strong&gt;世界坐标&lt;/strong&gt; 以获取世界坐标下的光源和视角方向。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/5e69688de4b00fb1da109b27.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;法线纹理-1&#34;&gt;法线纹理&lt;/h3&gt;
+&lt;p&gt;为什么要把纹理类型设置为&lt;strong&gt;法线纹理&lt;/strong&gt;呢？说到底还是因为空间。法线纹理中，每个纹素只需要保存法线的 xy 分量信息，z 分量可以由 xy 分量推导出，即法线贴图&lt;strong&gt;只需要保留两个通道&lt;/strong&gt;就可以了。所以 Unity 会将法线贴图根据平台进行对应压缩来节省内存空间，也因此获取信息也需要调用 Unity 的函数。&lt;/p&gt;
+&lt;h2 id=&#34;渐变纹理&#34;&gt;渐变纹理&lt;/h2&gt;
+&lt;h3 id=&#34;实现-1&#34;&gt;实现&lt;/h3&gt;
+&lt;p&gt;纹理可以用于存储任何表面属性，比如使用渐变纹理控制漫反射光照的映射关系。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;// 将原始漫反射颜色进行映射变换
+fixed3 diffuseColor = tex2D(_RampTex,fixed2(originDiffuseColor,originDiffuseColor)).rgb;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;当使用的纹理有色调突变，就可以实现类似卡通渲染的效果。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200315032710946.png&#34; alt=&#34;image-20200315032710946&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;warp-mode-1&#34;&gt;Warp Mode&lt;/h3&gt;
+&lt;p&gt;由于浮点数误差，原始漫反射值可能会出现 1.000 01。若 Warp Mode 为 Repeat，则会出现对 0.000 01 采样的黑点等现象。因此需要设置为 &lt;strong&gt;Clamp 模式&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;遮罩纹理&#34;&gt;遮罩纹理&lt;/h2&gt;
+&lt;p&gt;遮罩纹理可以用来&lt;strong&gt;存储区域信息&lt;/strong&gt;。这些信息通常来更加精确的控制某种表面属性 。&lt;/p&gt;
+&lt;h3 id=&#34;实践-1&#34;&gt;实践&lt;/h3&gt;
+&lt;p&gt;以高光反射遮罩为例，只需要在原来的高光反射结果中乘上遮罩纹理采样值即可。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;// get mask value
+float maskValue = tex2D(_SpecularMask,i.uv).r * _SpecularScale;
+// get specular term with mask
+fixed3 specular *=  maskValue;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;很明显可以看出高光反射的强度受到了遮罩影响。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200316044624841.png&#34; alt=&#34;image-20200316044624841&#34;&gt;&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>【笔记】Shader 入门精要（五）基础光照</title>
@@ -28,7 +212,7 @@
 &lt;li&gt;摄像机吸收光，产生图像&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;光源&#34;&gt;光源&lt;/h3&gt;
-&lt;p&gt;通常被抽象成一个点。通过**辐照度（irradiance）**量化强度。在垂直于光线方向的单位面积上单位时间内穿过的能量。&lt;/p&gt;
+&lt;p&gt;通常被抽象成一个点。通过 &lt;strong&gt;辐照度（irradiance）&lt;/strong&gt; 量化强度。在垂直于光线方向的单位面积上单位时间内穿过的能量。&lt;/p&gt;
 &lt;h3 id=&#34;吸收和散射&#34;&gt;吸收和散射&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;吸收&lt;/strong&gt;（absorption）：只改变光线的密度和颜色，不改变方向。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;散射&lt;/strong&gt;（scattering） ：只改变光线的方向，不改变密度和颜色。&lt;/p&gt;
@@ -37,7 +221,7 @@
 &lt;p&gt;&lt;strong&gt;高光反射&lt;/strong&gt;（specular）：表示镜面反射。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;漫反射&lt;/strong&gt;（diffuse）：表示折射、吸收和非镜面反射。&lt;/p&gt;
 &lt;h3 id=&#34;着色&#34;&gt;着色&lt;/h3&gt;
-&lt;p&gt;**着色（shading）**指根据材质属性、光源信息，计算出沿某个观察方向的出射度的过程。&lt;strong&gt;光照模型&lt;/strong&gt;就是用来计算的等式。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;着色（shading）&lt;/strong&gt; 指根据材质属性、光源信息，计算出沿某个观察方向的出射度的过程。&lt;strong&gt;光照模型&lt;/strong&gt;就是用来计算的等式。&lt;/p&gt;
 &lt;h3 id=&#34;brdf&#34;&gt;BRDF&lt;/h3&gt;
 &lt;p&gt;双向反射分布函数（Bidirectional Reflectance Distribution Function）是 用来给出 在给定（反射）情况下 某个出射方向上的光照能量分布 的函数 这一类函数的统称。&lt;/p&gt;
 &lt;h2 id=&#34;标准光照模型&#34;&gt;标准光照模型&lt;/h2&gt;
@@ -55,16 +239,17 @@
 &lt;p&gt;光源直接发射进入摄像机。&lt;/p&gt;
 &lt;p&gt;$$ c_{emmisive}=m_{emmisive} $$&lt;/p&gt;
 &lt;h3 id=&#34;漫反射&#34;&gt;漫反射&lt;/h3&gt;
-&lt;p&gt;根据兰伯特定律，反射光线的强度与表面法线和**光源方向（指向光源的方向）**间夹角余弦值成正比。（就是入射光辐照度低了）&lt;/p&gt;
+&lt;p&gt;根据兰伯特定律，反射光线的强度与表面法线和 &lt;strong&gt;光源方向（指向光源的方向）&lt;/strong&gt; 间夹角余弦值成正比。（就是入射光辐照度低了）&lt;/p&gt;
 &lt;p&gt;入射光强可由$ c_{light}\cdot \max (0,n\cdot I) $ 得到。其中 $\max$ 是为了防止法线 $ n $ 与光源方向 $I$ 点积为负而进行的截取。&lt;/p&gt;
 &lt;p&gt;$$ c_{diffuse} = (c_{light} m_{diffuse}) max(0,n\cdot I) $$&lt;/p&gt;
 &lt;h3 id=&#34;高光反射&#34;&gt;高光反射&lt;/h3&gt;
 &lt;p&gt;主要有两种&lt;strong&gt;经验模型&lt;/strong&gt;。&lt;/p&gt;
 &lt;h4 id=&#34;phong-模型&#34;&gt;Phong 模型&lt;/h4&gt;
 &lt;p&gt;计算沿着完全镜面反射方向反射的光线。需要知道表面法线 n、视角方向 v、光源方向 I、反射方向 r。&lt;/p&gt;
-&lt;p&gt;反射方向可通过计算得到：$r = 2(\hat{n} \cdot I )\hat{n} - I$ 。从而计算高光反射有&lt;/p&gt;
+&lt;p&gt;反射方向可通过计算得到：$$r = 2(\hat{n} \cdot I )\hat{n} - I$$&lt;/p&gt;
+&lt;p&gt;从而计算高光反射有&lt;/p&gt;
 &lt;p&gt;$$ c_{specular}=(c_{light}m_{specular})max(0,\hat v\cdot r)^{m_{gloss}} $$&lt;/p&gt;
-&lt;p&gt;$m_{gloss}$ 是材质的**光泽度**（gloss），又称反光度（shininess），控制着高光区域&amp;quot;亮点&amp;quot;范围。&lt;/p&gt;
+&lt;p&gt;gloss 是材质的 &lt;strong&gt;光泽度（gloss)&lt;/strong&gt; ，又称反光度（shininess），控制着高光区域&amp;quot;亮点&amp;quot;范围。&lt;/p&gt;
 &lt;h4 id=&#34;blinn-模型&#34;&gt;Blinn 模型&lt;/h4&gt;
 &lt;p&gt;避免了直接计算反射方向 $\hat r$ ，而用视角方向和光源方向平均后归一的 $\hat h$ 与法线 $\hat n$ 参与计算。&lt;/p&gt;
 &lt;p&gt;$$ \hat h = { {\hat v + I}\over{|\hat v + I|} } $$&lt;/p&gt;
@@ -77,7 +262,7 @@
 &lt;h4 id=&#34;顶点着色器&#34;&gt;顶点着色器&lt;/h4&gt;
 &lt;p&gt;逐顶点光照，&lt;strong&gt;高洛德着色（Gouraud shading）&lt;/strong&gt;。顶点计算光照，图元内部插值。计算量少，效果差。&lt;/p&gt;
 &lt;h3 id=&#34;不足&#34;&gt;不足&lt;/h3&gt;
-&lt;p&gt;无法表现许多物理现象，如&lt;strong&gt;菲涅尔反射（Fresnel reflection）&lt;/strong&gt;。同时标准模型是**各向同性（isotropic）&lt;strong&gt;的，无法表现如拉丝金属，毛发等&lt;/strong&gt;各向异性（anisotropic）**的表面。&lt;/p&gt;
+&lt;p&gt;无法表现许多物理现象，如&lt;strong&gt;菲涅尔反射（Fresnel reflection）&lt;/strong&gt;。同时标准模型是 &lt;strong&gt;各向同性（isotropic）&lt;/strong&gt; 的，无法表现如拉丝金属，毛发等 &lt;strong&gt;各向异性（anisotropic）&lt;/strong&gt; 的表面。&lt;/p&gt;
 &lt;h2 id=&#34;在-unity-中实现标准光照模型&#34;&gt;在 Unity 中实现标准光照模型&lt;/h2&gt;
 &lt;h3 id=&#34;环境光-1&#34;&gt;环境光&lt;/h3&gt;
 &lt;p&gt;通过 &lt;code&gt;UNITY_LIGHTMODEL_AMBIENT&lt;/code&gt; 就可以得到环境光的颜色和强度信息。&lt;/p&gt;
@@ -285,7 +470,7 @@ fixed4 frag(v2f i) : SV_TARGET{
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200308011744227.png&#34; alt=&#34;image-20200308004151307&#34;&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200308004151307.png&#34; alt=&#34;image-20200308004151307&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;blinn-光照模型&#34;&gt;Blinn 光照模型&lt;/h4&gt;
 &lt;p&gt;Blinn 光照模型使用将视角方向和光照方向相加的 $\hat h$ 参与运算，实践中用的更多。在原先的 shader 上修改高光计算方法。&lt;/p&gt;
 &lt;p&gt;$$ \hat h = { {\hat v + I}\over{|\hat v + I|} } $$&lt;/p&gt;
@@ -304,7 +489,7 @@ fixed3 specular = _LightColor0.rgb * _Specular * pow(saturate(dot(worldNormal,h)
 &lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200308005321554.png&#34; alt=&#34;image-20200308005321554&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;总结&#34;&gt;总结&lt;/h3&gt;
 &lt;p&gt;如图。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200308004151307.png&#34; alt=&#34;image-20200308011744227&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200308011744227.png&#34; alt=&#34;image-20200308011744227&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;内置函数&#34;&gt;内置函数&lt;/h2&gt;
 &lt;p&gt;面对更多更复杂的光照类型，计算要分类讨论，相对麻烦。而 UnityCG.cginc 中定义了许多有用的帮助函数，可以不那么底层。包括了&lt;/p&gt;
 &lt;ul&gt;
@@ -1538,7 +1723,7 @@ and the repository exists.
       
       <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</guid>
       
-        <description>&lt;p&gt;想在文章里插入网易云音乐，遂找教程。
+        <description>&lt;p&gt;想在文章里插入网易云音乐，遂找教程。&lt;br&gt;
 逛博客总是能发现很多大佬，比如 &lt;a href=&#34;https://saquarius.com/2019/07/%E7%BB%99hugo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E5%A4%96%E9%93%BE/&#34;&gt;Hugo博客添加音乐外链&lt;/a&gt; @ &lt;a href=&#34;https://saquarius.github.io/&#34;&gt;SAquarius &lt;/a&gt; 。看了 about 好像在武汉，而且1月以后就没有更新了，希望只是寒假在鸽吧。然后还有一个 &lt;a href=&#34;https://wap.a9vg.com/thread-5363888-1-1.html&#34;&gt;网易云音乐如何生成flash和mp3外链&lt;/a&gt; （&lt;del&gt;论坛时泪&lt;/del&gt;，解释了外链的代码。不多废话了，先上效果。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;↓↓ 此处应有音乐&lt;/p&gt;

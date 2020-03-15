@@ -243,6 +243,6 @@ defaultContentLanguage = "zh-cn"           # Default language to use
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
-      hardWraps = false
+      hardWraps = true
       unsafe = true
       xHTML = false
