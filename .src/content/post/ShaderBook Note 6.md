@@ -8,7 +8,7 @@ author: "昼阴夜阳"             		# 作者
 
 # 分类和标签
 categories: ["笔记"]		            # 分类
-tags: ["Shader","Shader入门精要"]  				# 标签
+tags: ["Shader","Shader入门精要"]  		# 标签
 
 # 自定义
 comment: true	 # 评论
