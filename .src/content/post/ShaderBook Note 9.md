@@ -1,0 +1,20 @@
+---
+# 常用定义
+draft: true
+
+title: "【笔记】Shader 入门精要（九）高级纹理"
+date: 2020-03-22T20:45:32+09:00			# 创建时间
+author: "昼阴夜阳"        	     		# 作者
+
+# 分类和标签
+categories: ["笔记"]		            # 分类
+tags: ["Shader","Shader入门精要"]  		# 标签
+
+# 自定义
+comment: true	 # 评论
+toc: true        # 文章目录
+contentCopyright: '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'	# 版权规则
+reward: true	 # 打赏
+mathjax: true    # 打开 mathjax
+---
+

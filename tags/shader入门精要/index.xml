@@ -6,10 +6,19 @@
     <description>Recent content in Shader入门精要 on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 16 Mar 2020 05:00:26 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 19 Mar 2020 15:52:48 +0900</lastBuildDate>
     
 	<atom:link href="https://disorder.ink/tags/shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【笔记】Shader 入门精要（八）复杂光照</title>
+      <link>https://disorder.ink/post/shaderbook-note-8/</link>
+      <pubDate>Thu, 19 Mar 2020 15:52:48 +0900</pubDate>
+      
+      <guid>https://disorder.ink/post/shaderbook-note-8/</guid>
+      <description>本章在处理更多数目类型光源的同时实现阴影。 Unity 渲染路径 渲染路径（Rendering Path) 决定了光照如何应用到 Unity Shader 中。主要分为前向渲染和延迟渲染。指</description>
+    </item>
     
     <item>
       <title>【笔记】Shader 入门精要（七）透明效果</title>

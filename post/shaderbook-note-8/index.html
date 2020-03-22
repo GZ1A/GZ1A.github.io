@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>【笔记】Shader 入门精要（七）透明效果 - 昼阴夜阳</title>
+  <title>【笔记】Shader 入门精要（八）复杂光照 - 昼阴夜阳</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="昼阴夜阳" />
-  <meta name="description" content="每个片元都有颜色值、深度值和透明度属性。利用这个属性，通过透明度测试（Alpha Test）或者透明度混合（Alpha Blending）实现透" />
+  <meta name="description" content="本章在处理更多数目类型光源的同时实现阴影。 Unity 渲染路径 渲染路径（Rendering Path) 决定了光照如何应用到 Unity Shader 中。主要分为前向渲染和延迟渲染。指" />
 
 
 
@@ -34,7 +34,7 @@
 <meta name="generator" content="Hugo 0.64.1" />
 
 
-<link rel="canonical" href="https://disorder.ink/post/shaderbook-note-7/" />
+<link rel="canonical" href="https://disorder.ink/post/shaderbook-note-8/" />
 
 
 
@@ -58,23 +58,23 @@
 
 
 
-<meta property="og:title" content="【笔记】Shader 入门精要（七）透明效果" />
-<meta property="og:description" content="每个片元都有颜色值、深度值和透明度属性。利用这个属性，通过透明度测试（Alpha Test）或者透明度混合（Alpha Blending）实现透" />
+<meta property="og:title" content="【笔记】Shader 入门精要（八）复杂光照" />
+<meta property="og:description" content="本章在处理更多数目类型光源的同时实现阴影。 Unity 渲染路径 渲染路径（Rendering Path) 决定了光照如何应用到 Unity Shader 中。主要分为前向渲染和延迟渲染。指" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://disorder.ink/post/shaderbook-note-7/" />
-<meta property="article:published_time" content="2020-03-16T05:00:26+09:00" />
-<meta property="article:modified_time" content="2020-03-16T05:00:26+09:00" />
-<meta itemprop="name" content="【笔记】Shader 入门精要（七）透明效果">
-<meta itemprop="description" content="每个片元都有颜色值、深度值和透明度属性。利用这个属性，通过透明度测试（Alpha Test）或者透明度混合（Alpha Blending）实现透">
-<meta itemprop="datePublished" content="2020-03-16T05:00:26&#43;09:00" />
-<meta itemprop="dateModified" content="2020-03-16T05:00:26&#43;09:00" />
-<meta itemprop="wordCount" content="1312">
+<meta property="og:url" content="https://disorder.ink/post/shaderbook-note-8/" />
+<meta property="article:published_time" content="2020-03-19T15:52:48+09:00" />
+<meta property="article:modified_time" content="2020-03-19T15:52:48+09:00" />
+<meta itemprop="name" content="【笔记】Shader 入门精要（八）复杂光照">
+<meta itemprop="description" content="本章在处理更多数目类型光源的同时实现阴影。 Unity 渲染路径 渲染路径（Rendering Path) 决定了光照如何应用到 Unity Shader 中。主要分为前向渲染和延迟渲染。指">
+<meta itemprop="datePublished" content="2020-03-19T15:52:48&#43;09:00" />
+<meta itemprop="dateModified" content="2020-03-19T15:52:48&#43;09:00" />
+<meta itemprop="wordCount" content="1793">
 
 
 
 <meta itemprop="keywords" content="Shader,Shader入门精要," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="【笔记】Shader 入门精要（七）透明效果"/>
-<meta name="twitter:description" content="每个片元都有颜色值、深度值和透明度属性。利用这个属性，通过透明度测试（Alpha Test）或者透明度混合（Alpha Blending）实现透"/>
+<meta name="twitter:title" content="【笔记】Shader 入门精要（八）复杂光照"/>
+<meta name="twitter:description" content="本章在处理更多数目类型光源的同时实现阴影。 Unity 渲染路径 渲染路径（Rendering Path) 决定了光照如何应用到 Unity Shader 中。主要分为前向渲染和延迟渲染。指"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -279,18 +279,18 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">【笔记】Shader 入门精要（七）透明效果</h1>
+      <h1 class="post-title">【笔记】Shader 入门精要（八）复杂光照</h1>
       
       <div class="post-meta">
-        <time datetime="2020-03-16" class="post-time">
-          2020-03-16
+        <time datetime="2020-03-19" class="post-time">
+          2020-03-19
         </time>
         <div class="post-category">
             <a href="https://disorder.ink/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
             
           </div>
-        <span class="more-meta"> 约 1312 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span class="more-meta"> 约 1793 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
 
         
         
@@ -311,24 +311,27 @@
   <div class="post-toc-content" style="text-align:left;">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#渲染顺序">渲染顺序</a>
+    <li><a href="#unity-渲染路径">Unity 渲染路径</a>
       <ul>
-        <li><a href="#unity-渲染队列">Unity 渲染队列</a></li>
+        <li><a href="#前向渲染">前向渲染</a></li>
+        <li><a href="#pass">Pass</a></li>
+        <li><a href="#顶点照明渲染路径">顶点照明渲染路径</a></li>
+        <li><a href="#延迟渲染">延迟渲染</a></li>
+        <li><a href="#光源类型">光源类型</a></li>
+        <li><a href="#前向渲染实践">前向渲染实践</a></li>
       </ul>
     </li>
-    <li><a href="#透明度测试">透明度测试</a></li>
-    <li><a href="#透明度混合">透明度混合</a>
+    <li><a href="#光照衰减">光照衰减</a>
       <ul>
-        <li><a href="#开启混合">开启混合</a></li>
-        <li><a href="#开启深度写入">开启深度写入</a></li>
-        <li><a href="#shaderlab-混合命令">ShaderLab 混合命令</a></li>
+        <li><a href="#纹理查找">纹理查找</a></li>
+        <li><a href="#公式计算">公式计算</a></li>
       </ul>
     </li>
-    <li><a href="#双面渲染">双面渲染</a>
+    <li><a href="#阴影">阴影</a>
       <ul>
-        <li><a href="#剔除">剔除</a></li>
-        <li><a href="#透明度测试下的实现">透明度测试下的实现</a></li>
-        <li><a href="#透明度混合下的实现">透明度混合下的实现</a></li>
+        <li><a href="#阴影映射纹理">阴影映射纹理</a></li>
+        <li><a href="#不透明物体">不透明物体</a></li>
+        <li><a href="#透明物体">透明物体</a></li>
       </ul>
     </li>
   </ul>
@@ -339,86 +342,66 @@
 
     
     <div class="post-content">
-      <p>每个片元都有颜色值、深度值和<strong>透明度</strong>属性。利用这个属性，通过透明度测试（Alpha Test）或者透明度混合（Alpha Blending）实现透明效果。透明度测试就是一刀切的阈值判断，真正要有透明度还得看混合。</p>
-<h2 id="渲染顺序">渲染顺序</h2>
-<p>由于透明度混合技术要把表面颜色和缓存中的颜色相混合，渲染顺序就十分重要了。通常渲染引擎会首先渲染不透明物体，然后对半透明物体在<strong>排序</strong>之后渲染。但由于半透明物体可以循环重叠，可能出现错误结果。通常的解决方法是拆分模型，<strong>分割网格</strong>，也可以通过深度写入的半透明等方法解决问题。</p>
-<h3 id="unity-渲染队列">Unity 渲染队列</h3>
-<p>渲染队列（render queue）是 Unity 为渲染顺序提供的解决方案。这通过 SubShader 的 <strong>Queue 标签</strong> 决定。例如</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Tags { 
-	&#34;Queue&#34;=&#34;Transparent&#34; 
-}
-</code></pre></td></tr></table>
-</div>
-</div><p>通过一系列整数索引来表示渲染队列。索引号越小渲染越早。Unity 提前定义了5个渲染队列。</p>
+      <p>本章在处理更多数目类型光源的同时实现阴影。</p>
+<h2 id="unity-渲染路径">Unity 渲染路径</h2>
+<p><strong>渲染路径（Rendering Path)</strong> 决定了光照如何应用到 Unity Shader 中。主要分为前向渲染和延迟渲染。指定渲染路径可以<strong>让 Unity 提供对应的内置光照变量</strong>。</p>
+<h3 id="前向渲染">前向渲染</h3>
+<p>前向照明渲染路径，传统渲染。经过深度测试光照计算后更新帧缓冲，且对于<strong>每个逐像素光源</strong>都要执行一个 Pass。</p>
+<h4 id="光源">光源</h4>
+<p>Unity 中，包括<strong>逐像素</strong>，<strong>逐顶点</strong>，<strong>球谐函数</strong>这三种光照处理方式，由光源类型和渲染模式决定。Unity 会根据场景中各个光源的设置和对物体的影响程度进行重要度排序，然后依次设置处理方式（逐顶点最多4个）。</p>
+<h3 id="pass">Pass</h3>
+<p>有两种 Pass，<strong>Base Pass</strong> 可以渲染一个逐像素的平行光和所有逐顶点、SH光源，也可以实现所有光照效果。<strong>Additional Pass</strong> 通常通过 <code>Blend One One</code> 负责且只负责其他逐像素光源，会自动对其余每个逐像素光源执行一次。</p>
+<h4 id="内置光照变量">内置光照变量</h4>
 <table>
 <thead>
 <tr>
 <th>名称</th>
-<th>队列索引号</th>
-<th>用处描述</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Background</td>
-<td>1000</td>
-<td>最先渲染，用于背景上物体</td>
+<td>_LightColor0</td>
+<td>该 Pass 处理的逐像素光源颜色</td>
 </tr>
 <tr>
-<td>Geometry</td>
-<td>2000</td>
-<td>不透明物体的默认渲染队列</td>
+<td>_WorldSpaceLightPos0</td>
+<td>光源位置，平行光时 w 为 0，否则 w 为 1</td>
 </tr>
 <tr>
-<td>AlphaTest</td>
-<td>2450</td>
-<td>需要透明度测试的物体，这样更高效</td>
+<td>_LightMatrix0</td>
+<td>世界空间到光源空间变换矩阵</td>
 </tr>
 <tr>
-<td>Transparent</td>
-<td>3000</td>
-<td>透明度混合，从后往前渲染</td>
+<td>unity_4LightPosX0 | Y0 | Z0</td>
+<td>Base Pass。前 4 个非重要点光源世界坐标</td>
 </tr>
 <tr>
-<td>Overlay</td>
-<td>4000</td>
-<td>叠加效果</td>
+<td>unity_4LightAtten0</td>
+<td>Base Pass。&hellip;衰减因子</td>
+</tr>
+<tr>
+<td>unity_LightColor</td>
+<td>Base Pass。&hellip;光源颜色（ half4[4] ）</td>
 </tr>
 </tbody>
 </table>
-<h2 id="透明度测试">透明度测试</h2>
-<p>透明度测试就是如果片元的透明度不满足条件（如小于阈值）就舍弃。否则按不透明物体的处理。通常在片元着色器中使用 CG 内置的 <strong>clip</strong> 函数处理。只要添加一句话就可以完成。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">// Alpha test
-clip(texColor.a - _Cutoff);
-// equal to
-// if((texColor.a - _Cutoff) &lt; 0.0){discard;}
-</code></pre></td></tr></table>
-</div>
-</div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200318182628620.png" alt="image-20200318182628620"></p>
-<h2 id="透明度混合">透明度混合</h2>
-<p>混合是一个逐片元的，将片元着色器输出 <strong>源颜色（source color）</strong> 和颜色缓存中的 <strong>目标颜色（destination color）</strong> 乘上混合参数进行混合等式运算的<strong>可配置</strong>操作（不可编程）。</p>
-<p>通常使用的加法混合等式是<br>
-$$<br>
-O_{rgb} = \text{SrcFactor}\times S_{rgb} + \text{DstFactor}\times D_{rgb}\<br>
-O_{a} = \text{SrcFactorA}\times S_{a} + \text{DstFactorA}\times D_{a}<br>
-$$</p>
-<h3 id="开启混合">开启混合</h3>
-<p>将当前片元颜色与缓冲中的颜色通过指定的<strong>混合因子</strong>混合。在 Pass 中使用 <code>Blend</code> 命令可以设置混合模式。</p>
+<h3 id="顶点照明渲染路径">顶点照明渲染路径</h3>
+<p>前向渲染的子集，只填充了逐顶点相关的光源变量。不支持逐像素效果，如阴影、法线映射、高精度的高光反射等。可以使用8个光源，可区分是否是聚光灯。已成为遗留路径。</p>
+<h3 id="延迟渲染">延迟渲染</h3>
+<p>由于 Addtional Pass 要对每个逐像素光源执行一次，前向渲染在有物体受到多个实时光源影响时性能会急速下降。而因为不同的 Pass 间有很多计算是重复的。因此使用延迟渲染。</p>
+<h4 id="原理">原理</h4>
+<p>延迟渲染把渲染分成两步，第一步是渲染关心表面的法线、位置、材质属性等信息并存入额外的缓冲区 <strong>G-buffer</strong> (Geometry) ，其中的每个 <strong>渲染纹理（Render Texture）</strong> 都存储了一部分的渲染数据。第二步是利用这些计算好的数据通过固定模型进行渲染。</p>
+<h3 id="光源类型">光源类型</h3>
+<p>光源有许多属性，常用的有位置、(到某点的)方向、衰减以及颜色、强度等。</p>
+<h4 id="平行光">平行光</h4>
+<p>没有位置属性，只有方向。没有衰减。</p>
+<h4 id="点光源">点光源</h4>
+<p>有位置，方向计算得到。有衰减。</p>
+<h4 id="聚光灯">聚光灯</h4>
+<p>有位置，方向计算得到，有衰减，而且由于要判断椎体，函数更复杂。</p>
+<h3 id="前向渲染实践">前向渲染实践</h3>
+<p>首先要给 Pass 设置正确的渲染路径标签，并使用 <strong>对应编译指令 对应编译指令 对应编译指令</strong>。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -427,102 +410,128 @@ $$</p>
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Pass{
-    ZWrite Off
-    // src(frag) + dst(buffer)
-    Blend SrcAlpha OneMinusSrcAlpha
-	// ...
-}
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Tags {&#34;LightMode&#34; = &#34;ForwardBase&#34;}
+CGPROGRAM
+#pragma multi_compile_fwdbase
+///////////////////////////////////////
+Tags {&#34;LightMode&#34; = &#34;ForwardAdd&#34;}
+Blend One One
+CGPROGRAM
+#pragma multi_compile_fwdadd
 </code></pre></td></tr></table>
 </div>
-</div><p>最终输出的颜色就会根据 alpha 值和混合模式混入缓冲。</p>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200318185751301.png" alt="image-20200318185751301"></p>
-<h3 id="开启深度写入">开启深度写入</h3>
-<p>关闭深度写入虽然可以避免物体间的剔除问题，但没有解决模型内部交错导致的渲染错误。要让<strong>模型与背景混合</strong>一般使用一个 <strong>深度写入 Pass</strong> 来解决：第一个将模型的深度值写入深度缓冲但不着色；第二个进行透明度混合，通过深度检测只渲染多个片元中最前面的片元。</p>
+</div><p>其次要注意分类讨论。Base Pass 只会渲染平行光，但 Additional Pass 可能渲染其他类型的光源。因此一些变量就要进行对应的计算。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Pass{
-	Zwrite On
-	ColorMask 0
-}
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">#ifdef USING_DIRECTIONAL_LIGHT
+fixed3 worldLightDir = normalize(_WorldSpaceLightPos0.xyz);
+fixed atten = 1.0;
+#else
+fixed3 worldLightDir = normalize(_WorldSpaceLightPos0.xyz - i.worldPosition.xyz);
+// use Lookup Table
+float3 lightCoord = mul(_LightMatrix0,float4(i.worldPosition,1)).xyz;
+fixed atten = tex2D(_LightTexture0,dot(lightCoord, lightCoord).rr).UNITY_ATTEN_CHANNEL;
+#endif
 </code></pre></td></tr></table>
 </div>
-</div><p>通过 <code>ColorMask 0</code> 命令设置了颜色通道的写掩码（write mask），可以设置 <code>RGBA</code> 的任意组合或是 <code>0</code> 代表不写入任何颜色通道。</p>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200319075711644.png" alt="image-20200319075711644"></p>
-<h3 id="shaderlab-混合命令">ShaderLab 混合命令</h3>
+</div><h2 id="光照衰减">光照衰减</h2>
+<p>点光源或聚光灯离顶点距离越远， <strong>衰减值（attenation）</strong> 越大。</p>
+<h3 id="纹理查找">纹理查找</h3>
+<p>Unity 中使用了名为 _LightTexture0 的纹理，通常只关心对角线上的纹理颜色并作为<strong>查找表</strong>计算衰减值。虽然需要预处理，精度有限，不直观且不能灵活变化，但是快。</p>
+<p>首先要得到光源空间中的顶点位置。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">float3 lightCoord = mul(_LightMatrix0, float4(i.worldPos, 1)).xyz;
+</code></pre></td></tr></table>
+</div>
+</div><p>然后使用坐标的模的平方对光照纹理采样，获取衰减分量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">fixed attenuation = tex2D(_LightTexture0, dot(lightCoord, lightCoord).rr).UNITY_ATTEN_CHANNEL;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="公式计算">公式计算</h3>
+<p>可以自己使用数学公式计算光源衰减，但由于 Shader 内置变量缺少光源范围等参数，在离开范围时会产生突变，效果一般。</p>
+<h2 id="阴影">阴影</h2>
+<h3 id="阴影映射纹理">阴影映射纹理</h3>
+<p>即 <strong>Shadow Map</strong> 技术，在光源处放置摄像机并渲染深度图来判断阴影区域。</p>
+<h4 id="投射阴影">投射阴影</h4>
+<p>相比调用 Base / Additional Pass，LightMode 为 <strong>ShadowCaster</strong> 的 Pass 更高效。因此，在开启了光源阴影和物体投射时 Unity 会寻找有这个标签的 Pass 更新光源的阴影映射纹理。</p>
+<h4 id="接收阴影">接收阴影</h4>
+<h5 id="光源空间映射">光源空间映射</h5>
+<p>传统方法是在正常渲染的 Pass 中将顶点位置变换到光源空间下，从而得到三维位置信息。使用 xy 分量对阴影映射纹理采样后根据 z 分量判断是否在光源阴影中。最后将采样结果和光照结果相乘。</p>
+<h5 id="屏幕空间映射">屏幕空间映射</h5>
+<p>Unity 中用 ShadowCaster Pass 得到光源的阴影映射纹理和摄像机的深度纹理，从而得到屏幕空间的阴影图，接收阴影时对这个阴影图进行采样。</p>
+<h3 id="不透明物体">不透明物体</h3>
+<h4 id="投射阴影-1">投射阴影</h4>
+<p>满足设置时就会自动寻找 ShadowCaster Pass，当前 Shader 内没有时就会去 FallBack 中找，然后生成阴影映射纹理或是阴影图。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">FallBack &#34;VertexLit&#34;
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="接收阴影-1">接收阴影</h4>
+<p>大概使用一下内置宏，从定义坐标变量，计算坐标再到采样一气呵成。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">// 设置混合操作（混合等式）
-BlendOp BlendOperation
-// 设置 S,D 颜色的混合因子，可单独设置 alpha 通道因子
-Blend SrcFactor DstFactor [,SrcFactorA DstFactorA]
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">#include &#34;AutoLight.cginc&#34;
+// v2f
+SHADOW_COORDS(2)
+// vert
+TRANSFER_SHADOW(o);
+// frag
+fixed shadow = SHADOW_ATTENUATION(i);
+color *= shadow;
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="混合操作">混合操作</h4>
-<table>
-<thead>
-<tr>
-<th>混合操作</th>
-<th>对应每个通道等式（S/D 已乘混合因子）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Add</td>
-<td>O = S + D</td>
-</tr>
-<tr>
-<td>Sub</td>
-<td>O = S - D</td>
-</tr>
-<tr>
-<td>RevSub</td>
-<td>O = D - S</td>
-</tr>
-<tr>
-<td>Min</td>
-<td>O = Min(s,d)</td>
-</tr>
-<tr>
-<td>Max</td>
-<td>O = Max(s,d)</td>
-</tr>
-</tbody>
-</table>
-<h4 id="混合因子">混合因子</h4>
-<p>包括 One,Zero,SrcColor,SrcAlpha,DstColor,DstAlpha,OneMinusSrcColor&hellip;</p>
-<h2 id="双面渲染">双面渲染</h2>
-<h3 id="剔除">剔除</h3>
-<p>无法观察到物体背面结构是因为渲染引擎默认剔除了物体背面的渲染图元。要得到双面渲染的效果，就要关闭剔除。</p>
+</div><h3 id="透明物体">透明物体</h3>
+<h4 id="透明度测试">透明度测试</h4>
+<p>由于透明度测试会在片元着色器中舍弃部分片元，如果不处理，阴影投射就会出现差错。因此不同于基础的 VertexLit，使用</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Cull Back | Front | Off
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Fallback &#34;Transparent/Cutout/VertexLit&#34;
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="透明度测试下的实现">透明度测试下的实现</h3>
-<p>在透明度测试下，只要把剔除关闭就可以有效果。</p>
-<h3 id="透明度混合下的实现">透明度混合下的实现</h3>
-<p>由于第一个 Pass 启用了深度写入，背面肯定无法渲染。首先删除深度写入 Pass。但此时如果关闭剔除，渲染背面和正面的顺序是不确定的。</p>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200319131850340.png" alt="image-20200319131850340"></p>
-<p>由于 Pass 会顺序执行，一个解决方法是把渲染工作分成两个 Pass，第一个渲染背面（剔除正面），第二个渲染正面（剔除背面）。这种方法虽然无法应对模型内部交错，但是在凸模型上可以保证正确的深度渲染关系。复杂模型的深度关系大概需要别的技术保证吧。</p>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200319131850340.png" alt="image-20200319132018922"></p>
+</div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200322164656558.png" alt="image-20200322164656558"></p>
+<h4 id="透明度混合">透明度混合</h4>
+<p>Unity 内置的透明度混合 Shader 都不包含阴影投射的 Pass。由于关闭了深度写入，要生成正确的阴影需要在每个光源空间下仍严格从后往前渲染，复杂且代价大。当然也可以 Fallback VertexLit 强行开启阴影接收和投射，然而结果一般不正确。</p>
 
     </div>
 
@@ -536,7 +545,7 @@ Blend SrcFactor DstFactor [,SrcFactorA DstFactorA]
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-      2020-03-16
+      2020-03-19
       
     </span>
   </p>
@@ -578,22 +587,9 @@ Blend SrcFactor DstFactor [,SrcFactorA DstFactorA]
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/shaderbook-note-8/">
-            
-            <i class="iconfont">
-              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-            </i>
-            <span class="prev-text nav-default">【笔记】Shader 入门精要（八）复杂光照</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/shaderbook-note-6/">
-            <span class="next-text nav-default">【笔记】Shader 入门精要（六）基础纹理</span>
+          <a class="next" href="/post/shaderbook-note-7/">
+            <span class="next-text nav-default">【笔记】Shader 入门精要（七）透明效果</span>
             <span class="prev-text nav-mobile">下一篇</span>
             
             <i class="iconfont">
