@@ -20,7 +20,7 @@ mathjax: true    # 打开 mathjax
 
 本章学习更复杂的纹理。
 
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1408262540&auto=1&height=66"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1408262540&auto=0&height=66"></iframe>
 
 ## 立方体纹理
 
