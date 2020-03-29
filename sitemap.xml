@@ -3,55 +3,76 @@
   
   <url>
     <loc>https://disorder.ink/categories/</loc>
-    <lastmod>2020-03-19T15:52:48+09:00</lastmod>
+    <lastmod>2020-03-26T19:18:43+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://disorder.ink/post/</loc>
-    <lastmod>2020-03-19T15:52:48+09:00</lastmod>
+    <lastmod>2020-03-26T19:18:43+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://disorder.ink/tags/shader/</loc>
-    <lastmod>2020-03-19T15:52:48+09:00</lastmod>
+    <lastmod>2020-03-26T19:18:43+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://disorder.ink/tags/shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81/</loc>
-    <lastmod>2020-03-19T15:52:48+09:00</lastmod>
+    <lastmod>2020-03-26T19:18:43+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://disorder.ink/tags/</loc>
-    <lastmod>2020-03-19T15:52:48+09:00</lastmod>
+    <lastmod>2020-03-26T19:18:43+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://disorder.ink/post/shaderbook-note-8/</loc>
-    <lastmod>2020-03-19T15:52:48+09:00</lastmod>
+    <loc>https://disorder.ink/post/shaderbook-note-11/</loc>
+    <lastmod>2020-03-26T19:18:43+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://disorder.ink/</loc>
-    <lastmod>2020-03-19T15:52:48+09:00</lastmod>
+    <lastmod>2020-03-26T19:18:43+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://disorder.ink/categories/%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2020-03-26T19:18:43+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/post/shaderbook-note-10/</loc>
+    <lastmod>2020-03-25T12:03:14+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/post/shaderbook-note-9/</loc>
+    <lastmod>2020-03-22T20:45:32+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/post/shaderbook-note-8/</loc>
     <lastmod>2020-03-19T15:52:48+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

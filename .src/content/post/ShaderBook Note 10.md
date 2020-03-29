@@ -1,6 +1,6 @@
 ---
 # 常用定义
-draft: true
+draft: false
 
 title: "【笔记】Shader 入门精要（十）动画效果"
 date: 2020-03-25T12:03:14+09:00			# 创建时间

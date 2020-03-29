@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>【笔记】Shader 入门精要（四）Shader 基础 - 昼阴夜阳</title>
+  <title>【笔记】Shader 入门精要（十）动画效果 - 昼阴夜阳</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="昼阴夜阳" />
-  <meta name="description" content="终于来到实践环节了！可喜可贺可喜可贺。 顶点/片元着色器 模型的每个顶点会调用顶点着色器。顶点间插值得到许多片元（像素）。每个片元会调用片元着色" />
+  <meta name="description" content="引入时间变量，实现动画效果。 内置变量 Unity Shader 内置有许多时间相关的变量用于访问。 名称 t 分量 _Time 自该场景加载开始经过的时间 (t/20, t, 2t, 3t) _SinTime 时间的正弦值 (t/8, t/4, t/2," />
 
 
 
@@ -34,7 +34,7 @@
 <meta name="generator" content="Hugo 0.64.1" />
 
 
-<link rel="canonical" href="https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/" />
+<link rel="canonical" href="https://disorder.ink/post/shaderbook-note-10/" />
 
 
 
@@ -58,23 +58,23 @@
 
 
 
-<meta property="og:title" content="【笔记】Shader 入门精要（四）Shader 基础" />
-<meta property="og:description" content="终于来到实践环节了！可喜可贺可喜可贺。 顶点/片元着色器 模型的每个顶点会调用顶点着色器。顶点间插值得到许多片元（像素）。每个片元会调用片元着色" />
+<meta property="og:title" content="【笔记】Shader 入门精要（十）动画效果" />
+<meta property="og:description" content="引入时间变量，实现动画效果。 内置变量 Unity Shader 内置有许多时间相关的变量用于访问。 名称 t 分量 _Time 自该场景加载开始经过的时间 (t/20, t, 2t, 3t) _SinTime 时间的正弦值 (t/8, t/4, t/2," />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/" />
-<meta property="article:published_time" content="2020-03-02T22:03:49+09:00" />
-<meta property="article:modified_time" content="2020-03-02T22:03:49+09:00" />
-<meta itemprop="name" content="【笔记】Shader 入门精要（四）Shader 基础">
-<meta itemprop="description" content="终于来到实践环节了！可喜可贺可喜可贺。 顶点/片元着色器 模型的每个顶点会调用顶点着色器。顶点间插值得到许多片元（像素）。每个片元会调用片元着色">
-<meta itemprop="datePublished" content="2020-03-02T22:03:49&#43;09:00" />
-<meta itemprop="dateModified" content="2020-03-02T22:03:49&#43;09:00" />
-<meta itemprop="wordCount" content="1660">
+<meta property="og:url" content="https://disorder.ink/post/shaderbook-note-10/" />
+<meta property="article:published_time" content="2020-03-25T12:03:14+09:00" />
+<meta property="article:modified_time" content="2020-03-25T12:03:14+09:00" />
+<meta itemprop="name" content="【笔记】Shader 入门精要（十）动画效果">
+<meta itemprop="description" content="引入时间变量，实现动画效果。 内置变量 Unity Shader 内置有许多时间相关的变量用于访问。 名称 t 分量 _Time 自该场景加载开始经过的时间 (t/20, t, 2t, 3t) _SinTime 时间的正弦值 (t/8, t/4, t/2,">
+<meta itemprop="datePublished" content="2020-03-25T12:03:14&#43;09:00" />
+<meta itemprop="dateModified" content="2020-03-25T12:03:14&#43;09:00" />
+<meta itemprop="wordCount" content="809">
 
 
 
 <meta itemprop="keywords" content="Shader,Shader入门精要," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="【笔记】Shader 入门精要（四）Shader 基础"/>
-<meta name="twitter:description" content="终于来到实践环节了！可喜可贺可喜可贺。 顶点/片元着色器 模型的每个顶点会调用顶点着色器。顶点间插值得到许多片元（像素）。每个片元会调用片元着色"/>
+<meta name="twitter:title" content="【笔记】Shader 入门精要（十）动画效果"/>
+<meta name="twitter:description" content="引入时间变量，实现动画效果。 内置变量 Unity Shader 内置有许多时间相关的变量用于访问。 名称 t 分量 _Time 自该场景加载开始经过的时间 (t/20, t, 2t, 3t) _SinTime 时间的正弦值 (t/8, t/4, t/2,"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -279,18 +279,18 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">【笔记】Shader 入门精要（四）Shader 基础</h1>
+      <h1 class="post-title">【笔记】Shader 入门精要（十）动画效果</h1>
       
       <div class="post-meta">
-        <time datetime="2020-03-02" class="post-time">
-          2020-03-02
+        <time datetime="2020-03-25" class="post-time">
+          2020-03-25
         </time>
         <div class="post-category">
             <a href="https://disorder.ink/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
             
           </div>
-        <span class="more-meta"> 约 1660 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span class="more-meta"> 约 809 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
 
         
         
@@ -311,41 +311,14 @@
   <div class="post-toc-content" style="text-align:left;">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#顶点片元着色器">顶点/片元着色器</a>
+    <li><a href="#内置变量">内置变量</a></li>
+    <li><a href="#纹理动画">纹理动画</a>
       <ul>
-        <li><a href="#整体结构">整体结构</a></li>
-        <li><a href="#语义">语义</a></li>
-        <li><a href="#属性">属性</a></li>
-      </ul>
-    </li>
-    <li><a href="#内置文件和变量">内置文件和变量</a></li>
-    <li><a href="#语义-1">语义</a>
-      <ul>
-        <li><a href="#定义">定义</a></li>
-        <li><a href="#unity-常用语义">Unity 常用语义</a></li>
-      </ul>
-    </li>
-    <li><a href="#debug">Debug</a>
-      <ul>
-        <li><a href="#假彩色图像">假彩色图像</a></li>
-        <li><a href="#visual-studio">Visual Studio</a></li>
-      </ul>
-    </li>
-  </ul>
-
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#帧调试器">帧调试器</a></li>
-      </ul>
-    </li>
-    <li><a href="#代码规范">代码规范</a>
-      <ul>
-        <li><a href="#数值类型">数值类型</a></li>
-        <li><a href="#语法">语法</a></li>
-        <li><a href="#减少不必要的计算">减少不必要的计算</a></li>
-        <li><a href="#慎用分支和循环">慎用分支和循环</a></li>
-        <li><a href="#不要除-0">不要除 0</a></li>
+        <li><a href="#序列帧动画">序列帧动画</a></li>
+        <li><a href="#滚动背景">滚动背景</a></li>
+        <li><a href="#流动河流">流动河流</a></li>
+        <li><a href="#广告牌">广告牌</a></li>
+        <li><a href="#注意事项">注意事项</a></li>
       </ul>
     </li>
   </ul>
@@ -356,10 +329,110 @@
 
     
     <div class="post-content">
-      <p>终于来到实践环节了！可喜可贺可喜可贺。</p>
-<h2 id="顶点片元着色器">顶点/片元着色器</h2>
-<p>模型的每个顶点会调用顶点着色器。顶点间插值得到许多片元（像素）。每个片元会调用片元着色器。</p>
-<h3 id="整体结构">整体结构</h3>
+      <p>引入时间变量，实现动画效果。</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1433340584&auto=0&height=66"></iframe>
+<h2 id="内置变量">内置变量</h2>
+<p>Unity Shader 内置有许多时间相关的变量用于访问。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>t</th>
+<th>分量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>_Time</td>
+<td>自该场景加载开始经过的时间</td>
+<td>(t/20, t, 2t, 3t)</td>
+</tr>
+<tr>
+<td>_SinTime</td>
+<td>时间的正弦值</td>
+<td>(t/8, t/4, t/2, t)</td>
+</tr>
+<tr>
+<td>_CosTime</td>
+<td>时间的余弦值</td>
+<td>(t/8, t/4, t/2, t)</td>
+</tr>
+<tr>
+<td>unity_DeltaTime</td>
+<td>时间增量</td>
+<td>(dt, 1/dt, smoothDt, 1/smoothDt)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="纹理动画">纹理动画</h2>
+<h3 id="序列帧动画">序列帧动画</h3>
+<p>依次播放关键帧实现的动画。灵活性强但美术工程量大。实现比较简单，只要在对纹理采样前根据时间重新计算 uv 到对应关键帧处。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">// 使用时间变量播放逐帧动画
+float frame = floor(_Time.y * _Speed);
+float row = floor(frame / _HorizonalAmount );
+float col = frame - row * _HorizonalAmount;
+half2 uv = i.uv + half2(col, - row);
+uv.x /= _HorizonalAmount;
+uv.y /= _VerticalAmount;
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/978c864b-54be-4921-a9a8-cfa2fd5d9e80.gif" alt="boomAnim"></p>
+<h3 id="滚动背景">滚动背景</h3>
+<p>通过多个层模拟视差效果。只需要分别计算动画后插值渲染即可。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">// 使用时间变量计算滚动位置
+o.uv.xy += frac(float2(_ScrollX, 0) * _Time.y);
+o.scrolluv.xy += frac(float2(_Scroll2X,0) * _Time.y);
+// 用 detail 的透明度混合前后纹理
+fixed4 detailColor = tex2D(_DetailTex, i.scrolluv.xy);
+fixed4 texColor = lerp(tex2D(_MainTex, i.uv.xy),detailColor,detailColor.a); 
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="流动河流">流动河流</h3>
+<p>首先在标签中设置 <code>&quot;DisableBatching&quot; = &quot;True&quot;</code>，让这个 SubShader 逃离批处理的大锅，否则 Unity 会把相关模型合并处理，也就没有单独的模型空间供顶点位移了（虽然没有看出差别）。核心就是让面片的顶点随着时间左右横跳，并且使不同的顶点相位不同。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">// 在 vertex 变换前添加计算 offset
+fixed4 offset = fixed4(0,0,0,0);
+offset.x = _Magnitude * sin( _Frequency * _Time.y + _InvWaveLength * (v.vertex.x + v.vertex.y + v.vertex.z));
+o.pos = UnityObjectToClipPos(v.vertex + offset);
+</code></pre></td></tr></table>
+</div>
+</div><p>要有好的效果，主要工作还得看调参（笑）。</p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/150d6caf-75d9-4510-b8a4-c0028634e790.gif" alt="239cb0bf-06f6-4515-a978-4b2f31c15b03"></p>
+<h3 id="广告牌">广告牌</h3>
+<p>即 Billboard 技术。让多边形跟随视角方向旋转。本质就是构造变换矩阵（normal, up, right），通常 up 与 normal 中的一个是确定的。以 normal 确定（<del>向日葵形态</del>）为例，在左手坐标系下有<br>
+$$<br>
+right = up \times normal \<br>
+up&rsquo; = normal \times right<br>
+$$<br>
+因此，在将顶点坐标从模型空间变换到裁剪空间之前，构造变换矩阵并对顶点坐标进行变换就可以实现广告牌效果。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -381,283 +454,38 @@
 </span><span class="lnt">17
 </span><span class="lnt">18
 </span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Shader &#34;MyShader&#34; {
-	Properties {
-		// props
-	}
-	SubShader {
-		// 针对显卡 A 的 SubShader
-		Pass {
-        	// 设置渲染状态和标签
-        	
-        	// CG 代码片段
-        	CGPROGRAM
-        	// 编译指令 
-        	// 通知 Unity 包含 vertex shader 的函数名
-        	#pragma vertex vert
-        	// 通知 Unity 包含 fragment Shader 的函数名
-        	#pragma fragment frag
-        	
-        	// CG 代码
-        	
-        	ENDCG
-        	
-        	//其他设置
-        }
-	}
-	SubShader {
-		// 针对显卡 B 的 SubShader
-	}
-	
-	Fallback &#34;VertexLit&#34; // 保底 Shader
-}
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">// 修改模型空间中对应的顶点位置
+// 计算 法线方向
+float3 center = float3(0,0,0);
+float3 viewDir = mul(unity_WorldToObject, float4(_WorldSpaceCameraPos,1));
+float3 normalDir = -viewDir;
+// 控制法线的 y 轴变化程度
+normalDir.y *= _VerticalBillboard;
+normalDir = normalize(normalDir);
+
+// 获取大致向上方向和向右方向
+float3 upDir = normalDir.y &gt; 0.99? float3(1,0,0):float3(0,1,0);
+float3 rightDir = normalize(cross(upDir,normalDir));
+upDir = normalize(cross(normalDir,rightDir));
+// 旋转
+float3 centerOffset = v.vertex.xyz - center;
+float3 localPos = center + centerOffset.x * rightDir + centerOffset.y * upDir + centerOffset.z * normalDir;
+
+// 输出最终位置
+o.pos = UnityObjectToClipPos(localPos);
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="语义">语义</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">float4 vert(float4 v : POSITION) : SV_POSITION {
-	// return mul (UNITY_MATRIX_MVP, v);
-	// 新版被替换为如下代码
-	return UnityObjectToClipPos (v);
-}
-fixed3 frag() : SV_Target {
-	return fixed4(1,1,1,1);
-}
-</code></pre></td></tr></table>
-</div>
-</div><p>语义（semantics），CG/HLSL 中的语法，如 <code>POSITION</code>,<code>SV_POSITION</code>,<code>SV_Target</code>。语义可以告诉系统，用户的输入和输出是什么，并<strong>交由系统赋值</strong>。这里的<code>POSITION</code>告知了 Unity 要把模型的顶点坐标赋给参数 v，<code>SV_POSITION</code>告知了顶点着色器输出的是裁剪空间中的的顶点坐标，<code>SV_Target</code>让渲染器把输出存储到一个渲染目标中（这里是帧缓存）。</p>
-<p>对于自定义的结构体，创建时变量也会被赋值。在每帧的 Draw Call 时， Mesh Render 组件会把它赋值的模型数据发送给 Unity Shader。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">struct a2v { // application to vertex shader
-    float4 vertex : POSITION;	// 位置
-    float3 normal : NORMAL;		// 顶点法向量
-    float4 texcoord : TEXCOORD0;// 第0个纹理坐标
-};
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">struct v2f { // vertex to fragment
-	float4 pos : SV_POSITION;	// 裁剪空间内位置
-	fixed3 color : COLOR0;		// 第0个颜色
-};
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="属性">属性</h3>
-<p>在 Shader 开头的属性语义块中声明的变量可以在 Unity 的材质面板中方便的操控。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Properties{
-	_Color (&#34;Color Tint&#34;, Color) = (1.0,1.0,1.0,1.0)
-}
-// ...
-fixed4 _Color;	// 在 CG 代码中定义变量
-// ...
-fixed3 frag(v2f i) : SV_Target {
-	fixed3 c = i.color;
-	c *= _Color.rgb;
-	return fixed4(c,1.0);
-}
-</code></pre></td></tr></table>
-</div>
-</div><p>定义一个属性需要在属性语义块中按照格式进行定义。同时还要在 CG 代码中<strong>定义一个同名变量</strong>以访问属性。Unity 会把属性的值赋给这个 CG 变量。</p>
-<h2 id="内置文件和变量">内置文件和变量</h2>
-<p>包含文件（include file）含有一些变量和帮助函数。可通过 #include 将 .cginc 文件包含进 Shader 中的 CG 代码从而使用其中内容。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">#include &#34;UnityCG.cginc&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>有很多不同的包含文件。最常用的是 UnityCG.cginc 。其中包含的结构体定义、变量和函数的具体说明建议直接查看 <code>安装路径/Data/CGIncludes/UnityCG.cginc</code>。</p>
-<h2 id="语义-1">语义</h2>
-<h3 id="定义">定义</h3>
-<p>表达参数含义的字符串。有时输入和输出的语义名字一样但含义不一样，如<code>TEXCOORD0</code>作为输入语义指第一组纹理坐标，作为输出语义就不是了。</p>
-<p>DirectX 10 以后定义了系统数值语义（system-value semantics），以 SV 开头。在某些平台，这些语义代表了该变量是流水线要用到的变量。为了更好的跨平台性，建议使用。</p>
-<h3 id="unity-常用语义">Unity 常用语义</h3>
-<p>虽然没有使用 SV 开头，但 Unity 内部赋予了特殊含义的语义。</p>
-<table>
-<thead>
-<tr>
-<th align="left">语义</th>
-<th align="left">描述</th>
-<th>类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">POSITION</td>
-<td align="left">模型空间中的顶点位置 (以下是 a2v)</td>
-<td>float4</td>
-</tr>
-<tr>
-<td align="left">NORMAL</td>
-<td align="left">顶点法线</td>
-<td>float3</td>
-</tr>
-<tr>
-<td align="left">TANGENT</td>
-<td align="left">顶点切线</td>
-<td>float4</td>
-</tr>
-<tr>
-<td align="left">TEXCOORDn</td>
-<td align="left">纹理坐标，n为纹理下标</td>
-<td>float2 / float4</td>
-</tr>
-<tr>
-<td align="left">COLOR</td>
-<td align="left">顶点颜色</td>
-<td>fixed4 / float4</td>
-</tr>
-<tr>
-<td align="left">SV_POSITION</td>
-<td align="left">裁剪空间中的顶点位置 (以下是 v2f)</td>
-<td>float4</td>
-</tr>
-<tr>
-<td align="left">COLOR0 / 1</td>
-<td align="left">输出第一 / 第二组顶点颜色</td>
-<td>fixed4 / float4</td>
-</tr>
-<tr>
-<td align="left">TEXCOORD0 ~ 7</td>
-<td align="left">输出纹理坐标</td>
-<td>float2 / float4</td>
-</tr>
-<tr>
-<td align="left">SV_Target</td>
-<td align="left">渲染目标，等同 COLOR 语义（f 输出）</td>
-<td>fixed4 / float4</td>
-</tr>
-</tbody>
-</table>
-<h2 id="debug">Debug</h2>
-<p>Shader 由于不能输出，很难 Debug 。</p>
-<h3 id="假彩色图像">假彩色图像</h3>
-<p>最原始的方法，通过把变量映射到 0 到 1 间并作为颜色输出到屏幕上，进行数据可视化。例如可视化法线信息，使用<a href="https://github.com/candycat1992/Unity_Shaders_Book/blob/master/Assets/Scripts/Chapter5/ColorPicker.cs">拾色器</a>脚本在屏幕上获取对应数据。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">v2f vert (appdata_full v) {
-	// ... 
-	o.color = v.normal * 0.5 + fixed3(0.5, 0.5, 0.5);
-	return o;
-}
-</code></pre></td></tr></table>
-</div>
-</div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200305062550133.png" alt="可视化法线信息"></p>
-<h3 id="visual-studio">Visual Studio</h3>
-<p><a href="https://docs.unity3d.com/Manual/SL-DebuggingD3D11ShadersWithVS.html">Unity 官方文档</a> 里写了。</p>
-<h1 id="等待填充">【等待填充】</h1>
-<h3 id="帧调试器">帧调试器</h3>
-<p>停止渲染，精确到每一个渲染事件，可以实时查看效果，建议使用。但并没有很多过程信息。真需要信息还得看外部工具。不过帅就完事了。</p>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200305063715619.png" alt="image-20200305063715619"></p>
-<h2 id="代码规范">代码规范</h2>
-<h3 id="数值类型">数值类型</h3>
-<p>CG / HLSL 中有 3 种精度的数值类型。通常的定义如下</p>
-<table>
-<thead>
-<tr>
-<th>数值类型</th>
-<th>存储位数</th>
-<th>精度范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>float</td>
-<td>32</td>
-<td></td>
-</tr>
-<tr>
-<td>half</td>
-<td>16</td>
-<td>-60000 ~ 60000</td>
-</tr>
-<tr>
-<td>fixed</td>
-<td>11</td>
-<td>-2.0 ~ +2.0</td>
-</tr>
-</tbody>
-</table>
-<p>在 PC 上，大多数 GPU 一律以最高精度计算。在移动平台上则会有不同范围和计算速度。尽可能使用精度较低的类型。</p>
-<h3 id="语法">语法</h3>
-<p>严格要求语法以更好的跨平台。</p>
-<h3 id="减少不必要的计算">减少不必要的计算</h3>
-<p>Shader Model 是微软提出的 Shader 能力分级。不同的 Shader Target 下着色器阶段可用的临时寄存器和指令数目都是不同的。</p>
-<p>可通过指定更高等级的 Shader Target 消除错误（降低兼容性），但更好的方法是减少 Shader 中的运算。</p>
-<h3 id="慎用分支和循环">慎用分支和循环</h3>
-<p>由于底层实现不同， Shader 中大量流程控制可能导致性能成倍下降。尽量把计算向流水线上游移动或预计算，同时</p>
+</div><h3 id="注意事项">注意事项</h3>
 <ul>
-<li>条件变量多用常数</li>
-<li>减少分支内指令</li>
-<li>减少嵌套</li>
+<li>
+<p>可以在顶点中存储顶点到锚点距离，供批处理使用从而提高效率</p>
+</li>
+<li>
+<p>顶点动画的物体阴影需要提供自定义 ShadowCaster Pass</p>
+</li>
 </ul>
-<h3 id="不要除-0">不要除 0</h3>
-<p>rt</p>
-<hr>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200305071417478.png" alt="image-20200305071748712"></p>
 
     </div>
 
@@ -671,7 +499,7 @@ fixed3 frag(v2f i) : SV_Target {
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-      2020-03-02
+      2020-03-25
       
     </span>
   </p>
@@ -713,7 +541,7 @@ fixed3 frag(v2f i) : SV_Target {
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/">
+          <a class="prev" href="/post/shaderbook-note-11/">
             
             <i class="iconfont">
               <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -723,12 +551,12 @@ fixed3 frag(v2f i) : SV_Target {
 </svg>
 
             </i>
-            <span class="prev-text nav-default">【笔记】Shader 入门精要（五）基础光照</span>
+            <span class="prev-text nav-default">【笔记】Shader 入门精要（十一）屏幕后处理</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         
-          <a class="next" href="/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/">
-            <span class="next-text nav-default">【笔记】Shader 入门精要（三）数学基础</span>
+          <a class="next" href="/post/shaderbook-note-9/">
+            <span class="next-text nav-default">【笔记】Shader 入门精要（九）高级纹理</span>
             <span class="prev-text nav-mobile">下一篇</span>
             
             <i class="iconfont">

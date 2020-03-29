@@ -1,6 +1,6 @@
 ---
 # 常用定义
-draft: true
+draft: false
 
 title: "【笔记】Shader 入门精要（九）高级纹理"
 date: 2020-03-22T20:45:32+09:00			# 创建时间

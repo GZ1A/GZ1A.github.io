@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="zh-cn" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>【笔记】Shader 入门精要（十一）屏幕后处理 - 昼阴夜阳</title>
+  
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="昼阴夜阳" />
+  <meta name="description" content="屏幕后处理就是利用渲染纹理，在场景渲染完之后对图像进行操作从而实现艺术效果的技术。（这不就是数字图像处理嘛） 后处理脚本 基类 后处理只需要三步：" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.64.1" />
+
+
+<link rel="canonical" href="https://disorder.ink/post/shaderbook-note-11/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+<meta property="og:title" content="【笔记】Shader 入门精要（十一）屏幕后处理" />
+<meta property="og:description" content="屏幕后处理就是利用渲染纹理，在场景渲染完之后对图像进行操作从而实现艺术效果的技术。（这不就是数字图像处理嘛） 后处理脚本 基类 后处理只需要三步：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://disorder.ink/post/shaderbook-note-11/" />
+<meta property="article:published_time" content="2020-03-26T19:18:43+09:00" />
+<meta property="article:modified_time" content="2020-03-26T19:18:43+09:00" />
+<meta itemprop="name" content="【笔记】Shader 入门精要（十一）屏幕后处理">
+<meta itemprop="description" content="屏幕后处理就是利用渲染纹理，在场景渲染完之后对图像进行操作从而实现艺术效果的技术。（这不就是数字图像处理嘛） 后处理脚本 基类 后处理只需要三步：">
+<meta itemprop="datePublished" content="2020-03-26T19:18:43&#43;09:00" />
+<meta itemprop="dateModified" content="2020-03-26T19:18:43&#43;09:00" />
+<meta itemprop="wordCount" content="2723">
+
+
+
+<meta itemprop="keywords" content="Shader,Shader入门精要," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="【笔记】Shader 入门精要（十一）屏幕后处理"/>
+<meta name="twitter:description" content="屏幕后处理就是利用渲染纹理，在场景渲染完之后对图像进行操作从而实现艺术效果的技术。（这不就是数字图像处理嘛） 后处理脚本 基类 后处理只需要三步："/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">昼阴夜阳</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://disorder.ink/">首页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://disorder.ink/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://disorder.ink/categories/">分类</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://disorder.ink/tags/">标签</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+
+  
+
+  
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      昼阴夜阳
+    
+
+  
+
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://disorder.ink/">首页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://disorder.ink/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://disorder.ink/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://disorder.ink/tags/">标签</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">【笔记】Shader 入门精要（十一）屏幕后处理</h1>
+      
+      <div class="post-meta">
+        <time datetime="2020-03-26" class="post-time">
+          2020-03-26
+        </time>
+        <div class="post-category">
+            <a href="https://disorder.ink/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
+            
+          </div>
+        <span class="more-meta"> 约 2723 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+
+        
+        
+          <span id="busuanzi_container_page_pv">
+            | 阅读 <span id="busuanzi_value_page_pv"></span>
+          </span>
+        
+
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title" style="text-align:center;">文章目录</h2>
+  <div class="post-toc-content" style="text-align:left;">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#后处理脚本">后处理脚本</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#亮度饱和度和对比度">亮度、饱和度和对比度</a></li>
+    <li><a href="#边缘检测">边缘检测</a>
+      <ul>
+        <li><a href="#卷积">卷积</a></li>
+        <li><a href="#边缘检测算子">边缘检测算子</a></li>
+        <li><a href="#shader-实现">Shader 实现</a></li>
+      </ul>
+    </li>
+    <li><a href="#高斯模糊">高斯模糊</a>
+      <ul>
+        <li><a href="#高斯滤波">高斯滤波</a></li>
+        <li><a href="#脚本实现-1">脚本实现</a></li>
+        <li><a href="#shader-实现-1">Shader 实现</a></li>
+      </ul>
+    </li>
+    <li><a href="#bloom-效果">Bloom 效果</a>
+      <ul>
+        <li><a href="#原理">原理</a></li>
+        <li><a href="#shader-实现-2">Shader 实现</a></li>
+      </ul>
+    </li>
+    <li><a href="#运动模糊">运动模糊</a>
+      <ul>
+        <li><a href="#实现原理">实现原理</a></li>
+        <li><a href="#脚本实现-2">脚本实现</a></li>
+        <li><a href="#shader-实现-3">Shader 实现</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+
+    
+    <div class="post-content">
+      <p><strong>屏幕后处理</strong>就是利用渲染纹理，在场景渲染完之后对图像进行操作从而实现艺术效果的技术。（这不就是数字图像处理嘛）</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=477992781&auto=0&height=66"></iframe>
+<h2 id="后处理脚本">后处理脚本</h2>
+<h4 id="基类">基类</h4>
+<p>后处理只需要三步：</p>
+<ul>
+<li>得到屏幕图像</li>
+<li>调用材质处理</li>
+<li>重新贴回屏幕</li>
+</ul>
+<p>这些调度工作就需要由一个绑定在摄像机上的脚本来完成。脚本不是现在学习的重点，看看就好了。定义一个基类，<strong>确认资源可用</strong> 后通过指定 Shader <strong>生成材质</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="n">material</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Material</span><span class="p">(</span><span class="n">shader</span><span class="p">)</span><span class="p">;</span>
+<span class="k">return</span> <span class="n">material</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="脚本实现">脚本实现</h4>
+<p><code>OnRenderImage</code> 会白给两张图像，将屏幕图像存储到 src 中，并将 dest 图像贴回屏幕。</p>
+<p><code>Graphics.Blit</code> 会将 src 图像经过 material 材质处理后保存到 dest 图像中。</p>
+<p>通过基类函数创建材质后，使用这两个函数就可以完成特效处理。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">void</span> <span class="n">OnRenderImage</span><span class="p">(</span><span class="n">RenderTexture</span> <span class="n">src</span><span class="p">,</span> <span class="n">RenderTexture</span> <span class="n">dest</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">material</span> <span class="p">!</span><span class="p">=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">material</span><span class="p">.</span><span class="n">SetFloat</span><span class="p">(</span><span class="s">&#34;_Brightness&#34;</span><span class="p">,</span> <span class="n">brightness</span><span class="p">)</span><span class="p">;</span>
+        <span class="n">material</span><span class="p">.</span><span class="n">SetFloat</span><span class="p">(</span><span class="s">&#34;_Saturation&#34;</span><span class="p">,</span> <span class="n">saturation</span><span class="p">)</span><span class="p">;</span>
+        <span class="n">material</span><span class="p">.</span><span class="n">SetFloat</span><span class="p">(</span><span class="s">&#34;_Contrast&#34;</span><span class="p">,</span> <span class="n">contrast</span><span class="p">)</span><span class="p">;</span>
+
+    	<span class="n">Graphics</span><span class="p">.</span><span class="n">Blit</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dest</span><span class="p">,</span> <span class="n">material</span><span class="p">)</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+   		<span class="n">Graphics</span><span class="p">.</span><span class="n">Blit</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dest</span><span class="p">)</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>于是要关心的只剩下 Shader 了。</p>
+<h2 id="亮度饱和度和对比度">亮度、饱和度和对比度</h2>
+<p>Properties 中声明属性只是为了方便手动操作，如果由程序操作变量（<code>material.SetFloat</code>）就不用声明。但 Blit 传入的 <strong>_MainTex 需要</strong>，猜测是由操作方法决定的？当然仍要定义 CG 变量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="n">Properties</span> <span class="p">{</span>
+    <span class="n">_MainTex</span> <span class="p">(</span><span class="s">&#34;Base (RGB)&#34;</span><span class="p">,</span> <span class="m">2D</span><span class="p">)</span> <span class="p">=</span> <span class="s">&#34;white&#34;</span> <span class="p">{</span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在采样纹理后，根据设置的图像属性对像素进行处理。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="n">fixed4</span> <span class="n">frag</span><span class="p">(</span><span class="n">v2f</span> <span class="n">i</span><span class="p">)</span> <span class="p">:</span> <span class="n">SV_TARGET</span><span class="p">{</span>
+    <span class="n">fixed4</span> <span class="n">renderTex</span> <span class="p">=</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_MainTex</span><span class="p">,</span><span class="n">i</span><span class="p">.</span><span class="n">uv</span><span class="p">)</span><span class="p">;</span>
+
+    <span class="c1">// Apply Brightness
+</span><span class="c1"></span>    <span class="n">fixed3</span> <span class="n">finalColor</span> <span class="p">=</span> <span class="n">renderTex</span><span class="p">.</span><span class="n">rgb</span> <span class="p">*</span> <span class="n">_Brightness</span><span class="p">;</span>
+
+    <span class="c1">// Apply Saturation
+</span><span class="c1"></span>    <span class="k">fixed</span> <span class="n">luminance</span> <span class="p">=</span> <span class="m">0.2125</span> <span class="p">*</span> <span class="n">renderTex</span><span class="p">.</span><span class="n">r</span> <span class="p">+</span> <span class="m">0.7154</span> <span class="p">*</span> <span class="n">renderTex</span><span class="p">.</span><span class="n">g</span> <span class="p">+</span> <span class="m">0.0721</span> <span class="p">*</span> <span class="n">renderTex</span><span class="p">.</span><span class="n">b</span><span class="p">;</span>
+    <span class="n">fixed3</span> <span class="n">luminanceColor</span> <span class="p">=</span> <span class="n">fixed3</span><span class="p">(</span><span class="n">luminance</span><span class="p">,</span><span class="n">luminance</span><span class="p">,</span><span class="n">luminance</span><span class="p">)</span><span class="p">;</span>
+    <span class="n">finalColor</span> <span class="p">=</span> <span class="n">lerp</span><span class="p">(</span><span class="n">luminanceColor</span><span class="p">,</span><span class="n">finalColor</span><span class="p">,</span> <span class="n">_Saturation</span><span class="p">)</span><span class="p">;</span>
+
+    <span class="c1">// Apply Contrast
+</span><span class="c1"></span>    <span class="n">fixed3</span> <span class="n">avgColor</span> <span class="p">=</span> <span class="n">fixed3</span><span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="m">0.5</span><span class="p">,</span> <span class="m">0.5</span><span class="p">)</span><span class="p">;</span>
+    <span class="n">finalColor</span> <span class="p">=</span> <span class="n">lerp</span><span class="p">(</span><span class="n">avgColor</span><span class="p">,</span> <span class="n">finalColor</span><span class="p">,</span> <span class="n">_Contrast</span><span class="p">)</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">fixed4</span><span class="p">(</span><span class="n">finalColor</span><span class="p">,</span><span class="n">renderTex</span><span class="p">.</span><span class="n">a</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>lerp 函数并不只是 [0,1] 插值，而是在以 a 为原点，b-a 为单位 1 的坐标轴上取值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="n">float3</span> <span class="n">lerp</span><span class="p">(</span><span class="n">float3</span> <span class="n">a</span><span class="p">,</span> <span class="n">float3</span> <span class="n">b</span><span class="p">,</span> <span class="kt">float</span> <span class="n">w</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="n">a</span> <span class="p">+</span> <span class="n">w</span> <span class="p">*</span><span class="p">(</span><span class="n">b</span><span class="p">-</span><span class="n">a</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>显然，这些属性的插值实现并不是顺序无关的，如图，顺序不同效果也不同。可能人为规定了固定顺序吧。</p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200327184826864.png" alt="image-20200327184826864"></p>
+<h2 id="边缘检测">边缘检测</h2>
+<p>说到边缘检测，就得提到 <del>OpenCV</del> 卷积。先来复习一下。</p>
+<h3 id="卷积">卷积</h3>
+<p>使用卷积核对图像中每一个像素进行操作。将翻转后核中每个元素与对应像素值乘积并求和，就能获得锚点处的卷积结果。</p>
+<h3 id="边缘检测算子">边缘检测算子</h3>
+<p>即用于边缘检测的卷积核。检测边缘就是要检测像素值的<strong>梯度（gradient）</strong>。于是有以下几种边缘检测算子。</p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200327235748069.png" alt="image-20200327235748069"></p>
+<p>两个卷积核分别检测水平或垂直上的梯度。整体的梯度可以用勾股定理</p>
+<p>$$ G=\sqrt{G_x^2 + G_y^2} $$</p>
+<p>出于性能考虑，也可以使用绝对值</p>
+<p>$$ G=\vert G_x \vert + \vert G_y \vert $$</p>
+<h3 id="shader-实现">Shader 实现</h3>
+<p>将计算转移到上游以提高效率。在 v2f 结构体中定义 uv 数组并在 vert 中计算好顶点周围像素的 uv，线性插值后就成了片元周围像素的 uv。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">struct</span> <span class="nc">v2f</span><span class="p">{</span>
+    <span class="n">float4</span> <span class="n">pos</span> <span class="p">:</span> <span class="n">SV_POSITION</span><span class="p">;</span>
+    <span class="n">half2</span> <span class="n">uv</span><span class="p">[</span><span class="m">9</span><span class="p">]</span> <span class="p">:</span> <span class="n">TEXCOORD0</span><span class="p">;</span>
+<span class="p">}</span><span class="p">;</span>
+<span class="c1">// 通过 _MainTex_TexelSize 获取该像素大小
+</span><span class="c1"></span><span class="n">v2f</span> <span class="n">vert</span><span class="p">(</span><span class="n">appdata_img</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">v2f</span> <span class="n">o</span><span class="p">;</span>
+    <span class="n">o</span><span class="p">.</span><span class="n">pos</span> <span class="p">=</span> <span class="n">UnityObjectToClipPos</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">vertex</span><span class="p">)</span><span class="p">;</span>
+    <span class="n">half2</span> <span class="n">uv</span> <span class="p">=</span> <span class="n">v</span><span class="p">.</span><span class="n">texcoord</span><span class="p">.</span><span class="n">xy</span><span class="p">;</span>
+
+    <span class="n">o</span><span class="p">.</span><span class="n">uv</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">=</span> <span class="n">uv</span> <span class="p">+</span> <span class="n">_MainTex_TexelSize</span><span class="p">.</span><span class="n">xy</span> <span class="p">*</span> <span class="n">half2</span><span class="p">(</span><span class="p">-</span><span class="m">1</span><span class="p">,</span><span class="p">-</span><span class="m">1</span><span class="p">)</span><span class="p">;</span>                
+	<span class="c1">// ...              
+</span><span class="c1"></span>    <span class="n">o</span><span class="p">.</span><span class="n">uv</span><span class="p">[</span><span class="m">8</span><span class="p">]</span> <span class="p">=</span> <span class="n">uv</span> <span class="p">+</span> <span class="n">_MainTex_TexelSize</span><span class="p">.</span><span class="n">xy</span> <span class="p">*</span> <span class="n">half2</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">)</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">o</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在片元着色器中调用 Sobel 函数计算梯度。其实现如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">// 计算像素值的亮度
+</span><span class="c1"></span><span class="k">fixed</span> <span class="n">luminance</span><span class="p">(</span><span class="n">fixed4</span> <span class="n">color</span><span class="p">)</span><span class="p">{</span>
+    <span class="k">return</span> <span class="m">0.2125</span> <span class="p">*</span> <span class="n">color</span><span class="p">.</span><span class="n">r</span> <span class="p">+</span> <span class="m">0.7154</span> <span class="p">*</span> <span class="n">color</span><span class="p">.</span><span class="n">g</span> <span class="p">+</span> <span class="m">0.0721</span> <span class="p">*</span> <span class="n">color</span><span class="p">.</span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// 计算梯度大小,寻找边缘
+</span><span class="c1"></span><span class="n">half</span> <span class="n">Sobel</span><span class="p">(</span><span class="n">v2f</span> <span class="n">i</span><span class="p">)</span><span class="p">{</span>
+    <span class="c1">// 定义卷积核
+</span><span class="c1"></span>    <span class="k">const</span> <span class="n">half</span> <span class="n">Gx</span><span class="p">[</span><span class="m">9</span><span class="p">]</span> <span class="p">=</span> 
+    <span class="p">{</span><span class="p">-</span><span class="m">1</span><span class="p">,</span> <span class="p">-</span><span class="m">2</span><span class="p">,</span> <span class="p">-</span><span class="m">1</span><span class="p">,</span>
+    <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span>
+     <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">}</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">half</span> <span class="n">Gy</span><span class="p">[</span><span class="m">9</span><span class="p">]</span> <span class="p">=</span> 
+    <span class="p">{</span><span class="p">-</span><span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span>
+     <span class="p">-</span><span class="m">2</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span>
+     <span class="p">-</span><span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">}</span><span class="p">;</span>
+    
+    <span class="n">half</span> <span class="n">texColor</span><span class="p">;</span>
+    <span class="n">half</span> <span class="n">edgeX</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="n">half</span> <span class="n">edgeY</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    
+    <span class="c1">// 计算每个元素与对应像素亮度的乘积并累加
+</span><span class="c1"></span>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">it</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">it</span> <span class="p">&lt;</span> <span class="m">9</span><span class="p">;</span> <span class="n">it</span> <span class="p">+</span><span class="p">+</span><span class="p">)</span><span class="p">{</span>
+        <span class="n">texColor</span> <span class="p">=</span> <span class="n">luminance</span><span class="p">(</span><span class="n">tex2D</span><span class="p">(</span><span class="n">_MainTex</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">uv</span><span class="p">[</span><span class="n">it</span><span class="p">]</span><span class="p">)</span><span class="p">)</span><span class="p">;</span>
+        <span class="n">edgeX</span> <span class="p">+</span><span class="p">=</span> <span class="n">Gx</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="p">*</span> <span class="n">texColor</span><span class="p">;</span>
+        <span class="n">edgeY</span> <span class="p">+</span><span class="p">=</span> <span class="n">Gy</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="p">*</span> <span class="n">texColor</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// 近似计算梯度大小
+</span><span class="c1"></span>    <span class="n">half</span> <span class="n">edge</span> <span class="p">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">edgeX</span><span class="p">)</span> <span class="p">+</span> <span class="n">abs</span><span class="p">(</span><span class="n">edgeY</span><span class="p">)</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">edge</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>描个边，调下色，还挺好看的。</p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200328024432024.png" alt="image-20200328024432024"></p>
+<h2 id="高斯模糊">高斯模糊</h2>
+<p>模糊有好多种，比如均值模糊、中值模糊、高斯模糊。</p>
+<h3 id="高斯滤波">高斯滤波</h3>
+<p>高斯模糊使用了基于<strong>二维高斯函数</strong><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> 的卷积核，能很好的模拟领域像素对当前像素的影响程度。</p>
+<p>$$ G(x,y) = {1\over{2 \pi \sigma^2} } e ^ {{x^2 + y^2}\over{2 \sigma^2} } $$</p>
+<p>由其性质，二维高斯函数可以被拆成两个一维函数。而一维高斯函数也是对称的，故想用  5×5 的高斯核滤波，只需要记录 3 个权重值。</p>
+<h3 id="脚本实现-1">脚本实现</h3>
+<p>高斯模糊的实现在脚本中应用了 <strong>迭代</strong> 和 <strong>降采样（downSample）</strong> 的方法。同时每一次迭代都需要分别使用垂直和水平方向的高斯核进行滤波，<strong>执行两个 Pass</strong> 。</p>
+<h4 id="迭代">迭代</h4>
+<p>就是循环。多次调用材质处理图像来提高模糊程度。</p>
+<h4 id="降采样">降采样</h4>
+<p>利用缩放，减少需要处理的像素个数以提高性能。同时适当的降采样也可以得到更好的模糊效果。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="kt">int</span> <span class="n">rtW</span> <span class="p">=</span> <span class="n">src</span><span class="p">.</span><span class="n">width</span> <span class="p">/</span> <span class="n">downSample</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">rtH</span> <span class="p">=</span> <span class="n">src</span><span class="p">.</span><span class="n">height</span> <span class="p">/</span> <span class="n">downSample</span><span class="p">;</span>
+<span class="c1">// 创建双线性滤波的渲染纹理
+</span><span class="c1"></span><span class="n">RenderTexture</span> <span class="n">buffer0</span> <span class="p">=</span> <span class="n">RenderTexture</span><span class="p">.</span><span class="n">GetTemporary</span><span class="p">(</span><span class="n">rtW</span><span class="p">,</span> <span class="n">rtH</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span><span class="p">;</span>
+<span class="n">buffer</span><span class="p">.</span><span class="n">filterMode</span> <span class="p">=</span> <span class="n">FilterMode</span><span class="p">.</span><span class="n">Bilinear</span><span class="p">;</span>
+<span class="c1">// 复制的同时缩放
+</span><span class="c1"></span><span class="n">Graphics</span><span class="p">.</span><span class="n">Blit</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">buffer0</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="分别执行">分别执行</h4>
+<p>为了垂直水平分别滤波，在单独调用第一个 Pass 后将结果保存在 buffer 中再单独调用第二个 buffer。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">// Render the vertical pass
+</span><span class="c1"></span><span class="n">Graphics</span><span class="p">.</span><span class="n">Blit</span><span class="p">(</span><span class="n">buffer0</span><span class="p">,</span> <span class="n">buffer1</span><span class="p">,</span> <span class="n">material</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span><span class="p">;</span>
+
+<span class="n">RenderTexture</span><span class="p">.</span><span class="n">ReleaseTemporary</span><span class="p">(</span><span class="n">buffer0</span><span class="p">)</span><span class="p">;</span>
+<span class="n">buffer0</span> <span class="p">=</span> <span class="n">buffer1</span><span class="p">;</span>
+<span class="n">buffer1</span> <span class="p">=</span> <span class="n">RenderTexture</span><span class="p">.</span><span class="n">GetTemporary</span><span class="p">(</span><span class="n">rtW</span><span class="p">,</span> <span class="n">rtH</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span><span class="p">;</span>
+
+<span class="c1">// Render the horizontal pass
+</span><span class="c1"></span><span class="n">Graphics</span><span class="p">.</span><span class="n">Blit</span><span class="p">(</span><span class="n">buffer0</span><span class="p">,</span> <span class="n">buffer1</span><span class="p">,</span> <span class="n">material</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span><span class="p">;</span>
+
+<span class="n">RenderTexture</span><span class="p">.</span><span class="n">ReleaseTemporary</span><span class="p">(</span><span class="n">buffer0</span><span class="p">)</span><span class="p">;</span>
+<span class="n">buffer0</span> <span class="p">=</span> <span class="n">buffer1</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="shader-实现-1">Shader 实现</h3>
+<p>在 vert 中定义 水平/垂直 方向的卷积核位置。以垂直方向（水平模糊）为例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="n">o</span><span class="p">.</span><span class="n">uv</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">=</span> <span class="n">uv</span><span class="p">;</span>
+<span class="c1">// _BlurSize 控制卷积核元素间距
+</span><span class="c1"></span><span class="n">o</span><span class="p">.</span><span class="n">uv</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="p">=</span> <span class="n">uv</span> <span class="p">+</span> <span class="n">float2</span><span class="p">(</span><span class="m">0.0</span><span class="p">,</span> <span class="n">_MainTex_TexelSize</span><span class="p">.</span><span class="n">y</span> <span class="p">*</span> <span class="m">1.0</span> <span class="p">)</span> <span class="p">*</span> <span class="n">_BlurSize</span><span class="p">;</span>
+<span class="n">o</span><span class="p">.</span><span class="n">uv</span><span class="p">[</span><span class="m">2</span><span class="p">]</span> <span class="p">=</span> <span class="n">uv</span> <span class="p">-</span> <span class="n">float2</span><span class="p">(</span><span class="m">0.0</span><span class="p">,</span> <span class="n">_MainTex_TexelSize</span><span class="p">.</span><span class="n">y</span> <span class="p">*</span> <span class="m">1.0</span> <span class="p">)</span> <span class="p">*</span> <span class="n">_BlurSize</span><span class="p">;</span>
+<span class="n">o</span><span class="p">.</span><span class="n">uv</span><span class="p">[</span><span class="m">3</span><span class="p">]</span> <span class="p">=</span> <span class="n">uv</span> <span class="p">+</span> <span class="n">float2</span><span class="p">(</span><span class="m">0.0</span><span class="p">,</span> <span class="n">_MainTex_TexelSize</span><span class="p">.</span><span class="n">y</span> <span class="p">*</span> <span class="m">2.0</span> <span class="p">)</span> <span class="p">*</span> <span class="n">_BlurSize</span><span class="p">;</span>
+<span class="n">o</span><span class="p">.</span><span class="n">uv</span><span class="p">[</span><span class="m">4</span><span class="p">]</span> <span class="p">=</span> <span class="n">uv</span> <span class="p">-</span> <span class="n">float2</span><span class="p">(</span><span class="m">0.0</span><span class="p">,</span> <span class="n">_MainTex_TexelSize</span><span class="p">.</span><span class="n">y</span> <span class="p">*</span> <span class="m">2.0</span> <span class="p">)</span> <span class="p">*</span> <span class="n">_BlurSize</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在 frag 中定义好卷积核权重，累加每个卷积核位置上像素值与对应权重的积。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="kt">float</span> <span class="n">weight</span><span class="p">[</span><span class="m">3</span><span class="p">]</span> <span class="p">=</span> <span class="p">{</span><span class="m">0.4026</span><span class="p">,</span> <span class="m">0.2442</span><span class="p">,</span> <span class="m">0.0545</span><span class="p">}</span><span class="p">;</span>
+
+<span class="n">fixed3</span> <span class="n">sum</span> <span class="p">=</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_MainTex</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">uv</span><span class="p">[</span><span class="m">0</span><span class="p">]</span><span class="p">)</span><span class="p">.</span><span class="n">rgb</span> <span class="p">*</span> <span class="n">weight</span><span class="p">[</span><span class="m">0</span><span class="p">]</span><span class="p">;</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">it</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span> <span class="n">it</span> <span class="p">&lt;</span> <span class="m">3</span><span class="p">;</span> <span class="n">it</span><span class="p">+</span><span class="p">+</span><span class="p">)</span><span class="p">{</span>
+    <span class="n">sum</span> <span class="p">+</span><span class="p">=</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_MainTex</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">uv</span><span class="p">[</span><span class="n">it</span><span class="p">*</span><span class="m">2</span><span class="p">-</span><span class="m">1</span><span class="p">]</span><span class="p">)</span><span class="p">.</span><span class="n">rgb</span> <span class="p">*</span> <span class="n">weight</span><span class="p">[</span><span class="n">it</span><span class="p">]</span><span class="p">;</span>
+    <span class="n">sum</span> <span class="p">+</span><span class="p">=</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_MainTex</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">uv</span><span class="p">[</span><span class="n">it</span><span class="p">*</span><span class="m">2</span><span class="p">]</span><span class="p">)</span><span class="p">.</span><span class="n">rgb</span> <span class="p">*</span> <span class="n">weight</span><span class="p">[</span><span class="n">it</span><span class="p">]</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>将函数定义在 CGINCLUDE 语义块中，实际的 Pass 里只要调用就可以了。为 Pass 取名便于其他文件调用 Pass。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="n">Pass</span><span class="p">{</span>
+    <span class="n">NAME</span> <span class="s">&#34;GAUSSIAN_BLUR_VERTICAL&#34;</span>
+
+    <span class="n">CGPROGRAM</span>
+
+    <span class="cp">#pragma vertex vertBlurVertical
+</span><span class="cp"></span>    <span class="cp">#pragma fragment frag
+</span><span class="cp"></span>
+    <span class="n">ENDCG</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200329001524914.png" alt="image-20200329001524914"></p>
+<h2 id="bloom-效果">Bloom 效果</h2>
+<p>又被称为 <del>开花</del> 光华或 glow 效果，用于模拟真实世界相机成像时，亮区扩散形成的<strong>朦胧</strong>效果。</p>
+<h3 id="原理">原理</h3>
+<ul>
+<li>根据阈值提取较亮区域，存储在渲染纹理中</li>
+<li>利用高斯模糊模拟光线扩散，自发光效果</li>
+<li>将原图与自发光图像混合</li>
+</ul>
+<h3 id="shader-实现-2">Shader 实现</h3>
+<h4 id="提取亮区">提取亮区</h4>
+<p>根据原始图像亮度超过阈值的大小算出图像的自发光亮度。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="n">fixed4</span> <span class="n">fragExtractBright</span> <span class="p">(</span><span class="n">v2f</span> <span class="n">v</span><span class="p">)</span> <span class="p">:</span> <span class="n">SV_TARGET</span><span class="p">{</span>
+    <span class="n">fixed4</span> <span class="n">c</span> <span class="p">=</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_MainTex</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">uv</span><span class="p">)</span><span class="p">;</span>
+    <span class="n">fixed4</span> <span class="n">val</span> <span class="p">=</span> <span class="n">clamp</span><span class="p">(</span><span class="n">luminance</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="p">-</span> <span class="n">_LuminanceThreshold</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1.0</span><span class="p">)</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">c</span> <span class="p">*</span> <span class="n">val</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="高斯模糊-1">高斯模糊</h4>
+<p>直接调用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="n">UsePass</span> <span class="s">&#34;Unity Shaders Book/Chapter 12/Gaussian Blur/GAUSSIAN_BLUR_VERTICAL&#34;</span>
+<span class="n">UsePass</span> <span class="s">&#34;Unity Shaders Book/Chapter 12/Gaussian Blur/GAUSSIAN_BLUR_HORIZONAL&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="图像混合">图像混合</h4>
+<p>首先进行了平台差异化处理<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。借助 <code>_Bloom </code> 纹理暂存自发光结果，简单粗暴地将自发光与原图相加。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="n">v2fBloom</span> <span class="n">vertBloom</span><span class="p">(</span><span class="n">appdata_img</span> <span class="n">v</span><span class="p">)</span><span class="p">{</span>
+    <span class="n">v2fBloom</span> <span class="n">o</span><span class="p">;</span>
+
+    <span class="n">o</span><span class="p">.</span><span class="n">pos</span> <span class="p">=</span> <span class="n">UnityObjectToClipPos</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">vertex</span><span class="p">)</span><span class="p">;</span>
+    <span class="n">o</span><span class="p">.</span><span class="n">uv</span><span class="p">.</span><span class="n">xy</span> <span class="p">=</span> <span class="n">v</span><span class="p">.</span><span class="n">texcoord</span><span class="p">;</span>
+    <span class="n">o</span><span class="p">.</span><span class="n">uv</span><span class="p">.</span><span class="n">zw</span> <span class="p">=</span> <span class="n">v</span><span class="p">.</span><span class="n">texcoord</span><span class="p">;</span>
+    
+	<span class="c1">// 如果坐标原点在纹理顶部（Direct3D 行为）
+</span><span class="c1"></span>    <span class="cp">#if UNITY_UV_START_AT_TOP
+</span><span class="cp"></span>        <span class="c1">// 且开启了抗锯齿，就需要手动翻转生成的屏幕纹理
+</span><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="n">_MainTex_TexelSize</span><span class="p">.</span><span class="n">y</span> <span class="p">&lt;</span> <span class="m">0.0</span><span class="p">)</span>
+            <span class="n">o</span><span class="p">.</span><span class="n">uv</span><span class="p">.</span><span class="n">w</span> <span class="p">=</span> <span class="m">1.0</span> <span class="p">-</span> <span class="n">o</span><span class="p">.</span><span class="n">uv</span><span class="p">.</span><span class="n">w</span><span class="p">;</span>
+    <span class="cp">#endif
+</span><span class="cp"></span>
+    <span class="k">return</span> <span class="n">o</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">fixed4</span> <span class="n">fragBloom</span><span class="p">(</span><span class="n">v2fBloom</span> <span class="n">i</span><span class="p">)</span><span class="p">:</span><span class="n">SV_TARGET</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_MainTex</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">uv</span><span class="p">.</span><span class="n">xy</span><span class="p">)</span> <span class="p">+</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_Bloom</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">uv</span><span class="p">.</span><span class="n">zw</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200329053029761.png" alt="image-20200329053029761"></p>
+<h2 id="运动模糊">运动模糊</h2>
+<p>模拟真实世界中的摄像效果。如果在相机曝光时场景发生变化，画面就会模糊。</p>
+<h3 id="实现原理">实现原理</h3>
+<p>实现方法有许多种，包括使用 <strong>累计缓存（accumulation buffer）</strong> 混合多张连续图像和使用 <strong>速度缓存（velocity buffer）</strong> 通过像素的运动速度决定模糊的大小和方向。</p>
+<p>暂且先用类似累计缓存的方法实现，但不是暴力渲染多张图像取均，而是直接保存之前的渲染结果并叠加到当前结果上。</p>
+<h3 id="脚本实现-2">脚本实现</h3>
+<p>就像其他脚本一样，主要写个 OnRenderTexture。</p>
+<p>首先要获取到积累缓存纹理。然后使用原始图像根据模糊参数和积累纹理（之前渲染的帧）混合，最后将结果输出到屏幕。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">// init accumulationTexture
+</span><span class="c1"></span><span class="k">if</span><span class="p">(</span><span class="n">accumulationTexture</span> <span class="p">=</span><span class="p">=</span> <span class="k">null</span> <span class="p">|</span><span class="p">|</span> <span class="n">accumulationTexture</span><span class="p">.</span><span class="n">width</span> <span class="p">!</span><span class="p">=</span> <span class="n">src</span><span class="p">.</span><span class="n">width</span> <span class="p">|</span><span class="p">|</span> <span class="n">accumulationTexture</span><span class="p">.</span><span class="n">height</span> <span class="p">!</span><span class="p">=</span> <span class="n">src</span><span class="p">.</span><span class="n">height</span><span class="p">)</span><span class="p">{</span>
+    <span class="c1">// 重置纹理
+</span><span class="c1"></span>    <span class="n">DestroyImmediate</span><span class="p">(</span><span class="n">accumulationTexture</span><span class="p">)</span><span class="p">;</span>
+    <span class="n">accumulationTexture</span> <span class="p">=</span> <span class="n">RenderTexture</span><span class="p">.</span><span class="n">GetTemporary</span><span class="p">(</span><span class="n">src</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">src</span><span class="p">.</span><span class="n">height</span><span class="p">,</span><span class="m">0</span><span class="p">)</span><span class="p">;</span>
+    <span class="n">accumulationTexture</span><span class="p">.</span><span class="n">hideFlags</span> <span class="p">=</span> <span class="n">HideFlags</span><span class="p">.</span><span class="n">HideAndDontSave</span><span class="p">;</span>
+    <span class="c1">// 初始化内容
+</span><span class="c1"></span>    <span class="n">Graphics</span><span class="p">.</span><span class="n">Blit</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">accumulationTexture</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 纹理被渲染时，如果没被清空或者销毁就需要恢复操作？
+</span><span class="c1"></span><span class="c1">// 然而这里的手动恢复 貌似注释掉也没有什么关系...
+</span><span class="c1"></span><span class="n">accumulationTexture</span><span class="p">.</span><span class="n">MarkRestoreExpected</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+
+<span class="c1">// 设置模糊程度
+</span><span class="c1"></span><span class="n">motionBlurMaterial</span><span class="p">.</span><span class="n">SetFloat</span><span class="p">(</span><span class="s">&#34;_BlurAmount&#34;</span><span class="p">,</span> <span class="n">blurAmount</span><span class="p">)</span><span class="p">;</span>
+
+<span class="n">Graphics</span><span class="p">.</span><span class="n">Blit</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">accumulationTexture</span><span class="p">,</span> <span class="n">material</span><span class="p">)</span><span class="p">;</span>
+<span class="n">Graphics</span><span class="p">.</span><span class="n">Blit</span><span class="p">(</span><span class="n">accumulationTexture</span><span class="p">,</span> <span class="n">dest</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="shader-实现-3">Shader 实现</h3>
+<p>这个 Shader 将会当前图像渲染到积累纹理上。分为两个 Pass，第一个 Pass 负责将当前结果的 RGB 通道与积累纹理混合。由于这个过程利用了 A 通道实现，所以第二个 Pass 负责将 A 通道改回来（虽然现在没看出意义）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">// 配合 Blend 透明度 使用，利用 A 通道效率叠加图像
+</span><span class="c1"></span><span class="n">fixed4</span> <span class="n">fragRGB</span><span class="p">(</span><span class="n">v2f</span> <span class="n">i</span><span class="p">)</span><span class="p">:</span><span class="n">SV_TARGET</span><span class="p">{</span>
+    <span class="k">return</span> <span class="n">fixed4</span><span class="p">(</span><span class="n">tex2D</span><span class="p">(</span><span class="n">_MainTex</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">uv</span><span class="p">)</span><span class="p">.</span><span class="n">rgb</span><span class="p">,</span> <span class="n">_BlurAmount</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 配合 Blend Zero One &amp; ColorMask A 将 A 修改回来
+</span><span class="c1"></span><span class="n">fixed4</span> <span class="n">fragA</span><span class="p">(</span><span class="n">v2f</span> <span class="n">i</span><span class="p">)</span> <span class="p">:</span> <span class="n">SV_TARGET</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_MainTex</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">uv</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200330004851553.png" alt="image-20200330004851553"></p>
+<hr>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>即二维正态分布函数。<a href="https://www.cnblogs.com/herenzhiming/articles/5276106.html">参考链接</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://blog.csdn.net/WPAPA/article/details/72721185?locationNum=5&amp;fps=1">参考链接</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">昼阴夜阳</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+      2020-03-26
+      
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/image/wechatPay.png">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/image/aliPay.png">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://disorder.ink/tags/shader/">Shader</a>
+          <a href="https://disorder.ink/tags/shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81/">Shader入门精要</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/shaderbook-note-10/">
+            <span class="next-text nav-default">【笔记】Shader 入门精要（十）动画效果</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+    
+
+  <div id="comments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+            if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 700);
+              clearInterval(checkExist);
+            }
+        }, 10);
+    }
+  </script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#comments' ,
+        appId: 'L7mdz4FQ5SsDYXfrMj2XGOhY-gzGzoHsz',
+        appKey: 'wzMrloJf0lMSI98LuVMXas0o',
+        notify:  false , 
+        verify:  false , 
+        avatar:'retro', 
+        placeholder: '随便说点什么吧~（填写邮箱可以收到回复提醒哦）',
+        visitor:  false 
+    });
+  </script>
+
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="icon-links">
+  
+  
+    <a href="mailto:GZ1A@outlook.com" rel="me noopener" class="iconfont"
+      title="email" >
+      <svg class="icon" viewBox="0 0 1451 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M664.781909 681.472759 0 97.881301C0 3.997201 71.046997 0 71.046997 0L474.477909 0 961.649408 0 1361.641813 0C1361.641813 0 1432.688811 3.997201 1432.688811 97.881301L771.345323 681.472759C771.345323 681.472759 764.482731 685.154773 753.594283 688.65053L753.594283 688.664858C741.602731 693.493018 729.424896 695.068979 718.077952 694.839748 706.731093 695.068979 694.553173 693.493018 682.561621 688.664858L682.561621 688.65053C671.644501 685.140446 664.781909 681.472759 664.781909 681.472759L664.781909 681.472759ZM718.063616 811.603883C693.779541 811.016482 658.879232 802.205449 619.10784 767.734955 542.989056 701.759633 0 212.052267 0 212.052267L0 942.809523C0 942.809523 0 1024 83.726336 1024L682.532949 1024 753.579947 1024 1348.948139 1024C1432.688811 1024 1432.688811 942.809523 1432.688811 942.809523L1432.688811 212.052267C1432.688811 212.052267 893.138176 701.759633 817.019477 767.734955 777.248 802.205449 742.347691 811.03081 718.063616 811.603883L718.063616 811.603883Z"></path>
+</svg>
+
+    </a>
+  
+    <a href="https://github.com/GZ1A/" rel="me noopener" class="iconfont"
+      title="github"  target="_blank"
+      >
+      <svg class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M512 12.672c-282.88 0-512 229.248-512 512 0 226.261333 146.688 418.133333 350.08 485.76 25.6 4.821333 34.986667-11.008 34.986667-24.618667 0-12.16-0.426667-44.373333-0.64-87.04-142.421333 30.890667-172.458667-68.693333-172.458667-68.693333C188.672 770.986667 155.008 755.2 155.008 755.2c-46.378667-31.744 3.584-31.104 3.584-31.104 51.413333 3.584 78.421333 52.736 78.421333 52.736 45.653333 78.293333 119.850667 55.68 149.12 42.581333 4.608-33.109333 17.792-55.68 32.426667-68.48-113.706667-12.8-233.216-56.832-233.216-253.013333 0-55.893333 19.84-101.546667 52.693333-137.386667-5.76-12.928-23.04-64.981333 4.48-135.509333 0 0 42.88-13.738667 140.8 52.48 40.96-11.392 84.48-17.024 128-17.28 43.52 0.256 87.04 5.888 128 17.28 97.28-66.218667 140.16-52.48 140.16-52.48 27.52 70.528 10.24 122.581333 5.12 135.509333 32.64 35.84 52.48 81.493333 52.48 137.386667 0 196.693333-119.68 240-233.6 252.586667 17.92 15.36 34.56 46.762667 34.56 94.72 0 68.522667-0.64 123.562667-0.64 140.202666 0 13.44 8.96 29.44 35.2 24.32C877.44 942.592 1024 750.592 1024 524.672c0-282.752-229.248-512-512-512"></path>
+</svg>
+
+    </a>
+
+
+<a href="https://disorder.ink/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+    class="iconfont" title="rss" target="_blank">
+    <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="30" height="30">
+  <path d="M819.157333 1024C819.157333 574.592 449.408 204.8 0 204.8V0c561.706667 0 1024 462.293333 1024 1024h-204.842667zM140.416 743.04a140.8 140.8 0 0 1 140.501333 140.586667A140.928 140.928 0 0 1 140.074667 1024C62.72 1024 0 961.109333 0 883.626667s62.933333-140.544 140.416-140.586667zM678.784 1024h-199.04c0-263.210667-216.533333-479.786667-479.744-479.786667V345.173333c372.352 0 678.784 306.517333 678.784 678.826667z"></path>
+</svg>
+
+  </a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2020
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        昼阴夜阳
+        
+      </span></span>
+
+  
+  
+    
+  
+
+  
+
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont">
+        
+        <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+      </i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.dee43230127a73d039a734510fa896c89c3c7ce0cf0be0c7a7433f8fd69b76dc.js" integrity="sha256-3uQyMBJ6c9A5pzRRD6iWyJw8fODPC&#43;DHp0M/j9abdtw="
+  crossorigin="anonymous"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+<script src="https://cdn.jsdelivr.net/gh/gz1a/live2d-widget@latest/autoload.js"></script>
+
+
+
+
+
+<script type="text/javascript" color="0,0,0" opacity='0.7' zIndex="-1" count="99"
+  src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+
+
+<script type="text/javascript" src=/js/click-counter.js></script>
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/load-photoswipe.js"></script>
+<script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+<script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -198,7 +198,7 @@ CG / HLSL 中有 3 种精度的数值类型。通常的定义如下
 
 ### 减少不必要的计算
 
-Shader Model 是微软提出的 Shader 能力分级。不同的 Shader Target 和着色器阶段可用的临时寄存器和指令数目都是不同的。
+Shader Model 是微软提出的 Shader 能力分级。不同的 Shader Target 下着色器阶段可用的临时寄存器和指令数目都是不同的。
 
 可通过指定更高等级的 Shader Target 消除错误（降低兼容性），但更好的方法是减少 Shader 中的运算。
 
