@@ -3,14 +3,70 @@
   
   <url>
     <loc>https://disorder.ink/categories/</loc>
-    <lastmod>2020-03-26T19:18:43+09:00</lastmod>
+    <lastmod>2020-04-12T00:02:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/tags/html/</loc>
+    <lastmod>2020-04-12T00:02:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/tags/hugo/</loc>
+    <lastmod>2020-04-12T00:02:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://disorder.ink/post/</loc>
-    <lastmod>2020-03-26T19:18:43+09:00</lastmod>
+    <lastmod>2020-04-12T00:02:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/tags/shortcode/</loc>
+    <lastmod>2020-04-12T00:02:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/tags/</loc>
+    <lastmod>2020-04-12T00:02:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E8%90%8C%E7%99%BE%E9%BB%91%E5%B9%95/</loc>
+    <lastmod>2020-04-12T00:02:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/tags/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7/</loc>
+    <lastmod>2020-04-12T00:02:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2020-04-12T00:02:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/</loc>
+    <lastmod>2020-04-12T00:02:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -30,21 +86,7 @@
   </url>
   
   <url>
-    <loc>https://disorder.ink/tags/</loc>
-    <lastmod>2020-03-26T19:18:43+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://disorder.ink/post/shaderbook-note-11/</loc>
-    <lastmod>2020-03-26T19:18:43+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://disorder.ink/</loc>
     <lastmod>2020-03-26T19:18:43+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -142,20 +184,6 @@
   </url>
   
   <url>
-    <loc>https://disorder.ink/tags/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7/</loc>
-    <lastmod>2020-02-19T23:34:29+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://disorder.ink/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2020-02-19T23:34:29+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://disorder.ink/tags/valine/</loc>
     <lastmod>2020-02-17T02:56:17+09:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -240,13 +268,6 @@
   </url>
   
   <url>
-    <loc>https://disorder.ink/tags/hugo/</loc>
-    <lastmod>2020-02-12T00:17:41+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</loc>
     <lastmod>2020-02-12T00:17:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -258,6 +279,11 @@
     <lastmod>2020-02-11T09:24:01+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/post/%E6%B8%B2%E6%9F%93%E6%B5%81%E6%B0%B4%E7%BA%BF%E4%B8%AD%E7%9A%84%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/</loc>
+    <priority>0</priority>
   </url>
   
 </urlset>

@@ -19,7 +19,7 @@ mathjax: true    # 打开 mathjax
 
 ---
 
-**屏幕后处理**就是利用渲染纹理，在场景渲染完之后对图像进行操作从而实现艺术效果的技术。（这不就是数字图像处理嘛）
+**屏幕后处理**就是利用渲染纹理，在场景渲染完之后对图像进行操作从而实现艺术效果的技术。（这不就是数字图像处理嘛）先来做一些简单的后处理。
 
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=477992781&auto=0&height=66"></iframe>
 
@@ -289,6 +289,31 @@ Pass{
 
 ![image-20200329001524914](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200329001524914.png)
 
+### 伽马校正
+
+模糊的过程要用到混合，也就会遇到伽马校正的问题。感谢冯大的[博客](https://blog.csdn.net/candycat1992/article/details/46228771)，把伽马校正讲的清楚明白。在所有混合发生前都将颜色转换到亮度的线性表示，在输出前再转换回来。
+
+```c#
+fixed3 square(fixed3 value){
+    return pow(value,fixed3(2,2,2));
+}
+fixed4 frag (v2f i):SV_TARGET {
+    // 混合卷积核中各个元素对应的乘积
+    // 通过平方将颜色转换成亮度的线性表示
+    fixed3 sum = square( tex2D(_MainTex, i.uv[0]).rgb ) * weight[0];
+    // ...
+    
+    // 转换回指数表示
+    return fixed4( sqrt(sum), 1.0);
+}
+```
+
+在如图的极限情况下，伽马校正的效果很明显了。经过线性空间的混合才是好混合，当然代价是更多的性能开销。
+
+![image-20200401064420321](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200401064420321.png)
+
+
+
 ## Bloom 效果
 
 又被称为 ~~开花~~ 光华或 glow 效果，用于模拟真实世界相机成像时，亮区扩散形成的**朦胧**效果。
@@ -308,7 +333,7 @@ Pass{
 ```c#
 fixed4 fragExtractBright (v2f v) : SV_TARGET{
     fixed4 c = tex2D(_MainTex, i.uv);
-    fixed4 val = clamp(luminance(c) - _LuminanceThreshold,0,0,1.0);
+    fixed4 val = clamp(luminance(c) - _LuminanceThreshold,0.0,1.0);
 
     return c * val;
 }
@@ -410,5 +435,5 @@ fixed4 fragA(v2f i) : SV_TARGET {
 ***
 
 [^1]:即二维正态分布函数。[参考链接](https://www.cnblogs.com/herenzhiming/articles/5276106.html)
-[^2]:[参考链接]( https://blog.csdn.net/WPAPA/article/details/72721185?locationNum=5&fps=1)
+[^2]:[参考链接](https://blog.csdn.net/WPAPA/article/details/72721185?locationNum=5&fps=1)
 

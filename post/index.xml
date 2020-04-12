@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 26 Mar 2020 19:18:43 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 12 Apr 2020 00:02:58 +0800</lastBuildDate>
     
 	<atom:link href="https://disorder.ink/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【博客升级】整活！在博客中添加黑幕</title>
+      <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E8%90%8C%E7%99%BE%E9%BB%91%E5%B9%95/</link>
+      <pubDate>Sun, 12 Apr 2020 00:02:58 +0800</pubDate>
+      
+      <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E8%90%8C%E7%99%BE%E9%BB%91%E5%B9%95/</guid>
+      <description>这段时间又出了好多事，再次认识到生命财产安全才是最重要的，脱离物质基础谈精神需求的都是耍流氓。同时风险管理得抓起来，小概率的事件不发生时谈笑</description>
+    </item>
     
     <item>
       <title>【笔记】Shader 入门精要（十一）屏幕后处理</title>
@@ -17,7 +26,7 @@
       <pubDate>Thu, 26 Mar 2020 19:18:43 +0900</pubDate>
       
       <guid>https://disorder.ink/post/shaderbook-note-11/</guid>
-      <description>屏幕后处理就是利用渲染纹理，在场景渲染完之后对图像进行操作从而实现艺术效果的技术。（这不就是数字图像处理嘛） 后处理脚本 基类 后处理只需要三步：</description>
+      <description>屏幕后处理就是利用渲染纹理，在场景渲染完之后对图像进行操作从而实现艺术效果的技术。（这不就是数字图像处理嘛）先来做一些简单的后处理。 后处理脚</description>
     </item>
     
     <item>

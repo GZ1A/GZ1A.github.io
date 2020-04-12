@@ -17,7 +17,7 @@
       <pubDate>Thu, 26 Mar 2020 19:18:43 +0900</pubDate>
       
       <guid>https://disorder.ink/post/shaderbook-note-11/</guid>
-      <description>屏幕后处理就是利用渲染纹理，在场景渲染完之后对图像进行操作从而实现艺术效果的技术。（这不就是数字图像处理嘛） 后处理脚本 基类 后处理只需要三步：</description>
+      <description>屏幕后处理就是利用渲染纹理，在场景渲染完之后对图像进行操作从而实现艺术效果的技术。（这不就是数字图像处理嘛）先来做一些简单的后处理。 后处理脚</description>
     </item>
     
     <item>

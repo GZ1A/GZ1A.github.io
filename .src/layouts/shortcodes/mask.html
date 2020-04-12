@@ -1,0 +1,25 @@
+{{/*
+    ## Mask
+
+    ### Params:
+
+    - `text`
+
+    required param
+    被黑幕掩盖的内容
+
+    - Fiddle `title`
+
+    optional param
+    鼠标放到文字上显示的内容
+    default value 你知道的太多了
+
+    ### Examples:
+
+    {{% mask "字字字" %}}
+    {{% mask "下次一定" "刮刮乐" %}}
+
+*/}}
+
+{{- /* DEFAULTS */ -}}
+{{ $title := "你知道的太多了" }}<style type="text/css">.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}</style><span class="mask" title = {{ if isset .Params 1 }}{{ .Get 1 }}{{ else }}{{ $title }}{{ end }}>{{ .Get 0 }}</span>
