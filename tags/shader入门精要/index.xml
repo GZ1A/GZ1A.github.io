@@ -6,107 +6,116 @@
     <description>Recent content in Shader入门精要 on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 26 Mar 2020 19:18:43 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 30 Mar 2020 02:23:54 +0900</lastBuildDate>
     
 	<atom:link href="https://disorder.ink/tags/shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>【笔记】Shader 入门精要（十二）深度和法线纹理</title>
+      <link>https://disorder.ink/shaderbook-note-12/</link>
+      <pubDate>Mon, 30 Mar 2020 02:23:54 +0900</pubDate>
+      
+      <guid>https://disorder.ink/shaderbook-note-12/</guid>
+      <description>屏幕后处理除了利用图像的颜色信息，还可以利用深度和法线信息。这些信息不受纹理和光照的影响，能给出更多的细节。 获取深度和法线纹理 原理 深度纹理就</description>
+    </item>
+    
+    <item>
       <title>【笔记】Shader 入门精要（十一）屏幕后处理</title>
-      <link>https://disorder.ink/post/shaderbook-note-11/</link>
+      <link>https://disorder.ink/shaderbook-note-11/</link>
       <pubDate>Thu, 26 Mar 2020 19:18:43 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shaderbook-note-11/</guid>
+      <guid>https://disorder.ink/shaderbook-note-11/</guid>
       <description>屏幕后处理就是利用渲染纹理，在场景渲染完之后对图像进行操作从而实现艺术效果的技术。（这不就是数字图像处理嘛）先来做一些简单的后处理。 后处理脚</description>
     </item>
     
     <item>
       <title>【笔记】Shader 入门精要（十）动画效果</title>
-      <link>https://disorder.ink/post/shaderbook-note-10/</link>
+      <link>https://disorder.ink/shaderbook-note-10/</link>
       <pubDate>Wed, 25 Mar 2020 12:03:14 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shaderbook-note-10/</guid>
+      <guid>https://disorder.ink/shaderbook-note-10/</guid>
       <description>引入时间变量，实现动画效果。 内置变量 Unity Shader 内置有许多时间相关的变量用于访问。 名称 t 分量 _Time 自该场景加载开始经过的时间 (t/20, t, 2t, 3t) _SinTime 时间的正弦值 (t/8, t/4, t/2,</description>
     </item>
     
     <item>
       <title>【笔记】Shader 入门精要（九）高级纹理</title>
-      <link>https://disorder.ink/post/shaderbook-note-9/</link>
+      <link>https://disorder.ink/shaderbook-note-9/</link>
       <pubDate>Sun, 22 Mar 2020 20:45:32 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shaderbook-note-9/</guid>
+      <guid>https://disorder.ink/shaderbook-note-9/</guid>
       <description>本章学习更复杂的纹理。 立方体纹理 立方体纹理（Cubemap） 是**环境映射（Environment Mapping）**的一种实现。包含了立方</description>
     </item>
     
     <item>
       <title>【笔记】Shader 入门精要（八）复杂光照</title>
-      <link>https://disorder.ink/post/shaderbook-note-8/</link>
+      <link>https://disorder.ink/shaderbook-note-8/</link>
       <pubDate>Thu, 19 Mar 2020 15:52:48 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shaderbook-note-8/</guid>
+      <guid>https://disorder.ink/shaderbook-note-8/</guid>
       <description>本章在处理更多数目类型光源的同时实现阴影。 Unity 渲染路径 渲染路径（Rendering Path) 决定了光照如何应用到 Unity Shader 中。主要分为前向渲染和延迟渲染。指</description>
     </item>
     
     <item>
       <title>【笔记】Shader 入门精要（七）透明效果</title>
-      <link>https://disorder.ink/post/shaderbook-note-7/</link>
+      <link>https://disorder.ink/shaderbook-note-7/</link>
       <pubDate>Mon, 16 Mar 2020 05:00:26 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shaderbook-note-7/</guid>
+      <guid>https://disorder.ink/shaderbook-note-7/</guid>
       <description>每个片元都有颜色值、深度值和透明度属性。利用这个属性，通过透明度测试（Alpha Test）或者透明度混合（Alpha Blending）实现透</description>
     </item>
     
     <item>
       <title>【笔记】Shader 入门精要（六）基础纹理</title>
-      <link>https://disorder.ink/post/shaderbook-note-6/</link>
+      <link>https://disorder.ink/shaderbook-note-6/</link>
       <pubDate>Sun, 08 Mar 2020 03:06:23 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shaderbook-note-6/</guid>
+      <guid>https://disorder.ink/shaderbook-note-6/</guid>
       <description>纹理最初的目的就是通过 纹理映射（texture mapping) 控制模型的外观，逐纹素（texel） 控制模型的颜色。保存了映射关系的 纹理映射坐标（textu</description>
     </item>
     
     <item>
       <title>【笔记】Shader 入门精要（五）基础光照</title>
-      <link>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/</link>
+      <link>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/</link>
       <pubDate>Thu, 05 Mar 2020 07:22:34 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/</guid>
+      <guid>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/</guid>
       <description>又是复习又是复习又是复习。可能这就是前置课程吧（指计算机图形学）。 原来复习完原理还要自己写着色器的啊，这波我的。图形学作业只要求了光追，确实</description>
     </item>
     
     <item>
       <title>【笔记】Shader 入门精要（四）Shader 基础</title>
-      <link>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/</link>
+      <link>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/</link>
       <pubDate>Mon, 02 Mar 2020 22:03:49 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/</guid>
+      <guid>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/</guid>
       <description>终于来到实践环节了！可喜可贺可喜可贺。 顶点/片元着色器 模型的每个顶点会调用顶点着色器。顶点间插值得到许多片元（像素）。每个片元会调用片元着色</description>
     </item>
     
     <item>
       <title>【笔记】Shader 入门精要（三）数学基础</title>
-      <link>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/</link>
+      <link>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/</link>
       <pubDate>Thu, 27 Feb 2020 01:02:33 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/</guid>
+      <guid>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/</guid>
       <description>笛卡尔坐标系 二维 略。 三维 基矢量 basis vector 正交基 orthogonal basis 标准正交基 orthonormal basis Unity 模型空间、世界空间左手坐标系（相机前向为z轴负方向，即观察空间中为右手坐标系） 点</description>
     </item>
     
     <item>
       <title>【笔记】Shader 入门精要（二）Unity Shader</title>
-      <link>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</link>
+      <link>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</link>
       <pubDate>Wed, 26 Feb 2020 02:08:40 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
+      <guid>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
       <description>定义 Unity Shader 就是一个文本文件。通过将其赋予材质，可以改变该材质在渲染时的行为。主要是顶点、片元等着色器部分。 Shader Lab Unity 为编写 Unity Shader 提供的说明性语言，定</description>
     </item>
     
     <item>
       <title>【笔记】Shader 入门精要（一）渲染流水线</title>
-      <link>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</link>
+      <link>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</link>
       <pubDate>Tue, 25 Feb 2020 08:47:07 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</guid>
+      <guid>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</guid>
       <description>汤老师确实心系学生，在群里发了网易雷火的实习内推链接。在雷火的宣传页看到前辈新人5周做出来的游戏，完成度可以说是很高了，震撼花花。点开岗位，</description>
     </item>
     

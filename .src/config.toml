@@ -246,3 +246,6 @@ defaultContentLanguage = "zh-cn"           # Default language to use
       hardWraps = true
       unsafe = true
       xHTML = false
+
+[permalinks]
+  post = "/:filename/"

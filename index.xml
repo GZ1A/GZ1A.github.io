@@ -6,17 +6,92 @@
     <description>Recent content on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 12 Apr 2020 00:02:58 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Apr 2020 23:46:09 +0900</lastBuildDate>
     
         <atom:link href="https://disorder.ink/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>记 V-Ray 快速渲染</title>
+      <link>https://disorder.ink/vray%E5%BF%AB%E9%80%9F%E6%B8%B2%E6%9F%93/</link>
+      <pubDate>Mon, 20 Apr 2020 23:46:09 +0900</pubDate>
+      
+      <guid>https://disorder.ink/vray%E5%BF%AB%E9%80%9F%E6%B8%B2%E6%9F%93/</guid>
+      
+        <description>&lt;p&gt;《关于以为延期的动画作业其实要按时展示这件事》。本来还想好好建个什么东西，为了赶时间只能找个最快的整个相机游走。老方块人当场想到 MC，遂 B 站搜之。确实找到了教程&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200420225632500.png&#34; alt=&#34;image-20200420225632500&#34;&gt;&lt;/p&gt;
+&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=4010207&amp;auto=0&amp;height=66&#34;&gt;&lt;/iframe&gt;
+&lt;h2 id=&#34;建模&#34;&gt;建模&lt;/h2&gt;
+&lt;h3 id=&#34;方块&#34;&gt;方块&lt;/h3&gt;
+&lt;p&gt;画一个边长 10 cm 的立方体。然后&lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;从 MC 1.12 中&lt;/span&gt;获取纹理并按面制作材质。&lt;/p&gt;
+&lt;h3 id=&#34;箱子&#34;&gt;箱子&lt;/h3&gt;
+&lt;p&gt;找了一个箱子材质。建个大概差不多的模型，然后直接把箱子的 UV 展开&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;，手动强行拉伸对应到贴图上。&lt;/p&gt;
+&lt;h3 id=&#34;场景&#34;&gt;场景&lt;/h3&gt;
+&lt;p&gt;然后就是对齐拖拖拽拽的事情。其中由于树叶方向一致的效果很差，使用 MaxScript 进行随机旋转&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;。&lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;然而手动随机旋转了一遍才想到去找点例程&amp;hellip;不知道在急什么&lt;/span&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;leaf&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;$&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;dir&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;90&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;180&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;270&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;dx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;random&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;dy&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;random&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;dz&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;random&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;rotate&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;leaf&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;eulerangles&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dx&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dy&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dz&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;动画&#34;&gt;动画&lt;/h2&gt;
+&lt;p&gt;调调相机位置，展示一下场景。&lt;/p&gt;
+&lt;h2 id=&#34;渲染&#34;&gt;渲染&lt;/h2&gt;
+&lt;p&gt;V-Ray 好看是好看，就是建模五分钟，调参两小时。&lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;然后渲染一年&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;虽然有 Demo 参考，也能大概看懂参数，但刚接触 V-Ray 面对那么多的参数还是会不知所措。就暂时先把最后看得过去同时效率还行的渲染选项记录下来，不求甚解的用着好了。&lt;/p&gt;
+&lt;h3 id=&#34;光源&#34;&gt;光源&lt;/h3&gt;
+&lt;p&gt;指 VraySun。创建时可以自动生成对应的环境贴图并添加到场景，属性由 VraySun 决定。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200421054720280.png&#34; alt=&#34;image-20200421054720280&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;渲染器&#34;&gt;渲染器&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200421053624675.png&#34; alt=&#34;image-20200421053624675&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200421054112326.png&#34; alt=&#34;image-20200421054112326&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200421054259811.png&#34; alt=&#34;image-20200421054259811&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200421054408370.png&#34; alt=&#34;image-20200421054408370&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ps&#34;&gt;PS&lt;/h2&gt;
+&lt;p&gt;找图偶然找到了以前的游戏截图。泪，流了下来。&lt;/p&gt;
+&lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;是离线都打不过实时光影的不学无术的泪水&lt;/span&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200421105815210.png&#34; alt=&#34;image-20200421105815210&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200421105936013.png&#34; alt=&#34;image-20200421105936013&#34;&gt;&lt;/p&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;原教程 &lt;a href=&#34;https://www.bilibili.com/video/BV1Mx411n7W1&#34;&gt;视频链接&lt;/a&gt; &lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;方法见 &lt;a href=&#34;https://jingyan.baidu.com/article/c33e3f48e89d06ea14cbb56e.html&#34;&gt;参考链接&lt;/a&gt; &lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;感谢大胖老师 &lt;a href=&#34;https://www.sohu.com/a/197982218_359909&#34;&gt;参考链接&lt;/a&gt; &lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>【博客升级】整活！在博客中添加黑幕</title>
-      <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E8%90%8C%E7%99%BE%E9%BB%91%E5%B9%95/</link>
+      <link>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E8%90%8C%E7%99%BE%E9%BB%91%E5%B9%95/</link>
       <pubDate>Sun, 12 Apr 2020 00:02:58 +0800</pubDate>
       
-      <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E8%90%8C%E7%99%BE%E9%BB%91%E5%B9%95/</guid>
+      <guid>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E8%90%8C%E7%99%BE%E9%BB%91%E5%B9%95/</guid>
       
         <description>&lt;p&gt;这段时间又出了好多事，再次认识到生命财产安全才是最重要的，脱离物质基础谈精神需求的都是耍流氓。同时风险管理得抓起来，小概率的事件不发生时谈笑风生，一旦发生到个人头上就是一座山压着。不能只是被动的期待集体的援助，也要主动去做些准备。除了买保险，平时也需要注意降低风险。身体该锻炼就锻炼，数据该备份就备份。&lt;/p&gt;
 &lt;p&gt;在接续博客的时候突然想要留下一个悬念用来复习，所以不能简单的划掉而需要盖住。类似 Steam 的 &lt;code&gt;/spoiler&lt;/code&gt; 的效果，也就是萌百的黑幕效果了。（效果参考&lt;a href=&#34;https://zh.moegirl.org/%E6%97%B6%E4%BB%A3%E7%9A%84%E7%9C%BC%E6%B3%AA&#34;&gt;时泪页面&lt;/a&gt;）&lt;/p&gt;
@@ -96,11 +171,329 @@
     </item>
     
     <item>
+      <title>【笔记】Shader 入门精要（十二）深度和法线纹理</title>
+      <link>https://disorder.ink/shaderbook-note-12/</link>
+      <pubDate>Mon, 30 Mar 2020 02:23:54 +0900</pubDate>
+      
+      <guid>https://disorder.ink/shaderbook-note-12/</guid>
+      
+        <description>&lt;p&gt;屏幕后处理除了利用图像的颜色信息，还可以利用深度和法线信息。这些信息不受纹理和光照的影响，能给出更多的细节。&lt;/p&gt;
+&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=1367954548&amp;auto=0&amp;height=66&#34;&gt;&lt;/iframe&gt;
+&lt;h2 id=&#34;获取深度和法线纹理&#34;&gt;获取深度和法线纹理&lt;/h2&gt;
+&lt;h3 id=&#34;原理&#34;&gt;原理&lt;/h3&gt;
+&lt;p&gt;深度纹理就是一张存着高精度深度值的渲染纹理。深度值 [0, 1] 对应着 &lt;strong&gt;NDC 中坐标&lt;/strong&gt; 的 z 分量 [-1, 1]。延迟渲染下，深度纹理可以从 Gbuffer 得到。前向渲染下则会单独渲染  Opaque 物体的 ShadowCaster Pass（如果没有就不会被渲染进深度纹理）。&lt;/p&gt;
+&lt;p&gt;法线纹理就是一张存着&lt;strong&gt;观察空间下法线信息&lt;/strong&gt;的渲染纹理。前向渲染下同样需要通过再次渲染来得到。&lt;/p&gt;
+&lt;h3 id=&#34;获取&#34;&gt;获取&lt;/h3&gt;
+&lt;p&gt;通过&lt;strong&gt;设置相机模式&lt;/strong&gt;就可以在 Shader 直接访问特定的纹理属性了，Unity 会负责渲染并输入到 Shader 属性中。例如设定深度模式：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 通过 _CameraDepthTexture 访问
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;camera&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;depthTextureMode&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DepthTextureMode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Depth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;就可以在 CG 中定义并访问对应 &lt;code&gt;sampler2D&lt;/code&gt; 变量。还可以组合模式，同时生成多个纹理：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 通过 _CameraDepthTexture 访问
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;camera&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;depthTextureMode&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DepthTextureMode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Depth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;	
+&lt;span class=&#34;c1&#34;&gt;// 通过 _CameraDepthNormalsTexture 访问
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;camera&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;depthTextureMode&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DepthTextureMode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DepthNormals&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;深度值&#34;&gt;深度值&lt;/h4&gt;
+&lt;p&gt;获取到深度纹理后，大部分时候可以通过 &lt;code&gt;tex2D&lt;/code&gt; 进行采样。但由于 PS3 、PSP2 等平台的差异，建议使用 Unity 提供的宏 &lt;code&gt;SAMPLE_DEPTH_TEXTURE&lt;/code&gt; 宏对深度纹理进行采样。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 返回 float 深度值
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;float&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SAMPLE_DEPTH_TEXTURE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_CameraDepthTexture&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;采样得到的深度值通常并不能直接使用，因为它对应的是 NDC ，是&lt;strong&gt;非线性的&lt;/strong&gt;&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;。在空间经过裁剪矩阵（即投影矩阵）的平移缩放后，会经过透视除法（齐次除法）的处理。z 轴坐标不需要进行屏幕映射，有关系如下&lt;/p&gt;
+&lt;p&gt;$$ z_{ndc} = {z_{clip} \over w_{clip} }$$&lt;/p&gt;
+&lt;p&gt;以透视投影为例，根据裁剪矩阵可知&lt;/p&gt;
+&lt;p&gt;$$ w_{clip} = -z_{view} $$&lt;/p&gt;
+&lt;p&gt;由于 $1/z_{view}$ 非线性，这次除法导致了 NDC 坐标的非线性&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;。为了重新得到线性的坐标，就需要倒退变换过程。Unity 提供了两个辅助函数来进行变换。这两个函数了使用内置 &lt;code&gt;_ZBufferParams&lt;/code&gt; 得到远近裁剪平面的距离，&lt;code&gt;LinearEyeDepth&lt;/code&gt; 返回视角空间下的 $z_{view}$，&lt;code&gt;Linear01Depth&lt;/code&gt; 返回在 [0,1] 间的线性深度值。&lt;/p&gt;
+&lt;h4 id=&#34;深度和法线&#34;&gt;深度和法线&lt;/h4&gt;
+&lt;p&gt;深度和法线纹理经过 Unity 的编码，xy 分量保存了法线信息，zw 分量保存了深度信息。首先使用 &lt;code&gt;tex2D&lt;/code&gt; 进行采样，然后通过调用内置 &lt;code&gt;DecodeDepthNormal&lt;/code&gt; 函数解码采样得到的结果，就可以得到&lt;strong&gt;视角空间下的法线&lt;/strong&gt;和&lt;strong&gt;线性深度值&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;查看&#34;&gt;查看&lt;/h3&gt;
+&lt;p&gt;通过帧调试器可以查看到深度纹理、深度和法线纹理。&lt;/p&gt;
+&lt;p&gt;有需要的信息（如线性空间下的深度信息）可以自行在片元着色器中输出。（因为是透明的所以是透明的球瞩目）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200331053328167.png&#34; alt=&#34;image-20200331053328167&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;运动模糊&#34;&gt;运动模糊&lt;/h2&gt;
+&lt;p&gt;上一节的运动模糊是通过混合屏幕图像模拟的，也可以通过&lt;strong&gt;速度映射图&lt;/strong&gt;实现。这种技术使用速度缓冲得到每个像素的速度，以此决定模糊的方向和大小。&lt;/p&gt;
+&lt;p&gt;速度缓冲的一种生成方法是将场景中所有物体的速度渲染到一张纹理中。但这样需要修改所有物体的 Shader 代码进行计算并渲染。《GPU Gem3》中介绍了另一种方法。记录 &lt;strong&gt;视角*投影矩阵&lt;/strong&gt;(VP)，用逆矩阵将深度缓冲中的每个 NDC  坐标变换回世界空间，再用前一帧的视角*投影矩阵得到这个坐标在前一帧的 NDC 坐标。位置差就是这个像素的速度了。&lt;/p&gt;
+&lt;h3 id=&#34;脚本实现&#34;&gt;脚本实现&lt;/h3&gt;
+&lt;p&gt;脚本部分比较简单。首先需要获取处理用的信息。通过 Camera 组件可以得到 &lt;strong&gt;VP 矩阵&lt;/strong&gt; 以及 &lt;strong&gt;深度纹理&lt;/strong&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 定义变量存储上一帧的 VP 矩阵
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Matrix4x4&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;previousViewProjectionMatrix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// 开启时启用深度纹理，并给变量赋初值
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;OnEnable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;camera&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;depthTextureMode&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DepthTextureMode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Depth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;previousViewProjectionMatrix&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;camera&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;projectionMatrix&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;camera&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;worldToCameraMatrix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在 &lt;code&gt;OnRenderImage&lt;/code&gt; 处理时计算并传入这些要用到的变量，并为下次调用做准备。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 向 Shader 传入各种需要的变量
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;material&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SetFloat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;_BlurSize&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;blurSize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;material&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SetMatrix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;_PreviousMatrix&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;previousViewProjectionMatrix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;Matrix4x4&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;currentViewProjectionMatrix&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;camera&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;projectionMatrix&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;camera&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;worldToCameraMatrix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;Matrix4x4&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;currentViewProjectionInverseMatrix&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;currentViewProjectionMatrix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;inverse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;material&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SetMatrix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;_CurrentMatrixInverse&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;currentViewProjectionInverseMatrix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// 保存当前帧的 VP 矩阵，供下一帧调用
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;previousViewProjectionMatrix&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;currentViewProjectionMatrix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;shader-实现&#34;&gt;Shader 实现&lt;/h3&gt;
+&lt;h4 id=&#34;属性和变量&#34;&gt;属性和变量&lt;/h4&gt;
+&lt;p&gt;Unity 中没有对应 Matrix 的属性，因此矩阵不用声明，只要在 CG 中定义 &lt;code&gt;float4x4&lt;/code&gt; 变量就可以了。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;n&#34;&gt;sampler2D&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_MainTex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;half4&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_MainTex_TexelSize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;float4x4&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_CurrentMatrixInverse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;float4x4&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_PreviousMatrix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;half&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_BlurSize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;sampler2D&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_CameraDepthTexture&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;顶点着色器&#34;&gt;顶点着色器&lt;/h4&gt;
+&lt;p&gt;要同时处理多张渲染纹理，就需要做平台差异化处理（见上一篇的链接）。因此把深度纹理的采样坐标单独拿出来。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;n&#34;&gt;v2f&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;appdata_base&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;v2f&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pos&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;UnityObjectToClipPos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vertex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uv&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;texcoord&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uv_depth&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;texcoord&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;cp&#34;&gt;#if UNITY_UV_STARTS_AT_TOP
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_MainTex_TexelSize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uv_depth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uv_depth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;cp&#34;&gt;#endif
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;片元着色器&#34;&gt;片元着色器&lt;/h4&gt;
+&lt;p&gt;要得到速度缓冲，首先要获取当前 NDC，然后转换得到世界坐标，再转换成上一帧的 NDC。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 从深度纹理得到 NDC
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;float&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;depth&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SAMPLE_DEPTH_TEXTURE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_CameraDepthTexture&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uv_depth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;float4&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ndcPos&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;float4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;depth&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// 将 NDC 转换回 世界坐标
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;float4&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;worldPos&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mul&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_CurrentMatrixInverse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ndcPos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;worldPos&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;worldPos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; 
+
+&lt;span class=&#34;c1&#34;&gt;// 再次转换得到上一帧的 NDC
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;float4&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;previousNdcPos&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mul&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_PreviousMatrix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;worldPos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;previousNdcPos&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;previousNdcPos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这些步骤中里的第 7 行引起了我的注意。世界坐标到 NDC 的转换明明是先经过 VP 矩阵，然后再进行了透视除法，除以 $clip_w$ 得到的；要反向变换也就是需要乘上 $clip_w$ 并右乘 VP 的逆矩阵。经过一番调查&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;悟到了这两个操作是等价的。&lt;/p&gt;
+&lt;p&gt;然后计算得到像素在屏幕上的速度，并将速度方向上的颜色与当前屏幕颜色叠加&amp;hellip;然而至少在我测试的情况下效果挺差的。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;n&#34;&gt;float2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;velocity&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ndcPos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xy&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;previousNdcPos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2.0f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;float2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;uv&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;float4&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;color&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tex2D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_MainTex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;uv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;uv&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;velocity&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_BlurSize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;it&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;it&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;it&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;uv&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;velocity&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_BlurSize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;color&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tex2D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_MainTex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;uv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;color&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;而且这种计算方法只考虑了相机的移动，无法反映出物体的移动。&lt;/p&gt;
+&lt;h2 id=&#34;全局雾效&#34;&gt;全局雾效&lt;/h2&gt;
+&lt;p&gt;Unity 内置了基于距离的线性/指数雾效，在 Shader 中使用编译指令和内置宏即可。但这种方法需要为所有物体添加相关代码，并且不能定制。&lt;/p&gt;
+&lt;p&gt;现在有了深度纹理，就可以基于屏幕后处理方便自由的模拟各种雾效，关键在于重建像素的世界坐标。&lt;/p&gt;
+&lt;h3 id=&#34;重建世界坐标&#34;&gt;重建世界坐标&lt;/h3&gt;
+&lt;p&gt;上一节通过矩阵变换得到了世界坐标，但这样在着色器中进行矩阵乘法会影响游戏性能（换取了像素的帧间对应关系）。通过&lt;strong&gt;插值&lt;/strong&gt;和&lt;strong&gt;相对位置&lt;/strong&gt;得到世界坐标的方法更快更好。&lt;/p&gt;
+&lt;p&gt;首先通过插值算出到近裁剪平面上对应点的单位（并不）向量，再乘上线性的 z 轴深度就是像素在视角空间下的坐标，即相对相机的偏移量。最后和相机的世界空间位置相加即完成重建 。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;n&#34;&gt;float4&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;worldPos&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_WorldSpaceCameraPos&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;linearEyeDepth&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;interpolatedRay&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;世界坐标&#34;&gt;世界坐标&lt;/h4&gt;
+&lt;p&gt;shader 内置变量 &lt;code&gt;_WorldSpaceCameraPos&lt;/code&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;线性深度&#34;&gt;线性深度&lt;/h4&gt;
+&lt;p&gt;在开启相机的深度纹理模式后，将采样经过 &lt;code&gt;LinearEyeDepth()&lt;/code&gt; 处理，得到线性深度。&lt;/p&gt;
+&lt;h4 id=&#34;对应向量&#34;&gt;对应向量&lt;/h4&gt;
+&lt;p&gt;interpolatedRay 即内插光线。源于对近裁剪平面四个角的方向向量的插值（事实上是到 &lt;strong&gt;z 轴距离为 1&lt;/strong&gt; 平面的四个角）。以左上值 TL 为例，首先计算从近裁剪面中心指向摄像机上方和右方的向量 &lt;code&gt;toTop&lt;/code&gt; 和 &lt;code&gt;toRight&lt;/code&gt;。&lt;br&gt;
+$$&lt;br&gt;
+halfHeight = Near \times \tan \bigg({FOV \over 2  }\bigg)\&lt;br&gt;
+toTop = camera.up \times halfHeight \&lt;br&gt;
+toRight = camera.right \times halfHeight.aspect&lt;br&gt;
+$$&lt;br&gt;
+于是就可以得到 TL ，其他几个点同理。&lt;/p&gt;
+&lt;p&gt;$$ TL = camera.forward \cdot Near + toTop - toRight $$&lt;/p&gt;
+&lt;p&gt;由于 TL 方向是点到摄像机的欧氏距离，不是深度值表示的到摄像机的 z 轴距离，在计算偏移量时就要乘上 $ 1 \over \cos\theta$（夹角）。即乘上偏移方向的模与 Z 轴方向之比。&lt;/p&gt;
+&lt;p&gt;$$scale = {|TL| \over|Near|}$$&lt;/p&gt;
+&lt;p&gt;最后将归一化的方向向量乘上 Scale 就可以得到原点指向 &lt;code&gt;linearEyeDepth == 1&lt;/code&gt; 的平面的向量。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200415034949460.png&#34; alt=&#34;我画了一年&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;计算雾效&#34;&gt;计算雾效&lt;/h3&gt;
+&lt;p&gt;雾效就是根据 &lt;strong&gt;雾效系数 f&lt;/strong&gt; ，将雾的颜色与原始颜色混合。效果的关键就是参数的计算了。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;n&#34;&gt;float3&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;afterFog&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fogColor&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;originColor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在 Unity 的内置雾效实现中，有三种雾的计算方式——线性、指数、指数的平方，本节使用类似线性雾的方式，实现高度相关的雾。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;kt&#34;&gt;float&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fogDensity&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_FogEnd&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;worldPos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_FogEnd&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_FogStart&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h5 id=&#34;线性&#34;&gt;线性&lt;/h5&gt;
+&lt;p&gt;d 表示雾影响的最大最小距离，有&lt;br&gt;
+$$&lt;br&gt;
+f = {d_{max} - |z|\over d_{max} - d_{min}}&lt;br&gt;
+$$&lt;/p&gt;
+&lt;h5 id=&#34;指数&#34;&gt;指数&lt;/h5&gt;
+&lt;p&gt;d 控制浓度&lt;br&gt;
+$$&lt;br&gt;
+f = e^{-d-|z|}&lt;br&gt;
+$$&lt;/p&gt;
+&lt;h5 id=&#34;指数平方&#34;&gt;指数平方&lt;/h5&gt;
+&lt;p&gt;$$&lt;br&gt;
+f = e^{-(d-|z|)^2}&lt;br&gt;
+$$&lt;/p&gt;
+&lt;h3 id=&#34;实现&#34;&gt;实现&lt;/h3&gt;
+&lt;p&gt;就硬做。&lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;间隔了两周实在是懒得补了&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200415035719212.png&#34; alt=&#34;image-20200415035719212&#34;&gt;&lt;/p&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;冯乐乐. Unity Shader 入门精要[M].北京：人民邮电出版社,2016;  270. &lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/puppet_master/article/details/77489948&#34;&gt;这篇博客&lt;/a&gt; 的投影部分从实用价值的角度出发解释这个非线性，也挺好 &lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;感谢 &lt;a href=&#34;https://www.cnblogs.com/sword-magical-blog/p/10483459.html&#34;&gt;指路博客&lt;/a&gt; 以及 &lt;a href=&#34;http://feepingcreature.github.io/math.html&#34;&gt;参考链接&lt;/a&gt; &lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>【笔记】Shader 入门精要（十一）屏幕后处理</title>
-      <link>https://disorder.ink/post/shaderbook-note-11/</link>
+      <link>https://disorder.ink/shaderbook-note-11/</link>
       <pubDate>Thu, 26 Mar 2020 19:18:43 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shaderbook-note-11/</guid>
+      <guid>https://disorder.ink/shaderbook-note-11/</guid>
       
         <description>&lt;p&gt;&lt;strong&gt;屏幕后处理&lt;/strong&gt;就是利用渲染纹理，在场景渲染完之后对图像进行操作从而实现艺术效果的技术。（这不就是数字图像处理嘛）先来做一些简单的后处理。&lt;/p&gt;
 &lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=477992781&amp;auto=0&amp;height=66&#34;&gt;&lt;/iframe&gt;
@@ -702,10 +1095,10 @@
     
     <item>
       <title>【笔记】Shader 入门精要（十）动画效果</title>
-      <link>https://disorder.ink/post/shaderbook-note-10/</link>
+      <link>https://disorder.ink/shaderbook-note-10/</link>
       <pubDate>Wed, 25 Mar 2020 12:03:14 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shaderbook-note-10/</guid>
+      <guid>https://disorder.ink/shaderbook-note-10/</guid>
       
         <description>&lt;p&gt;引入时间变量，实现动画效果。&lt;/p&gt;
 &lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=1433340584&amp;auto=0&amp;height=66&#34;&gt;&lt;/iframe&gt;
@@ -870,10 +1263,10 @@ o.pos = UnityObjectToClipPos(localPos);
     
     <item>
       <title>【笔记】Shader 入门精要（九）高级纹理</title>
-      <link>https://disorder.ink/post/shaderbook-note-9/</link>
+      <link>https://disorder.ink/shaderbook-note-9/</link>
       <pubDate>Sun, 22 Mar 2020 20:45:32 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shaderbook-note-9/</guid>
+      <guid>https://disorder.ink/shaderbook-note-9/</guid>
       
         <description>&lt;p&gt;本章学习更复杂的纹理。&lt;/p&gt;
 &lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=1408262540&amp;auto=0&amp;height=66&#34;&gt;&lt;/iframe&gt;
@@ -1047,10 +1440,10 @@ tex.Apply();
     
     <item>
       <title>【笔记】Shader 入门精要（八）复杂光照</title>
-      <link>https://disorder.ink/post/shaderbook-note-8/</link>
+      <link>https://disorder.ink/shaderbook-note-8/</link>
       <pubDate>Thu, 19 Mar 2020 15:52:48 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shaderbook-note-8/</guid>
+      <guid>https://disorder.ink/shaderbook-note-8/</guid>
       
         <description>&lt;p&gt;本章在处理更多数目类型光源的同时实现阴影。&lt;/p&gt;
 &lt;h2 id=&#34;unity-渲染路径&#34;&gt;Unity 渲染路径&lt;/h2&gt;
@@ -1248,10 +1641,10 @@ color *= shadow;
     
     <item>
       <title>【笔记】Shader 入门精要（七）透明效果</title>
-      <link>https://disorder.ink/post/shaderbook-note-7/</link>
+      <link>https://disorder.ink/shaderbook-note-7/</link>
       <pubDate>Mon, 16 Mar 2020 05:00:26 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shaderbook-note-7/</guid>
+      <guid>https://disorder.ink/shaderbook-note-7/</guid>
       
         <description>&lt;p&gt;每个片元都有颜色值、深度值和&lt;strong&gt;透明度&lt;/strong&gt;属性。利用这个属性，通过透明度测试（Alpha Test）或者透明度混合（Alpha Blending）实现透明效果。透明度测试就是一刀切的阈值判断，真正要有透明度还得看混合。&lt;/p&gt;
 &lt;h2 id=&#34;渲染顺序&#34;&gt;渲染顺序&lt;/h2&gt;
@@ -1443,10 +1836,10 @@ Blend SrcFactor DstFactor [,SrcFactorA DstFactorA]
     
     <item>
       <title>【笔记】Shader 入门精要（六）基础纹理</title>
-      <link>https://disorder.ink/post/shaderbook-note-6/</link>
+      <link>https://disorder.ink/shaderbook-note-6/</link>
       <pubDate>Sun, 08 Mar 2020 03:06:23 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shaderbook-note-6/</guid>
+      <guid>https://disorder.ink/shaderbook-note-6/</guid>
       
         <description>&lt;p&gt;纹理最初的目的就是通过 &lt;strong&gt;纹理映射（texture mapping)&lt;/strong&gt; 控制模型的外观，逐纹素（texel） 控制模型的颜色。保存了映射关系的 纹理映射坐标（texture-mapping coordinates）由于通常使用&lt;code&gt;（u,v）&lt;/code&gt;表示，又被称为 &lt;strong&gt;UV 坐标&lt;/strong&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;单张纹理&#34;&gt;单张纹理&lt;/h2&gt;
@@ -1627,10 +2020,10 @@ fixed3 specular *=  maskValue;
     
     <item>
       <title>【笔记】Shader 入门精要（五）基础光照</title>
-      <link>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/</link>
+      <link>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/</link>
       <pubDate>Thu, 05 Mar 2020 07:22:34 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/</guid>
+      <guid>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/</guid>
       
         <description>&lt;p&gt;&lt;del&gt;又是复习又是复习又是复习。可能这就是前置课程吧（指计算机图形学）。&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;原来复习完原理还要自己写着色器的啊，这波我的。图形学作业只要求了光追，确实没有实现过标准光照模型，建议写。&lt;/p&gt;
@@ -1933,10 +2326,10 @@ fixed3 specular = _LightColor0.rgb * _Specular * pow(saturate(dot(worldNormal,h)
     
     <item>
       <title>【笔记】Shader 入门精要（四）Shader 基础</title>
-      <link>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/</link>
+      <link>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/</link>
       <pubDate>Mon, 02 Mar 2020 22:03:49 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/</guid>
+      <guid>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/</guid>
       
         <description>&lt;p&gt;终于来到实践环节了！可喜可贺可喜可贺。&lt;/p&gt;
 &lt;h2 id=&#34;顶点片元着色器&#34;&gt;顶点/片元着色器&lt;/h2&gt;
@@ -2246,10 +2639,10 @@ fixed3 frag(v2f i) : SV_Target {
     
     <item>
       <title>【笔记】Shader 入门精要（三）数学基础</title>
-      <link>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/</link>
+      <link>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/</link>
       <pubDate>Thu, 27 Feb 2020 01:02:33 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/</guid>
+      <guid>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/</guid>
       
         <description>&lt;h2 id=&#34;笛卡尔坐标系&#34;&gt;笛卡尔坐标系&lt;/h2&gt;
 &lt;h3 id=&#34;二维&#34;&gt;二维&lt;/h3&gt;
@@ -2328,10 +2721,10 @@ fixed3 frag(v2f i) : SV_Target {
     
     <item>
       <title>【笔记】Shader 入门精要（二）Unity Shader</title>
-      <link>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</link>
+      <link>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</link>
       <pubDate>Wed, 26 Feb 2020 02:08:40 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
+      <guid>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
       
         <description>&lt;h2 id=&#34;定义&#34;&gt;定义&lt;/h2&gt;
 &lt;p&gt;Unity Shader 就是一个文本文件。通过将其赋予材质，可以改变该材质在渲染时的行为。主要是顶点、片元等着色器部分。&lt;/p&gt;
@@ -2596,10 +2989,10 @@ GrabPass { &amp;#34;TexPropName&amp;#34; }		// 负责抓取屏幕并储存
     
     <item>
       <title>【笔记】Shader 入门精要（一）渲染流水线</title>
-      <link>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</link>
+      <link>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</link>
       <pubDate>Tue, 25 Feb 2020 08:47:07 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</guid>
+      <guid>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</guid>
       
         <description>&lt;p&gt;汤老师确实心系学生，在群里发了网易雷火的实习内推链接。在雷火的&lt;a href=&#34;http://leihuo.163.com/2019/rencai/&#34;&gt;宣传页&lt;/a&gt;看到前辈新人5周做出来的游戏，完成度可以说是很高了，震撼花花。点开岗位，看到了&lt;a href=&#34;https://campus.163.com/app/jobDetail/index?projectId=25&amp;amp;id=625&#34;&gt;技术美术工程师&lt;/a&gt;，想起选专业的时候就研究过&lt;del&gt;数媒对口岗位&lt;/del&gt; TA，感觉相性很好所以在持续关注，看过拳头的&lt;a href=&#34;https://www.bilibili.com/video/av41216445?from=search&amp;amp;seid=15641735924452657164&#34;&gt;技术美术介绍&lt;/a&gt;，又在B站收藏过霜狼大佬的 &lt;a href=&#34;https://www.bilibili.com/video/av77755500&#34;&gt;TA 学习体系框架&lt;/a&gt;，甚至还加了群。然而也就仅限于此了，并没有更进一步的实际的努力过。总感觉是无法做到的事情所以不去做，自我设限也要有个限度啊！&lt;del&gt;禁止套娃&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;于是就想努力往这个方向做做尝试。离校招（实习）截止还有一个多月，我也要加油了。就算不去提前实习，只要不停下来，（知识的）道路就会不断延伸！&lt;/p&gt;
@@ -2664,10 +3057,10 @@ GrabPass { &amp;#34;TexPropName&amp;#34; }		// 负责抓取屏幕并储存
     
     <item>
       <title>【博客升级】点击计数和动态背景</title>
-      <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/</link>
+      <link>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/</link>
       <pubDate>Wed, 19 Feb 2020 23:34:29 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/</guid>
+      <guid>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/</guid>
       
         <description>&lt;p&gt;啥事没干，甚是愧疚。想到别家博客都有花里胡哨的东西，我也整点来美化一下吧。&lt;/p&gt;
 &lt;p&gt;调研了一下各个效果的难度， 试图寻找方便快捷效果好的活。于是列了个清单：&lt;/p&gt;
@@ -2859,10 +3252,10 @@ GrabPass { &amp;#34;TexPropName&amp;#34; }		// 负责抓取屏幕并储存
     
     <item>
       <title>【博客升级】Valine 评论系统</title>
-      <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</link>
+      <link>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</link>
       <pubDate>Mon, 17 Feb 2020 02:56:17 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</guid>
+      <guid>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</guid>
       
         <description>&lt;p&gt;托管到 &lt;code&gt;Coding&lt;/code&gt; 之后，这个站点已经可以被百度收录了。虽然感觉不会有什么人看，但是万一呢 : ) 为了更好的交流，此处应有一个评论系统。恰好我用的主题&lt;code&gt;Jane&lt;/code&gt;已经配置好了几种评论系统，只需要启用一下就可以了。&lt;/p&gt;
 &lt;p&gt;先上一个 &lt;a href=&#34;https://valine.js.org/&#34;&gt;Valine 官方文档&lt;/a&gt; ，可以参考。还有这篇 &lt;a href=&#34;https://www.smslit.top/2018/07/08/hugo-valine/&#34;&gt;hugo博客添加评论系统Valine&lt;/a&gt; 。&lt;/p&gt;
@@ -3040,10 +3433,10 @@ GrabPass { &amp;#34;TexPropName&amp;#34; }		// 负责抓取屏幕并储存
     
     <item>
       <title>【博客升级】Coding 托管和百度收录</title>
-      <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</link>
+      <link>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</link>
       <pubDate>Sun, 16 Feb 2020 23:04:27 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</guid>
+      <guid>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</guid>
       
         <description>&lt;p&gt;辛辛苦苦写的博客当然想让别人看到了，最可行的方法就是被搜索引擎收录。然而 Github 屏蔽了百度爬虫，导致 Github Pages 无法被百度收录，就很难受。除开这个因素，为了更快收录或是更高的权重，还有一些工作可以做。今天就先让博客可以被百度收录吧。&lt;/p&gt;
 &lt;p&gt;先上前人指路：&lt;a href=&#34;https://blog.csdn.net/sunshine940326/article/details/70936988&#34;&gt;想让你的博客被更多的人在搜索引擎中搜到吗？&lt;/a&gt;&lt;/p&gt;
@@ -3148,10 +3541,10 @@ and the repository exists.
     
     <item>
       <title>【博客升级】网易云外链</title>
-      <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</link>
+      <link>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</link>
       <pubDate>Sat, 15 Feb 2020 22:28:10 +0900</pubDate>
       
-      <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</guid>
+      <guid>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</guid>
       
         <description>&lt;p&gt;想在文章里插入网易云音乐，遂找教程。&lt;br&gt;
 逛博客总是能发现很多大佬，比如 &lt;a href=&#34;https://saquarius.com/2019/07/%E7%BB%99hugo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E5%A4%96%E9%93%BE/&#34;&gt;Hugo博客添加音乐外链&lt;/a&gt; @ &lt;a href=&#34;https://saquarius.github.io/&#34;&gt;SAquarius &lt;/a&gt; 。看了 about 好像在武汉，而且1月以后就没有更新了，希望只是寒假在鸽吧。然后还有一个 &lt;a href=&#34;https://wap.a9vg.com/thread-5363888-1-1.html&#34;&gt;网易云音乐如何生成flash和mp3外链&lt;/a&gt; （&lt;del&gt;论坛时泪&lt;/del&gt;，解释了外链的代码。不多废话了，先上效果。&lt;/p&gt;
@@ -3323,10 +3716,10 @@ and the repository exists.
     
     <item>
       <title>【博客升级】插入图片吧！码云图床 &amp; PicGo</title>
-      <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/</link>
+      <link>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/</link>
       <pubDate>Fri, 14 Feb 2020 23:58:48 +0800</pubDate>
       
-      <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/</guid>
+      <guid>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/</guid>
       
         <description>&lt;p&gt;在写文章的时候深刻体会到了图片的重要性，有时一张图胜过千言万语。虽然 Typora 支持把图片便捷的保存到相对路径，但考虑到可能的多平台发布（以及 github 载图的访问困难），还是决定找一个比较成熟的图床解决方案，让博客里可以方便的插入图片。&lt;/p&gt;
 &lt;h2 id=&#34;建立图床--配置picgo&#34;&gt;建立图床 &amp;amp; 配置PicGo&lt;/h2&gt;
@@ -3411,10 +3804,10 @@ git push origin master -u
     
     <item>
       <title>【博客升级】自定义域名</title>
-      <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D/</link>
+      <link>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D/</link>
       <pubDate>Thu, 13 Feb 2020 23:58:48 +0800</pubDate>
       
-      <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D/</guid>
+      <guid>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D/</guid>
       
         <description>&lt;p&gt;为了让博客更炫酷（装X），决定再进行一点升级。首先想到的就是域名。&lt;/p&gt;
 &lt;p&gt;先上前人指路 &lt;a href=&#34;https://blog.csdn.net/yuan3065/article/details/51594454&#34;&gt;Github 域名绑定&lt;/a&gt;  。&lt;/p&gt;
@@ -3457,550 +3850,6 @@ Ping 请求找不到主机 disorder.ink。请检查该名称，然后重试。
 &lt;p&gt;在此期间原来的地址建议不要跳转。把 CNAME 删掉之后试着访问了一下，然而还是会跳转。感谢这位同学的解决办法 &lt;a href=&#34;https://www.cnblogs.com/MakeView660/p/9072971.html&#34;&gt;放在github pages上的静态网站怎么取消绑定自定义域名？&lt;/a&gt; 虽然 &lt;a href=&#34;https://www.runoob.com/w3cnote/chrome-clear-dns-cache.html&#34;&gt;Chrome 浏览器清除 DNS 缓存&lt;/a&gt; 失败了，但是换个浏览器确实可以了。总之别急，&lt;del&gt;等等就好&lt;/del&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214190340.png&#34; alt=&#34;域名效果&#34;&gt;&lt;/p&gt;
 &lt;p&gt;最后一步就是要记得在本地也增加 CNAME 。Pull 到本地一次之后再 Push ，惨痛教训。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>【博客升级】用 bat 实现 Hugo 一键发布至 GitHub</title>
-      <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</link>
-      <pubDate>Wed, 12 Feb 2020 00:17:41 +0800</pubDate>
-      
-      <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83/</guid>
-      
-        <description>&lt;p&gt;hugo 还是挺方便的，但是在写完 markdown 文档到发布到 github 之间还有好多行命令要打，太累了。于是很自然的想到使用bat批处理脚本帮我输入这些命令，自动发布。&lt;/p&gt;
-&lt;h2 id=&#34;搜索资料&#34;&gt;搜索资料&lt;/h2&gt;
-&lt;p&gt;一开始找到的也是最相关的一篇博客是 &lt;a href=&#34;https://www.yixuju.cn/programming/batch/hugo-push/&#34;&gt;编写bat批处理脚本文件来设置自动推送&lt;/a&gt; ，需求完全一致。为了可能的修改，也找到了一个 &lt;a href=&#34;https://www.w3cschool.cn/pclrmsc/tdsgnn.html&#34;&gt;批处理入门手册&lt;/a&gt; 。&lt;/p&gt;
-&lt;p&gt;还发现了一个可以绑定仓库的 markdown 编辑器， &lt;a href=&#34;https://www.dazhuanlan.com/2019/10/14/5da3e834e0c1d/&#34;&gt;小书匠编辑器&lt;/a&gt; ，还有&lt;a href=&#34;https://www.cnblogs.com/wushuaishuai/p/9308094.html#_label1_3&#34;&gt;快捷键&lt;/a&gt; ，看起来整挺好。但是我也挺喜欢现在在用的 Typora 所以暂且观望。&lt;/p&gt;
-&lt;h2 id=&#34;配置-config&#34;&gt;配置 Config&lt;/h2&gt;
-&lt;p&gt;发布分两步，生成和推送。生成命令很简单，只要一句 &lt;code&gt;hugo&lt;/code&gt; 就可以重新生成当前工作区里的站点——根据站点路径下的 &lt;code&gt;config.toml&lt;/code&gt; 这个文件。我正在使用的主题的&lt;a href=&#34;https://github.com/xianmin/hugo-theme-jane/blob/master/README-zh.md&#34;&gt;文档&lt;/a&gt;中有提到如何进行站点设置，配置站点的 config.toml ，根据注释进行相应的修改就可以了。&lt;/p&gt;
-&lt;h2 id=&#34;设置-bat&#34;&gt;设置 bat&lt;/h2&gt;
-&lt;p&gt;根据资料里的博客，对开头的变量进行了修改，得到以下的 bat 文件。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;@echo off
-&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pan&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\p&lt;/span&gt;ublic&lt;span class=&#34;se&#34;&gt;\&lt;/span&gt;
-&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;repo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;git@github.com:GZ1A/GZ1A.github.io.git
-&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;branch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;master
-&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; exist %pan% &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;clean public directory&amp;#34;&lt;/span&gt;
-    rd /S /Q %pan%
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Hugo again for new site&amp;#34;&lt;/span&gt;
-    hugo
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;can not find public directory&amp;#34;&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Hugo again for new site&amp;#34;&lt;/span&gt;
-    hugo
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; exist %pan% &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; %pan%
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;git init and commit&amp;#34;&lt;/span&gt;
-    git init
-    git add -A
-    git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;update site at %time%&amp;#34;&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;set remote repository and push&amp;#34;&lt;/span&gt;
-    git remote add origin %repo%
-    git push -f origin master:master -v
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;can not find public directory, hugo fail!&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-pause
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;然后我发现这段命令中没有位置让我输入commit message，当场就开始魔改了。大概就加了这两句话&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; exist %pan% &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    rem ...
-    rem 输入提交信息
-    &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; /p &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;Commit Message:	
-    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%commitMessage%&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-        &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;update site
-    &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-    rem 输出信息来给大家伙看看
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; cm:%commitMessage%
-    rem ...
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;然而 echo 输出的一直是空的，也就是说我没有输入成功！顿时开始怀疑我这10分钟速成的批处理命令。寻思着我哪里写的不对，就开始继续研究基础。研究了一个小时，突然发现了盲点：会不会是这个嵌套出了问题。于是百度。&lt;a href=&#34;https://zhidao.baidu.com/question/454906059021031085.html&#34;&gt;批处理里set语句怎样在if语句中使用&lt;/a&gt; 。只要在 if 外增加两句话，并把引用时的 &lt;code&gt;%&lt;/code&gt; 改为 &lt;code&gt;!&lt;/code&gt; 就可以了。&lt;/p&gt;
-&lt;p&gt;泪，流了下来。我悟了！以后自信点，&lt;del&gt;遇到错误多找找别人的问题，不要老是想着是自己的问题&lt;/del&gt;  &lt;strong&gt;不懂就问  ！！&lt;/strong&gt;（指百度)  还要先&lt;strong&gt;提纲挈领&lt;/strong&gt;，哪怕不细看也得有个大概了解，至少知道可能出现的问题。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;setlocal enabledelayedexpansion
-&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; exist %pan% &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    rem ...
-	&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; /p &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;Commit Message:
-    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;!commitMessage!&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-        &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;update site
-    &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; cm:!commitMessage!
-    rem ...
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-endlocal
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;总之问题是解决了。&lt;/p&gt;
-&lt;p&gt;原来的代码还有别的问题，比如会强制清空这个仓库，搞得云端记录都无了。总之稍微修改了一下。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;@echo off
-&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pan&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\p&lt;/span&gt;ublic&lt;span class=&#34;se&#34;&gt;\&lt;/span&gt;
-&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;repo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;git@github.com:GZ1A/GZ1A.github.io.git
-&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;branch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;master
-&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1
-
-&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; exist %pan% &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;clean public directory&amp;#34;&lt;/span&gt;
-    rd /S /Q %pan%
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Hugo again for new site&amp;#34;&lt;/span&gt;
-    hugo
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;can not find public directory&amp;#34;&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Hugo again for new site&amp;#34;&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1
-    hugo
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-
-setlocal enabledelayedexpansion
-&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; exist !pan! &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; !pan!
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;git commit&amp;#34;&lt;/span&gt;
-    git add -A
-    echo.
-    &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; /p &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;Commit Message:
-    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;!commitMessage!&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-        &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;update site
-    &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-    git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;!commitMessage!&amp;#34;&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;set remote repository and push&amp;#34;&lt;/span&gt;
-    git push origin master
-
-    REM git init
-    REM git remote add origin %repo%
-    REM git push -f origin master
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;can not find public directory, hugo fail!&amp;#34;&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-endlocal
-
-&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; %default% neq &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    pause
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-pause
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;del&gt;终于，单论发布这块已经拿下了。接下来可能还要对博客做点工作。&lt;/del&gt;&lt;/p&gt;
-&lt;h2 id=&#34;update&#34;&gt;UPDATE&lt;/h2&gt;
-&lt;h3 id=&#34;20200213-修复404&#34;&gt;20200213 修复404&lt;/h3&gt;
-&lt;p&gt;本来今天高高兴兴。 没想到打开主页却是 404 。明明在本地用 &lt;code&gt;hugo server&lt;/code&gt; 测试的时候没啥问题。&lt;/p&gt;
-&lt;p&gt;百度发现了一样的问题：&lt;a href=&#34;https://segmentfault.com/q/1010000007578473?_ea=1390393&#34;&gt;hexo 搭建个人博客，提交后github后显示404&amp;hellip;&lt;/a&gt; 。感谢 Dont 的解答， &lt;a href=&#34;https://help.github.com/en/github/working-with-github-pages&#34;&gt;GitHub Pages&lt;/a&gt; 实现了在访问 xxx.github.io 时会访问对应用户仓库 master 分支，当没有指定名文件时，HTTP请就会被解释为访问该路径下的 index.html 。&lt;/p&gt;
-&lt;p&gt;文档里的命令只 push 了 public 文件夹，而我 copy 来的代码是把整个工程都 push 上去了（还覆盖了原来的文件）。按照分支的解决方法，试图优雅的分出工程和发布两个分支，但我的 git （还有 bat ）学艺不精，眼看要陷入 debug 地狱了。遂放弃。 选择把工程放到 .src 文件夹里，再把 public 里的内容全部 copy 到外面的方法。&lt;/p&gt;
-&lt;p&gt;经过一个晚上的学习和调试（花了半个晚上领悟 cmd 里 &lt;code&gt;/&lt;/code&gt; 跟着参数，&lt;code&gt;\&lt;/code&gt; 分割目录，这就是Windows标准吗）。最终得到了一键发布的 bat。&lt;/p&gt;
-&lt;h3 id=&#34;20200214-添加-cname&#34;&gt;20200214 添加 CNAME&lt;/h3&gt;
-&lt;p&gt;在添加域名后就又有了新的文件 CNAME ，为了防止重新生成时自动清除了 CNAME ，需要再进行一下判断。&lt;/p&gt;
-&lt;h3 id=&#34;20200217--添加远程仓库&#34;&gt;20200217  添加远程仓库&lt;/h3&gt;
-&lt;p&gt;添加了 Coding 的仓库，在发布的时候就要推送两次。顺便在推送前对远程仓库分别进行一次 Pull ，防止在多个电脑上写博客时可能出现的问题。&lt;/p&gt;
-&lt;h2 id=&#34;成果&#34;&gt;成果&lt;/h2&gt;
-&lt;p&gt;（以 github 仓库里的  &lt;a href=&#34;https://github.com/GZ1A/GZ1A.github.io/blob/master/.src/publish.bat&#34;&gt;publish.bat&lt;/a&gt; 为准）&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;52
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;53
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;54
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;55
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;56
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;57
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;58
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;59
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;60
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;61
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;62
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;63
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;64
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;65
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;66
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;67
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;68
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;69
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;70
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;71
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;72
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;73
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;74
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;75
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;76
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;77
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;78
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;79
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;80
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;81
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;82
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;83
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;84
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;85
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;86
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;87
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;@echo off
-REM dont commit &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;DEBUG&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 1
-&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;debug&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0
-
-REM Const
-&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;build&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\p&lt;/span&gt;ublic
-&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;dst&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;..&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ite
-&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;repo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;git@github.com:GZ1A/GZ1A.github.io.git
-
-REM Var
-&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1
-
-&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; exist %build% &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;clean public directory&amp;#34;&lt;/span&gt;
-    rd /S /Q %build%
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Hugo again for new site&amp;#34;&lt;/span&gt;
-    hugo
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;can not find public directory&amp;#34;&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Hugo again for new site&amp;#34;&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1
-    hugo
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-
-REM delete old build
-&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;delete old build&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;nb&#34;&gt;pushd&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%dst%&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; %%i in &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;*.*&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; not &lt;span class=&#34;s2&#34;&gt;&amp;#34;%%i&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;.gitignore&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; not &lt;span class=&#34;s2&#34;&gt;&amp;#34;%%i&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;CNAME&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-        del /q &lt;span class=&#34;s2&#34;&gt;&amp;#34;%%i&amp;#34;&lt;/span&gt;
-    &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; /d %%i in &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;*.*&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; not &lt;span class=&#34;s2&#34;&gt;&amp;#34;%%i&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;.src&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; not &lt;span class=&#34;s2&#34;&gt;&amp;#34;%%i&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;.git&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-        rd /q /s &lt;span class=&#34;s2&#34;&gt;&amp;#34;%%i&amp;#34;&lt;/span&gt;
-    &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;nb&#34;&gt;popd&lt;/span&gt;
-
-xcopy &lt;span class=&#34;s2&#34;&gt;&amp;#34;%build%&amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%dst%&amp;#34;&lt;/span&gt; /s /q /f /h /y
-
-setlocal enabledelayedexpansion
-&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; exist !build! &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; !build!
-    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; !debug! neq &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-
-        REM Code &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; first &lt;span class=&#34;nb&#34;&gt;time&lt;/span&gt;
-        REM git init
-        REM git remote add origin %repo%
-        REM git push -f origin master
-
-        &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;git pull&amp;#34;&lt;/span&gt;
-        git pull origin master
-        REM another remote repo
-        git pull coding_repo master
-
-        &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;git commit&amp;#34;&lt;/span&gt;
-        git add -A
-        echo.
-        &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; /p &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;Commit Message:
-        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;!commitMessage!&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-            &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;commitMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;update site
-        &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-        git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;!commitMessage!&amp;#34;&lt;/span&gt;
-
-        &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;git push&amp;#34;&lt;/span&gt;
-        git push origin master
-        REM another remote repo
-        git push coding_repo master
-    &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;can not find public directory, hugo fail!&amp;#34;&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-endlocal
-
-&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; %default% neq &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    pause
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; %debug% neq &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
-    pause
-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>【博客升级】搭建 Hugo 博客</title>
-      <link>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
-      <pubDate>Tue, 11 Feb 2020 09:24:01 +0800</pubDate>
-      
-      <guid>https://disorder.ink/post/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
-      
-        <description>&lt;p&gt;想正式写写博客已经很久了，但是一直没有实际行动。年初这波疫情宅在家里足足一个月，整天吃吃喝喝玩玩睡睡，闲着没事建议搞事。孩子不爱写博客，一定是因为博客不好看！&lt;del&gt;（指CSDN）&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;于是寻觅搭建博客的方法，在这里也记录一下踩过的坑。&lt;/p&gt;
-&lt;h2 id=&#34;安装hugo&#34;&gt;安装Hugo&lt;/h2&gt;
-&lt;p&gt;网路上搜索了下资讯，听说Hugo很好，于是百度之。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;有文档不看的都是铁憨憨 —— 沃兹基·硕德&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;找到了 &lt;a href=&#34;https://www.gohugo.org/&#34;&gt;&lt;strong&gt;Hugo中文文档&lt;/strong&gt;&lt;/a&gt; 来看看。随即决定跟随这个文档进行快速开始。当前最新版本是 0.64.1 ，根据操作系统选择了对应的版本 hugo_0.64.1_Windows-64bit.zip&lt;/p&gt;
-&lt;p&gt;然而由于 github 的服务器亚马逊被国内限速，根本下不动啊！再次百度之，发现有 &lt;a href=&#34;https://gitee.com/mirrors/Hugo-Go&#34;&gt;&lt;strong&gt;码云镜像&lt;/strong&gt;&lt;/a&gt; ，但是里面没有二进制文件&amp;hellip;自己编译又整挺麻烦，要装的太多了：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;源码编译安装，需要首先安装好依赖的工具：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Git&lt;/li&gt;
-&lt;li&gt;Mercurial&lt;/li&gt;
-&lt;li&gt;Go 1.3+ (Go 1.4+ on Windows)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;继续搜索，看起来可以用 Chocolatey 快速安装，于是开始曲线救国。根据 &lt;a href=&#34;https://www.jianshu.com/p/5325decea0d2&#34;&gt;&lt;strong&gt;Chocolatey上手教程&lt;/strong&gt;&lt;/a&gt; ，首先用一行cmd命令安装一个 Chocolatey 。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;nv&#34;&gt;@powershell&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-NoProfile&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-ExecutionPolicy&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unrestricted&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Command&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;iex ((new-object net.webclient).DownloadString(&amp;#39;https://chocolatey.org/install.ps1&amp;#39;))&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;SET &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PATH&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PATH&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ALLUSERSPROFILE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;chocolatey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bin&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;安装完成后输入&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;n&#34;&gt;choco&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;来看看有没有巧克力。&lt;/p&gt;
-&lt;p&gt;然后终于能安装了？&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;n&#34;&gt;choco&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hugo&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-confirm&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;失败了失败了失败了失败了&amp;hellip;控制台的信息让我明白了我依旧是个铁憨憨&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Attempt to get headers for https://github.com/gohugoio/hugo/releases/download/v0.64.1/hugo_0.64.1_Windows-64bit.zip failed.
-  The remote file either doesn&amp;#39;t exist, is unauthorized, or is forbidden for url &amp;#39;https://github.com/gohugoio/hugo/releases/download/v0.64.1/hugo_0.64.1_Windows-64bit.zip&amp;#39;. Exception calling &amp;#34;GetResponse&amp;#34; with &amp;#34;0&amp;#34; argument(s): &amp;#34;操作超时&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;Nice，Chocolatey 只是个包管理器，包的来源依旧是 github &amp;hellip;  白  下  了&lt;/p&gt;
-&lt;p&gt;但是问题还是要解决。说到底还是从github下载东西有着网络问题，且Release包又不能通过码云镜像获得。尝试了改Host，没啥用。发现了一些奇怪的知识： &lt;a href=&#34;https://blog.csdn.net/kcx64/article/details/83866633&#34;&gt;github下载加速&lt;/a&gt;  ，然而至少在我的网络环境下这些都没啥用。最后还是忍痛花钱加速了一波。这里也分享一下 &lt;a href=&#34;https://pan.baidu.com/s/18f-1_8B6UsLNSqM1obQ02g&#34;&gt;[hugo_0.64.1_Windows-64bit 提取码 ud1m]&lt;/a&gt; 。&lt;/p&gt;
-&lt;p&gt;解压之后将 hugo.exe 放置到想要安装的位置，并将该位置&lt;a href=&#34;https://blog.csdn.net/yeyueqin/article/details/92801051&#34;&gt;添加到环境变量&lt;/a&gt;中的path里以方便使用。在cmd里输入&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;n&#34;&gt;hugo&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;help&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;就可以检查是否安装成功了。&lt;/p&gt;
-&lt;h2 id=&#34;生成站点--创建文章&#34;&gt;生成站点 &amp;amp; 创建文章&lt;/h2&gt;
-&lt;p&gt;一路跟随 &lt;a href=&#34;https://www.gohugo.org/&#34;&gt;Hugo中文文档&lt;/a&gt; 的快速开始走就可以了。具体的文档内容都会存储在目录结构中的 content 文件夹，所以站点的存储路径会比较常用，建议选个好记的或者拉个快捷方式。&lt;/p&gt;
-&lt;h2 id=&#34;安装主题并测试&#34;&gt;安装主题并测试&lt;/h2&gt;
-&lt;p&gt;除了中文文档里的主题列表，补充一个&lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;官方的主题列表&lt;/a&gt;,不仅种类繁多，还可以用右边的标签筛选一下。暂且先选个文档里选择的主题[ ](&lt;a href=&#34;https://github.com/xianmin/hugo-theme-jane&#34;&gt;https://github.com/xianmin/hugo-theme-jane&lt;/a&gt;)。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;themes&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clone&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;https&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;github&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;zyro&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hyde&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;git&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;然后从themes返回到站点根目录。并通过Hugo命令在本地调试。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;cd ..
-hugo server --theme=hyde-x --buildDrafts
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;最后在浏览器里打开 http://localhost:1313 ，就可以看到博客和文章了。&lt;/p&gt;
-&lt;h2 id=&#34;部署&#34;&gt;部署&lt;/h2&gt;
-&lt;p&gt;补充一个 &lt;a href=&#34;https://pages.github.com/&#34;&gt;Github Pages&lt;/a&gt; 的引导教程 。&lt;/p&gt;
-&lt;p&gt;在完成所有步骤之后，访问 &lt;a href=&#34;http://GZ1A.github.io/&#34;&gt;http://GZ1A.github.io/&lt;/a&gt; 部署大成功。暂且不管具体流程的优化，总之是跑通了这个博客。搭建完成。&lt;/p&gt;
-&lt;h2 id=&#34;参考链接&#34;&gt;参考链接&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/4669fb3bf35a&#34;&gt;使用HUGO搭建个人博客&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.gohugo.org/&#34;&gt;Hugo中文文档&lt;/a&gt;&lt;/p&gt;
 </description>
       
     </item>

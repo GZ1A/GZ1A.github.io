@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="zh-cn" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>【笔记】Shader 入门精要（十二）深度和法线纹理 - 昼阴夜阳</title>
+  
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="昼阴夜阳" />
+  <meta name="description" content="屏幕后处理除了利用图像的颜色信息，还可以利用深度和法线信息。这些信息不受纹理和光照的影响，能给出更多的细节。 获取深度和法线纹理 原理 深度纹理就" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.64.1" />
+
+
+<link rel="canonical" href="https://disorder.ink/shaderbook-note-12/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+<meta property="og:title" content="【笔记】Shader 入门精要（十二）深度和法线纹理" />
+<meta property="og:description" content="屏幕后处理除了利用图像的颜色信息，还可以利用深度和法线信息。这些信息不受纹理和光照的影响，能给出更多的细节。 获取深度和法线纹理 原理 深度纹理就" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://disorder.ink/shaderbook-note-12/" />
+<meta property="article:published_time" content="2020-03-30T02:23:54+09:00" />
+<meta property="article:modified_time" content="2020-03-30T02:23:54+09:00" />
+<meta itemprop="name" content="【笔记】Shader 入门精要（十二）深度和法线纹理">
+<meta itemprop="description" content="屏幕后处理除了利用图像的颜色信息，还可以利用深度和法线信息。这些信息不受纹理和光照的影响，能给出更多的细节。 获取深度和法线纹理 原理 深度纹理就">
+<meta itemprop="datePublished" content="2020-03-30T02:23:54&#43;09:00" />
+<meta itemprop="dateModified" content="2020-03-30T02:23:54&#43;09:00" />
+<meta itemprop="wordCount" content="2669">
+
+
+
+<meta itemprop="keywords" content="Shader,Shader入门精要," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="【笔记】Shader 入门精要（十二）深度和法线纹理"/>
+<meta name="twitter:description" content="屏幕后处理除了利用图像的颜色信息，还可以利用深度和法线信息。这些信息不受纹理和光照的影响，能给出更多的细节。 获取深度和法线纹理 原理 深度纹理就"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">昼阴夜阳</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://disorder.ink/">首页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://disorder.ink/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://disorder.ink/categories/">分类</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://disorder.ink/tags/">标签</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+
+  
+
+  
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      昼阴夜阳
+    
+
+  
+
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://disorder.ink/">首页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://disorder.ink/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://disorder.ink/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://disorder.ink/tags/">标签</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">【笔记】Shader 入门精要（十二）深度和法线纹理</h1>
+      
+      <div class="post-meta">
+        <time datetime="2020-03-30" class="post-time">
+          2020-03-30
+        </time>
+        <div class="post-category">
+            <a href="https://disorder.ink/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
+            
+          </div>
+        <span class="more-meta"> 约 2669 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+
+        
+        
+          <span id="busuanzi_container_page_pv">
+            | 阅读 <span id="busuanzi_value_page_pv"></span>
+          </span>
+        
+
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title" style="text-align:center;">文章目录</h2>
+  <div class="post-toc-content" style="text-align:left;">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#获取深度和法线纹理">获取深度和法线纹理</a>
+      <ul>
+        <li><a href="#原理">原理</a></li>
+        <li><a href="#获取">获取</a></li>
+        <li><a href="#查看">查看</a></li>
+      </ul>
+    </li>
+    <li><a href="#运动模糊">运动模糊</a>
+      <ul>
+        <li><a href="#脚本实现">脚本实现</a></li>
+        <li><a href="#shader-实现">Shader 实现</a></li>
+      </ul>
+    </li>
+    <li><a href="#全局雾效">全局雾效</a>
+      <ul>
+        <li><a href="#重建世界坐标">重建世界坐标</a></li>
+        <li><a href="#计算雾效">计算雾效</a></li>
+        <li><a href="#实现">实现</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+
+    
+    <div class="post-content">
+      <p>屏幕后处理除了利用图像的颜色信息，还可以利用深度和法线信息。这些信息不受纹理和光照的影响，能给出更多的细节。</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1367954548&auto=0&height=66"></iframe>
+<h2 id="获取深度和法线纹理">获取深度和法线纹理</h2>
+<h3 id="原理">原理</h3>
+<p>深度纹理就是一张存着高精度深度值的渲染纹理。深度值 [0, 1] 对应着 <strong>NDC 中坐标</strong> 的 z 分量 [-1, 1]。延迟渲染下，深度纹理可以从 Gbuffer 得到。前向渲染下则会单独渲染  Opaque 物体的 ShadowCaster Pass（如果没有就不会被渲染进深度纹理）。</p>
+<p>法线纹理就是一张存着<strong>观察空间下法线信息</strong>的渲染纹理。前向渲染下同样需要通过再次渲染来得到。</p>
+<h3 id="获取">获取</h3>
+<p>通过<strong>设置相机模式</strong>就可以在 Shader 直接访问特定的纹理属性了，Unity 会负责渲染并输入到 Shader 属性中。例如设定深度模式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">// 通过 _CameraDepthTexture 访问
+</span><span class="c1"></span><span class="n">camera</span><span class="p">.</span><span class="n">depthTextureMode</span> <span class="p">=</span> <span class="n">DepthTextureMode</span><span class="p">.</span><span class="n">Depth</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>就可以在 CG 中定义并访问对应 <code>sampler2D</code> 变量。还可以组合模式，同时生成多个纹理：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">// 通过 _CameraDepthTexture 访问
+</span><span class="c1"></span><span class="n">camera</span><span class="p">.</span><span class="n">depthTextureMode</span> <span class="p">|</span><span class="p">=</span> <span class="n">DepthTextureMode</span><span class="p">.</span><span class="n">Depth</span><span class="p">;</span>	
+<span class="c1">// 通过 _CameraDepthNormalsTexture 访问
+</span><span class="c1"></span><span class="n">camera</span><span class="p">.</span><span class="n">depthTextureMode</span> <span class="p">|</span><span class="p">=</span> <span class="n">DepthTextureMode</span><span class="p">.</span><span class="n">DepthNormals</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="深度值">深度值</h4>
+<p>获取到深度纹理后，大部分时候可以通过 <code>tex2D</code> 进行采样。但由于 PS3 、PSP2 等平台的差异，建议使用 Unity 提供的宏 <code>SAMPLE_DEPTH_TEXTURE</code> 宏对深度纹理进行采样。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">// 返回 float 深度值
+</span><span class="c1"></span><span class="kt">float</span> <span class="n">d</span> <span class="p">=</span> <span class="n">SAMPLE_DEPTH_TEXTURE</span><span class="p">(</span><span class="n">_CameraDepthTexture</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">uv</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>采样得到的深度值通常并不能直接使用，因为它对应的是 NDC ，是<strong>非线性的</strong><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。在空间经过裁剪矩阵（即投影矩阵）的平移缩放后，会经过透视除法（齐次除法）的处理。z 轴坐标不需要进行屏幕映射，有关系如下</p>
+<p>$$ z_{ndc} = {z_{clip} \over w_{clip} }$$</p>
+<p>以透视投影为例，根据裁剪矩阵可知</p>
+<p>$$ w_{clip} = -z_{view} $$</p>
+<p>由于 $1/z_{view}$ 非线性，这次除法导致了 NDC 坐标的非线性<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。为了重新得到线性的坐标，就需要倒退变换过程。Unity 提供了两个辅助函数来进行变换。这两个函数了使用内置 <code>_ZBufferParams</code> 得到远近裁剪平面的距离，<code>LinearEyeDepth</code> 返回视角空间下的 $z_{view}$，<code>Linear01Depth</code> 返回在 [0,1] 间的线性深度值。</p>
+<h4 id="深度和法线">深度和法线</h4>
+<p>深度和法线纹理经过 Unity 的编码，xy 分量保存了法线信息，zw 分量保存了深度信息。首先使用 <code>tex2D</code> 进行采样，然后通过调用内置 <code>DecodeDepthNormal</code> 函数解码采样得到的结果，就可以得到<strong>视角空间下的法线</strong>和<strong>线性深度值</strong>。</p>
+<h3 id="查看">查看</h3>
+<p>通过帧调试器可以查看到深度纹理、深度和法线纹理。</p>
+<p>有需要的信息（如线性空间下的深度信息）可以自行在片元着色器中输出。（因为是透明的所以是透明的球瞩目）</p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200331053328167.png" alt="image-20200331053328167"></p>
+<h2 id="运动模糊">运动模糊</h2>
+<p>上一节的运动模糊是通过混合屏幕图像模拟的，也可以通过<strong>速度映射图</strong>实现。这种技术使用速度缓冲得到每个像素的速度，以此决定模糊的方向和大小。</p>
+<p>速度缓冲的一种生成方法是将场景中所有物体的速度渲染到一张纹理中。但这样需要修改所有物体的 Shader 代码进行计算并渲染。《GPU Gem3》中介绍了另一种方法。记录 <strong>视角*投影矩阵</strong>(VP)，用逆矩阵将深度缓冲中的每个 NDC  坐标变换回世界空间，再用前一帧的视角*投影矩阵得到这个坐标在前一帧的 NDC 坐标。位置差就是这个像素的速度了。</p>
+<h3 id="脚本实现">脚本实现</h3>
+<p>脚本部分比较简单。首先需要获取处理用的信息。通过 Camera 组件可以得到 <strong>VP 矩阵</strong> 以及 <strong>深度纹理</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">// 定义变量存储上一帧的 VP 矩阵
+</span><span class="c1"></span><span class="k">private</span> <span class="n">Matrix4x4</span> <span class="n">previousViewProjectionMatrix</span><span class="p">;</span>
+
+<span class="c1">// 开启时启用深度纹理，并给变量赋初值
+</span><span class="c1"></span><span class="k">void</span> <span class="n">OnEnable</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">camera</span><span class="p">.</span><span class="n">depthTextureMode</span> <span class="p">|</span><span class="p">=</span> <span class="n">DepthTextureMode</span><span class="p">.</span><span class="n">Depth</span><span class="p">;</span>
+
+    <span class="n">previousViewProjectionMatrix</span> <span class="p">=</span> <span class="n">camera</span><span class="p">.</span><span class="n">projectionMatrix</span> <span class="p">*</span> <span class="n">camera</span><span class="p">.</span><span class="n">worldToCameraMatrix</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在 <code>OnRenderImage</code> 处理时计算并传入这些要用到的变量，并为下次调用做准备。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">// 向 Shader 传入各种需要的变量
+</span><span class="c1"></span><span class="n">material</span><span class="p">.</span><span class="n">SetFloat</span><span class="p">(</span><span class="s">&#34;_BlurSize&#34;</span><span class="p">,</span> <span class="n">blurSize</span><span class="p">)</span><span class="p">;</span>
+
+<span class="n">material</span><span class="p">.</span><span class="n">SetMatrix</span><span class="p">(</span><span class="s">&#34;_PreviousMatrix&#34;</span><span class="p">,</span> <span class="n">previousViewProjectionMatrix</span><span class="p">)</span><span class="p">;</span>
+<span class="n">Matrix4x4</span> <span class="n">currentViewProjectionMatrix</span> <span class="p">=</span> <span class="n">camera</span><span class="p">.</span><span class="n">projectionMatrix</span> <span class="p">*</span> <span class="n">camera</span><span class="p">.</span><span class="n">worldToCameraMatrix</span><span class="p">;</span>
+<span class="n">Matrix4x4</span> <span class="n">currentViewProjectionInverseMatrix</span> <span class="p">=</span> <span class="n">currentViewProjectionMatrix</span><span class="p">.</span><span class="n">inverse</span><span class="p">;</span>
+<span class="n">material</span><span class="p">.</span><span class="n">SetMatrix</span><span class="p">(</span><span class="s">&#34;_CurrentMatrixInverse&#34;</span><span class="p">,</span> <span class="n">currentViewProjectionInverseMatrix</span><span class="p">)</span><span class="p">;</span>
+
+<span class="c1">// 保存当前帧的 VP 矩阵，供下一帧调用
+</span><span class="c1"></span><span class="n">previousViewProjectionMatrix</span> <span class="p">=</span> <span class="n">currentViewProjectionMatrix</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="shader-实现">Shader 实现</h3>
+<h4 id="属性和变量">属性和变量</h4>
+<p>Unity 中没有对应 Matrix 的属性，因此矩阵不用声明，只要在 CG 中定义 <code>float4x4</code> 变量就可以了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="n">sampler2D</span> <span class="n">_MainTex</span><span class="p">;</span>
+<span class="n">half4</span> <span class="n">_MainTex_TexelSize</span><span class="p">;</span>
+<span class="n">float4x4</span> <span class="n">_CurrentMatrixInverse</span><span class="p">;</span>
+<span class="n">float4x4</span> <span class="n">_PreviousMatrix</span><span class="p">;</span>
+<span class="n">half</span> <span class="n">_BlurSize</span><span class="p">;</span>
+<span class="n">sampler2D</span> <span class="n">_CameraDepthTexture</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="顶点着色器">顶点着色器</h4>
+<p>要同时处理多张渲染纹理，就需要做平台差异化处理（见上一篇的链接）。因此把深度纹理的采样坐标单独拿出来。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="n">v2f</span> <span class="n">vert</span><span class="p">(</span><span class="n">appdata_base</span> <span class="n">v</span><span class="p">)</span><span class="p">{</span>
+    <span class="n">v2f</span> <span class="n">o</span><span class="p">;</span>
+
+    <span class="n">o</span><span class="p">.</span><span class="n">pos</span> <span class="p">=</span> <span class="n">UnityObjectToClipPos</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">vertex</span><span class="p">)</span><span class="p">;</span>
+    <span class="n">o</span><span class="p">.</span><span class="n">uv</span> <span class="p">=</span> <span class="n">v</span><span class="p">.</span><span class="n">texcoord</span><span class="p">;</span>
+    <span class="n">o</span><span class="p">.</span><span class="n">uv_depth</span> <span class="p">=</span> <span class="n">v</span><span class="p">.</span><span class="n">texcoord</span><span class="p">;</span>
+
+    <span class="cp">#if UNITY_UV_STARTS_AT_TOP
+</span><span class="cp"></span>        <span class="k">if</span> <span class="p">(</span><span class="n">_MainTex_TexelSize</span><span class="p">.</span><span class="n">y</span> <span class="p">&lt;</span><span class="m">0</span><span class="p">)</span>
+            <span class="n">o</span><span class="p">.</span><span class="n">uv_depth</span><span class="p">.</span><span class="n">y</span> <span class="p">=</span> <span class="m">1</span> <span class="p">-</span> <span class="n">o</span><span class="p">.</span><span class="n">uv_depth</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+    <span class="cp">#endif
+</span><span class="cp"></span>
+    <span class="k">return</span> <span class="n">o</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="片元着色器">片元着色器</h4>
+<p>要得到速度缓冲，首先要获取当前 NDC，然后转换得到世界坐标，再转换成上一帧的 NDC。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">// 从深度纹理得到 NDC
+</span><span class="c1"></span><span class="kt">float</span> <span class="n">depth</span> <span class="p">=</span> <span class="n">SAMPLE_DEPTH_TEXTURE</span><span class="p">(</span><span class="n">_CameraDepthTexture</span><span class="p">,</span><span class="n">i</span><span class="p">.</span><span class="n">uv_depth</span><span class="p">)</span><span class="p">;</span>
+<span class="n">float4</span> <span class="n">ndcPos</span> <span class="p">=</span> <span class="n">float4</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">uv</span><span class="p">.</span><span class="n">x</span> <span class="p">*</span> <span class="m">2</span> <span class="p">-</span> <span class="m">1</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">uv</span><span class="p">.</span><span class="n">y</span> <span class="p">*</span> <span class="m">2</span> <span class="p">-</span> <span class="m">1</span><span class="p">,</span> <span class="n">depth</span> <span class="p">*</span> <span class="m">2</span> <span class="p">-</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span><span class="p">;</span>
+
+<span class="c1">// 将 NDC 转换回 世界坐标
+</span><span class="c1"></span><span class="n">float4</span> <span class="n">worldPos</span> <span class="p">=</span> <span class="n">mul</span><span class="p">(</span><span class="n">_CurrentMatrixInverse</span><span class="p">,</span><span class="n">ndcPos</span><span class="p">)</span><span class="p">;</span>
+<span class="n">worldPos</span> <span class="p">/</span><span class="p">=</span> <span class="n">worldPos</span><span class="p">.</span><span class="n">w</span><span class="p">;</span> 
+
+<span class="c1">// 再次转换得到上一帧的 NDC
+</span><span class="c1"></span><span class="n">float4</span> <span class="n">previousNdcPos</span> <span class="p">=</span> <span class="n">mul</span><span class="p">(</span><span class="n">_PreviousMatrix</span><span class="p">,</span> <span class="n">worldPos</span><span class="p">)</span><span class="p">;</span>
+<span class="n">previousNdcPos</span> <span class="p">/</span><span class="p">=</span> <span class="n">previousNdcPos</span><span class="p">.</span><span class="n">w</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这些步骤中里的第 7 行引起了我的注意。世界坐标到 NDC 的转换明明是先经过 VP 矩阵，然后再进行了透视除法，除以 $clip_w$ 得到的；要反向变换也就是需要乘上 $clip_w$ 并右乘 VP 的逆矩阵。经过一番调查<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>悟到了这两个操作是等价的。</p>
+<p>然后计算得到像素在屏幕上的速度，并将速度方向上的颜色与当前屏幕颜色叠加&hellip;然而至少在我测试的情况下效果挺差的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="n">float2</span> <span class="n">velocity</span> <span class="p">=</span> <span class="p">(</span><span class="n">ndcPos</span><span class="p">.</span><span class="n">xy</span> <span class="p">-</span> <span class="n">previousNdcPos</span><span class="p">.</span><span class="n">xy</span><span class="p">)</span><span class="p">/</span><span class="m">2.0f</span><span class="p">;</span>
+
+<span class="n">float2</span> <span class="n">uv</span> <span class="p">=</span> <span class="n">i</span><span class="p">.</span><span class="n">uv</span><span class="p">;</span>
+<span class="n">float4</span> <span class="n">color</span> <span class="p">=</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_MainTex</span><span class="p">,</span> <span class="n">uv</span><span class="p">)</span><span class="p">;</span>
+<span class="n">uv</span> <span class="p">+</span><span class="p">=</span> <span class="n">velocity</span> <span class="p">*</span> <span class="n">_BlurSize</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">it</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span><span class="n">it</span> <span class="p">&lt;</span> <span class="m">3</span><span class="p">;</span><span class="n">it</span><span class="p">+</span><span class="p">+</span><span class="p">,</span> <span class="n">uv</span> <span class="p">+</span><span class="p">=</span> <span class="n">velocity</span> <span class="p">*</span> <span class="n">_BlurSize</span><span class="p">)</span><span class="p">{</span>
+    <span class="n">color</span> <span class="p">+</span><span class="p">=</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_MainTex</span><span class="p">,</span> <span class="n">uv</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">color</span> <span class="p">/</span><span class="p">=</span><span class="m">3</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>而且这种计算方法只考虑了相机的移动，无法反映出物体的移动。</p>
+<h2 id="全局雾效">全局雾效</h2>
+<p>Unity 内置了基于距离的线性/指数雾效，在 Shader 中使用编译指令和内置宏即可。但这种方法需要为所有物体添加相关代码，并且不能定制。</p>
+<p>现在有了深度纹理，就可以基于屏幕后处理方便自由的模拟各种雾效，关键在于重建像素的世界坐标。</p>
+<h3 id="重建世界坐标">重建世界坐标</h3>
+<p>上一节通过矩阵变换得到了世界坐标，但这样在着色器中进行矩阵乘法会影响游戏性能（换取了像素的帧间对应关系）。通过<strong>插值</strong>和<strong>相对位置</strong>得到世界坐标的方法更快更好。</p>
+<p>首先通过插值算出到近裁剪平面上对应点的单位（并不）向量，再乘上线性的 z 轴深度就是像素在视角空间下的坐标，即相对相机的偏移量。最后和相机的世界空间位置相加即完成重建 。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="n">float4</span> <span class="n">worldPos</span> <span class="p">=</span> <span class="n">_WorldSpaceCameraPos</span> <span class="p">+</span> <span class="n">linearEyeDepth</span> <span class="p">*</span> <span class="n">interpolatedRay</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="世界坐标">世界坐标</h4>
+<p>shader 内置变量 <code>_WorldSpaceCameraPos</code>。</p>
+<h4 id="线性深度">线性深度</h4>
+<p>在开启相机的深度纹理模式后，将采样经过 <code>LinearEyeDepth()</code> 处理，得到线性深度。</p>
+<h4 id="对应向量">对应向量</h4>
+<p>interpolatedRay 即内插光线。源于对近裁剪平面四个角的方向向量的插值（事实上是到 <strong>z 轴距离为 1</strong> 平面的四个角）。以左上值 TL 为例，首先计算从近裁剪面中心指向摄像机上方和右方的向量 <code>toTop</code> 和 <code>toRight</code>。<br>
+$$<br>
+halfHeight = Near \times \tan \bigg({FOV \over 2  }\bigg)\<br>
+toTop = camera.up \times halfHeight \<br>
+toRight = camera.right \times halfHeight.aspect<br>
+$$<br>
+于是就可以得到 TL ，其他几个点同理。</p>
+<p>$$ TL = camera.forward \cdot Near + toTop - toRight $$</p>
+<p>由于 TL 方向是点到摄像机的欧氏距离，不是深度值表示的到摄像机的 z 轴距离，在计算偏移量时就要乘上 $ 1 \over \cos\theta$（夹角）。即乘上偏移方向的模与 Z 轴方向之比。</p>
+<p>$$scale = {|TL| \over|Near|}$$</p>
+<p>最后将归一化的方向向量乘上 Scale 就可以得到原点指向 <code>linearEyeDepth == 1</code> 的平面的向量。</p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200415034949460.png" alt="我画了一年"></p>
+<h3 id="计算雾效">计算雾效</h3>
+<p>雾效就是根据 <strong>雾效系数 f</strong> ，将雾的颜色与原始颜色混合。效果的关键就是参数的计算了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="n">float3</span> <span class="n">afterFog</span> <span class="p">=</span> <span class="n">f</span> <span class="p">*</span> <span class="n">fogColor</span> <span class="p">+</span> <span class="p">(</span><span class="m">1</span><span class="p">-</span><span class="n">f</span><span class="p">)</span> <span class="p">*</span> <span class="n">originColor</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在 Unity 的内置雾效实现中，有三种雾的计算方式——线性、指数、指数的平方，本节使用类似线性雾的方式，实现高度相关的雾。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="kt">float</span> <span class="n">fogDensity</span> <span class="p">=</span> <span class="p">(</span><span class="n">_FogEnd</span> <span class="p">-</span> <span class="n">worldPos</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="p">/</span> <span class="p">(</span><span class="n">_FogEnd</span> <span class="p">-</span> <span class="n">_FogStart</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="线性">线性</h5>
+<p>d 表示雾影响的最大最小距离，有<br>
+$$<br>
+f = {d_{max} - |z|\over d_{max} - d_{min}}<br>
+$$</p>
+<h5 id="指数">指数</h5>
+<p>d 控制浓度<br>
+$$<br>
+f = e^{-d-|z|}<br>
+$$</p>
+<h5 id="指数平方">指数平方</h5>
+<p>$$<br>
+f = e^{-(d-|z|)^2}<br>
+$$</p>
+<h3 id="实现">实现</h3>
+<p>就硬做。<style type="text/css">.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}</style><span class="mask" title = 你知道的太多了>间隔了两周实在是懒得补了</span></p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200415035719212.png" alt="image-20200415035719212"></p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>冯乐乐. Unity Shader 入门精要[M].北京：人民邮电出版社,2016;  270. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://blog.csdn.net/puppet_master/article/details/77489948">这篇博客</a> 的投影部分从实用价值的角度出发解释这个非线性，也挺好 <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>感谢 <a href="https://www.cnblogs.com/sword-magical-blog/p/10483459.html">指路博客</a> 以及 <a href="http://feepingcreature.github.io/math.html">参考链接</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">昼阴夜阳</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+      2020-03-30
+      
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/image/wechatPay.png">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/image/aliPay.png">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://disorder.ink/tags/shader/">Shader</a>
+          <a href="https://disorder.ink/tags/shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81/">Shader入门精要</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E8%90%8C%E7%99%BE%E9%BB%91%E5%B9%95/">
+            
+            <i class="iconfont">
+              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+            </i>
+            <span class="prev-text nav-default">【博客升级】整活！在博客中添加黑幕</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/shaderbook-note-11/">
+            <span class="next-text nav-default">【笔记】Shader 入门精要（十一）屏幕后处理</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+    
+
+  <div id="comments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+            if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 700);
+              clearInterval(checkExist);
+            }
+        }, 10);
+    }
+  </script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#comments' ,
+        appId: 'L7mdz4FQ5SsDYXfrMj2XGOhY-gzGzoHsz',
+        appKey: 'wzMrloJf0lMSI98LuVMXas0o',
+        notify:  false , 
+        verify:  false , 
+        avatar:'retro', 
+        placeholder: '随便说点什么吧~（填写邮箱可以收到回复提醒哦）',
+        visitor:  false 
+    });
+  </script>
+
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="icon-links">
+  
+  
+    <a href="mailto:GZ1A@outlook.com" rel="me noopener" class="iconfont"
+      title="email" >
+      <svg class="icon" viewBox="0 0 1451 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M664.781909 681.472759 0 97.881301C0 3.997201 71.046997 0 71.046997 0L474.477909 0 961.649408 0 1361.641813 0C1361.641813 0 1432.688811 3.997201 1432.688811 97.881301L771.345323 681.472759C771.345323 681.472759 764.482731 685.154773 753.594283 688.65053L753.594283 688.664858C741.602731 693.493018 729.424896 695.068979 718.077952 694.839748 706.731093 695.068979 694.553173 693.493018 682.561621 688.664858L682.561621 688.65053C671.644501 685.140446 664.781909 681.472759 664.781909 681.472759L664.781909 681.472759ZM718.063616 811.603883C693.779541 811.016482 658.879232 802.205449 619.10784 767.734955 542.989056 701.759633 0 212.052267 0 212.052267L0 942.809523C0 942.809523 0 1024 83.726336 1024L682.532949 1024 753.579947 1024 1348.948139 1024C1432.688811 1024 1432.688811 942.809523 1432.688811 942.809523L1432.688811 212.052267C1432.688811 212.052267 893.138176 701.759633 817.019477 767.734955 777.248 802.205449 742.347691 811.03081 718.063616 811.603883L718.063616 811.603883Z"></path>
+</svg>
+
+    </a>
+  
+    <a href="https://github.com/GZ1A/" rel="me noopener" class="iconfont"
+      title="github"  target="_blank"
+      >
+      <svg class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M512 12.672c-282.88 0-512 229.248-512 512 0 226.261333 146.688 418.133333 350.08 485.76 25.6 4.821333 34.986667-11.008 34.986667-24.618667 0-12.16-0.426667-44.373333-0.64-87.04-142.421333 30.890667-172.458667-68.693333-172.458667-68.693333C188.672 770.986667 155.008 755.2 155.008 755.2c-46.378667-31.744 3.584-31.104 3.584-31.104 51.413333 3.584 78.421333 52.736 78.421333 52.736 45.653333 78.293333 119.850667 55.68 149.12 42.581333 4.608-33.109333 17.792-55.68 32.426667-68.48-113.706667-12.8-233.216-56.832-233.216-253.013333 0-55.893333 19.84-101.546667 52.693333-137.386667-5.76-12.928-23.04-64.981333 4.48-135.509333 0 0 42.88-13.738667 140.8 52.48 40.96-11.392 84.48-17.024 128-17.28 43.52 0.256 87.04 5.888 128 17.28 97.28-66.218667 140.16-52.48 140.16-52.48 27.52 70.528 10.24 122.581333 5.12 135.509333 32.64 35.84 52.48 81.493333 52.48 137.386667 0 196.693333-119.68 240-233.6 252.586667 17.92 15.36 34.56 46.762667 34.56 94.72 0 68.522667-0.64 123.562667-0.64 140.202666 0 13.44 8.96 29.44 35.2 24.32C877.44 942.592 1024 750.592 1024 524.672c0-282.752-229.248-512-512-512"></path>
+</svg>
+
+    </a>
+
+
+<a href="https://disorder.ink/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+    class="iconfont" title="rss" target="_blank">
+    <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="30" height="30">
+  <path d="M819.157333 1024C819.157333 574.592 449.408 204.8 0 204.8V0c561.706667 0 1024 462.293333 1024 1024h-204.842667zM140.416 743.04a140.8 140.8 0 0 1 140.501333 140.586667A140.928 140.928 0 0 1 140.074667 1024C62.72 1024 0 961.109333 0 883.626667s62.933333-140.544 140.416-140.586667zM678.784 1024h-199.04c0-263.210667-216.533333-479.786667-479.744-479.786667V345.173333c372.352 0 678.784 306.517333 678.784 678.826667z"></path>
+</svg>
+
+  </a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2020
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        昼阴夜阳
+        
+      </span></span>
+
+  
+  
+    
+  
+
+  
+
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont">
+        
+        <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+      </i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.dee43230127a73d039a734510fa896c89c3c7ce0cf0be0c7a7433f8fd69b76dc.js" integrity="sha256-3uQyMBJ6c9A5pzRRD6iWyJw8fODPC&#43;DHp0M/j9abdtw="
+  crossorigin="anonymous"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+<script src="https://cdn.jsdelivr.net/gh/gz1a/live2d-widget@latest/autoload.js"></script>
+
+
+
+
+
+<script type="text/javascript" color="0,0,0" opacity='0.7' zIndex="-1" count="99"
+  src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+
+
+<script type="text/javascript" src=/js/click-counter.js></script>
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/load-photoswipe.js"></script>
+<script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+<script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

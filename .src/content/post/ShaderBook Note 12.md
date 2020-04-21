@@ -1,6 +1,6 @@
 ---
 # 常用定义
-draft: true
+draft: false
 
 title: "【笔记】Shader 入门精要（十二）深度和法线纹理"
 date: 2020-03-30T02:23:54+09:00			# 创建时间
@@ -33,14 +33,14 @@ mathjax: true    # 打开 mathjax
 
 ### 获取
 
-通过**设置相机模式**就可以在 Shader 访问特定的纹理属性了，Unity 会负责渲染并输入到 Shader 属性中。例如设定深度模式：
+通过**设置相机模式**就可以在 Shader 直接访问特定的纹理属性了，Unity 会负责渲染并输入到 Shader 属性中。例如设定深度模式：
 
 ```c#
 // 通过 _CameraDepthTexture 访问
 camera.depthTextureMode = DepthTextureMode.Depth;
 ```
 
-就可以在 Shader 中访问对应变量。还可以组合模式，同时生成多个纹理：
+就可以在 CG 中定义并访问对应 `sampler2D` 变量。还可以组合模式，同时生成多个纹理：
 
 ```c#
 // 通过 _CameraDepthTexture 访问
@@ -76,7 +76,7 @@ $$ w_{clip} = -z_{view} $$
 
 通过帧调试器可以查看到深度纹理、深度和法线纹理。
 
-有需要的信息（如线性空间下的深度信息）可以自行在片元着色器中输出。（因为是透明的所以透明的球瞩目）
+有需要的信息（如线性空间下的深度信息）可以自行在片元着色器中输出。（因为是透明的所以是透明的球瞩目）
 
 ![image-20200331053328167](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200331053328167.png)
 
@@ -199,10 +199,10 @@ Unity 内置了基于距离的线性/指数雾效，在 Shader 中使用编译�
 
 上一节通过矩阵变换得到了世界坐标，但这样在着色器中进行矩阵乘法会影响游戏性能（换取了像素的帧间对应关系）。通过**插值**和**相对位置**得到世界坐标的方法更快更好。
 
-首先通过插值算出到近裁剪平面上对应点的向量，再乘上线性的深度就是像素在视角空间下的坐标，即相对相机的偏移量。最后和相机的世界空间位置相加即完成重建 。
+首先通过插值算出到近裁剪平面上对应点的单位（并不）向量，再乘上线性的 z 轴深度就是像素在视角空间下的坐标，即相对相机的偏移量。最后和相机的世界空间位置相加即完成重建 。
 
 ```c#
-float4 worldPos = _WorldSpaceCameraPos + linearDepth * interpolatedRay;
+float4 worldPos = _WorldSpaceCameraPos + linearEyeDepth * interpolatedRay;
 ```
 
 #### 世界坐标
@@ -215,7 +215,7 @@ shader 内置变量 `_WorldSpaceCameraPos`。
 
 #### 对应向量
 
-interpolatedRay 即内插光线。源于对近裁剪平面四个角的某个特定向量的插值。以左上值 TL 为例，首先计算从近裁剪面中心指向摄像机上方和右方的向量 `toTop` 和 `toRight`。
+interpolatedRay 即内插光线。源于对近裁剪平面四个角的方向向量的插值（事实上是到 **z 轴距离为 1** 平面的四个角）。以左上值 TL 为例，首先计算从近裁剪面中心指向摄像机上方和右方的向量 `toTop` 和 `toRight`。
 $$
 halfHeight = Near \times \tan \bigg({FOV \over 2  }\bigg)\\
 toTop = camera.up \times halfHeight \\
@@ -225,11 +225,13 @@ $$
 
 $$ TL = camera.forward \cdot Near + toTop - toRight $$
 
-由于 TL 的模是点到摄像机的欧氏距离，不是深度值表示的到摄像机的 z 轴距离，在计算偏移量时要乘上 $ 1 \over \cos\theta$（夹角）。即乘上偏移方向的模与 Z 轴方向之比。
+由于 TL 方向是点到摄像机的欧氏距离，不是深度值表示的到摄像机的 z 轴距离，在计算偏移量时就要乘上 $ 1 \over \cos\theta$（夹角）。即乘上偏移方向的模与 Z 轴方向之比。
 
 $$scale = {|TL| \over|Near|}$$
 
-![world_dist.png-18.6kB](http://static.zybuluo.com/candycat/6h2nnw3gwzcio21jbji2o2dw/world_dist.png)
+最后将归一化的方向向量乘上 Scale 就可以得到原点指向 `linearEyeDepth == 1` 的平面的向量。
+
+![我画了一年](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200415034949460.png)
 
 ### 计算雾效
 
@@ -241,21 +243,25 @@ float3 afterFog = f * fogColor + (1-f) * originColor;
 
 在 Unity 的内置雾效实现中，有三种雾的计算方式——线性、指数、指数的平方，本节使用类似线性雾的方式，实现高度相关的雾。
 
-#### 线性
+```c#
+float fogDensity = (_FogEnd - worldPos.y) / (_FogEnd - _FogStart);
+```
+
+##### 线性
 
 d 表示雾影响的最大最小距离，有
 $$
 f = {d_{max} - |z|\over d_{max} - d_{min}}
 $$
 
-#### 指数
+##### 指数
 
 d 控制浓度
 $$
 f = e^{-d-|z|}
 $$
 
-#### 指数平方
+##### 指数平方
 
 $$
 f = e^{-(d-|z|)^2}
@@ -263,7 +269,9 @@ $$
 
 ### 实现
 
+就硬做。{{% mask 间隔了两周实在是懒得补了 %}}
 
+![image-20200415035719212](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200415035719212.png)
 
 
 
@@ -274,3 +282,4 @@ $$
 [^1]:冯乐乐. Unity Shader 入门精要[M].北京：人民邮电出版社,2016;  270.
 [^2]: [这篇博客](https://blog.csdn.net/puppet_master/article/details/77489948) 的投影部分从实用价值的角度出发解释这个非线性，也挺好
 [^3]:感谢 [指路博客](https://www.cnblogs.com/sword-magical-blog/p/10483459.html) 以及 [参考链接](http://feepingcreature.github.io/math.html)
+
