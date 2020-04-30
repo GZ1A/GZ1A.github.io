@@ -2,6 +2,76 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://disorder.ink/categories/</loc>
+    <lastmod>2020-04-30T05:41:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/post/</loc>
+    <lastmod>2020-04-30T05:41:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/tags/</loc>
+    <lastmod>2020-04-30T05:41:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/tags/unity/</loc>
+    <lastmod>2020-04-30T05:41:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/unity-copying-assembly-xx-failed-%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2020-04-30T05:41:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2020-04-30T05:41:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/</loc>
+    <lastmod>2020-04-30T05:41:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/tags/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/</loc>
+    <lastmod>2020-04-26T14:58:02+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/tags/%E7%AC%94%E8%AF%95/</loc>
+    <lastmod>2020-04-26T14:58:02+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://disorder.ink/%E7%AC%94%E8%AF%95%E5%A4%8D%E7%9B%98%E5%AE%9A%E7%82%B9%E7%88%86%E7%A0%B4/</loc>
+    <lastmod>2020-04-26T14:58:02+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://disorder.ink/tags/3dmax/</loc>
     <lastmod>2020-04-20T23:46:09+09:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -9,42 +79,7 @@
   </url>
   
   <url>
-    <loc>https://disorder.ink/categories/</loc>
-    <lastmod>2020-04-20T23:46:09+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://disorder.ink/post/</loc>
-    <lastmod>2020-04-20T23:46:09+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://disorder.ink/tags/</loc>
-    <lastmod>2020-04-20T23:46:09+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://disorder.ink/tags/vray/</loc>
-    <lastmod>2020-04-20T23:46:09+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://disorder.ink/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2020-04-20T23:46:09+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://disorder.ink/</loc>
     <lastmod>2020-04-20T23:46:09+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

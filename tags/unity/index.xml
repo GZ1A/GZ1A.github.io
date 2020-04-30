@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unity on 昼阴夜阳</title>
+    <link>https://disorder.ink/tags/unity/</link>
+    <description>Recent content in Unity on 昼阴夜阳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 30 Apr 2020 05:41:26 +0800</lastBuildDate>
+    
+	<atom:link href="https://disorder.ink/tags/unity/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Unity Copying assembly XX failed 问题</title>
+      <link>https://disorder.ink/unity-copying-assembly-xx-failed-%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Thu, 30 Apr 2020 05:41:26 +0800</pubDate>
+      
+      <guid>https://disorder.ink/unity-copying-assembly-xx-failed-%E9%97%AE%E9%A2%98/</guid>
+      <description>遇到过好多次了，这次往 Unity 里导入 3DMax 模型的时候又遇到了这个问题。 Copying assembly from &amp;lsquo;TempUnity.VSCode.Editor.dll&amp;rsquo; to &amp;lsquo;LibraryScriptAssembliesUnity.VSCode.Editor.dll&amp;rsquo; failed 原因 按参考链接最后的图中说的那样，主要考虑以下几种原因 文件正在使用</description>
+    </item>
+    
+  </channel>
+</rss>

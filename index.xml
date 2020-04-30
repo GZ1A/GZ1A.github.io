@@ -6,10 +6,132 @@
     <description>Recent content on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 20 Apr 2020 23:46:09 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 30 Apr 2020 05:41:26 +0800</lastBuildDate>
     
         <atom:link href="https://disorder.ink/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Unity Copying assembly XX failed 问题</title>
+      <link>https://disorder.ink/unity-copying-assembly-xx-failed-%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Thu, 30 Apr 2020 05:41:26 +0800</pubDate>
+      
+      <guid>https://disorder.ink/unity-copying-assembly-xx-failed-%E9%97%AE%E9%A2%98/</guid>
+      
+        <description>&lt;p&gt;遇到过好多次了，这次往 Unity 里导入 3DMax 模型的时候又遇到了这个问题。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Copying assembly from &amp;lsquo;TempUnity.VSCode.Editor.dll&amp;rsquo; to &amp;lsquo;LibraryScriptAssembliesUnity.VSCode.Editor.dll&amp;rsquo; failed&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;原因&#34;&gt;原因&lt;/h2&gt;
+&lt;p&gt;按参考链接最后的图中说的那样，主要考虑以下几种原因&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;文件正在使用，被锁定了无法复制&lt;/li&gt;
+&lt;li&gt;杀毒软件阻止了复制&lt;/li&gt;
+&lt;li&gt;路径过长&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;解决方案&#34;&gt;解决方案&lt;/h2&gt;
+&lt;p&gt;点对点解决&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;关闭可能使用它的进程&lt;/li&gt;
+&lt;li&gt;关闭&lt;strong&gt;杀毒软件&lt;/strong&gt;实时防护或者将 Unity 加入到信任名单&lt;/li&gt;
+&lt;li&gt;把项目移浅点&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然后 &lt;strong&gt;保存退出重新启动 Unity&lt;/strong&gt; 一通操作，大概就能解决了。&lt;/p&gt;
+&lt;h2 id=&#34;参考链接&#34;&gt;参考链接&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/41383656&#34;&gt;知乎 | 无法拷贝Assembly-CSharp.dll&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/hhfan3/article/details/84324615?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1&amp;amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1&#34;&gt;博客 | Unity Copying assembly &amp;hellip;. failed 错误解决&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>笔试复盘定点爆破</title>
+      <link>https://disorder.ink/%E7%AC%94%E8%AF%95%E5%A4%8D%E7%9B%98%E5%AE%9A%E7%82%B9%E7%88%86%E7%A0%B4/</link>
+      <pubDate>Sun, 26 Apr 2020 14:58:02 +0900</pubDate>
+      
+      <guid>https://disorder.ink/%E7%AC%94%E8%AF%95%E5%A4%8D%E7%9B%98%E5%AE%9A%E7%82%B9%E7%88%86%E7%A0%B4/</guid>
+      
+        <description>&lt;p&gt;突然接到通知第二天要进行笔试，猝不及防，但第一次笔试还是想准备一下，所以最后一天去练习了一下 OJ。&lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;然而白准备了因为并没有这样考&amp;hellip;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;笔试也就图一乐，毕竟积累肯定还不够，但不管怎么说考过总是更明确了要求。这次考试考察的点&lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;也就是我不会的&lt;/span&gt;主要是&lt;strong&gt;渲染知识和数学功底&lt;/strong&gt;。一直是定性分析了解个大概，但没有定量分析并不能算本当上手。&lt;/p&gt;
+&lt;p&gt;因为考察渲染相关知识以及数学能力，题型并不是给出几道编程题来看程序基础或者算法，更像是图形学的期末考试。为了增强信心，就记录一下不太会的点并&lt;strong&gt;定点爆破&lt;/strong&gt;。&lt;/p&gt;
+&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=436016475&amp;auto=0&amp;height=66&#34;&gt;&lt;/iframe&gt;
+&lt;h2 id=&#34;单选&#34;&gt;单选&lt;/h2&gt;
+&lt;p&gt;简单的渲染知识以及数学知识。注重于概念，也有简单的空间变换计算（虽然照样不会）。&lt;/p&gt;
+&lt;h3 id=&#34;stencil-缓冲&#34;&gt;Stencil 缓冲&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A memory store that holds an 8-bit per-pixel value. In Unity, you can use a stencil buffer to flag pixels, and then only render to pixels that pass the stencil operation. &lt;a href=&#34;https://docs.unity3d.com/Manual/class-RenderTexture.html&#34;&gt;More info&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;参考&#34;&gt;参考&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.unity3d.com/Manual/SL-Stencil.html&#34;&gt;Unity Manual | ShaderLab: Stencil&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;《Unity Shader 入门精要》P15&lt;/p&gt;
+&lt;p&gt;看了就懂了。&lt;/p&gt;
+&lt;h4 id=&#34;要点&#34;&gt;要点&lt;/h4&gt;
+&lt;p&gt;片元经过 模板测试-&amp;gt;深度测试-&amp;gt;混合 后进入颜色缓冲区。&lt;/p&gt;
+&lt;p&gt;深度缓冲和模板缓冲总计 32 位 bit，具体分配以及格式可以配置，如 DepthFormat.Depth24Stencil8。&lt;/p&gt;
+&lt;p&gt;可以根据 mask 读写特定位数数据后与 ref 经过 Comparison Function （即模板测试） 的结果以及 ZTest （深度测试）的结果使用 Stencil Operation 修改模板缓冲中的值，供之后的 Pass 对比。取值定义见文档。&lt;/p&gt;
+&lt;h3 id=&#34;延迟渲染带宽&#34;&gt;延迟渲染带宽&lt;/h3&gt;
+&lt;h4 id=&#34;参考-1&#34;&gt;参考&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.unity3d.com/Manual/RenderTech-DeferredShading.html&#34;&gt;Unity Manual | Deferred Shading rendering path&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://tieba.baidu.com/p/4674526619?red_tag=0211003059&#34;&gt;贴吧 | 【扫盲】延迟渲染（1）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/wolf96/article/details/84959170&#34;&gt;博客 | 延迟渲染与前向渲染&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/46235352&#34;&gt;知乎 | 显卡基础篇||显卡性能指标参数概念解释&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;要点-1&#34;&gt;要点&lt;/h4&gt;
+&lt;h5 id=&#34;原理&#34;&gt;原理&lt;/h5&gt;
+&lt;p&gt;在执行任何光照计算之前执行所有可见性测试从而减少 fragments shading 的数量。&lt;/p&gt;
+&lt;p&gt;**几何阶段（Geometry pass）**把屏幕上片元的信息先输出到一系列纹理上（Geometry buffer）&lt;/p&gt;
+&lt;p&gt;**着色阶段（Shading/Lighting pass）**对于每一个光源，通过这些储存的信息进行渲染&lt;/p&gt;
+&lt;h5 id=&#34;性质&#34;&gt;性质&lt;/h5&gt;
+&lt;p&gt;解决了大量光照的渲染消耗，将着色计算与场景复杂度解耦。照明的处理开销只与光源数量相关，由光照体而不是物体数量决定。&lt;/p&gt;
+&lt;p&gt;不能开硬件抗锯齿，不能渲染半透明物体，占用大量显存带宽并且只能使用一套 lighting pass。&lt;/p&gt;
+&lt;p&gt;*Unity 中的实现，Culling masks 最多为 4，不支持正交投影。无 Receive Shadows flag 。不支持延迟着色的物体会在完成着色后经由前向路径 fallback。&lt;/p&gt;
+&lt;h5 id=&#34;带宽&#34;&gt;带宽&lt;/h5&gt;
+&lt;blockquote&gt;
+&lt;p&gt;GeForce GTX 1060 显存频率8008MHz，显示位宽192bit&lt;br&gt;
+则：显存带宽=8008X192/8/1000(GB/s)=192.2 GB/s&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;以下是 Unity 中 geometry buffer 的默认布局。可以看出 G-buffer 中每个像素总计使用了 4 × 32 = 128 bit。（HDR 时 RT3 每个通道使用 half 存储，总计再加 32）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;RT0, ARGB32 format: Diffuse color (RGB), occlusion (A).&lt;/li&gt;
+&lt;li&gt;RT1, ARGB32 format: &lt;strong&gt;Specular color&lt;/strong&gt;&lt;br&gt;
+(RGB), roughness (A).&lt;/li&gt;
+&lt;li&gt;RT2, ARGB2101010 format: World space normal (RGB), unused (A).&lt;/li&gt;
+&lt;li&gt;RT3, ARGB2101010 (non-HDR) or ARGBHalf (HDR) format: Emission + lighting + &lt;strong&gt;lightmaps&lt;/strong&gt;  + &lt;strong&gt;reflection probes&lt;/strong&gt;  buffer.&lt;/li&gt;
+&lt;li&gt;Depth+&lt;strong&gt;Stencil buffer&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;计算可知带宽为 $1920 \times 1080 \times 128 \times 60 = 14.83\text{ Gbit/s} $  &lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;可恶猜错了&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;不定项&#34;&gt;不定项&lt;/h2&gt;
+&lt;p&gt;选错就白给，少选还有一半分。做之前没注意，有点难受。&lt;/p&gt;
+&lt;h3 id=&#34;shadow-acne&#34;&gt;Shadow Acne&lt;/h3&gt;
+&lt;p&gt;Shadow Map 相关的问题。&lt;/p&gt;
+&lt;h4 id=&#34;参考-2&#34;&gt;参考&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.sztemple.cc/articles/shadow-map%E6%80%BB%E7%BB%93&#34;&gt;博客 | shadow-map总结&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/ronintao/article/details/51649664&#34;&gt;博客 | Shadow Map 原理和改进&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;要点-2&#34;&gt;要点&lt;/h4&gt;
+&lt;h2 id=&#34;填空&#34;&gt;填空&lt;/h2&gt;
+&lt;p&gt;填概念、或者手打公式。&lt;/p&gt;
+&lt;h3 id=&#34;投影分类&#34;&gt;投影分类&lt;/h3&gt;
+&lt;h4 id=&#34;参考-3&#34;&gt;参考&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/zl908760230/article/details/53965629&#34;&gt;博客 | 投影变换的定义和分类&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;要点-3&#34;&gt;要点&lt;/h4&gt;
+&lt;p&gt;当投影中心在无限远时，投影线互相平行，即平行投影。&lt;/p&gt;
+&lt;h3 id=&#34;变换矩阵&#34;&gt;变换矩阵&lt;/h3&gt;
+&lt;p&gt;ABC 三层嵌套的矩阵变换求解。&lt;/p&gt;
+&lt;h2 id=&#34;程序题&#34;&gt;程序题&lt;/h2&gt;
+&lt;p&gt;实现函数，传入一条射线与一个球，将交点坐标保留两位小数储存在字符串中传出。&lt;/p&gt;
+&lt;h2 id=&#34;问答题&#34;&gt;问答题&lt;/h2&gt;
+&lt;h3 id=&#34;环境光遮蔽&#34;&gt;环境光遮蔽&lt;/h3&gt;
+&lt;h4 id=&#34;参考-4&#34;&gt;参考&lt;/h4&gt;
+&lt;h4 id=&#34;有什么影响&#34;&gt;有什么影响&lt;/h4&gt;
+&lt;h4 id=&#34;如何实现&#34;&gt;如何实现&lt;/h4&gt;
+&lt;h3 id=&#34;mipmap&#34;&gt;MipMap&lt;/h3&gt;
+&lt;h4 id=&#34;参考-5&#34;&gt;参考&lt;/h4&gt;
+&lt;h4 id=&#34;如何确定像素所在层级&#34;&gt;如何确定像素所在层级&lt;/h4&gt;
+&lt;h4 id=&#34;什么时候不需要使用&#34;&gt;什么时候不需要使用&lt;/h4&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>记 V-Ray 快速渲染</title>
@@ -3711,146 +3833,6 @@ and the repository exists.
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>【博客升级】插入图片吧！码云图床 &amp; PicGo</title>
-      <link>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/</link>
-      <pubDate>Fri, 14 Feb 2020 23:58:48 +0800</pubDate>
-      
-      <guid>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9B%BE%E5%BA%8A/</guid>
-      
-        <description>&lt;p&gt;在写文章的时候深刻体会到了图片的重要性，有时一张图胜过千言万语。虽然 Typora 支持把图片便捷的保存到相对路径，但考虑到可能的多平台发布（以及 github 载图的访问困难），还是决定找一个比较成熟的图床解决方案，让博客里可以方便的插入图片。&lt;/p&gt;
-&lt;h2 id=&#34;建立图床--配置picgo&#34;&gt;建立图床 &amp;amp; 配置PicGo&lt;/h2&gt;
-&lt;p&gt;首先是技术选型。虽然 SM.MS 免费好用限制少（这&lt;del&gt;美妈&lt;/del&gt;老哥家里肯定有矿），但是现阶段空间需求应该不太大，又寻思着找个方便备份和管理的，就倾向于 Gitee 了。&lt;/p&gt;
-&lt;p&gt;感谢 LeonG 同学于一个月前写的 &lt;a href=&#34;https://blog.csdn.net/disilll/article/details/103962241&#34;&gt;PicGo + Gitee(码云)实现markdown图床&lt;/a&gt; ，十分详尽，一文满足！&lt;/p&gt;
-&lt;p&gt;跟着配置完了 Gitee 和 PicGo，无坑可踩，就上个图以表敬意吧。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214063339.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;克隆&#34;&gt;克隆&lt;/h2&gt;
-&lt;p&gt;Gitee 做的图床，当然也要克隆到本地一份了。这样就算挂了也可以用本地备份快速顶上，也方便管理图床（虽然没啥必要）。CMD 进入目标文件夹:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;git clone https://gitee.com/GZ1A/image-hosting.git
-git push origin master -u
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;就完事了。只要一句&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;git pull
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;就可以完成对图床的备份。&lt;/p&gt;
-&lt;h2 id=&#34;优化&#34;&gt;优化&lt;/h2&gt;
-&lt;h3 id=&#34;文件路径&#34;&gt;文件路径&lt;/h3&gt;
-&lt;p&gt;关于配置 &lt;strong&gt;gitee-uploader&lt;/strong&gt; 插件，这里放一个插件的文档 &lt;a href=&#34;https://github.com/lizhuangs/picgo-plugin-gitee-uploader#readme&#34;&gt;picgo-plugin-gitee-uploader&lt;/a&gt; ，里面介绍了 customPath 的用法：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;自动配置path路径 示例：path：&lt;code&gt;blog/$customPath&lt;/code&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;customPath选择年，则实际的path值为blog/2019&lt;/li&gt;
-&lt;li&gt;&amp;hellip;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;这样可以起到图片归档的效果，方便日后处理，所以建议如图配置。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214065424.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;快捷键&#34;&gt;快捷键&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;Update 20200302&lt;/em&gt;  &lt;em&gt;建议使用&lt;/em&gt;&lt;a href=&#34;#%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0&#34;&gt;&lt;em&gt;自动上传&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Typora 写文档，Snipaste 一键截图，PicGo 一键上传图片返回链接。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;统一快捷键之后，这些工具的组合提供了如丝滑般顺畅的工作体验。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;Ctrl+Alt+A&lt;/code&gt; 的截图快捷键&lt;/strong&gt; 已经深入我心，在截图之后&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;Ctrl+Alt+S&lt;/code&gt; 的上传快捷键&lt;/strong&gt; 将剪切板里的截图保存到云端。最后一步&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;Ctrl+V&lt;/code&gt; 粘贴&lt;/strong&gt; ，将 MarkDown 格式的图片链接粘贴到文档里。破费~&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214070516.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;顺便一提，Snipaste 确实比 TIM / QQ 的截图好用，建议下载 @&lt;a href=&#34;https://zh.snipaste.com/&#34;&gt;Snipaste&lt;/a&gt; 。突然想到还有一个截 GIF 工具 ScreenToGif @&lt;a href=&#34;https://www.screentogif.com/?l=z&#34;&gt;ScreenToGif&lt;/a&gt;  ，虽然由于码云的限制，图片大小必须要控制到 1M 以内。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/ETO.gif&#34;  /&gt;&lt;/p&gt;
-&lt;h3 id=&#34;自动上传&#34;&gt;自动上传&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;Update 20200302&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;人民群众喜闻乐见 &lt;del&gt;指点了忽略所以直到又更新了才发现上个版本有新功能&lt;/del&gt; 的 Typora 下载更新来了！&lt;a href=&#34;https://support.typora.io/What&#39;s-New-0.9.84/&#34;&gt;0.9.84更新日志&lt;/a&gt;里提到的第一项就是新增&lt;strong&gt;上传图片&lt;/strong&gt;功能。还说明了可以用 PicGo。当然是要赶紧试一下了。先上&lt;a href=&#34;https://support.typora.io/Upload-Image/#picgoapp-chinese-language-only&#34;&gt;官方文档&lt;/a&gt;。&lt;/p&gt;
-&lt;h4 id=&#34;配置&#34;&gt;配置&lt;/h4&gt;
-&lt;p&gt;以上文配置完成的 PicGo(app) 为例，尝试一下上传图片。首先打开 Typora ，从左上角菜单栏进入&lt;code&gt;文件-&amp;gt;偏好设置-&amp;gt;图像&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://support.typora.io/media/image-upload/picgo.PNG&#34; alt=&#34;picgo&#34;&gt;&lt;/p&gt;
-&lt;p&gt;在&lt;code&gt;上传服务&lt;/code&gt;中选择上传服务为 &lt;code&gt;PicGo(app)&lt;/code&gt;。根据安装位置配置好 &lt;code&gt;PicGo 路径&lt;/code&gt;。（只有编辑器语言为中文时才会出现 PicGo）然后点击&lt;code&gt;验证图片上传选项&lt;/code&gt;。如果测试成功，那就没事了。然而我失败了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200302083120.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;这里测试使用的是本地的 36677 端口。再打开 PicGo 对照一下&lt;code&gt;PicGo设置-&amp;gt;设置Server&lt;/code&gt;里的监听端口。确实不一样。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200302083705.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;那么只要把这里的端口也改为 &lt;code&gt;36677&lt;/code&gt; 就可以了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200302083815.png&#34;  /&gt;&lt;/p&gt;
-&lt;h4 id=&#34;使用方法&#34;&gt;使用方法&lt;/h4&gt;
-&lt;h5 id=&#34;全文一键上传推荐&#34;&gt;全文一键上传（推荐）&lt;/h5&gt;
-&lt;p&gt;通过 &lt;code&gt;格式-&amp;gt;图像-&amp;gt;上传所有本地图片&lt;/code&gt; 来完成上传。可以减少写作时的操作和网络需求，只需要在发布前进行一次上传就可以了。同时本地修改完善时用到的图片不会被上传到云端。安全且快捷。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/image-20200302093729324.png&#34; alt=&#34;image-20200302093729324&#34;&gt;&lt;/p&gt;
-&lt;h5 id=&#34;右键上传&#34;&gt;右键上传&lt;/h5&gt;
-&lt;p&gt;在文档内的图片上右键呼出菜单，就可以通过 &lt;code&gt;上传图片&lt;/code&gt; 完成对 PicGo 的调用。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/image-20200302090139020.png&#34; alt=&#34;image-20200302090139020&#34;  /&gt;&lt;/p&gt;
-&lt;h5 id=&#34;插入时上传&#34;&gt;插入时上传&lt;/h5&gt;
-&lt;p&gt;如图修改 Typora 的图像设置。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/image-20200302084027027.png&#34; alt=&#34;image-20200302084027027&#34;  /&gt;&lt;/p&gt;
-&lt;p&gt;这样在截图或者使用本地图片的时候不用手动上传，只需要把图片粘贴到文档里就会自动调用 PicGo 上传。减少一个快捷键可以提供更加顺畅的工作体验。然而个人有一点不可控的感觉，且没有网的时候就会主动报错。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>【博客升级】自定义域名</title>
-      <link>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D/</link>
-      <pubDate>Thu, 13 Feb 2020 23:58:48 +0800</pubDate>
-      
-      <guid>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E5%9F%9F%E5%90%8D/</guid>
-      
-        <description>&lt;p&gt;为了让博客更炫酷（装X），决定再进行一点升级。首先想到的就是域名。&lt;/p&gt;
-&lt;p&gt;先上前人指路 &lt;a href=&#34;https://blog.csdn.net/yuan3065/article/details/51594454&#34;&gt;Github 域名绑定&lt;/a&gt;  。&lt;/p&gt;
-&lt;h2 id=&#34;流程&#34;&gt;流程&lt;/h2&gt;
-&lt;p&gt;绑定域名分三步：买域名、github上添加 CNAME、域名处添加解析。买域名很好懂。域名处添加解析是让自定义域名重定向到 example.github.io上的页面。而 CNAME 呢？并没有找到有人解释 CNAME 。然而在我尝试没有添加 CNAME 直接访问，发现是 github pages 的 404 后，我悟到了。这个 CNAME 文件的作用是大概是让 github 的服务器明白这个重定向可以安排上。于是当访问是从新域名到达对应 ip 的时候就会跳转到这个仓库。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214185018.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;买域名&#34;&gt;买域名&lt;/h2&gt;
-&lt;p&gt;经过各个域名商间的比价，选定了在&lt;a href=&#34;https://www.aliyun.com/&#34;&gt;阿里云&lt;/a&gt;买域名。&lt;code&gt;disorder.ink&lt;/code&gt; ，第一年19块钱，后续每年49。有点小贵。&lt;del&gt;但是帅&lt;/del&gt;&lt;/p&gt;
-&lt;h2 id=&#34;添加-cname&#34;&gt;添加 CNAME&lt;/h2&gt;
-&lt;p&gt;参考&lt;a href=&#34;https://help.github.com/en/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site&#34;&gt;官方文档&lt;/a&gt;，在 repo 的 settings 里填上自定义域名，点几下鼠标就行了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214185412.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;添加解析&#34;&gt;添加解析&lt;/h2&gt;
-&lt;p&gt;在阿里云的域名控制台里选择新的域名，然后在左边菜单里找到域名解析。&lt;/p&gt;
-&lt;p&gt;&lt;del&gt;打开cmd，ping一下原本博客 example.github.io ，就可以得到 github 分配的 ip 入口了。点下添加记录右边的新手引导，输入 ip 就可以了。&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;建议使用 CNAME 类型，如图&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214234143.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;验证&#34;&gt;验证&lt;/h2&gt;
-&lt;p&gt;要验证是否成功，只要等个10分钟再分别 ping 一下原来的地址和新的地址，如果 ip 一致就算是完成了。然而我 ping 不通啊。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;ping disorder.ink
-Ping 请求找不到主机 disorder.ink。请检查该名称，然后重试。
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;再回到阿里云一看，&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;温馨提示：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;据监管要求，域名注册成功后需完成实名认证，否则域名会处于Serverhold状态，无法正常使用。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;行吧，那就实名认证一下，等个3-5天。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;然而事实上认证加 Serverhold 后摇总共只花了不到一天，睡了一觉起来就可以访问了。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;在此期间原来的地址建议不要跳转。把 CNAME 删掉之后试着访问了一下，然而还是会跳转。感谢这位同学的解决办法 &lt;a href=&#34;https://www.cnblogs.com/MakeView660/p/9072971.html&#34;&gt;放在github pages上的静态网站怎么取消绑定自定义域名？&lt;/a&gt; 虽然 &lt;a href=&#34;https://www.runoob.com/w3cnote/chrome-clear-dns-cache.html&#34;&gt;Chrome 浏览器清除 DNS 缓存&lt;/a&gt; 失败了，但是换个浏览器确实可以了。总之别急，&lt;del&gt;等等就好&lt;/del&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/02/20200214190340.png&#34; alt=&#34;域名效果&#34;&gt;&lt;/p&gt;
-&lt;p&gt;最后一步就是要记得在本地也增加 CNAME 。Pull 到本地一次之后再 Push ，惨痛教训。&lt;/p&gt;
-</description>
       
     </item>
     
