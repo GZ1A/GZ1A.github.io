@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://disorder.ink/sitemap.xml
+Sitemap: http://disorder.ink/sitemap.xml

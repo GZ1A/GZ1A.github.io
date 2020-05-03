@@ -1,6 +1,6 @@
 # 源地址 https://github.com/xianmin/hugo-theme-jane/
 # baseURL = "https://gz1a.github.io/"
-baseURL = "https://disorder.ink/"
+baseURL = "http://disorder.ink/"
 
 title = "昼阴夜阳"
 enableRobotsTXT = true

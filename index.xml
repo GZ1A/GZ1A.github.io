@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>昼阴夜阳</title>
-    <link>https://disorder.ink/</link>
+    <link>http://disorder.ink/</link>
     <description>Recent content on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 30 Apr 2020 05:41:26 +0800</lastBuildDate>
     
-        <atom:link href="https://disorder.ink/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://disorder.ink/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Unity Copying assembly XX failed 问题</title>
-      <link>https://disorder.ink/unity-copying-assembly-xx-failed-%E9%97%AE%E9%A2%98/</link>
+      <link>http://disorder.ink/unity-copying-assembly-xx-failed-%E9%97%AE%E9%A2%98/</link>
       <pubDate>Thu, 30 Apr 2020 05:41:26 +0800</pubDate>
       
-      <guid>https://disorder.ink/unity-copying-assembly-xx-failed-%E9%97%AE%E9%A2%98/</guid>
+      <guid>http://disorder.ink/unity-copying-assembly-xx-failed-%E9%97%AE%E9%A2%98/</guid>
       
         <description>&lt;p&gt;遇到过好多次了，这次往 Unity 里导入 3DMax 模型的时候又遇到了这个问题。&lt;/p&gt;
 &lt;blockquote&gt;
@@ -46,10 +46,10 @@
     
     <item>
       <title>笔试复盘定点爆破</title>
-      <link>https://disorder.ink/%E7%AC%94%E8%AF%95%E5%A4%8D%E7%9B%98%E5%AE%9A%E7%82%B9%E7%88%86%E7%A0%B4/</link>
+      <link>http://disorder.ink/%E7%AC%94%E8%AF%95%E5%A4%8D%E7%9B%98%E5%AE%9A%E7%82%B9%E7%88%86%E7%A0%B4/</link>
       <pubDate>Sun, 26 Apr 2020 14:58:02 +0900</pubDate>
       
-      <guid>https://disorder.ink/%E7%AC%94%E8%AF%95%E5%A4%8D%E7%9B%98%E5%AE%9A%E7%82%B9%E7%88%86%E7%A0%B4/</guid>
+      <guid>http://disorder.ink/%E7%AC%94%E8%AF%95%E5%A4%8D%E7%9B%98%E5%AE%9A%E7%82%B9%E7%88%86%E7%A0%B4/</guid>
       
         <description>&lt;p&gt;突然接到通知第二天要进行笔试，猝不及防，但第一次笔试还是想准备一下，所以最后一天去练习了一下 OJ。&lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;然而白准备了因为并没有这样考&amp;hellip;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;笔试也就图一乐，毕竟积累肯定还不够，但不管怎么说考过总是更明确了要求。这次考试考察的点&lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;也就是我不会的&lt;/span&gt;主要是&lt;strong&gt;渲染知识和数学功底&lt;/strong&gt;。一直是定性分析了解个大概，但没有定量分析并不能算本当上手。&lt;/p&gt;
@@ -78,12 +78,14 @@
 &lt;h4 id=&#34;要点-1&#34;&gt;要点&lt;/h4&gt;
 &lt;h5 id=&#34;原理&#34;&gt;原理&lt;/h5&gt;
 &lt;p&gt;在执行任何光照计算之前执行所有可见性测试从而减少 fragments shading 的数量。&lt;/p&gt;
-&lt;p&gt;**几何阶段（Geometry pass）**把屏幕上片元的信息先输出到一系列纹理上（Geometry buffer）&lt;/p&gt;
-&lt;p&gt;**着色阶段（Shading/Lighting pass）**对于每一个光源，通过这些储存的信息进行渲染&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;几何阶段（Geometry pass）&lt;/strong&gt; 把屏幕上片元的信息先输出到一系列纹理上（Geometry buffer）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;着色阶段（Shading/Lighting pass）&lt;/strong&gt; 对于每一个光源，通过这些储存的信息进行渲染&lt;/p&gt;
 &lt;h5 id=&#34;性质&#34;&gt;性质&lt;/h5&gt;
 &lt;p&gt;解决了大量光照的渲染消耗，将着色计算与场景复杂度解耦。照明的处理开销只与光源数量相关，由光照体而不是物体数量决定。&lt;/p&gt;
 &lt;p&gt;不能开硬件抗锯齿，不能渲染半透明物体，占用大量显存带宽并且只能使用一套 lighting pass。&lt;/p&gt;
-&lt;p&gt;*Unity 中的实现，Culling masks 最多为 4，不支持正交投影。无 Receive Shadows flag 。不支持延迟着色的物体会在完成着色后经由前向路径 fallback。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Unity 中的实现，Culling masks 最多为 4，不支持正交投影。无 Receive Shadows flag 。不支持延迟着色的物体会在完成着色后经由前向路径 fallback。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h5 id=&#34;带宽&#34;&gt;带宽&lt;/h5&gt;
 &lt;blockquote&gt;
 &lt;p&gt;GeForce GTX 1060 显存频率8008MHz，显示位宽192bit&lt;br&gt;
@@ -100,15 +102,34 @@
 &lt;li&gt;Depth+&lt;strong&gt;Stencil buffer&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;计算可知带宽为 $1920 \times 1080 \times 128 \times 60 = 14.83\text{ Gbit/s} $  &lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;可恶猜错了&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;计算可知占用带宽为 $1920 \times 1080 \times 128 \times 60 = 14.83\text{ Gbit/s} $  &lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;可恶猜错了&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;不定项&#34;&gt;不定项&lt;/h2&gt;
 &lt;p&gt;选错就白给，少选还有一半分。做之前没注意，有点难受。&lt;/p&gt;
 &lt;h3 id=&#34;shadow-acne&#34;&gt;Shadow Acne&lt;/h3&gt;
-&lt;p&gt;Shadow Map 相关的问题。&lt;/p&gt;
+&lt;p&gt;Shadow Map 相关的问题。&lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;&lt;del&gt;阴影粉刺&lt;/del&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h4 id=&#34;参考-2&#34;&gt;参考&lt;/h4&gt;
 &lt;p&gt;&lt;a href=&#34;http://www.sztemple.cc/articles/shadow-map%E6%80%BB%E7%BB%93&#34;&gt;博客 | shadow-map总结&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/ronintao/article/details/51649664&#34;&gt;博客 | Shadow Map 原理和改进&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&#34;要点-2&#34;&gt;要点&lt;/h4&gt;
+&lt;h5 id=&#34;ssm&#34;&gt;SSM&lt;/h5&gt;
+&lt;p&gt;即 Standard Shadow map。从光源处渲染场景深度到 shadow map 中，计算 shadow 时将 pixel 深度值 z 与 light projection space 下的深度值 d 作比较。&lt;br&gt;
+$$&lt;br&gt;
+f(z) = H(d-z) =&lt;br&gt;
+\begin{cases}&lt;br&gt;
+0,  &amp;amp; d &amp;lt; z\&lt;br&gt;
+1, &amp;amp; d \ge z&lt;br&gt;
+\end{cases}&lt;br&gt;
+$$&lt;/p&gt;
+&lt;h5 id=&#34;shadow-acne-1&#34;&gt;shadow acne&lt;/h5&gt;
+&lt;p&gt;如图，光线和平面法线有夹角，由于 shadow map 分辨率限制就会出现等深度线和表面相交的情况。在 &lt;strong&gt;与 shadow map 等深&lt;/strong&gt; 的线（面）以后的片元就会被判断成阴影。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200430204133619.png&#34; alt=&#34;image-20200430204133619&#34;&gt;&lt;/p&gt;
+&lt;p&gt;解决方案通常是对深度值加一个bias。slope scaled depth bias 即根据斜率缩放的深度偏差。有公式&lt;br&gt;
+$$&lt;br&gt;
+bias = units * r + factor * dz&lt;br&gt;
+$$&lt;br&gt;
+r ：depth 中最小的 32 位浮点数&lt;/p&gt;
+&lt;p&gt;dz ：深度值随平面坐标的变化率（shadow map 采样的平面的斜率）&lt;/p&gt;
+&lt;p&gt;units，factor：由 api 指定。GL 下为 glPolygonOffset 函数，DX11 下为D3D11_RASTERIZER_DESC1 结构下的 DepthBias 和  SlopeScaledDepthBias 参数。&lt;/p&gt;
 &lt;h2 id=&#34;填空&#34;&gt;填空&lt;/h2&gt;
 &lt;p&gt;填概念、或者手打公式。&lt;/p&gt;
 &lt;h3 id=&#34;投影分类&#34;&gt;投影分类&lt;/h3&gt;
@@ -118,16 +139,21 @@
 &lt;p&gt;当投影中心在无限远时，投影线互相平行，即平行投影。&lt;/p&gt;
 &lt;h3 id=&#34;变换矩阵&#34;&gt;变换矩阵&lt;/h3&gt;
 &lt;p&gt;ABC 三层嵌套的矩阵变换求解。&lt;/p&gt;
+&lt;h4 id=&#34;参考-4&#34;&gt;参考&lt;/h4&gt;
+&lt;p&gt;《Unity Shader 入门精要》P63 &lt;del&gt;身边只有这一本书&lt;/del&gt;&lt;/p&gt;
 &lt;h2 id=&#34;程序题&#34;&gt;程序题&lt;/h2&gt;
+&lt;h3 id=&#34;射线与球求交&#34;&gt;射线与球求交&lt;/h3&gt;
 &lt;p&gt;实现函数，传入一条射线与一个球，将交点坐标保留两位小数储存在字符串中传出。&lt;/p&gt;
 &lt;h2 id=&#34;问答题&#34;&gt;问答题&lt;/h2&gt;
 &lt;h3 id=&#34;环境光遮蔽&#34;&gt;环境光遮蔽&lt;/h3&gt;
-&lt;h4 id=&#34;参考-4&#34;&gt;参考&lt;/h4&gt;
+&lt;h4 id=&#34;参考-5&#34;&gt;参考&lt;/h4&gt;
 &lt;h4 id=&#34;有什么影响&#34;&gt;有什么影响&lt;/h4&gt;
 &lt;h4 id=&#34;如何实现&#34;&gt;如何实现&lt;/h4&gt;
 &lt;h3 id=&#34;mipmap&#34;&gt;MipMap&lt;/h3&gt;
-&lt;h4 id=&#34;参考-5&#34;&gt;参考&lt;/h4&gt;
+&lt;p&gt;多级渐远纹理技术。为同一张纹理创建一个纹理金字塔。通过使用分辨率更小的纹理 &lt;strong&gt;节省带宽&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;《Unity Shader 入门精要》p322&lt;/p&gt;
 &lt;h4 id=&#34;如何确定像素所在层级&#34;&gt;如何确定像素所在层级&lt;/h4&gt;
+&lt;p&gt;根据距离物体的远近动态选择使用哪一个纹理。&lt;/p&gt;
 &lt;h4 id=&#34;什么时候不需要使用&#34;&gt;什么时候不需要使用&lt;/h4&gt;
 </description>
       
@@ -135,10 +161,10 @@
     
     <item>
       <title>记 V-Ray 快速渲染</title>
-      <link>https://disorder.ink/vray%E5%BF%AB%E9%80%9F%E6%B8%B2%E6%9F%93/</link>
+      <link>http://disorder.ink/vray%E5%BF%AB%E9%80%9F%E6%B8%B2%E6%9F%93/</link>
       <pubDate>Mon, 20 Apr 2020 23:46:09 +0900</pubDate>
       
-      <guid>https://disorder.ink/vray%E5%BF%AB%E9%80%9F%E6%B8%B2%E6%9F%93/</guid>
+      <guid>http://disorder.ink/vray%E5%BF%AB%E9%80%9F%E6%B8%B2%E6%9F%93/</guid>
       
         <description>&lt;p&gt;《关于以为延期的动画作业其实要按时展示这件事》。本来还想好好建个什么东西，为了赶时间只能找个最快的整个相机游走。老方块人当场想到 MC，遂 B 站搜之。确实找到了教程&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200420225632500.png&#34; alt=&#34;image-20200420225632500&#34;&gt;&lt;/p&gt;
@@ -210,10 +236,10 @@
     
     <item>
       <title>【博客升级】整活！在博客中添加黑幕</title>
-      <link>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E8%90%8C%E7%99%BE%E9%BB%91%E5%B9%95/</link>
+      <link>http://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E8%90%8C%E7%99%BE%E9%BB%91%E5%B9%95/</link>
       <pubDate>Sun, 12 Apr 2020 00:02:58 +0800</pubDate>
       
-      <guid>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E8%90%8C%E7%99%BE%E9%BB%91%E5%B9%95/</guid>
+      <guid>http://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E8%90%8C%E7%99%BE%E9%BB%91%E5%B9%95/</guid>
       
         <description>&lt;p&gt;这段时间又出了好多事，再次认识到生命财产安全才是最重要的，脱离物质基础谈精神需求的都是耍流氓。同时风险管理得抓起来，小概率的事件不发生时谈笑风生，一旦发生到个人头上就是一座山压着。不能只是被动的期待集体的援助，也要主动去做些准备。除了买保险，平时也需要注意降低风险。身体该锻炼就锻炼，数据该备份就备份。&lt;/p&gt;
 &lt;p&gt;在接续博客的时候突然想要留下一个悬念用来复习，所以不能简单的划掉而需要盖住。类似 Steam 的 &lt;code&gt;/spoiler&lt;/code&gt; 的效果，也就是萌百的黑幕效果了。（效果参考&lt;a href=&#34;https://zh.moegirl.org/%E6%97%B6%E4%BB%A3%E7%9A%84%E7%9C%BC%E6%B3%AA&#34;&gt;时泪页面&lt;/a&gt;）&lt;/p&gt;
@@ -294,10 +320,10 @@
     
     <item>
       <title>【笔记】Shader 入门精要（十二）深度和法线纹理</title>
-      <link>https://disorder.ink/shaderbook-note-12/</link>
+      <link>http://disorder.ink/shaderbook-note-12/</link>
       <pubDate>Mon, 30 Mar 2020 02:23:54 +0900</pubDate>
       
-      <guid>https://disorder.ink/shaderbook-note-12/</guid>
+      <guid>http://disorder.ink/shaderbook-note-12/</guid>
       
         <description>&lt;p&gt;屏幕后处理除了利用图像的颜色信息，还可以利用深度和法线信息。这些信息不受纹理和光照的影响，能给出更多的细节。&lt;/p&gt;
 &lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=1367954548&amp;auto=0&amp;height=66&#34;&gt;&lt;/iframe&gt;
@@ -612,10 +638,10 @@ $$&lt;/p&gt;
     
     <item>
       <title>【笔记】Shader 入门精要（十一）屏幕后处理</title>
-      <link>https://disorder.ink/shaderbook-note-11/</link>
+      <link>http://disorder.ink/shaderbook-note-11/</link>
       <pubDate>Thu, 26 Mar 2020 19:18:43 +0900</pubDate>
       
-      <guid>https://disorder.ink/shaderbook-note-11/</guid>
+      <guid>http://disorder.ink/shaderbook-note-11/</guid>
       
         <description>&lt;p&gt;&lt;strong&gt;屏幕后处理&lt;/strong&gt;就是利用渲染纹理，在场景渲染完之后对图像进行操作从而实现艺术效果的技术。（这不就是数字图像处理嘛）先来做一些简单的后处理。&lt;/p&gt;
 &lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=477992781&amp;auto=0&amp;height=66&#34;&gt;&lt;/iframe&gt;
@@ -1217,10 +1243,10 @@ $$&lt;/p&gt;
     
     <item>
       <title>【笔记】Shader 入门精要（十）动画效果</title>
-      <link>https://disorder.ink/shaderbook-note-10/</link>
+      <link>http://disorder.ink/shaderbook-note-10/</link>
       <pubDate>Wed, 25 Mar 2020 12:03:14 +0900</pubDate>
       
-      <guid>https://disorder.ink/shaderbook-note-10/</guid>
+      <guid>http://disorder.ink/shaderbook-note-10/</guid>
       
         <description>&lt;p&gt;引入时间变量，实现动画效果。&lt;/p&gt;
 &lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=1433340584&amp;auto=0&amp;height=66&#34;&gt;&lt;/iframe&gt;
@@ -1385,10 +1411,10 @@ o.pos = UnityObjectToClipPos(localPos);
     
     <item>
       <title>【笔记】Shader 入门精要（九）高级纹理</title>
-      <link>https://disorder.ink/shaderbook-note-9/</link>
+      <link>http://disorder.ink/shaderbook-note-9/</link>
       <pubDate>Sun, 22 Mar 2020 20:45:32 +0900</pubDate>
       
-      <guid>https://disorder.ink/shaderbook-note-9/</guid>
+      <guid>http://disorder.ink/shaderbook-note-9/</guid>
       
         <description>&lt;p&gt;本章学习更复杂的纹理。&lt;/p&gt;
 &lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=1408262540&amp;auto=0&amp;height=66&#34;&gt;&lt;/iframe&gt;
@@ -1562,10 +1588,10 @@ tex.Apply();
     
     <item>
       <title>【笔记】Shader 入门精要（八）复杂光照</title>
-      <link>https://disorder.ink/shaderbook-note-8/</link>
+      <link>http://disorder.ink/shaderbook-note-8/</link>
       <pubDate>Thu, 19 Mar 2020 15:52:48 +0900</pubDate>
       
-      <guid>https://disorder.ink/shaderbook-note-8/</guid>
+      <guid>http://disorder.ink/shaderbook-note-8/</guid>
       
         <description>&lt;p&gt;本章在处理更多数目类型光源的同时实现阴影。&lt;/p&gt;
 &lt;h2 id=&#34;unity-渲染路径&#34;&gt;Unity 渲染路径&lt;/h2&gt;
@@ -1763,10 +1789,10 @@ color *= shadow;
     
     <item>
       <title>【笔记】Shader 入门精要（七）透明效果</title>
-      <link>https://disorder.ink/shaderbook-note-7/</link>
+      <link>http://disorder.ink/shaderbook-note-7/</link>
       <pubDate>Mon, 16 Mar 2020 05:00:26 +0900</pubDate>
       
-      <guid>https://disorder.ink/shaderbook-note-7/</guid>
+      <guid>http://disorder.ink/shaderbook-note-7/</guid>
       
         <description>&lt;p&gt;每个片元都有颜色值、深度值和&lt;strong&gt;透明度&lt;/strong&gt;属性。利用这个属性，通过透明度测试（Alpha Test）或者透明度混合（Alpha Blending）实现透明效果。透明度测试就是一刀切的阈值判断，真正要有透明度还得看混合。&lt;/p&gt;
 &lt;h2 id=&#34;渲染顺序&#34;&gt;渲染顺序&lt;/h2&gt;
@@ -1958,10 +1984,10 @@ Blend SrcFactor DstFactor [,SrcFactorA DstFactorA]
     
     <item>
       <title>【笔记】Shader 入门精要（六）基础纹理</title>
-      <link>https://disorder.ink/shaderbook-note-6/</link>
+      <link>http://disorder.ink/shaderbook-note-6/</link>
       <pubDate>Sun, 08 Mar 2020 03:06:23 +0900</pubDate>
       
-      <guid>https://disorder.ink/shaderbook-note-6/</guid>
+      <guid>http://disorder.ink/shaderbook-note-6/</guid>
       
         <description>&lt;p&gt;纹理最初的目的就是通过 &lt;strong&gt;纹理映射（texture mapping)&lt;/strong&gt; 控制模型的外观，逐纹素（texel） 控制模型的颜色。保存了映射关系的 纹理映射坐标（texture-mapping coordinates）由于通常使用&lt;code&gt;（u,v）&lt;/code&gt;表示，又被称为 &lt;strong&gt;UV 坐标&lt;/strong&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;单张纹理&#34;&gt;单张纹理&lt;/h2&gt;
@@ -2142,10 +2168,10 @@ fixed3 specular *=  maskValue;
     
     <item>
       <title>【笔记】Shader 入门精要（五）基础光照</title>
-      <link>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/</link>
+      <link>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/</link>
       <pubDate>Thu, 05 Mar 2020 07:22:34 +0900</pubDate>
       
-      <guid>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/</guid>
+      <guid>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/</guid>
       
         <description>&lt;p&gt;&lt;del&gt;又是复习又是复习又是复习。可能这就是前置课程吧（指计算机图形学）。&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;原来复习完原理还要自己写着色器的啊，这波我的。图形学作业只要求了光追，确实没有实现过标准光照模型，建议写。&lt;/p&gt;
@@ -2448,10 +2474,10 @@ fixed3 specular = _LightColor0.rgb * _Specular * pow(saturate(dot(worldNormal,h)
     
     <item>
       <title>【笔记】Shader 入门精要（四）Shader 基础</title>
-      <link>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/</link>
+      <link>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/</link>
       <pubDate>Mon, 02 Mar 2020 22:03:49 +0900</pubDate>
       
-      <guid>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/</guid>
+      <guid>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/</guid>
       
         <description>&lt;p&gt;终于来到实践环节了！可喜可贺可喜可贺。&lt;/p&gt;
 &lt;h2 id=&#34;顶点片元着色器&#34;&gt;顶点/片元着色器&lt;/h2&gt;
@@ -2761,10 +2787,10 @@ fixed3 frag(v2f i) : SV_Target {
     
     <item>
       <title>【笔记】Shader 入门精要（三）数学基础</title>
-      <link>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/</link>
+      <link>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/</link>
       <pubDate>Thu, 27 Feb 2020 01:02:33 +0900</pubDate>
       
-      <guid>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/</guid>
+      <guid>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/</guid>
       
         <description>&lt;h2 id=&#34;笛卡尔坐标系&#34;&gt;笛卡尔坐标系&lt;/h2&gt;
 &lt;h3 id=&#34;二维&#34;&gt;二维&lt;/h3&gt;
@@ -2791,10 +2817,10 @@ fixed3 frag(v2f i) : SV_Target {
 &lt;h3 id=&#34;逆矩阵&#34;&gt;逆矩阵&lt;/h3&gt;
 &lt;p&gt;可逆性：行列式不为 0（满秩）。（可通过累加任意一行展开后项与代数余子式积得到）&lt;/p&gt;
 &lt;p&gt;求逆：初等行变换。&lt;/p&gt;
-&lt;p&gt;不可逆说明变换降维丢失信息。&lt;/p&gt;
+&lt;p&gt;矩阵用于变换，逆矩阵用于逆变换。不可逆说明变换降维丢失信息。&lt;/p&gt;
 &lt;h3 id=&#34;正交矩阵&#34;&gt;正交矩阵&lt;/h3&gt;
-&lt;p&gt;每行都是单位矢量。行与行间互相垂直。（列即行的转置）例如一组&lt;strong&gt;标准正交基&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;和其转置矩阵乘积为单位矩阵的矩阵。即逆矩阵等于转置矩阵。&lt;/p&gt;
+&lt;p&gt;和其转置矩阵乘积为单位矩阵的矩阵。即逆矩阵等于转置矩阵。例如一组&lt;strong&gt;标准正交基&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;每行都是单位矢量。行与行间互相垂直。（列即行的转置，同理）&lt;/p&gt;
 &lt;h3 id=&#34;行列矩阵&#34;&gt;行/列矩阵&lt;/h3&gt;
 &lt;p&gt;Unity 中通常将矢量转换为&lt;strong&gt;列矩阵&lt;/strong&gt;$(x\quad y\quad z)^T $进行计算。因此通常是&lt;strong&gt;右乘&lt;/strong&gt;，即$CBAv=(C(B(Av)))$ 。&lt;/p&gt;
 &lt;h2 id=&#34;变换&#34;&gt;变换&lt;/h2&gt;
@@ -2804,11 +2830,11 @@ fixed3 frag(v2f i) : SV_Target {
 &lt;p&gt;在线性变换的基础上增加了平移变换。需要把矢量扩展到齐次坐标空间（四维）。使用 4×4 的矩阵。&lt;/p&gt;
 &lt;h3 id=&#34;复合变换&#34;&gt;复合变换&lt;/h3&gt;
 &lt;p&gt;多个仿射变换的组合。为便于理解和使用，通常先&lt;strong&gt;缩放&lt;/strong&gt;，再&lt;strong&gt;旋转&lt;/strong&gt;，最后&lt;strong&gt;平移&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;在旋转中， Unity 的三轴旋转顺序是 &lt;strong&gt;zxy&lt;/strong&gt;（虽然是右乘，但不旋转坐标系，直接表示为$M_{Z\theta }M_{X\theta }M_{Y\theta }$）&lt;/p&gt;
+&lt;p&gt;在旋转中， Unity 的三轴旋转顺序在不旋转的坐标系下是 &lt;strong&gt;zxy&lt;/strong&gt;，右乘的矩阵表示为 $M_{Z\theta }M_{X\theta }M_{Y\theta }$，即等价于旋转的坐标系下的 **yxz** 顺序。参考 &lt;a href=&#34;https://www.cnblogs.com/wantnon/p/5908309.html&#34;&gt;博客 | unity中的欧拉角&lt;/a&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;坐标空间&#34;&gt;坐标空间&lt;/h2&gt;
 &lt;h3 id=&#34;空间转换&#34;&gt;空间转换&lt;/h3&gt;
-&lt;p&gt;给定子坐标空间 C 中一点 $A_c = (a,b,c)$。已知自坐标空间原点 $O_c$，及坐标轴在父坐标空间 P 下的表示 $x_c,y_c,z_c$。要确定 $A_p$ ，需要从原点开始，分别向 x,y,z 轴方向平移 a,b,c 个单位。有&lt;/p&gt;
-&lt;p&gt;$$ A_p = M_{c\rightarrow p}A_c$$&lt;/p&gt;
+&lt;p&gt;给定子坐标空间 C 中一点 $A_c = (a,b,c)$。已知子坐标空间原点 $O_c$，及坐标轴在父坐标空间 P 下的表示 $x_c,y_c,z_c$。要确定 $A_p$ ，需要从原点开始，分别向 x,y,z 轴方向平移 a,b,c 个单位。有&lt;/p&gt;
+&lt;p&gt;$$ A_p = M_{c\rightarrow p}A_c = O_c + a\bold x_c + b\bold y_c + c\bold z_c$$&lt;/p&gt;
 &lt;p&gt;$$M_{c\rightarrow p}= \begin{bmatrix}| &amp;amp; | &amp;amp; | &amp;amp; | \\  x_c &amp;amp; y_c &amp;amp; z_c &amp;amp; O_c\\ | &amp;amp; | &amp;amp; | &amp;amp; |\\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \end{bmatrix}$$&lt;/p&gt;
 &lt;p&gt;$$ M_{p\rightarrow c} =M_{c\rightarrow p}^{-1} $$&lt;/p&gt;
 &lt;p&gt;当对方向的坐标空间进行变换时，原点变换可以忽略。故仅需左上角的 3×3 矩阵。&lt;/p&gt;
@@ -2843,10 +2869,10 @@ fixed3 frag(v2f i) : SV_Target {
     
     <item>
       <title>【笔记】Shader 入门精要（二）Unity Shader</title>
-      <link>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</link>
+      <link>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</link>
       <pubDate>Wed, 26 Feb 2020 02:08:40 +0900</pubDate>
       
-      <guid>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
+      <guid>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
       
         <description>&lt;h2 id=&#34;定义&#34;&gt;定义&lt;/h2&gt;
 &lt;p&gt;Unity Shader 就是一个文本文件。通过将其赋予材质，可以改变该材质在渲染时的行为。主要是顶点、片元等着色器部分。&lt;/p&gt;
@@ -3111,10 +3137,10 @@ GrabPass { &amp;#34;TexPropName&amp;#34; }		// 负责抓取屏幕并储存
     
     <item>
       <title>【笔记】Shader 入门精要（一）渲染流水线</title>
-      <link>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</link>
+      <link>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</link>
       <pubDate>Tue, 25 Feb 2020 08:47:07 +0900</pubDate>
       
-      <guid>https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</guid>
+      <guid>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</guid>
       
         <description>&lt;p&gt;汤老师确实心系学生，在群里发了网易雷火的实习内推链接。在雷火的&lt;a href=&#34;http://leihuo.163.com/2019/rencai/&#34;&gt;宣传页&lt;/a&gt;看到前辈新人5周做出来的游戏，完成度可以说是很高了，震撼花花。点开岗位，看到了&lt;a href=&#34;https://campus.163.com/app/jobDetail/index?projectId=25&amp;amp;id=625&#34;&gt;技术美术工程师&lt;/a&gt;，想起选专业的时候就研究过&lt;del&gt;数媒对口岗位&lt;/del&gt; TA，感觉相性很好所以在持续关注，看过拳头的&lt;a href=&#34;https://www.bilibili.com/video/av41216445?from=search&amp;amp;seid=15641735924452657164&#34;&gt;技术美术介绍&lt;/a&gt;，又在B站收藏过霜狼大佬的 &lt;a href=&#34;https://www.bilibili.com/video/av77755500&#34;&gt;TA 学习体系框架&lt;/a&gt;，甚至还加了群。然而也就仅限于此了，并没有更进一步的实际的努力过。总感觉是无法做到的事情所以不去做，自我设限也要有个限度啊！&lt;del&gt;禁止套娃&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;于是就想努力往这个方向做做尝试。离校招（实习）截止还有一个多月，我也要加油了。就算不去提前实习，只要不停下来，（知识的）道路就会不断延伸！&lt;/p&gt;
@@ -3124,10 +3150,12 @@ GrabPass { &amp;#34;TexPropName&amp;#34; }		// 负责抓取屏幕并储存
 &lt;p&gt;输入三维场景数据（顶点、纹理、摄像机坐标等信息），输出二维图像。&lt;/p&gt;
 &lt;h2 id=&#34;概念阶段&#34;&gt;概念阶段&lt;/h2&gt;
 &lt;h3 id=&#34;应用阶段cpu&#34;&gt;应用阶段（CPU）&lt;/h3&gt;
-&lt;p&gt;输入：场景数据（相机、模型、光源），模型的渲染状态（材质、纹理、Shader）&lt;/p&gt;
-&lt;p&gt;输出：渲染图元（点、线、三角面等）&lt;/p&gt;
+&lt;p&gt;将场景数据（相机、模型、光源）加载到 VRAM 中&lt;/p&gt;
+&lt;p&gt;设置模型的渲染状态（材质、纹理、Shader）&lt;/p&gt;
+&lt;p&gt;调用 Draw Call 让 GPU 进行渲染&lt;/p&gt;
 &lt;h3 id=&#34;几何阶段gpu&#34;&gt;几何阶段（GPU）&lt;/h3&gt;
-&lt;p&gt;输出：屏幕空间中的&lt;strong&gt;二维顶点坐标&lt;/strong&gt;、对应的深度、着色等信息。&lt;/p&gt;
+&lt;p&gt;输入：一批顶点数据&lt;/p&gt;
+&lt;p&gt;输出：顶点在屏幕空间中的&lt;strong&gt;二维顶点坐标&lt;/strong&gt;、对应的深度、着色等信息。&lt;/p&gt;
 &lt;h3 id=&#34;光栅化阶段gpu&#34;&gt;光栅化阶段（GPU）&lt;/h3&gt;
 &lt;p&gt;输出：屏幕上的像素（二维图像）&lt;/p&gt;
 &lt;h2 id=&#34;gpu-流水线&#34;&gt;GPU 流水线&lt;/h2&gt;
@@ -3141,23 +3169,23 @@ GrabPass { &amp;#34;TexPropName&amp;#34; }		// 负责抓取屏幕并储存
 &lt;p&gt;计算颜色&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;从模型空间转换到齐次裁剪空间&lt;/strong&gt;（必要）输出后硬件会做透视除法，得到归一化设备坐标（Nocmalized Device Coordinates）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;从模型空间转换到齐次裁剪空间&lt;/strong&gt;（必要）输出后硬件会做透视除法，得到归一化设备坐标（Normalized Device Coordinates）&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;裁剪&#34;&gt;裁剪&lt;/h3&gt;
-&lt;p&gt;将单位立方体外的图元舍弃。&lt;/p&gt;
+&lt;p&gt;将单位立方体外的图元和顶点舍弃，并在边界断点处生成新的顶点。&lt;/p&gt;
 &lt;h3 id=&#34;屏幕映射&#34;&gt;屏幕映射&lt;/h3&gt;
 &lt;p&gt;将图元的 xy 坐标转换到屏幕坐标系（2维）。这和 z 坐标一起构成了窗口坐标系（3维）。&lt;/p&gt;
 &lt;h3 id=&#34;三角形设置&#34;&gt;三角形设置&lt;/h3&gt;
-&lt;p&gt;计算三角网格表示数据。&lt;/p&gt;
+&lt;p&gt;根据顶点计算出三角网格边界的表示数据。&lt;/p&gt;
 &lt;h3 id=&#34;三角形遍历&#34;&gt;三角形遍历&lt;/h3&gt;
-&lt;p&gt;根据三角网格数据检查每个像素是否被三角网格覆盖，如果被覆盖则插值后在窗口坐标系中生成一个片元（fragment）&lt;/p&gt;
+&lt;p&gt;根据三角网格数据检查每个像素是否被三角网格覆盖，如果被覆盖则插值后在窗口坐标系中生成一个片元（fragment）。&lt;/p&gt;
 &lt;h3 id=&#34;片元着色器&#34;&gt;片元着色器&lt;/h3&gt;
 &lt;p&gt;将片元着色。完成纹理采样等渲染技术。&lt;/p&gt;
 &lt;h3 id=&#34;逐片元操作&#34;&gt;逐片元操作&lt;/h3&gt;
 &lt;p&gt;输出合并阶段。对每一个片元进行操作。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;通过深度测试、模板测试等工作决定片元的可见性（实践中可能在着色之前进行以提高性能）&lt;/li&gt;
+&lt;li&gt;通过模板测试、深度测试等工作决定片元的可见性（实践中可能在着色之前进行以提高性能）&lt;/li&gt;
 &lt;li&gt;将片元的颜色值和颜色缓冲区中的颜色合并&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;draw-call&#34;&gt;Draw Call&lt;/h2&gt;
@@ -3179,10 +3207,10 @@ GrabPass { &amp;#34;TexPropName&amp;#34; }		// 负责抓取屏幕并储存
     
     <item>
       <title>【博客升级】点击计数和动态背景</title>
-      <link>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/</link>
+      <link>http://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/</link>
       <pubDate>Wed, 19 Feb 2020 23:34:29 +0900</pubDate>
       
-      <guid>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/</guid>
+      <guid>http://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/</guid>
       
         <description>&lt;p&gt;啥事没干，甚是愧疚。想到别家博客都有花里胡哨的东西，我也整点来美化一下吧。&lt;/p&gt;
 &lt;p&gt;调研了一下各个效果的难度， 试图寻找方便快捷效果好的活。于是列了个清单：&lt;/p&gt;
@@ -3374,10 +3402,10 @@ GrabPass { &amp;#34;TexPropName&amp;#34; }		// 负责抓取屏幕并储存
     
     <item>
       <title>【博客升级】Valine 评论系统</title>
-      <link>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</link>
+      <link>http://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</link>
       <pubDate>Mon, 17 Feb 2020 02:56:17 +0900</pubDate>
       
-      <guid>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</guid>
+      <guid>http://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</guid>
       
         <description>&lt;p&gt;托管到 &lt;code&gt;Coding&lt;/code&gt; 之后，这个站点已经可以被百度收录了。虽然感觉不会有什么人看，但是万一呢 : ) 为了更好的交流，此处应有一个评论系统。恰好我用的主题&lt;code&gt;Jane&lt;/code&gt;已经配置好了几种评论系统，只需要启用一下就可以了。&lt;/p&gt;
 &lt;p&gt;先上一个 &lt;a href=&#34;https://valine.js.org/&#34;&gt;Valine 官方文档&lt;/a&gt; ，可以参考。还有这篇 &lt;a href=&#34;https://www.smslit.top/2018/07/08/hugo-valine/&#34;&gt;hugo博客添加评论系统Valine&lt;/a&gt; 。&lt;/p&gt;
@@ -3555,10 +3583,10 @@ GrabPass { &amp;#34;TexPropName&amp;#34; }		// 负责抓取屏幕并储存
     
     <item>
       <title>【博客升级】Coding 托管和百度收录</title>
-      <link>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</link>
+      <link>http://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</link>
       <pubDate>Sun, 16 Feb 2020 23:04:27 +0900</pubDate>
       
-      <guid>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</guid>
+      <guid>http://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7coding-%E6%89%98%E7%AE%A1/</guid>
       
         <description>&lt;p&gt;辛辛苦苦写的博客当然想让别人看到了，最可行的方法就是被搜索引擎收录。然而 Github 屏蔽了百度爬虫，导致 Github Pages 无法被百度收录，就很难受。除开这个因素，为了更快收录或是更高的权重，还有一些工作可以做。今天就先让博客可以被百度收录吧。&lt;/p&gt;
 &lt;p&gt;先上前人指路：&lt;a href=&#34;https://blog.csdn.net/sunshine940326/article/details/70936988&#34;&gt;想让你的博客被更多的人在搜索引擎中搜到吗？&lt;/a&gt;&lt;/p&gt;
@@ -3663,10 +3691,10 @@ and the repository exists.
     
     <item>
       <title>【博客升级】网易云外链</title>
-      <link>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</link>
+      <link>http://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</link>
       <pubDate>Sat, 15 Feb 2020 22:28:10 +0900</pubDate>
       
-      <guid>https://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</guid>
+      <guid>http://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</guid>
       
         <description>&lt;p&gt;想在文章里插入网易云音乐，遂找教程。&lt;br&gt;
 逛博客总是能发现很多大佬，比如 &lt;a href=&#34;https://saquarius.com/2019/07/%E7%BB%99hugo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E5%A4%96%E9%93%BE/&#34;&gt;Hugo博客添加音乐外链&lt;/a&gt; @ &lt;a href=&#34;https://saquarius.github.io/&#34;&gt;SAquarius &lt;/a&gt; 。看了 about 好像在武汉，而且1月以后就没有更新了，希望只是寒假在鸽吧。然后还有一个 &lt;a href=&#34;https://wap.a9vg.com/thread-5363888-1-1.html&#34;&gt;网易云音乐如何生成flash和mp3外链&lt;/a&gt; （&lt;del&gt;论坛时泪&lt;/del&gt;，解释了外链的代码。不多废话了，先上效果。&lt;/p&gt;

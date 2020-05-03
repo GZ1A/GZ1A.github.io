@@ -34,7 +34,7 @@
 <meta name="generator" content="Hugo 0.64.1" />
 
 
-<link rel="canonical" href="https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/" />
+<link rel="canonical" href="http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/" />
 
 
 
@@ -61,14 +61,14 @@
 <meta property="og:title" content="【笔记】Shader 入门精要（三）数学基础" />
 <meta property="og:description" content="笛卡尔坐标系 二维 略。 三维 基矢量 basis vector 正交基 orthogonal basis 标准正交基 orthonormal basis Unity 模型空间、世界空间左手坐标系（相机前向为z轴负方向，即观察空间中为右手坐标系） 点" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/" />
+<meta property="og:url" content="http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/" />
 <meta property="article:published_time" content="2020-02-27T01:02:33+09:00" />
 <meta property="article:modified_time" content="2020-02-27T01:02:33+09:00" />
 <meta itemprop="name" content="【笔记】Shader 入门精要（三）数学基础">
 <meta itemprop="description" content="笛卡尔坐标系 二维 略。 三维 基矢量 basis vector 正交基 orthogonal basis 标准正交基 orthonormal basis Unity 模型空间、世界空间左手坐标系（相机前向为z轴负方向，即观察空间中为右手坐标系） 点">
 <meta itemprop="datePublished" content="2020-02-27T01:02:33&#43;09:00" />
 <meta itemprop="dateModified" content="2020-02-27T01:02:33&#43;09:00" />
-<meta itemprop="wordCount" content="1299">
+<meta itemprop="wordCount" content="1349">
 
 
 
@@ -106,28 +106,28 @@
         
           
           
-            <a class="menu-item-link" href="https://disorder.ink/">首页</a>
+            <a class="menu-item-link" href="http://disorder.ink/">首页</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://disorder.ink/post/">归档</a>
+            <a class="menu-item-link" href="http://disorder.ink/post/">归档</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://disorder.ink/categories/">分类</a>
+            <a class="menu-item-link" href="http://disorder.ink/categories/">分类</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://disorder.ink/tags/">标签</a>
+            <a class="menu-item-link" href="http://disorder.ink/tags/">标签</a>
           
         
       </li>
@@ -222,7 +222,7 @@
         
           
           
-            <a class="menu-item-link" href="https://disorder.ink/">首页</a>
+            <a class="menu-item-link" href="http://disorder.ink/">首页</a>
           
 
         
@@ -233,7 +233,7 @@
         
           
           
-            <a class="menu-item-link" href="https://disorder.ink/post/">归档</a>
+            <a class="menu-item-link" href="http://disorder.ink/post/">归档</a>
           
 
         
@@ -244,7 +244,7 @@
         
           
           
-            <a class="menu-item-link" href="https://disorder.ink/categories/">分类</a>
+            <a class="menu-item-link" href="http://disorder.ink/categories/">分类</a>
           
 
         
@@ -255,7 +255,7 @@
         
           
           
-            <a class="menu-item-link" href="https://disorder.ink/tags/">标签</a>
+            <a class="menu-item-link" href="http://disorder.ink/tags/">标签</a>
           
 
         
@@ -286,10 +286,10 @@
           2020-02-27
         </time>
         <div class="post-category">
-            <a href="https://disorder.ink/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
+            <a href="http://disorder.ink/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
             
           </div>
-        <span class="more-meta"> 约 1299 字 </span>
+        <span class="more-meta"> 约 1349 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
 
         
@@ -383,10 +383,10 @@
 <h3 id="逆矩阵">逆矩阵</h3>
 <p>可逆性：行列式不为 0（满秩）。（可通过累加任意一行展开后项与代数余子式积得到）</p>
 <p>求逆：初等行变换。</p>
-<p>不可逆说明变换降维丢失信息。</p>
+<p>矩阵用于变换，逆矩阵用于逆变换。不可逆说明变换降维丢失信息。</p>
 <h3 id="正交矩阵">正交矩阵</h3>
-<p>每行都是单位矢量。行与行间互相垂直。（列即行的转置）例如一组<strong>标准正交基</strong>。</p>
-<p>和其转置矩阵乘积为单位矩阵的矩阵。即逆矩阵等于转置矩阵。</p>
+<p>和其转置矩阵乘积为单位矩阵的矩阵。即逆矩阵等于转置矩阵。例如一组<strong>标准正交基</strong>。</p>
+<p>每行都是单位矢量。行与行间互相垂直。（列即行的转置，同理）</p>
 <h3 id="行列矩阵">行/列矩阵</h3>
 <p>Unity 中通常将矢量转换为<strong>列矩阵</strong>$(x\quad y\quad z)^T $进行计算。因此通常是<strong>右乘</strong>，即$CBAv=(C(B(Av)))$ 。</p>
 <h2 id="变换">变换</h2>
@@ -396,11 +396,11 @@
 <p>在线性变换的基础上增加了平移变换。需要把矢量扩展到齐次坐标空间（四维）。使用 4×4 的矩阵。</p>
 <h3 id="复合变换">复合变换</h3>
 <p>多个仿射变换的组合。为便于理解和使用，通常先<strong>缩放</strong>，再<strong>旋转</strong>，最后<strong>平移</strong>。</p>
-<p>在旋转中， Unity 的三轴旋转顺序是 <strong>zxy</strong>（虽然是右乘，但不旋转坐标系，直接表示为$M_{Z\theta }M_{X\theta }M_{Y\theta }$）</p>
+<p>在旋转中， Unity 的三轴旋转顺序在不旋转的坐标系下是 <strong>zxy</strong>，右乘的矩阵表示为 $M_{Z\theta }M_{X\theta }M_{Y\theta }$，即等价于旋转的坐标系下的 **yxz** 顺序。参考 <a href="https://www.cnblogs.com/wantnon/p/5908309.html">博客 | unity中的欧拉角</a>。</p>
 <h2 id="坐标空间">坐标空间</h2>
 <h3 id="空间转换">空间转换</h3>
-<p>给定子坐标空间 C 中一点 $A_c = (a,b,c)$。已知自坐标空间原点 $O_c$，及坐标轴在父坐标空间 P 下的表示 $x_c,y_c,z_c$。要确定 $A_p$ ，需要从原点开始，分别向 x,y,z 轴方向平移 a,b,c 个单位。有</p>
-<p>$$ A_p = M_{c\rightarrow p}A_c$$</p>
+<p>给定子坐标空间 C 中一点 $A_c = (a,b,c)$。已知子坐标空间原点 $O_c$，及坐标轴在父坐标空间 P 下的表示 $x_c,y_c,z_c$。要确定 $A_p$ ，需要从原点开始，分别向 x,y,z 轴方向平移 a,b,c 个单位。有</p>
+<p>$$ A_p = M_{c\rightarrow p}A_c = O_c + a\bold x_c + b\bold y_c + c\bold z_c$$</p>
 <p>$$M_{c\rightarrow p}= \begin{bmatrix}| &amp; | &amp; | &amp; | \\  x_c &amp; y_c &amp; z_c &amp; O_c\\ | &amp; | &amp; | &amp; |\\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}$$</p>
 <p>$$ M_{p\rightarrow c} =M_{c\rightarrow p}^{-1} $$</p>
 <p>当对方向的坐标空间进行变换时，原点变换可以忽略。故仅需左上角的 3×3 矩阵。</p>
@@ -476,8 +476,8 @@
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="https://disorder.ink/tags/shader/">Shader</a>
-          <a href="https://disorder.ink/tags/shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81/">Shader入门精要</a>
+          <a href="http://disorder.ink/tags/shader/">Shader</a>
+          <a href="http://disorder.ink/tags/shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81/">Shader入门精要</a>
           
         </div>
 
@@ -592,7 +592,7 @@
     </a>
 
 
-<a href="https://disorder.ink/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+<a href="http://disorder.ink/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
     class="iconfont" title="rss" target="_blank">
     <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

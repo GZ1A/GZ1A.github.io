@@ -34,7 +34,7 @@
 <meta name="generator" content="Hugo 0.64.1" />
 
 
-<link rel="canonical" href="https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/" />
+<link rel="canonical" href="http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/" />
 
 
 
@@ -61,14 +61,14 @@
 <meta property="og:title" content="【笔记】Shader 入门精要（一）渲染流水线" />
 <meta property="og:description" content="汤老师确实心系学生，在群里发了网易雷火的实习内推链接。在雷火的宣传页看到前辈新人5周做出来的游戏，完成度可以说是很高了，震撼花花。点开岗位，" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/" />
+<meta property="og:url" content="http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/" />
 <meta property="article:published_time" content="2020-02-25T08:47:07+09:00" />
 <meta property="article:modified_time" content="2020-02-25T08:47:07+09:00" />
 <meta itemprop="name" content="【笔记】Shader 入门精要（一）渲染流水线">
 <meta itemprop="description" content="汤老师确实心系学生，在群里发了网易雷火的实习内推链接。在雷火的宣传页看到前辈新人5周做出来的游戏，完成度可以说是很高了，震撼花花。点开岗位，">
 <meta itemprop="datePublished" content="2020-02-25T08:47:07&#43;09:00" />
 <meta itemprop="dateModified" content="2020-02-25T08:47:07&#43;09:00" />
-<meta itemprop="wordCount" content="1034">
+<meta itemprop="wordCount" content="1069">
 
 
 
@@ -106,28 +106,28 @@
         
           
           
-            <a class="menu-item-link" href="https://disorder.ink/">首页</a>
+            <a class="menu-item-link" href="http://disorder.ink/">首页</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://disorder.ink/post/">归档</a>
+            <a class="menu-item-link" href="http://disorder.ink/post/">归档</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://disorder.ink/categories/">分类</a>
+            <a class="menu-item-link" href="http://disorder.ink/categories/">分类</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://disorder.ink/tags/">标签</a>
+            <a class="menu-item-link" href="http://disorder.ink/tags/">标签</a>
           
         
       </li>
@@ -222,7 +222,7 @@
         
           
           
-            <a class="menu-item-link" href="https://disorder.ink/">首页</a>
+            <a class="menu-item-link" href="http://disorder.ink/">首页</a>
           
 
         
@@ -233,7 +233,7 @@
         
           
           
-            <a class="menu-item-link" href="https://disorder.ink/post/">归档</a>
+            <a class="menu-item-link" href="http://disorder.ink/post/">归档</a>
           
 
         
@@ -244,7 +244,7 @@
         
           
           
-            <a class="menu-item-link" href="https://disorder.ink/categories/">分类</a>
+            <a class="menu-item-link" href="http://disorder.ink/categories/">分类</a>
           
 
         
@@ -255,7 +255,7 @@
         
           
           
-            <a class="menu-item-link" href="https://disorder.ink/tags/">标签</a>
+            <a class="menu-item-link" href="http://disorder.ink/tags/">标签</a>
           
 
         
@@ -286,10 +286,10 @@
           2020-02-25
         </time>
         <div class="post-category">
-            <a href="https://disorder.ink/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
+            <a href="http://disorder.ink/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
             
           </div>
-        <span class="more-meta"> 约 1034 字 </span>
+        <span class="more-meta"> 约 1069 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
 
         
@@ -353,10 +353,12 @@
 <p>输入三维场景数据（顶点、纹理、摄像机坐标等信息），输出二维图像。</p>
 <h2 id="概念阶段">概念阶段</h2>
 <h3 id="应用阶段cpu">应用阶段（CPU）</h3>
-<p>输入：场景数据（相机、模型、光源），模型的渲染状态（材质、纹理、Shader）</p>
-<p>输出：渲染图元（点、线、三角面等）</p>
+<p>将场景数据（相机、模型、光源）加载到 VRAM 中</p>
+<p>设置模型的渲染状态（材质、纹理、Shader）</p>
+<p>调用 Draw Call 让 GPU 进行渲染</p>
 <h3 id="几何阶段gpu">几何阶段（GPU）</h3>
-<p>输出：屏幕空间中的<strong>二维顶点坐标</strong>、对应的深度、着色等信息。</p>
+<p>输入：一批顶点数据</p>
+<p>输出：顶点在屏幕空间中的<strong>二维顶点坐标</strong>、对应的深度、着色等信息。</p>
 <h3 id="光栅化阶段gpu">光栅化阶段（GPU）</h3>
 <p>输出：屏幕上的像素（二维图像）</p>
 <h2 id="gpu-流水线">GPU 流水线</h2>
@@ -370,23 +372,23 @@
 <p>计算颜色</p>
 </li>
 <li>
-<p><strong>从模型空间转换到齐次裁剪空间</strong>（必要）输出后硬件会做透视除法，得到归一化设备坐标（Nocmalized Device Coordinates）</p>
+<p><strong>从模型空间转换到齐次裁剪空间</strong>（必要）输出后硬件会做透视除法，得到归一化设备坐标（Normalized Device Coordinates）</p>
 </li>
 </ul>
 <h3 id="裁剪">裁剪</h3>
-<p>将单位立方体外的图元舍弃。</p>
+<p>将单位立方体外的图元和顶点舍弃，并在边界断点处生成新的顶点。</p>
 <h3 id="屏幕映射">屏幕映射</h3>
 <p>将图元的 xy 坐标转换到屏幕坐标系（2维）。这和 z 坐标一起构成了窗口坐标系（3维）。</p>
 <h3 id="三角形设置">三角形设置</h3>
-<p>计算三角网格表示数据。</p>
+<p>根据顶点计算出三角网格边界的表示数据。</p>
 <h3 id="三角形遍历">三角形遍历</h3>
-<p>根据三角网格数据检查每个像素是否被三角网格覆盖，如果被覆盖则插值后在窗口坐标系中生成一个片元（fragment）</p>
+<p>根据三角网格数据检查每个像素是否被三角网格覆盖，如果被覆盖则插值后在窗口坐标系中生成一个片元（fragment）。</p>
 <h3 id="片元着色器">片元着色器</h3>
 <p>将片元着色。完成纹理采样等渲染技术。</p>
 <h3 id="逐片元操作">逐片元操作</h3>
 <p>输出合并阶段。对每一个片元进行操作。</p>
 <ul>
-<li>通过深度测试、模板测试等工作决定片元的可见性（实践中可能在着色之前进行以提高性能）</li>
+<li>通过模板测试、深度测试等工作决定片元的可见性（实践中可能在着色之前进行以提高性能）</li>
 <li>将片元的颜色值和颜色缓冲区中的颜色合并</li>
 </ul>
 <h2 id="draw-call">Draw Call</h2>
@@ -449,8 +451,8 @@
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="https://disorder.ink/tags/shader/">Shader</a>
-          <a href="https://disorder.ink/tags/shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81/">Shader入门精要</a>
+          <a href="http://disorder.ink/tags/shader/">Shader</a>
+          <a href="http://disorder.ink/tags/shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81/">Shader入门精要</a>
           
         </div>
 
@@ -565,7 +567,7 @@
     </a>
 
 
-<a href="https://disorder.ink/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+<a href="http://disorder.ink/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
     class="iconfont" title="rss" target="_blank">
     <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
