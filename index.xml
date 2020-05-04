@@ -116,14 +116,14 @@
 $$&lt;br&gt;
 f(z) = H(d-z) =&lt;br&gt;
 \begin{cases}&lt;br&gt;
-0,  &amp;amp; d &amp;lt; z\&lt;br&gt;
+0,  &amp;amp; d &amp;lt; z \\&lt;br&gt;
 1, &amp;amp; d \ge z&lt;br&gt;
 \end{cases}&lt;br&gt;
 $$&lt;/p&gt;
 &lt;h5 id=&#34;shadow-acne-1&#34;&gt;shadow acne&lt;/h5&gt;
 &lt;p&gt;如图，光线和平面法线有夹角，由于 shadow map 分辨率限制就会出现等深度线和表面相交的情况。在 &lt;strong&gt;与 shadow map 等深&lt;/strong&gt; 的线（面）以后的片元就会被判断成阴影。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200430204133619.png&#34; alt=&#34;image-20200430204133619&#34;&gt;&lt;/p&gt;
-&lt;p&gt;解决方案通常是对深度值加一个bias。slope scaled depth bias 即根据斜率缩放的深度偏差。有公式&lt;br&gt;
+&lt;p&gt;解决方案通常是对深度值加一个bias。&lt;strong&gt;slope scaled depth bias&lt;/strong&gt; 即根据斜率缩放的深度偏差。有公式&lt;br&gt;
 $$&lt;br&gt;
 bias = units * r + factor * dz&lt;br&gt;
 $$&lt;br&gt;
@@ -140,21 +140,64 @@ r ：depth 中最小的 32 位浮点数&lt;/p&gt;
 &lt;h3 id=&#34;变换矩阵&#34;&gt;变换矩阵&lt;/h3&gt;
 &lt;p&gt;ABC 三层嵌套的矩阵变换求解。&lt;/p&gt;
 &lt;h4 id=&#34;参考-4&#34;&gt;参考&lt;/h4&gt;
-&lt;p&gt;《Unity Shader 入门精要》P63 &lt;del&gt;身边只有这一本书&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;《Unity Shader 入门精要》P63  &lt;del&gt;身边只有这一本书&lt;/del&gt;&lt;/p&gt;
 &lt;h2 id=&#34;程序题&#34;&gt;程序题&lt;/h2&gt;
 &lt;h3 id=&#34;射线与球求交&#34;&gt;射线与球求交&lt;/h3&gt;
 &lt;p&gt;实现函数，传入一条射线与一个球，将交点坐标保留两位小数储存在字符串中传出。&lt;/p&gt;
-&lt;h2 id=&#34;问答题&#34;&gt;问答题&lt;/h2&gt;
-&lt;h3 id=&#34;环境光遮蔽&#34;&gt;环境光遮蔽&lt;/h3&gt;
 &lt;h4 id=&#34;参考-5&#34;&gt;参考&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/136763389&#34;&gt;知乎 | 射线与球的相交测试&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhidao.baidu.com/question/1965022347738183940.html&#34;&gt;百度 | 如何将double转换成保留小数点两位的string&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;优化&#34;&gt;优化&lt;/h4&gt;
+&lt;p&gt;基本思路一样，但还可以如参考链接中进行大量优化。&lt;/p&gt;
+&lt;h4 id=&#34;格式&#34;&gt;格式&lt;/h4&gt;
+&lt;p&gt;然而主要问题是不会按格式输出&amp;hellip;&lt;/p&gt;
+&lt;p&gt;说到底还是做题少了。没想到只要有 &lt;strong&gt;sprintf_s&lt;/strong&gt; 就可以畅通无阻&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;doubleToString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dbNum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;chCode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;chCode&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nothrow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;sprintf_s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;chCode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;%.2lf&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dbNum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// .2 是控制输出精度的，两位小数
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;strCode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;chCode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;delete&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;chCode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;strCode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;vecToString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;doubleToString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;sa&#34;&gt;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;doubleToString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;sa&#34;&gt;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;doubleToString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;问答题&#34;&gt;问答题&lt;/h2&gt;
+&lt;h3 id=&#34;环境光遮蔽&#34;&gt;环境光遮蔽&lt;/h3&gt;
+&lt;p&gt;环境光遮蔽（Ambient Occlusion）是用于实现 &lt;strong&gt;全局光照&lt;/strong&gt; 的技术之一。&lt;/p&gt;
 &lt;h4 id=&#34;有什么影响&#34;&gt;有什么影响&lt;/h4&gt;
+&lt;p&gt;描绘物体和物体相交或靠近的时候遮挡周围漫反射光线的效果。开启后暗部阴影细节更加明显。&lt;/p&gt;
 &lt;h4 id=&#34;如何实现&#34;&gt;如何实现&lt;/h4&gt;
+&lt;p&gt;取样点向周围发射射线，计算它被其它几何体覆盖的程度，是计算在一个统一的光强度下场景的软阴影。&lt;/p&gt;
 &lt;h3 id=&#34;mipmap&#34;&gt;MipMap&lt;/h3&gt;
-&lt;p&gt;多级渐远纹理技术。为同一张纹理创建一个纹理金字塔。通过使用分辨率更小的纹理 &lt;strong&gt;节省带宽&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;多级渐远纹理技术。为同一张纹理创建一个纹理金字塔。通过使用分辨率更小的纹理 &lt;strong&gt;节省带宽&lt;/strong&gt;。同时消除混叠以&lt;strong&gt;提高图像质量&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;《Unity Shader 入门精要》p322&lt;/p&gt;
 &lt;h4 id=&#34;如何确定像素所在层级&#34;&gt;如何确定像素所在层级&lt;/h4&gt;
 &lt;p&gt;根据距离物体的远近动态选择使用哪一个纹理。&lt;/p&gt;
 &lt;h4 id=&#34;什么时候不需要使用&#34;&gt;什么时候不需要使用&lt;/h4&gt;
+&lt;p&gt;不能合理应用过滤的情况下，例如纹理包含非图像数据（如索引或深度纹理）。或者如 UI 纹理，从不缩小。&lt;/p&gt;
 </description>
       
     </item>
@@ -578,9 +621,9 @@ toRight = camera.right \times halfHeight.aspect&lt;br&gt;
 $$&lt;br&gt;
 于是就可以得到 TL ，其他几个点同理。&lt;/p&gt;
 &lt;p&gt;$$ TL = camera.forward \cdot Near + toTop - toRight $$&lt;/p&gt;
-&lt;p&gt;由于 TL 方向是点到摄像机的欧氏距离，不是深度值表示的到摄像机的 z 轴距离，在计算偏移量时就要乘上 $ 1 \over \cos\theta$（夹角）。即乘上偏移方向的模与 Z 轴方向之比。&lt;/p&gt;
+&lt;p&gt;由于 TL 方向是点到摄像机的欧氏距离，不是深度值表示的到 &lt;strong&gt;摄像机的 z 轴距离&lt;/strong&gt; ，在计算偏移量时就要乘上 $ 1 \over \cos\theta$（夹角）。即乘上偏移方向的模与 Z 轴方向之比。&lt;/p&gt;
 &lt;p&gt;$$scale = {|TL| \over|Near|}$$&lt;/p&gt;
-&lt;p&gt;最后将归一化的方向向量乘上 Scale 就可以得到原点指向 &lt;code&gt;linearEyeDepth == 1&lt;/code&gt; 的平面的向量。&lt;/p&gt;
+&lt;p&gt;最后将归一化的方向向量乘上 Scale 就可以得到其余三个原点指向 &lt;code&gt;linearEyeDepth == 1&lt;/code&gt; 平面的向量。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200415034949460.png&#34; alt=&#34;我画了一年&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;计算雾效&#34;&gt;计算雾效&lt;/h3&gt;
 &lt;p&gt;雾效就是根据 &lt;strong&gt;雾效系数 f&lt;/strong&gt; ，将雾的颜色与原始颜色混合。效果的关键就是参数的计算了。&lt;/p&gt;
@@ -1025,7 +1068,8 @@ $$&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200329001524914.png&#34; alt=&#34;image-20200329001524914&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;伽马校正&#34;&gt;伽马校正&lt;/h3&gt;
-&lt;p&gt;模糊的过程要用到混合，也就会遇到伽马校正的问题。感谢冯大的&lt;a href=&#34;https://blog.csdn.net/candycat1992/article/details/46228771&#34;&gt;博客&lt;/a&gt;，把伽马校正讲的清楚明白。在所有混合发生前都将颜色转换到亮度的线性表示，在输出前再转换回来。&lt;/p&gt;
+&lt;p&gt;模糊的过程要用到混合，也就会遇到伽马校正的问题。感谢冯大的&lt;a href=&#34;https://blog.csdn.net/candycat1992/article/details/46228771&#34;&gt;博客&lt;/a&gt;，把伽马校正讲的清楚明白。&lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;事实上也写在了 p361&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;因为人眼对暗部的亮度变化更敏感，为了节约空间使用 0.45 的伽马值对亮度进行非线性映射编码。在显示器用 2.2 的伽马对颜色值解码。因此直接混合颜色值是在非线性空间，而要校正也就是要 &lt;strong&gt;在混合发生前都将颜色转换到亮度的线性表示&lt;/strong&gt;，在输出前再转换回来。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -1043,7 +1087,7 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;n&#34;&gt;fixed3&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;square&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fixed3&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fixed3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fixed3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;	
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;fixed4&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;frag&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v2f&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SV_TARGET&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
     &lt;span class=&#34;c1&#34;&gt;// 混合卷积核中各个元素对应的乘积
@@ -1051,7 +1095,7 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;fixed3&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sum&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;square&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tex2D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_MainTex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rgb&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;weight&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
     &lt;span class=&#34;c1&#34;&gt;// ...
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    
-    &lt;span class=&#34;c1&#34;&gt;// 转换回指数表示
+    &lt;span class=&#34;c1&#34;&gt;// 转换回指数表示 应该用 2.2 / 1/2.2 而不是 2 / 0.5 近似
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fixed4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sqrt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
@@ -1976,8 +2020,7 @@ Blend SrcFactor DstFactor [,SrcFactorA DstFactorA]
 &lt;h3 id=&#34;透明度混合下的实现&#34;&gt;透明度混合下的实现&lt;/h3&gt;
 &lt;p&gt;由于第一个 Pass 启用了深度写入，背面肯定无法渲染。首先删除深度写入 Pass。但此时如果关闭剔除，渲染背面和正面的顺序是不确定的。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200319131850340.png&#34; alt=&#34;image-20200319131850340&#34;&gt;&lt;/p&gt;
-&lt;p&gt;由于 Pass 会顺序执行，一个解决方法是把渲染工作分成两个 Pass，第一个渲染背面（剔除正面），第二个渲染正面（剔除背面）。这种方法虽然无法应对模型内部交错，但是在凸模型上可以保证正确的深度渲染关系。复杂模型的深度关系大概需要别的技术保证吧。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200319131850340.png&#34; alt=&#34;image-20200319132018922&#34;&gt;&lt;/p&gt;
+&lt;p&gt;由于 Pass 会顺序执行，一个解决方法是把渲染工作&lt;strong&gt;分成两个 Pass&lt;/strong&gt;，第一个渲染背面（剔除正面），第二个渲染正面（剔除背面）。这种方法虽然无法应对模型内部交错，但是在凸模型上可以保证正确的深度渲染关系。复杂模型的深度关系大概需要别的技术保证吧。&lt;/p&gt;
 </description>
       
     </item>
@@ -2373,7 +2416,7 @@ fixed4 frag(v2f i) : SV_TARGET{
 &lt;h4 id=&#34;半兰伯特模型&#34;&gt;半兰伯特模型&lt;/h4&gt;
 &lt;p&gt;半兰伯特模型是一种没有物理依据的视觉加强技术。通过修改&lt;del&gt;映射函数&lt;/del&gt;模型，允许法向量与光源方向的点积为负数，使得背光面也会有明暗变化。常用公式为&lt;/p&gt;
 &lt;p&gt;$$ c_{diffuse} = (c_{light}\cdot m_{diffuse} )(0.5(\hat n \cdot I) + 0.5)$$&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307235740774.png&#34; alt=&#34;image-20200307050656944&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307050656944.png&#34; alt=&#34;image-20200307235740774&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;高光反射-1&#34;&gt;高光反射&lt;/h3&gt;
 &lt;h4 id=&#34;顶点着色器-1&#34;&gt;顶点着色器&lt;/h4&gt;
 &lt;p&gt;通过在顶点着色器中计算高光反射分量，增加高光效果。&lt;/p&gt;
@@ -2395,7 +2438,7 @@ fixed4 frag(v2f i) : SV_TARGET{
  o.color = specular + (diffuse + ambient) *_Diffuse;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307050656944.png&#34; alt=&#34;image-20200307235740774&#34;&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307235740774.png&#34; alt=&#34;image-20200307050656944&#34;&gt;&lt;/p&gt;
 &lt;p&gt;由于高光反射是非线性的，而顶点计算高光后在片元着色器中经过的插值是线性的，很明显出现了偏差。&lt;/p&gt;
 &lt;h4 id=&#34;片元着色器-1&#34;&gt;片元着色器&lt;/h4&gt;
 &lt;p&gt;将计算移至片元着色器，实现逐像素光照。&lt;/p&gt;

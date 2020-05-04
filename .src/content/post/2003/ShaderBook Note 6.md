@@ -9,13 +9,6 @@ author: "昼阴夜阳"             		# 作者
 # 分类和标签
 categories: ["笔记"]		            # 分类
 tags: ["Shader","Shader入门精要"]  		# 标签
-
-# 自定义
-comment: true	 # 评论
-toc: true        # 文章目录
-contentCopyright: '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'	#版权规则
-reward: true	 # 打赏
-mathjax: true    # 打开 mathjax
 ---
 
 纹理最初的目的就是通过 **纹理映射（texture mapping)** 控制模型的外观，逐纹素（texel） 控制模型的颜色。保存了映射关系的 纹理映射坐标（texture-mapping coordinates）由于通常使用`（u,v）`表示，又被称为 **UV 坐标**。

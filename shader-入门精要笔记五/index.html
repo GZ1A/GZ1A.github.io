@@ -547,7 +547,7 @@ fixed4 frag(v2f i) : SV_TARGET{
 <h4 id="半兰伯特模型">半兰伯特模型</h4>
 <p>半兰伯特模型是一种没有物理依据的视觉加强技术。通过修改<del>映射函数</del>模型，允许法向量与光源方向的点积为负数，使得背光面也会有明暗变化。常用公式为</p>
 <p>$$ c_{diffuse} = (c_{light}\cdot m_{diffuse} )(0.5(\hat n \cdot I) + 0.5)$$</p>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307235740774.png" alt="image-20200307050656944"></p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307050656944.png" alt="image-20200307235740774"></p>
 <h3 id="高光反射-1">高光反射</h3>
 <h4 id="顶点着色器-1">顶点着色器</h4>
 <p>通过在顶点着色器中计算高光反射分量，增加高光效果。</p>
@@ -569,7 +569,7 @@ fixed4 frag(v2f i) : SV_TARGET{
  o.color = specular + (diffuse + ambient) *_Diffuse;
 </code></pre></td></tr></table>
 </div>
-</div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307050656944.png" alt="image-20200307235740774"></p>
+</div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307235740774.png" alt="image-20200307050656944"></p>
 <p>由于高光反射是非线性的，而顶点计算高光后在片元着色器中经过的插值是线性的，很明显出现了偏差。</p>
 <h4 id="片元着色器-1">片元着色器</h4>
 <p>将计算移至片元着色器，实现逐像素光照。</p>

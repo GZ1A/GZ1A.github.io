@@ -68,7 +68,7 @@
 <meta itemprop="description" content="突然接到通知第二天要进行笔试，猝不及防，但第一次笔试还是想准备一下，所以最后一天去练习了一下 OJ。.mask { background-color: #252525; color: #252525; transition: color 0.5s;}.mask:hover { color: #fffff">
 <meta itemprop="datePublished" content="2020-04-26T14:58:02&#43;09:00" />
 <meta itemprop="dateModified" content="2020-04-26T14:58:02&#43;09:00" />
-<meta itemprop="wordCount" content="1787">
+<meta itemprop="wordCount" content="2164">
 
 
 
@@ -289,8 +289,8 @@
             <a href="http://disorder.ink/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             
           </div>
-        <span class="more-meta"> 约 1787 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span class="more-meta"> 约 2164 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
 
         
         
@@ -412,14 +412,14 @@
 $$<br>
 f(z) = H(d-z) =<br>
 \begin{cases}<br>
-0,  &amp; d &lt; z\<br>
+0,  &amp; d &lt; z \\<br>
 1, &amp; d \ge z<br>
 \end{cases}<br>
 $$</p>
 <h5 id="shadow-acne-1">shadow acne</h5>
 <p>如图，光线和平面法线有夹角，由于 shadow map 分辨率限制就会出现等深度线和表面相交的情况。在 <strong>与 shadow map 等深</strong> 的线（面）以后的片元就会被判断成阴影。</p>
 <p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200430204133619.png" alt="image-20200430204133619"></p>
-<p>解决方案通常是对深度值加一个bias。slope scaled depth bias 即根据斜率缩放的深度偏差。有公式<br>
+<p>解决方案通常是对深度值加一个bias。<strong>slope scaled depth bias</strong> 即根据斜率缩放的深度偏差。有公式<br>
 $$<br>
 bias = units * r + factor * dz<br>
 $$<br>
@@ -436,21 +436,64 @@ r ：depth 中最小的 32 位浮点数</p>
 <h3 id="变换矩阵">变换矩阵</h3>
 <p>ABC 三层嵌套的矩阵变换求解。</p>
 <h4 id="参考-4">参考</h4>
-<p>《Unity Shader 入门精要》P63 <del>身边只有这一本书</del></p>
+<p>《Unity Shader 入门精要》P63  <del>身边只有这一本书</del></p>
 <h2 id="程序题">程序题</h2>
 <h3 id="射线与球求交">射线与球求交</h3>
 <p>实现函数，传入一条射线与一个球，将交点坐标保留两位小数储存在字符串中传出。</p>
-<h2 id="问答题">问答题</h2>
-<h3 id="环境光遮蔽">环境光遮蔽</h3>
 <h4 id="参考-5">参考</h4>
+<p><a href="https://zhuanlan.zhihu.com/p/136763389">知乎 | 射线与球的相交测试</a></p>
+<p><a href="https://zhidao.baidu.com/question/1965022347738183940.html">百度 | 如何将double转换成保留小数点两位的string</a></p>
+<h4 id="优化">优化</h4>
+<p>基本思路一样，但还可以如参考链接中进行大量优化。</p>
+<h4 id="格式">格式</h4>
+<p>然而主要问题是不会按格式输出&hellip;</p>
+<p>说到底还是做题少了。没想到只要有 <strong>sprintf_s</strong> 就可以畅通无阻&hellip;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">string</span> <span class="nf">doubleToString</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="o">&amp;</span><span class="n">dbNum</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">char</span> <span class="o">*</span><span class="n">chCode</span><span class="p">;</span>
+	<span class="n">chCode</span> <span class="o">=</span> <span class="k">new</span><span class="p">(</span><span class="n">std</span><span class="o">:</span><span class="o">:</span><span class="n">nothrow</span><span class="p">)</span><span class="kt">char</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span><span class="p">;</span>
+	<span class="n">sprintf_s</span><span class="p">(</span><span class="n">chCode</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span><span class="sa"></span><span class="s">&#34;</span><span class="s">%.2lf</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">dbNum</span><span class="p">)</span><span class="p">;</span>  <span class="c1">// .2 是控制输出精度的，两位小数
+</span><span class="c1"></span>	<span class="n">string</span> <span class="n">strCode</span><span class="p">(</span><span class="n">chCode</span><span class="p">)</span><span class="p">;</span>
+	<span class="k">delete</span><span class="p">[</span><span class="p">]</span><span class="n">chCode</span><span class="p">;</span>
+	<span class="k">return</span> <span class="n">strCode</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">string</span> <span class="nf">vecToString</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="kt">double</span> <span class="n">y</span><span class="p">,</span> <span class="kt">double</span> <span class="n">z</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="n">doubleToString</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="sa"></span><span class="s">&#34;</span><span class="s">,</span><span class="s">&#34;</span> <span class="o">+</span> <span class="n">doubleToString</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="sa"></span><span class="s">&#34;</span><span class="s">,</span><span class="s">&#34;</span> <span class="o">+</span> <span class="n">doubleToString</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="问答题">问答题</h2>
+<h3 id="环境光遮蔽">环境光遮蔽</h3>
+<p>环境光遮蔽（Ambient Occlusion）是用于实现 <strong>全局光照</strong> 的技术之一。</p>
 <h4 id="有什么影响">有什么影响</h4>
+<p>描绘物体和物体相交或靠近的时候遮挡周围漫反射光线的效果。开启后暗部阴影细节更加明显。</p>
 <h4 id="如何实现">如何实现</h4>
+<p>取样点向周围发射射线，计算它被其它几何体覆盖的程度，是计算在一个统一的光强度下场景的软阴影。</p>
 <h3 id="mipmap">MipMap</h3>
-<p>多级渐远纹理技术。为同一张纹理创建一个纹理金字塔。通过使用分辨率更小的纹理 <strong>节省带宽</strong>。</p>
+<p>多级渐远纹理技术。为同一张纹理创建一个纹理金字塔。通过使用分辨率更小的纹理 <strong>节省带宽</strong>。同时消除混叠以<strong>提高图像质量</strong>。</p>
 <p>《Unity Shader 入门精要》p322</p>
 <h4 id="如何确定像素所在层级">如何确定像素所在层级</h4>
 <p>根据距离物体的远近动态选择使用哪一个纹理。</p>
 <h4 id="什么时候不需要使用">什么时候不需要使用</h4>
+<p>不能合理应用过滤的情况下，例如纹理包含非图像数据（如索引或深度纹理）。或者如 UI 纹理，从不缩小。</p>
 
     </div>
 

@@ -521,8 +521,7 @@ Blend SrcFactor DstFactor [,SrcFactorA DstFactorA]
 <h3 id="透明度混合下的实现">透明度混合下的实现</h3>
 <p>由于第一个 Pass 启用了深度写入，背面肯定无法渲染。首先删除深度写入 Pass。但此时如果关闭剔除，渲染背面和正面的顺序是不确定的。</p>
 <p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200319131850340.png" alt="image-20200319131850340"></p>
-<p>由于 Pass 会顺序执行，一个解决方法是把渲染工作分成两个 Pass，第一个渲染背面（剔除正面），第二个渲染正面（剔除背面）。这种方法虽然无法应对模型内部交错，但是在凸模型上可以保证正确的深度渲染关系。复杂模型的深度关系大概需要别的技术保证吧。</p>
-<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200319131850340.png" alt="image-20200319132018922"></p>
+<p>由于 Pass 会顺序执行，一个解决方法是把渲染工作<strong>分成两个 Pass</strong>，第一个渲染背面（剔除正面），第二个渲染正面（剔除背面）。这种方法虽然无法应对模型内部交错，但是在凸模型上可以保证正确的深度渲染关系。复杂模型的深度关系大概需要别的技术保证吧。</p>
 
     </div>
 

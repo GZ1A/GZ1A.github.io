@@ -225,11 +225,11 @@ $$
 
 $$ TL = camera.forward \cdot Near + toTop - toRight $$
 
-由于 TL 方向是点到摄像机的欧氏距离，不是深度值表示的到摄像机的 z 轴距离，在计算偏移量时就要乘上 $ 1 \over \cos\theta$（夹角）。即乘上偏移方向的模与 Z 轴方向之比。
+由于 TL 方向是点到摄像机的欧氏距离，不是深度值表示的到 **摄像机的 z 轴距离** ，在计算偏移量时就要乘上 $ 1 \over \cos\theta$（夹角）。即乘上偏移方向的模与 Z 轴方向之比。
 
 $$scale = {|TL| \over|Near|}$$
 
-最后将归一化的方向向量乘上 Scale 就可以得到原点指向 `linearEyeDepth == 1` 的平面的向量。
+最后将归一化的方向向量乘上 Scale 就可以得到其余三个原点指向 `linearEyeDepth == 1` 平面的向量。
 
 ![我画了一年](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200415034949460.png)
 

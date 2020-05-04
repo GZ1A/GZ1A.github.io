@@ -68,7 +68,7 @@
 <meta itemprop="description" content="屏幕后处理就是利用渲染纹理，在场景渲染完之后对图像进行操作从而实现艺术效果的技术。（这不就是数字图像处理嘛）先来做一些简单的后处理。 后处理脚">
 <meta itemprop="datePublished" content="2020-03-26T19:18:43&#43;09:00" />
 <meta itemprop="dateModified" content="2020-03-26T19:18:43&#43;09:00" />
-<meta itemprop="wordCount" content="2947">
+<meta itemprop="wordCount" content="3074">
 
 
 
@@ -289,8 +289,8 @@
             <a href="http://disorder.ink/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
             
           </div>
-        <span class="more-meta"> 约 2947 字 </span>
-          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        <span class="more-meta"> 约 3074 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
 
         
         
@@ -735,7 +735,8 @@
 </div>
 </div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200329001524914.png" alt="image-20200329001524914"></p>
 <h3 id="伽马校正">伽马校正</h3>
-<p>模糊的过程要用到混合，也就会遇到伽马校正的问题。感谢冯大的<a href="https://blog.csdn.net/candycat1992/article/details/46228771">博客</a>，把伽马校正讲的清楚明白。在所有混合发生前都将颜色转换到亮度的线性表示，在输出前再转换回来。</p>
+<p>模糊的过程要用到混合，也就会遇到伽马校正的问题。感谢冯大的<a href="https://blog.csdn.net/candycat1992/article/details/46228771">博客</a>，把伽马校正讲的清楚明白。<style type="text/css">.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}</style><span class="mask" title = 你知道的太多了>事实上也写在了 p361</span></p>
+<p>因为人眼对暗部的亮度变化更敏感，为了节约空间使用 0.45 的伽马值对亮度进行非线性映射编码。在显示器用 2.2 的伽马对颜色值解码。因此直接混合颜色值是在非线性空间，而要校正也就是要 <strong>在混合发生前都将颜色转换到亮度的线性表示</strong>，在输出前再转换回来。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -753,7 +754,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-c#" data-lang="c#"><span class="n">fixed3</span> <span class="n">square</span><span class="p">(</span><span class="n">fixed3</span> <span class="k">value</span><span class="p">)</span><span class="p">{</span>
-    <span class="k">return</span> <span class="n">pow</span><span class="p">(</span><span class="k">value</span><span class="p">,</span><span class="n">fixed3</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">)</span><span class="p">)</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">pow</span><span class="p">(</span><span class="k">value</span><span class="p">,</span><span class="n">fixed3</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">)</span><span class="p">)</span><span class="p">;</span>	
 <span class="p">}</span>
 <span class="n">fixed4</span> <span class="n">frag</span> <span class="p">(</span><span class="n">v2f</span> <span class="n">i</span><span class="p">)</span><span class="p">:</span><span class="n">SV_TARGET</span> <span class="p">{</span>
     <span class="c1">// 混合卷积核中各个元素对应的乘积
@@ -761,7 +762,7 @@
 </span><span class="c1"></span>    <span class="n">fixed3</span> <span class="n">sum</span> <span class="p">=</span> <span class="n">square</span><span class="p">(</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_MainTex</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">uv</span><span class="p">[</span><span class="m">0</span><span class="p">]</span><span class="p">)</span><span class="p">.</span><span class="n">rgb</span> <span class="p">)</span> <span class="p">*</span> <span class="n">weight</span><span class="p">[</span><span class="m">0</span><span class="p">]</span><span class="p">;</span>
     <span class="c1">// ...
 </span><span class="c1"></span>    
-    <span class="c1">// 转换回指数表示
+    <span class="c1">// 转换回指数表示 应该用 2.2 / 1/2.2 而不是 2 / 0.5 近似
 </span><span class="c1"></span>    <span class="k">return</span> <span class="n">fixed4</span><span class="p">(</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">sum</span><span class="p">)</span><span class="p">,</span> <span class="m">1.0</span><span class="p">)</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>

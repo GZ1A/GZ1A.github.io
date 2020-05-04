@@ -224,7 +224,7 @@ fixed4 frag(v2f i) : SV_TARGET{
 
 $$ c_{diffuse} = (c_{light}\cdot m_{diffuse} )(0.5(\hat n \cdot I) + 0.5)$$
 
-![image-20200307050656944](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307235740774.png)
+![image-20200307235740774](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307050656944.png)
 
 ### 高光反射
 
@@ -241,7 +241,7 @@ $$ c_{diffuse} = (c_{light}\cdot m_{diffuse} )(0.5(\hat n \cdot I) + 0.5)$$
  o.color = specular + (diffuse + ambient) *_Diffuse;
 ```
 
-![image-20200307235740774](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307050656944.png)
+![image-20200307050656944](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200307235740774.png)
 
 由于高光反射是非线性的，而顶点计算高光后在片元着色器中经过的插值是线性的，很明显出现了偏差。
 

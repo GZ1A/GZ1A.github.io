@@ -68,7 +68,7 @@
 <meta itemprop="description" content="屏幕后处理除了利用图像的颜色信息，还可以利用深度和法线信息。这些信息不受纹理和光照的影响，能给出更多的细节。 获取深度和法线纹理 原理 深度纹理就">
 <meta itemprop="datePublished" content="2020-03-30T02:23:54&#43;09:00" />
 <meta itemprop="dateModified" content="2020-03-30T02:23:54&#43;09:00" />
-<meta itemprop="wordCount" content="2669">
+<meta itemprop="wordCount" content="2672">
 
 
 
@@ -289,7 +289,7 @@
             <a href="http://disorder.ink/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
             
           </div>
-        <span class="more-meta"> 约 2669 字 </span>
+        <span class="more-meta"> 约 2672 字 </span>
           <span class="more-meta"> 预计阅读 6 分钟 </span>
 
         
@@ -592,9 +592,9 @@ toRight = camera.right \times halfHeight.aspect<br>
 $$<br>
 于是就可以得到 TL ，其他几个点同理。</p>
 <p>$$ TL = camera.forward \cdot Near + toTop - toRight $$</p>
-<p>由于 TL 方向是点到摄像机的欧氏距离，不是深度值表示的到摄像机的 z 轴距离，在计算偏移量时就要乘上 $ 1 \over \cos\theta$（夹角）。即乘上偏移方向的模与 Z 轴方向之比。</p>
+<p>由于 TL 方向是点到摄像机的欧氏距离，不是深度值表示的到 <strong>摄像机的 z 轴距离</strong> ，在计算偏移量时就要乘上 $ 1 \over \cos\theta$（夹角）。即乘上偏移方向的模与 Z 轴方向之比。</p>
 <p>$$scale = {|TL| \over|Near|}$$</p>
-<p>最后将归一化的方向向量乘上 Scale 就可以得到原点指向 <code>linearEyeDepth == 1</code> 的平面的向量。</p>
+<p>最后将归一化的方向向量乘上 Scale 就可以得到其余三个原点指向 <code>linearEyeDepth == 1</code> 平面的向量。</p>
 <p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/04/image-20200415034949460.png" alt="我画了一年"></p>
 <h3 id="计算雾效">计算雾效</h3>
 <p>雾效就是根据 <strong>雾效系数 f</strong> ，将雾的颜色与原始颜色混合。效果的关键就是参数的计算了。</p>

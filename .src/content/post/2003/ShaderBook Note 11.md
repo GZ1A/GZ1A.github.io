@@ -9,14 +9,6 @@ author: "昼阴夜阳"        	     		# 作者
 # 分类和标签
 categories: ["笔记"]		            # 分类
 tags: ["Shader","Shader入门精要"]  		# 标签
-
-# 自定义
-comment: true	 # 评论
-toc: true        # 文章目录
-contentCopyright: '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'	# 版权规则
-reward: true	 # 打赏
-mathjax: true    # 打开 mathjax
-
 ---
 
 **屏幕后处理**就是利用渲染纹理，在场景渲染完之后对图像进行操作从而实现艺术效果的技术。（这不就是数字图像处理嘛）先来做一些简单的后处理。
@@ -291,11 +283,13 @@ Pass{
 
 ### 伽马校正
 
-模糊的过程要用到混合，也就会遇到伽马校正的问题。感谢冯大的[博客](https://blog.csdn.net/candycat1992/article/details/46228771)，把伽马校正讲的清楚明白。在所有混合发生前都将颜色转换到亮度的线性表示，在输出前再转换回来。
+模糊的过程要用到混合，也就会遇到伽马校正的问题。感谢冯大的[博客](https://blog.csdn.net/candycat1992/article/details/46228771)，把伽马校正讲的清楚明白。{{% mask"事实上也写在了 p361" %}}
+
+因为人眼对暗部的亮度变化更敏感，为了节约空间使用 0.45 的伽马值对亮度进行非线性映射编码。在显示器用 2.2 的伽马对颜色值解码。因此直接混合颜色值是在非线性空间，而要校正也就是要 **在混合发生前都将颜色转换到亮度的线性表示**，在输出前再转换回来。
 
 ```c#
 fixed3 square(fixed3 value){
-    return pow(value,fixed3(2,2,2));
+    return pow(value,fixed3(2,2,2));	
 }
 fixed4 frag (v2f i):SV_TARGET {
     // 混合卷积核中各个元素对应的乘积
@@ -303,7 +297,7 @@ fixed4 frag (v2f i):SV_TARGET {
     fixed3 sum = square( tex2D(_MainTex, i.uv[0]).rgb ) * weight[0];
     // ...
     
-    // 转换回指数表示
+    // 转换回指数表示 应该用 2.2 / 1/2.2 而不是 2 / 0.5 近似
     return fixed4( sqrt(sum), 1.0);
 }
 ```
@@ -311,8 +305,6 @@ fixed4 frag (v2f i):SV_TARGET {
 在如图的极限情况下，伽马校正的效果很明显了。经过线性空间的混合才是好混合，当然代价是更多的性能开销。
 
 ![image-20200401064420321](https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200401064420321.png)
-
-
 
 ## Bloom 效果
 
