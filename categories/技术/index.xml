@@ -6,10 +6,19 @@
     <description>Recent content in 技术 on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 30 Apr 2020 05:41:26 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2020 21:12:22 +0900</lastBuildDate>
     
 	<atom:link href="http://disorder.ink/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【笔记】无人深空中的地形扫描 </title>
+      <link>http://disorder.ink/%E6%97%A0%E4%BA%BA%E6%B7%B1%E7%A9%BA%E6%89%AB%E6%8F%8F/</link>
+      <pubDate>Wed, 06 May 2020 21:12:22 +0900</pubDate>
+      
+      <guid>http://disorder.ink/%E6%97%A0%E4%BA%BA%E6%B7%B1%E7%A9%BA%E6%89%AB%E6%8F%8F/</guid>
+      <description>无人深空也玩过一段时间。刚好看见这个地形扫描实现的教程1，于是跟着实现了一下无人深空里的地形扫描。先上效果图 .mask { background-color: #252525; color: #252525; transition: color 0.5s;}.mask:hover { color: #ffff</description>
+    </item>
     
     <item>
       <title>Unity Copying assembly XX failed 问题</title>
