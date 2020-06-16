@@ -6,10 +6,28 @@
     <description>Recent content in Tags on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 06 May 2020 21:12:22 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2020 02:12:11 +0900</lastBuildDate>
     
 	<atom:link href="http://disorder.ink/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OpenCV</title>
+      <link>http://disorder.ink/tags/opencv/</link>
+      <pubDate>Wed, 17 Jun 2020 02:12:11 +0900</pubDate>
+      
+      <guid>http://disorder.ink/tags/opencv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>图像处理</title>
+      <link>http://disorder.ink/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</link>
+      <pubDate>Wed, 17 Jun 2020 02:12:11 +0900</pubDate>
+      
+      <guid>http://disorder.ink/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Shader</title>
@@ -170,24 +188,6 @@
       <pubDate>Fri, 14 Feb 2020 23:58:48 +0800</pubDate>
       
       <guid>http://disorder.ink/tags/picgo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>GitHub</title>
-      <link>http://disorder.ink/tags/github/</link>
-      <pubDate>Thu, 13 Feb 2020 23:58:48 +0800</pubDate>
-      
-      <guid>http://disorder.ink/tags/github/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>bat</title>
-      <link>http://disorder.ink/tags/bat/</link>
-      <pubDate>Wed, 12 Feb 2020 00:17:41 +0800</pubDate>
-      
-      <guid>http://disorder.ink/tags/bat/</guid>
       <description></description>
     </item>
     

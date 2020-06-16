@@ -6,10 +6,19 @@
     <description>Recent content in 技术 on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 06 May 2020 21:12:22 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2020 02:12:11 +0900</lastBuildDate>
     
 	<atom:link href="http://disorder.ink/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OpenCV 视频去雾小工具 </title>
+      <link>http://disorder.ink/%E8%A7%86%E9%A2%91%E5%8E%BB%E9%9B%BE%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Wed, 17 Jun 2020 02:12:11 +0900</pubDate>
+      
+      <guid>http://disorder.ink/%E8%A7%86%E9%A2%91%E5%8E%BB%E9%9B%BE%E5%B7%A5%E5%85%B7/</guid>
+      <description>虽然没有太多原创的工作，但接触了很多新的东西，记录一下。毕竟是肝（缝合）了通宵的数字图像处理课设。先上效果图 任务要求 借助 OpenCV 实现一个有着友好用</description>
+    </item>
     
     <item>
       <title>【笔记】无人深空中的地形扫描 </title>
