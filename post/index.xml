@@ -6,10 +6,37 @@
     <description>Recent content in Posts on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 17 Jun 2020 02:12:11 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jul 2020 23:23:23 +0900</lastBuildDate>
     
 	<atom:link href="http://disorder.ink/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【译】Shader Graph 中 的 ScreenPosition.a 的含义</title>
+      <link>http://disorder.ink/%E8%AF%91screenposition.a/</link>
+      <pubDate>Sun, 19 Jul 2020 23:23:23 +0900</pubDate>
+      
+      <guid>http://disorder.ink/%E8%AF%91screenposition.a/</guid>
+      <description>论坛 | What does ScreenPosition.a means in shader graph? Shader Graph 中 的 ScreenPosition.a 的含义？ Q: I&amp;rsquo;ve search around and checked out Documentation, but cannot understand what exactly does ShaderGraph&amp;rsquo;s ScreenPosition node&amp;rsquo;s b and **a ** components meaning. Isn&amp;rsquo;t r and g components enough to represent 2d screen position? 我已经在文档里找了一圈了，但是无法</description>
+    </item>
+    
+    <item>
+      <title>【笔记】Unity 美术工具</title>
+      <link>http://disorder.ink/unity-%E7%BE%8E%E6%9C%AF%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Sun, 12 Jul 2020 23:39:12 +0900</pubDate>
+      
+      <guid>http://disorder.ink/unity-%E7%BE%8E%E6%9C%AF%E5%B7%A5%E5%85%B7/</guid>
+      <description>实习了才发现自由时间的宝贵，平时的空余还有周末的时间都需要好好利用起来了。周末收拾装修的房间以及补觉都是碎片化的时间，就刷刷视频了解了一下美</description>
+    </item>
+    
+    <item>
+      <title>【笔记】CodingCat 组合纹理</title>
+      <link>http://disorder.ink/codingcat-%E7%BB%84%E5%90%88%E7%BA%B9%E7%90%86/</link>
+      <pubDate>Tue, 07 Jul 2020 20:10:45 +0900</pubDate>
+      
+      <guid>http://disorder.ink/codingcat-%E7%BB%84%E5%90%88%E7%BA%B9%E7%90%86/</guid>
+      <description>自己想学的时候，不做笔记就不会认真学。最近看到了有大佬翻译了 Coding Cat 的教程，很感谢了。快速学一下，练练手。先上参考。 微信 | 基础渲染系列（三）多样</description>
+    </item>
     
     <item>
       <title>OpenCV 视频去雾小工具 </title>
@@ -162,33 +189,6 @@
       
       <guid>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
       <description>定义 Unity Shader 就是一个文本文件。通过将其赋予材质，可以改变该材质在渲染时的行为。主要是顶点、片元等着色器部分。 Shader Lab Unity 为编写 Unity Shader 提供的说明性语言，定</description>
-    </item>
-    
-    <item>
-      <title>【笔记】Shader 入门精要（一）渲染流水线</title>
-      <link>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</link>
-      <pubDate>Tue, 25 Feb 2020 08:47:07 +0900</pubDate>
-      
-      <guid>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%80/</guid>
-      <description>汤老师确实心系学生，在群里发了网易雷火的实习内推链接。在雷火的宣传页看到前辈新人5周做出来的游戏，完成度可以说是很高了，震撼花花。点开岗位，</description>
-    </item>
-    
-    <item>
-      <title>【博客升级】点击计数和动态背景</title>
-      <link>http://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/</link>
-      <pubDate>Wed, 19 Feb 2020 23:34:29 +0900</pubDate>
-      
-      <guid>http://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%82%B9%E5%87%BB%E8%AE%A1%E6%95%B0%E5%92%8C%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/</guid>
-      <description>啥事没干，甚是愧疚。想到别家博客都有花里胡哨的东西，我也整点来美化一下吧。 调研了一下各个效果的难度， 试图寻找方便快捷效果好的活。于是列了个清</description>
-    </item>
-    
-    <item>
-      <title>【博客升级】Valine 评论系统</title>
-      <link>http://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</link>
-      <pubDate>Mon, 17 Feb 2020 02:56:17 +0900</pubDate>
-      
-      <guid>http://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7valine-%E8%AF%84%E8%AE%BA/</guid>
-      <description>托管到 Coding 之后，这个站点已经可以被百度收录了。虽然感觉不会有什么人看，但是万一呢 : ) 为了更好的交流，此处应有一个评论系统。恰好我用的主题Jan</description>
     </item>
     
   </channel>

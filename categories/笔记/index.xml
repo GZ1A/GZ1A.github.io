@@ -6,10 +6,19 @@
     <description>Recent content in 笔记 on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 30 Mar 2020 02:23:54 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jul 2020 23:39:12 +0900</lastBuildDate>
     
 	<atom:link href="http://disorder.ink/categories/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【笔记】Unity 美术工具</title>
+      <link>http://disorder.ink/unity-%E7%BE%8E%E6%9C%AF%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Sun, 12 Jul 2020 23:39:12 +0900</pubDate>
+      
+      <guid>http://disorder.ink/unity-%E7%BE%8E%E6%9C%AF%E5%B7%A5%E5%85%B7/</guid>
+      <description>实习了才发现自由时间的宝贵，平时的空余还有周末的时间都需要好好利用起来了。周末收拾装修的房间以及补觉都是碎片化的时间，就刷刷视频了解了一下美</description>
+    </item>
     
     <item>
       <title>【笔记】Shader 入门精要（十二）深度和法线纹理</title>

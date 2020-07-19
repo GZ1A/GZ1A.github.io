@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CodingCat on 昼阴夜阳</title>
+    <link>http://disorder.ink/tags/codingcat/</link>
+    <description>Recent content in CodingCat on 昼阴夜阳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 07 Jul 2020 20:10:45 +0900</lastBuildDate>
+    
+	<atom:link href="http://disorder.ink/tags/codingcat/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>【笔记】CodingCat 组合纹理</title>
+      <link>http://disorder.ink/codingcat-%E7%BB%84%E5%90%88%E7%BA%B9%E7%90%86/</link>
+      <pubDate>Tue, 07 Jul 2020 20:10:45 +0900</pubDate>
+      
+      <guid>http://disorder.ink/codingcat-%E7%BB%84%E5%90%88%E7%BA%B9%E7%90%86/</guid>
+      <description>自己想学的时候，不做笔记就不会认真学。最近看到了有大佬翻译了 Coding Cat 的教程，很感谢了。快速学一下，练练手。先上参考。 微信 | 基础渲染系列（三）多样</description>
+    </item>
+    
+  </channel>
+</rss>
