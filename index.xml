@@ -6,10 +6,158 @@
     <description>Recent content on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 19 Jul 2020 23:23:23 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 10 Aug 2020 00:29:44 +0900</lastBuildDate>
     
         <atom:link href="http://disorder.ink/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【CA】传送门</title>
+      <link>http://disorder.ink/%E4%BC%A0%E9%80%81%E9%97%A8/</link>
+      <pubDate>Mon, 10 Aug 2020 00:29:44 +0900</pubDate>
+      
+      <guid>http://disorder.ink/%E4%BC%A0%E9%80%81%E9%97%A8/</guid>
+      
+        <description>&lt;p&gt;从学 Unity 开始，每天固定刷知乎，刷B站，关注列表和收藏夹变厚的速度远超过我能消化的速度。大佬实在是太多了，真情实感觉得我好菜啊。逐渐被信息流淹没，变得好高骛远，急功近利，然后发现做不到就失去信心，垂头丧气。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;浮躁&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;于是决定找一找初心，为什么想做游戏。&lt;/p&gt;
+&lt;p&gt;游戏玩的多自不必多说。但真正推动我，让我想向这个方向努力一把的还是因为寒假前看到的《游戏编程挑战：体积云》。亲手构建一个想象中的，看得见，摸得着&lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;指可交互&lt;/span&gt;的世界真是太酷了。当场在寝室里立下了 Flag，要在寒假里去实现这个效果。虽然因为太难并没能实现，但因此有了后面学 Shader，Unity，图形学的经历，也有了现在勉强入行，在游戏公司实习的机会。&lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;虽然实习压榨了学习时间以至萌生退意&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;所以找回初心，先从一步一步跟随着实现那些挑战开始。&lt;/p&gt;
+&lt;p&gt;PS. 刚刚看了一个大佬的收藏夹，学习 Unity 至少 2 年，收藏的主题也是逐渐变态的。而我从接触 Unity 也就大半年。所以更多的是要积累。种一棵树最好的时间是十年前，其次是现在。&lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;一直坚持，一年半以后我也能那么厉害&lt;/span&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;加油，不要慌！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/bv1w741147Df/&#34;&gt;CA | 传送门&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>水面复现</title>
+      <link>http://disorder.ink/cool-water/</link>
+      <pubDate>Fri, 31 Jul 2020 01:21:02 +0900</pubDate>
+      
+      <guid>http://disorder.ink/cool-water/</guid>
+      
+        <description>&lt;p&gt;工作之后时间是真的少。又刚巧舟游炉石解神者和装修活动全撞在一起了。预定内的事完全做不完&amp;hellip;&lt;/p&gt;
+&lt;p&gt;很久没有做效果了。现在先试着复现一个简单的效果练练手。&lt;/p&gt;
+&lt;h2 id=&#34;目标效果&#34;&gt;目标效果&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/07/image-20200731022752088.png&#34; alt=&#34;image-20200731022752088&#34; style=&#34;zoom:50%;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/07/image-20200731023209075.png&#34; alt=&#34;image-20200731023209075&#34; style=&#34;zoom:50%;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/07/image-20200731023518012.png&#34; alt=&#34;image-20200731023518012&#34; style=&#34;zoom:50%;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;分析&#34;&gt;分析&lt;/h2&gt;
+&lt;p&gt;如图有两种水，游泳池和大海。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;游泳池&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;蓝白条纹 漫反射&lt;/li&gt;
+&lt;li&gt;凹凸不平 法线&lt;/li&gt;
+&lt;li&gt;一个反射特性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;大海&lt;/strong&gt; 就是在游泳池的基础上添加了&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;奇怪的折射&lt;/li&gt;
+&lt;li&gt;微妙的顶点动画（贴图性存疑）&lt;/li&gt;
+&lt;li&gt;深度mapping的漫反射&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;制作&#34;&gt;制作&lt;/h2&gt;
+&lt;h3 id=&#34;游泳池&#34;&gt;游泳池&lt;/h3&gt;
+&lt;h4 id=&#34;漫反射&#34;&gt;漫反射&lt;/h4&gt;
+&lt;p&gt;从视频里直接截图出来透视变换+手动均衡化一下&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/07/image-20200801204905056.png&#34; alt=&#34;image-20200801204905056&#34; style=&#34;zoom:50%;&#34; /&gt;&lt;/p&gt;
+&lt;h4 id=&#34;法线&#34;&gt;法线&lt;/h4&gt;
+&lt;p&gt;硬盘搜索法线，安排上一张。UV 随着时间飘一下，然后调一下颜色。然而因为用的是 HDRP，不知道怎么改变高光颜色。试着改了光源颜色，但高光本身依旧是白色的？还是不太熟悉这套流程。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/07/image-20200801212159390.png&#34; alt=&#34;image-20200801212159390&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;仔细排查发现后处理里的 HDRI SKY 又白又亮&amp;hellip;所以反射才这么亮&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/07/image-20200801232141850.png&#34; alt=&#34;image-20200801232141850&#34;&gt;&lt;/p&gt;
+&lt;p&gt;问题还是没解决，全向反光依然存在，光源全部关闭后如图。突然发现现在反射的颜色和天空完全一致，于是打开 HDRP 设置找到了天空反射的开关&amp;hellip;&lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;Quick Search 不支持 HDRP 设置的搜索真是难受，建议添加&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/07/image-20200801235347997.png&#34; alt=&#34;image-20200801235347997&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/07/image-20200801235208341.png&#34; alt=&#34;image-20200801235208341&#34;&gt;&lt;/p&gt;
+&lt;p&gt;（最后得到纯黑的平面，就不放图了）&lt;/p&gt;
+&lt;h4 id=&#34;反射&#34;&gt;反射&lt;/h4&gt;
+&lt;p&gt;反射的原理在初中就学过，成个虚像嘛。把物体全部放到对于平面对称的位置然后渲染就可以了。但通常物体都很多，移动起来挺麻烦，于是考虑移动相机到对称位置（及朝向）。渲染了之后存到纹理里再放到材质上显示。&lt;/p&gt;
+&lt;p&gt;这个变换怎么实现呢？一开始走了弯路，寻思着讨巧写个特殊情况。然而不仅出处还 debug 不能。迫不得已去计算通解（不愿面对.jpg)&lt;/p&gt;
+&lt;p&gt;最后得到了顶点变换的反射矩阵（已知平面方程 pn+ d = 0, 有一点 Q, 求 Q&amp;rsquo;）&lt;style type=&#34;text/css&#34;&gt;.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}&lt;/style&gt;&lt;span class=&#34;mask&#34; title = 你知道的太多了&gt;就是将 Q&#39; 用 n,d,Q 表示，然后拆成用来左乘 Qx Qy Qz 1 列的 4x4 矩阵&lt;/span&gt; 最后结果如下&lt;/p&gt;
+&lt;p&gt;$$\begin{bmatrix} 1-2n_xn_x&amp;amp;-2n_yn_x&amp;amp;-2n_zn_x&amp;amp;-dn_x \ -2n_xn_y&amp;amp;1-2n_yn_y&amp;amp;-2n_zn_y&amp;amp;-dn_y\ -2n_xn_z&amp;amp;-1n_yn_z&amp;amp;1-2n_zn_z&amp;amp;-dn_z\0&amp;amp;0&amp;amp;0&amp;amp;1\end{bmatrix} \begin{bmatrix} x\y\z\1 \end{bmatrix}$$&lt;/p&gt;
+&lt;p&gt;于是写到脚本里，在每帧的 prerender 时&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;放置相机&lt;/li&gt;
+&lt;li&gt;渲染反射图像&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然鹅出现了奇怪的效果。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/08/image-20200808181729782.png&#34; alt=&#34;image-20200808181729782&#34;&gt;&lt;/p&gt;
+&lt;p&gt;反射和正确位置有着微妙的偏差&amp;hellip;&lt;/p&gt;
+&lt;p&gt;感谢双屏（的分辨率不一样），在百思不得其解的时候无意间移动窗口，反射居然也随着变化了！举个极端的例子&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;C:/Users/GZ1A/AppData/Roaming/Typora/typora-user-images/image-20200808181856745.png&#34; alt=&#34;image-20200808181856745&#34; style=&#34;zoom:50%;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;突然反应过来，采样反射纹理用的是屏幕空间坐标。但屏幕的长宽比会变化，反射纹理的长宽比却不会变&amp;hellip;于是在渲染前判断一下反射纹理的尺寸。如果不对就重新生成一张。顺便也可以同步一下相机设置。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span class=&#34;kt&#34;&gt;float&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;scale&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0.5f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;ReflectionCam&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;CopyFrom&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Camera&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m_ReflectTexture&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ReflectionCam&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pixelWidth&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;scale&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m_ReflectTexture&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;width&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;
+   &lt;span class=&#34;n&#34;&gt;ReflectionCam&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pixelHeight&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;scale&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m_ReflectTexture&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m_ReflectTexture&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m_ReflectTexture&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Release&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;m_ReflectTexture&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;RenderTexture&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Mathf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;FloorToInt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ReflectionCam&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pixelWidth&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;scale&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                                         &lt;span class=&#34;n&#34;&gt;Mathf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;FloorToInt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ReflectionCam&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pixelHeight&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;scale&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;m_ReflectTexture&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hideFlags&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HideFlags&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DontSave&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;ReflectionCam&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;targetTexture&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m_ReflectTexture&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;WaterPlane&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GetComponent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Renderer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;material&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SetTexture&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;_ReflectTex&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m_ReflectTexture&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/08/image-20200808190325105.png&#34; alt=&#34;image-20200808190325105&#34; style=&#34;zoom:50%;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;终于有画面了！&lt;/p&gt;
+&lt;p&gt;还有一些问题，比如渲染的面反了，比如水面下的部分也被反射了。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://gameinstitute.qq.com/community/detail/106151&#34;&gt;GAD | 镜面反射原理及实现&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=cWpFZbjtSQg&#34;&gt;CA | Portals&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://gameinstitute.qq.com/community/detail/106203&#34;&gt;GAD |斜视锥体深度投影和裁剪-Oblique View Frustum Depth Projection and Clipping&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;本来应该翻转消隐渲染正确表面，使用斜投影（Oblique）裁剪掉水下的物体。但总是会出现 &lt;strong&gt;很奇怪的效果&lt;/strong&gt; ，如图上下移似乎使近裁剪面将反射裁剪掉了。因为参考的 water.cs 等脚本都不能在HDRP中使用，怀疑是 HDRP 有什么特殊处理。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/skylovecrayon/article/details/90812293&#34;&gt;博客 | 似乎确实&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/08/image-20200809131027478.png&#34; alt=&#34;image-20200809131027478&#34; style=&#34;zoom:50%;&#34; /&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;// 开启裁剪不知道为什么就会出现问题
+//ReflectionCam.projectionMatrix = cam.CalculateObliqueMatrix(clipPlaneCameraSpace);
+GL.invertCulling = true;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;资料过少，看官方文档也没有头绪&amp;hellip;感觉已经超出我的能力范围了&amp;hellip;建议暂时搁置。不过 HDRP 既然带来了这些限制，也当然有相应的优点。使用 Planar Reflection Probe 做个镜面反射暂时结尾吧（虽然看起来完全不一样）&amp;raquo;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;C:/Users/GZ1A/AppData/Roaming/Typora/typora-user-images/image-20200809134336076.png&#34; alt=&#34;image-20200809134336076&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h4 id=&#34;补充-使用-build-in-管线可以实现&#34;&gt;补充 使用 Build in 管线可以实现&lt;/h4&gt;
+&lt;h4 id=&#34;srp-下的实现参考-博客--urp应用--0--镜面反射httpsacgmartcomrenderplanar-reflection-based-on-distance&#34;&gt;SRP 下的实现参考 &lt;a href=&#34;https://acgmart.com/render/planar-reflection-based-on-distance/&#34;&gt;博客 | URP应用 – 0 – 镜面反射&lt;/a&gt;&lt;/h4&gt;
+&lt;/blockquote&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>【译】Shader Graph 中 的 ScreenPosition.a 的含义</title>
@@ -2352,7 +2500,7 @@ tex.Apply();
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200325004439393.png&#34; alt=&#34;image-20200325004439393&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;程序材质&#34;&gt;程序材质&lt;/h3&gt;
-&lt;p&gt;Unity 中专门有一种 &lt;strong&gt;程序材质（Procedural Materials）&lt;/strong&gt;，使用程序纹理，通过 &lt;strong&gt;Sunstance Designer&lt;/strong&gt; 在 Unity 外部生成。&lt;/p&gt;
+&lt;p&gt;Unity 中专门有一种 &lt;strong&gt;程序材质（Procedural Materials）&lt;/strong&gt;，使用程序纹理，通过 &lt;strong&gt;Substance Designer&lt;/strong&gt; 在 Unity 外部生成。&lt;/p&gt;
 </description>
       
     </item>
@@ -3551,356 +3699,6 @@ fixed3 frag(v2f i) : SV_Target {
 &lt;p&gt;rt&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/03/image-20200305071417478.png&#34; alt=&#34;image-20200305071748712&#34;&gt;&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>【笔记】Shader 入门精要（三）数学基础</title>
-      <link>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/</link>
-      <pubDate>Thu, 27 Feb 2020 01:02:33 +0900</pubDate>
-      
-      <guid>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%B8%89/</guid>
-      
-        <description>&lt;h2 id=&#34;笛卡尔坐标系&#34;&gt;笛卡尔坐标系&lt;/h2&gt;
-&lt;h3 id=&#34;二维&#34;&gt;二维&lt;/h3&gt;
-&lt;p&gt;略。&lt;/p&gt;
-&lt;h3 id=&#34;三维&#34;&gt;三维&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;基矢量 basis vector&lt;/li&gt;
-&lt;li&gt;正交基 orthogonal basis&lt;/li&gt;
-&lt;li&gt;标准正交基 orthonormal basis&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Unity 模型空间、世界空间左手坐标系（相机前向为z轴负方向，即观察空间中为右手坐标系）&lt;/p&gt;
-&lt;h2 id=&#34;点和矢量&#34;&gt;点和矢量&lt;/h2&gt;
-&lt;h3 id=&#34;矢量间乘法&#34;&gt;矢量间乘法&lt;/h3&gt;
-&lt;h4 id=&#34;点积dot-product-内积inner-product&#34;&gt;点积（dot product）| 内积（inner product）&lt;/h4&gt;
-&lt;p&gt;$$ a\cdot b= (|a|\hat a)\cdot (|b|\hat b) = |a||b|(\hat a\cdot\hat b) =|a||b|\cos\theta $$&lt;/p&gt;
-&lt;p&gt;$$ a \cdot b=(a_x,a_y,a_z)\cdot (b_x,b_y,b_z)=a_xb_x+a_yb_y+a_zb_z $$&lt;/p&gt;
-&lt;p&gt;二式可由一式、余弦定理及距离公式推得。&lt;/p&gt;
-&lt;h4 id=&#34;叉积corss-product-外积outer-product&#34;&gt;叉积（corss product）| 外积（outer product）&lt;/h4&gt;
-&lt;p&gt;$$ a\times b=(a_x,a_y,a_z)\times(b_x,b_y,b_z)=(a_yb_z-a_zb_y,a_zb_x-a_xb_z,a_xb_y-a_yb_x) $$&lt;/p&gt;
-&lt;p&gt;$$ |a\times b|=|a||b|\sin\theta $$&lt;/p&gt;
-&lt;h2 id=&#34;矩阵&#34;&gt;矩阵&lt;/h2&gt;
-&lt;h3 id=&#34;矩阵乘法&#34;&gt;矩阵乘法&lt;/h3&gt;
-&lt;p&gt;结果矩阵中的每个元素等于对应行矩阵和列矩阵的矢量点积。&lt;/p&gt;
-&lt;h3 id=&#34;逆矩阵&#34;&gt;逆矩阵&lt;/h3&gt;
-&lt;p&gt;可逆性：行列式不为 0（满秩）。（可通过累加任意一行展开后项与代数余子式积得到）&lt;/p&gt;
-&lt;p&gt;求逆：初等行变换。&lt;/p&gt;
-&lt;p&gt;矩阵用于变换，逆矩阵用于逆变换。不可逆说明变换降维丢失信息。&lt;/p&gt;
-&lt;h3 id=&#34;正交矩阵&#34;&gt;正交矩阵&lt;/h3&gt;
-&lt;p&gt;和其转置矩阵乘积为单位矩阵的矩阵。即逆矩阵等于转置矩阵。例如一组&lt;strong&gt;标准正交基&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;每行都是单位矢量。行与行间互相垂直。（列即行的转置，同理）&lt;/p&gt;
-&lt;h3 id=&#34;行列矩阵&#34;&gt;行/列矩阵&lt;/h3&gt;
-&lt;p&gt;Unity 中通常将矢量转换为&lt;strong&gt;列矩阵&lt;/strong&gt;$(x\quad y\quad z)^T $进行计算。因此通常是&lt;strong&gt;右乘&lt;/strong&gt;，即$CBAv=(C(B(Av)))$ 。&lt;/p&gt;
-&lt;h2 id=&#34;变换&#34;&gt;变换&lt;/h2&gt;
-&lt;h3 id=&#34;线性变换&#34;&gt;线性变换&lt;/h3&gt;
-&lt;p&gt;指可以保留矢量加和标量乘的变换。包括&lt;strong&gt;旋转&lt;/strong&gt;、&lt;strong&gt;缩放&lt;/strong&gt;、错切、镜像、正交投影等。使用 3×3 的矩阵就可以表示。&lt;/p&gt;
-&lt;h3 id=&#34;仿射变换&#34;&gt;仿射变换&lt;/h3&gt;
-&lt;p&gt;在线性变换的基础上增加了平移变换。需要把矢量扩展到齐次坐标空间（四维）。使用 4×4 的矩阵。&lt;/p&gt;
-&lt;h3 id=&#34;复合变换&#34;&gt;复合变换&lt;/h3&gt;
-&lt;p&gt;多个仿射变换的组合。为便于理解和使用，通常先&lt;strong&gt;缩放&lt;/strong&gt;，再&lt;strong&gt;旋转&lt;/strong&gt;，最后&lt;strong&gt;平移&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;在旋转中， Unity 的三轴旋转顺序在不旋转的坐标系下是 &lt;strong&gt;zxy&lt;/strong&gt;，右乘的矩阵表示为 $M_{Z\theta }M_{X\theta }M_{Y\theta }$，即等价于旋转的坐标系下的 **yxz** 顺序。参考 &lt;a href=&#34;https://www.cnblogs.com/wantnon/p/5908309.html&#34;&gt;博客 | unity中的欧拉角&lt;/a&gt;。&lt;/p&gt;
-&lt;h2 id=&#34;坐标空间&#34;&gt;坐标空间&lt;/h2&gt;
-&lt;h3 id=&#34;空间转换&#34;&gt;空间转换&lt;/h3&gt;
-&lt;p&gt;给定子坐标空间 C 中一点 $A_c = (a,b,c)$。已知子坐标空间原点 $O_c$，及坐标轴在父坐标空间 P 下的表示 $x_c,y_c,z_c$。要确定 $A_p$ ，需要从原点开始，分别向 x,y,z 轴方向平移 a,b,c 个单位。有&lt;/p&gt;
-&lt;p&gt;$$ A_p = M_{c\rightarrow p}A_c = O_c + a\bold x_c + b\bold y_c + c\bold z_c$$&lt;/p&gt;
-&lt;p&gt;$$M_{c\rightarrow p}= \begin{bmatrix}| &amp;amp; | &amp;amp; | &amp;amp; | \\  x_c &amp;amp; y_c &amp;amp; z_c &amp;amp; O_c\\ | &amp;amp; | &amp;amp; | &amp;amp; |\\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \end{bmatrix}$$&lt;/p&gt;
-&lt;p&gt;$$ M_{p\rightarrow c} =M_{c\rightarrow p}^{-1} $$&lt;/p&gt;
-&lt;p&gt;当对方向的坐标空间进行变换时，原点变换可以忽略。故仅需左上角的 3×3 矩阵。&lt;/p&gt;
-&lt;p&gt;当原点不变时，转换矩阵是正交矩阵，有 $ M_{p\rightarrow c} =M_{c\rightarrow p}^{-1}= M_{c\rightarrow p}^T $ 。&lt;/p&gt;
-&lt;h3 id=&#34;转换流程&#34;&gt;转换流程&lt;/h3&gt;
-&lt;h4 id=&#34;模型空间&#34;&gt;模型空间&lt;/h4&gt;
-&lt;p&gt;模型的顶点信息里使用的的坐标空间。&lt;/p&gt;
-&lt;h4 id=&#34;世界空间&#34;&gt;世界空间&lt;/h4&gt;
-&lt;p&gt;我们所关心的最外层的坐标空间，用来描述绝对位置。&lt;/p&gt;
-&lt;h4 id=&#34;观察空间&#34;&gt;观察空间&lt;/h4&gt;
-&lt;p&gt;以相机为原点，&lt;strong&gt;右手坐标系&lt;/strong&gt;，-z 轴指向摄像机前方（对编程无太大影响）。除了计算坐标系后求得转换矩阵的逆矩阵，还可以想象平移整个观察空间，将相机反向变换到原点且坐标轴重合，以获得变换矩阵。&lt;/p&gt;
-&lt;h4 id=&#34;裁剪空间&#34;&gt;裁剪空间&lt;/h4&gt;
-&lt;p&gt;通过投影矩阵将顶点转换到裁剪空间，为投影（三维到二维）做准备。&lt;/p&gt;
-&lt;h4 id=&#34;屏幕空间&#34;&gt;屏幕空间&lt;/h4&gt;
-&lt;p&gt;经过透视除法，得到 NDC （范围为 [-1,1] ） 。然后进行屏幕映射。（视口空间范围为 [0,1] ）&lt;/p&gt;
-&lt;h4 id=&#34;总结&#34;&gt;总结&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;http://static.zybuluo.com/candycat/z0ibvp779phr1hb0l902n1qy/vertex_conversion.png&#34; alt=&#34;vertex_conversion.png-100.9kB&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;法线变换&#34;&gt;法线变换&lt;/h2&gt;
-&lt;p&gt;切线和法线都是模型顶点携带的额外信息。如果直接使用变换矩阵对法线进行变换，可能使新法线不与表面垂直了 。变换矩阵有如下关系&lt;/p&gt;
-&lt;p&gt;$$G = (M^T_{A\rightarrow B}) ^{-1} = (M^{-1}_{A\rightarrow B}) ^{T}  $$&lt;/p&gt;
-&lt;p&gt;当 $M_{A\rightarrow B}$ 为正交矩阵（只包含旋转变换），则可使用原变换矩阵。&lt;/p&gt;
-&lt;h2 id=&#34;unity-shader-的内置变量&#34;&gt;Unity Shader 的内置变量&lt;/h2&gt;
-&lt;p&gt;先上参考路径&lt;code&gt;U3D\2020.1.0a12\Editor\Data\CGIncludes\UnityShaderVariables.cginc&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;变换矩阵&#34;&gt;变换矩阵&lt;/h3&gt;
-&lt;p&gt;UNITY_MATRIX_MVP 指经过 模型（M）观察（V）投影（P）变换的矩阵。&lt;/p&gt;
-&lt;p&gt;UNITY_MATRIX_IT_MV 指经过 逆（I）转置（T）的模型·观察矩阵。可以用来变换法线。&lt;/p&gt;
-&lt;h3 id=&#34;内置参数&#34;&gt;内置参数&lt;/h3&gt;
-&lt;p&gt;见参考文件内注释。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>【笔记】Shader 入门精要（二）Unity Shader</title>
-      <link>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</link>
-      <pubDate>Wed, 26 Feb 2020 02:08:40 +0900</pubDate>
-      
-      <guid>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
-      
-        <description>&lt;h2 id=&#34;定义&#34;&gt;定义&lt;/h2&gt;
-&lt;p&gt;Unity Shader 就是一个文本文件。通过将其赋予材质，可以改变该材质在渲染时的行为。主要是顶点、片元等着色器部分。&lt;/p&gt;
-&lt;h2 id=&#34;shader-lab&#34;&gt;Shader Lab&lt;/h2&gt;
-&lt;p&gt;Unity 为编写 Unity Shader 提供的说明性语言，定义了&lt;strong&gt;着色器代码&lt;/strong&gt;以及&lt;strong&gt;渲染所需的数据&lt;/strong&gt;。Unity 渲染引擎会根据平台将 Unity Shader 编译成相应代码和 Shader 文件。&lt;/p&gt;
-&lt;h2 id=&#34;结构&#34;&gt;结构&lt;/h2&gt;
-&lt;h3 id=&#34;名字&#34;&gt;名字&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Shader &amp;#34;Custom/MyShader&amp;#34; {	}
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;用一个字符串定义 Unity Shader 的名字（及路径）&lt;/p&gt;
-&lt;h3 id=&#34;属性properties&#34;&gt;属性（Properties)&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Properties {
-	PropName (&amp;#34;display name&amp;#34;, PropertyType) = DefaultValue
-	// ...
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;可以定义材质属性（渲染数据）的属性名、显示名、对应变量类型和初始值。在这里定义的属性会在材质面板中出现，便于修改。&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;center&#34;&gt;PropertyType&lt;/th&gt;
-&lt;th align=&#34;center&#34;&gt;DefaultValue&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;Int / Float / Range(min,max)&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;number&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;Color / Vector&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;（num,num,num,num)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;2D / Cube / 3D&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;&amp;ldquo;defaultTexture&amp;rdquo; {}&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3 id=&#34;subshader&#34;&gt;SubShader&lt;/h3&gt;
-&lt;p&gt;为了兼容不同能力的硬件而产生。加载时 Unity 会选择第一个可在目标环境运行的 &lt;a href=&#34;https://docs.unity3d.com/Manual/SL-SubShader.html&#34;&gt;SubShader&lt;/a&gt;。一个 Unity Shader 中必须要有一个 SubShader 语义块。每个语义块中包含了多个 Pass，每个 Pass 定义了一次完整的渲染流程。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;SubShader {
-	// optional
-	[Tags]			// 标签
-	[CommonState]	// 通用状态
-	
-	Pass{	}
-	// other Passes
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;渲染状态设置-rendersetup&#34;&gt;渲染状态设置 RenderSetup&lt;/h3&gt;
-&lt;p&gt;同&lt;a href=&#34;https://docs.unity3d.com/Manual/SL-Pass.html&#34;&gt; Pass 渲染状态设置&lt;/a&gt;，但会对所有 Pass 生效。如：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Cull 剔除模式&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;ZTest 深度测试&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;ZWrite 深度写入&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Blend 混合模式&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&amp;hellip;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Cull Front
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;标签-tags&#34;&gt;标签 Tags&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://docs.unity3d.com/Manual/SL-SubShaderTags.html&#34;&gt;Shader Tags&lt;/a&gt; 是两个字符串类型组成的&lt;strong&gt;键值对&lt;/strong&gt;。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Tags { &amp;#34;TagName1&amp;#34; = &amp;#34;Value1&amp;#34; &amp;#34;TagName2&amp;#34; = &amp;#34;Value&amp;#34; = &amp;#34;Value2&amp;#34; }
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;pass-语义块&#34;&gt;Pass 语义块&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Pass {
-	[Name]
-	Name &amp;#34;MyPassName&amp;#34;	// 定义名称以便复用
-	[Tags]
-	Tags { &amp;#34;TagName1&amp;#34; = &amp;#34;Value1&amp;#34; &amp;#34;TagName2&amp;#34; = &amp;#34;Value&amp;#34; = &amp;#34;Value2&amp;#34; }
-	[RenderSetup]
-	// other code
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;还有些特殊的 Pass。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;UsePass &amp;#34;MyShader/MYPASSNAME&amp;#34;	// 复用其他Pass *必须要全部大写
-GrabPass { &amp;#34;TexPropName&amp;#34; }		// 负责抓取屏幕并储存
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;fallback&#34;&gt;FallBack&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Fallback &amp;#34;name&amp;#34;	/ OFF
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;最低级 Shader，类似 Switch 语句的 default 情况。&lt;/p&gt;
-&lt;h2 id=&#34;形式&#34;&gt;形式&lt;/h2&gt;
-&lt;h3 id=&#34;整体结构&#34;&gt;整体结构&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Shader &amp;#34;MyShader&amp;#34; {
-	Properties {
-		// props
-	}
-	SubShader {
-		// Shader 代码
-		Pass {	}
-	}
-	SubShader {
-		// ...
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;表面着色器&#34;&gt;表面着色器&lt;/h3&gt;
-&lt;p&gt;Unity 自己创造的，&lt;strong&gt;更抽象&lt;/strong&gt;的着色器代码类型，会被&lt;strong&gt;转换为顶点/片元着色器&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;使用 CG/HLSL 编写，直接定义在 SubShader 语义块中。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;SubShader {
-	Tags { &amp;#34;RanderType&amp;#34; = &amp;#34;Opaque&amp;#34; }
-	CGPROGRAM
-	#pragma surface surf Lambert
-	struct Input {
-		float4 color : COLOR;
-	};
-	void surf (Input IN,inout SurfaceOutput o) {
-		o.Albedo = 1;
-	}
-	ENDCG
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;顶点片元着色器&#34;&gt;顶点/片元着色器&lt;/h3&gt;
-&lt;p&gt;使用 CG/HLSL 编写在 Pass 语义块内。相对复杂而灵活。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Pass{
-	CGPROGRAM
-	#pragma vertex vert
-	#pragma fragment frag
-	float4 vert(float4 v:POSITION) : SV_POSITION{
-		return mul (UITY_MATRIX_MVP, v);
-	}
-	fixed frag() : SV_Target {
-		return fixed4(1.0,0,0,0,0,1,0);
-	}
-	ENDCG
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;固定函数着色器&#34;&gt;固定函数着色器&lt;/h3&gt;
-&lt;p&gt;定义在 Pass 内，纯 ShaderLab 渲染设置（不可编程）（&lt;del&gt;不能编程的GPU现已不存在&lt;/del&gt;）。&lt;/p&gt;
 </description>
       
     </item>

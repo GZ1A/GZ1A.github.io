@@ -167,4 +167,4 @@ tex.Apply();
 
 ### 程序材质
 
-Unity 中专门有一种 **程序材质（Procedural Materials）**，使用程序纹理，通过 **Sunstance Designer** 在 Unity 外部生成。
+Unity 中专门有一种 **程序材质（Procedural Materials）**，使用程序纹理，通过 **Substance Designer** 在 Unity 外部生成。

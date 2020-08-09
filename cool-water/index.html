@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>【译】Shader Graph 中 的 ScreenPosition.a 的含义 - 昼阴夜阳</title>
+  <title>水面复现 - 昼阴夜阳</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="昼阴夜阳" />
-  <meta name="description" content="论坛 | What does ScreenPosition.a means in shader graph? Shader Graph 中 的 ScreenPosition.a 的含义？ Q: I&amp;rsquo;ve search around and checked out Documentation, but cannot understand what exactly does ShaderGraph&amp;rsquo;s ScreenPosition node&amp;rsquo;s b and **a ** components meaning. Isn&amp;rsquo;t r and g components enough to represent 2d screen position? 我已经在文档里找了一圈了，但是无法" />
+  <meta name="description" content="工作之后时间是真的少。又刚巧舟游炉石解神者和装修活动全撞在一起了。预定内的事完全做不完&amp;hellip; 很久没有做效果了。现在先试着复现一个简" />
 
 
 
@@ -34,7 +34,7 @@
 <meta name="generator" content="Hugo 0.64.1" />
 
 
-<link rel="canonical" href="http://disorder.ink/%E8%AF%91screenposition.a/" />
+<link rel="canonical" href="http://disorder.ink/cool-water/" />
 
 
 
@@ -58,23 +58,23 @@
 
 
 
-<meta property="og:title" content="【译】Shader Graph 中 的 ScreenPosition.a 的含义" />
-<meta property="og:description" content="论坛 | What does ScreenPosition.a means in shader graph? Shader Graph 中 的 ScreenPosition.a 的含义？ Q: I&rsquo;ve search around and checked out Documentation, but cannot understand what exactly does ShaderGraph&rsquo;s ScreenPosition node&rsquo;s b and **a ** components meaning. Isn&rsquo;t r and g components enough to represent 2d screen position? 我已经在文档里找了一圈了，但是无法" />
+<meta property="og:title" content="水面复现" />
+<meta property="og:description" content="工作之后时间是真的少。又刚巧舟游炉石解神者和装修活动全撞在一起了。预定内的事完全做不完&hellip; 很久没有做效果了。现在先试着复现一个简" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://disorder.ink/%E8%AF%91screenposition.a/" />
-<meta property="article:published_time" content="2020-07-19T23:23:23+09:00" />
-<meta property="article:modified_time" content="2020-07-19T23:23:23+09:00" />
-<meta itemprop="name" content="【译】Shader Graph 中 的 ScreenPosition.a 的含义">
-<meta itemprop="description" content="论坛 | What does ScreenPosition.a means in shader graph? Shader Graph 中 的 ScreenPosition.a 的含义？ Q: I&rsquo;ve search around and checked out Documentation, but cannot understand what exactly does ShaderGraph&rsquo;s ScreenPosition node&rsquo;s b and **a ** components meaning. Isn&rsquo;t r and g components enough to represent 2d screen position? 我已经在文档里找了一圈了，但是无法">
-<meta itemprop="datePublished" content="2020-07-19T23:23:23&#43;09:00" />
-<meta itemprop="dateModified" content="2020-07-19T23:23:23&#43;09:00" />
-<meta itemprop="wordCount" content="723">
+<meta property="og:url" content="http://disorder.ink/cool-water/" />
+<meta property="article:published_time" content="2020-07-31T01:21:02+09:00" />
+<meta property="article:modified_time" content="2020-07-31T01:21:02+09:00" />
+<meta itemprop="name" content="水面复现">
+<meta itemprop="description" content="工作之后时间是真的少。又刚巧舟游炉石解神者和装修活动全撞在一起了。预定内的事完全做不完&hellip; 很久没有做效果了。现在先试着复现一个简">
+<meta itemprop="datePublished" content="2020-07-31T01:21:02&#43;09:00" />
+<meta itemprop="dateModified" content="2020-07-31T01:21:02&#43;09:00" />
+<meta itemprop="wordCount" content="1325">
 
 
 
 <meta itemprop="keywords" content="Unity,Shader," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="【译】Shader Graph 中 的 ScreenPosition.a 的含义"/>
-<meta name="twitter:description" content="论坛 | What does ScreenPosition.a means in shader graph? Shader Graph 中 的 ScreenPosition.a 的含义？ Q: I&rsquo;ve search around and checked out Documentation, but cannot understand what exactly does ShaderGraph&rsquo;s ScreenPosition node&rsquo;s b and **a ** components meaning. Isn&rsquo;t r and g components enough to represent 2d screen position? 我已经在文档里找了一圈了，但是无法"/>
+<meta name="twitter:title" content="水面复现"/>
+<meta name="twitter:description" content="工作之后时间是真的少。又刚巧舟游炉石解神者和装修活动全撞在一起了。预定内的事完全做不完&hellip; 很久没有做效果了。现在先试着复现一个简"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -279,18 +279,18 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">【译】Shader Graph 中 的 ScreenPosition.a 的含义</h1>
+      <h1 class="post-title">水面复现</h1>
       
       <div class="post-meta">
-        <time datetime="2020-07-19" class="post-time">
-          2020-07-19
+        <time datetime="2020-07-31" class="post-time">
+          2020-07-31
         </time>
         <div class="post-category">
-            <a href="http://disorder.ink/categories/%E7%BF%BB%E8%AF%91/"> 翻译 </a>
+            <a href="http://disorder.ink/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             
           </div>
-        <span class="more-meta"> 约 723 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span class="more-meta"> 约 1325 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
 
         
         
@@ -311,7 +311,13 @@
   <div class="post-toc-content" style="text-align:left;">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#shader-graph-中-的-screenpositiona-的含义">Shader Graph 中 的 ScreenPosition.a 的含义？</a></li>
+    <li><a href="#目标效果">目标效果</a></li>
+    <li><a href="#分析">分析</a></li>
+    <li><a href="#制作">制作</a>
+      <ul>
+        <li><a href="#游泳池">游泳池</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -320,18 +326,121 @@
 
     
     <div class="post-content">
-      <p><a href="https://forum.unity.com/threads/what-does-screenposition-a-means-in-shader-graph.909866/">论坛 | What does ScreenPosition.a means in shader graph?</a></p>
-<h2 id="shader-graph-中-的-screenpositiona-的含义">Shader Graph 中 的 ScreenPosition.a 的含义？</h2>
-<p><strong>Q:</strong>	I&rsquo;ve search around and checked out <a href="https://docs.unity3d.com/Packages/com.unity.shadergraph@6.9/manual/Screen-Position-Node.html">Documentation</a>, but cannot understand what exactly does ShaderGraph&rsquo;s ScreenPosition node&rsquo;s <strong>b</strong> and **a ** components meaning.</p>
-<p>Isn&rsquo;t <strong>r</strong> and <strong>g</strong> components enough to represent 2d screen position?</p>
-<p>我已经在文档里找了一圈了，但是无法理解 ShaderGraph 的 ScreenPosition 节点的 b 和 a 的含义是什么。</p>
-<p>r 和 g 分量不足以代表2d屏幕位置吗？</p>
-<p><strong>A:</strong>	For most of the modes, the b and a are hard coded 0.0 values.</p>
-<p>However in the &ldquo;raw&rdquo; mode this is passing along the original interpolated clip space position z and w. The z/w (or rather b/a in shader graph) is the raw depth buffer value for that pixel, similar to the raw value you&rsquo;d get from the Scene Depth node. The w or a depends on if you&rsquo;re using a perspective or orthographic camera. With an orthographic projection the w is always 1.0. With a perspective camera it&rsquo;s the view depth, equivalent to the Position node&rsquo;s negative b if set to Space View (view space is -Z forward).</p>
-<p>对于大多数模式，b和a是硬编码的0.0值。</p>
-<p>但是，在“原始”（Raw）模式下，b 和 a 传递 <strong>插值后的裁剪空间中的 z 和 w</strong>。z / w（即着色器图中的 b / a）（指除法）是该像素（片元）的原始深度缓冲区值，和“场景深度”节点获得的原始值一样。 w （即 a）的值取决于你使用的是透视相机还是正交相机。 使用正交投影时，w 始终为 1.0。 对于透视相机，它是 <strong>（片元在）视角坐标系中的深度</strong>，相当于视角空间下的“位置”（Position - Space View）节点的 -b（视角空间为-Z向前）。</p>
-<p>Why is that the value for a? Because of how perspective correct interpolation works. The Screen Position node&rsquo;s rg values in the default mode are equal to rg/a in the raw mode. That&rsquo;s actually how the default mode calculates those values from the interpolated inputs. When using an orthographic projection you don&rsquo;t need to do any special handling of interpolated values, so the a is just always 1.0. As I said before, b/a is the depth, because the zw values are copies of the unmodified clip space position the vertex shader outputs and that the GPU normally uses to calculate the screen depth by doing that same z/w in the hardware.</p>
-<p>为什么这是 a 的值？因为透视校正插值是这样工作的。默认模式下屏幕位置节点的 rg 值等于原始模式下的 rg/a 。这实际上就是默认模式根据插值输入计算这些值的方法。使用正交投影时，不需要对插值值进行任何特殊处理，因此 a 始终为 1.0。如前所述，b/a 是深度，因为 zw 值是顶点着色器输出的未修改的裁剪空间位置的副本，GPU 通常通过在硬件中执行相同的 z/w 来计算屏幕深度。</p>
+      <p>工作之后时间是真的少。又刚巧舟游炉石解神者和装修活动全撞在一起了。预定内的事完全做不完&hellip;</p>
+<p>很久没有做效果了。现在先试着复现一个简单的效果练练手。</p>
+<h2 id="目标效果">目标效果</h2>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/07/image-20200731022752088.png" alt="image-20200731022752088" style="zoom:50%;" /></p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/07/image-20200731023209075.png" alt="image-20200731023209075" style="zoom:50%;" /></p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/07/image-20200731023518012.png" alt="image-20200731023518012" style="zoom:50%;" /></p>
+<h2 id="分析">分析</h2>
+<p>如图有两种水，游泳池和大海。</p>
+<p><strong>游泳池</strong></p>
+<ul>
+<li>蓝白条纹 漫反射</li>
+<li>凹凸不平 法线</li>
+<li>一个反射特性</li>
+</ul>
+<p><strong>大海</strong> 就是在游泳池的基础上添加了</p>
+<ul>
+<li>奇怪的折射</li>
+<li>微妙的顶点动画（贴图性存疑）</li>
+<li>深度mapping的漫反射</li>
+</ul>
+<h2 id="制作">制作</h2>
+<h3 id="游泳池">游泳池</h3>
+<h4 id="漫反射">漫反射</h4>
+<p>从视频里直接截图出来透视变换+手动均衡化一下</p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/07/image-20200801204905056.png" alt="image-20200801204905056" style="zoom:50%;" /></p>
+<h4 id="法线">法线</h4>
+<p>硬盘搜索法线，安排上一张。UV 随着时间飘一下，然后调一下颜色。然而因为用的是 HDRP，不知道怎么改变高光颜色。试着改了光源颜色，但高光本身依旧是白色的？还是不太熟悉这套流程。</p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/07/image-20200801212159390.png" alt="image-20200801212159390"></p>
+<blockquote>
+<p>仔细排查发现后处理里的 HDRI SKY 又白又亮&hellip;所以反射才这么亮</p>
+</blockquote>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/07/image-20200801232141850.png" alt="image-20200801232141850"></p>
+<p>问题还是没解决，全向反光依然存在，光源全部关闭后如图。突然发现现在反射的颜色和天空完全一致，于是打开 HDRP 设置找到了天空反射的开关&hellip;<style type="text/css">.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}</style><span class="mask" title = 你知道的太多了>Quick Search 不支持 HDRP 设置的搜索真是难受，建议添加</span></p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/07/image-20200801235347997.png" alt="image-20200801235347997"></p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/07/image-20200801235208341.png" alt="image-20200801235208341"></p>
+<p>（最后得到纯黑的平面，就不放图了）</p>
+<h4 id="反射">反射</h4>
+<p>反射的原理在初中就学过，成个虚像嘛。把物体全部放到对于平面对称的位置然后渲染就可以了。但通常物体都很多，移动起来挺麻烦，于是考虑移动相机到对称位置（及朝向）。渲染了之后存到纹理里再放到材质上显示。</p>
+<p>这个变换怎么实现呢？一开始走了弯路，寻思着讨巧写个特殊情况。然而不仅出处还 debug 不能。迫不得已去计算通解（不愿面对.jpg)</p>
+<p>最后得到了顶点变换的反射矩阵（已知平面方程 pn+ d = 0, 有一点 Q, 求 Q&rsquo;）<style type="text/css">.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}</style><span class="mask" title = 你知道的太多了>就是将 Q' 用 n,d,Q 表示，然后拆成用来左乘 Qx Qy Qz 1 列的 4x4 矩阵</span> 最后结果如下</p>
+<p>$$\begin{bmatrix} 1-2n_xn_x&amp;-2n_yn_x&amp;-2n_zn_x&amp;-dn_x \ -2n_xn_y&amp;1-2n_yn_y&amp;-2n_zn_y&amp;-dn_y\ -2n_xn_z&amp;-1n_yn_z&amp;1-2n_zn_z&amp;-dn_z\0&amp;0&amp;0&amp;1\end{bmatrix} \begin{bmatrix} x\y\z\1 \end{bmatrix}$$</p>
+<p>于是写到脚本里，在每帧的 prerender 时</p>
+<ul>
+<li>放置相机</li>
+<li>渲染反射图像</li>
+</ul>
+<p>然鹅出现了奇怪的效果。</p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/08/image-20200808181729782.png" alt="image-20200808181729782"></p>
+<p>反射和正确位置有着微妙的偏差&hellip;</p>
+<p>感谢双屏（的分辨率不一样），在百思不得其解的时候无意间移动窗口，反射居然也随着变化了！举个极端的例子</p>
+<p><img src="C:/Users/GZ1A/AppData/Roaming/Typora/typora-user-images/image-20200808181856745.png" alt="image-20200808181856745" style="zoom:50%;" /></p>
+<p>突然反应过来，采样反射纹理用的是屏幕空间坐标。但屏幕的长宽比会变化，反射纹理的长宽比却不会变&hellip;于是在渲染前判断一下反射纹理的尺寸。如果不对就重新生成一张。顺便也可以同步一下相机设置。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="kt">float</span> <span class="n">scale</span> <span class="p">=</span> <span class="m">0.5f</span><span class="p">;</span>
+
+<span class="n">ReflectionCam</span><span class="p">.</span><span class="n">CopyFrom</span><span class="p">(</span><span class="n">Camera</span><span class="p">.</span><span class="n">main</span><span class="p">)</span><span class="p">;</span>
+
+<span class="k">if</span><span class="p">(</span><span class="p">!</span><span class="n">m_ReflectTexture</span> <span class="p">|</span><span class="p">|</span> <span class="n">ReflectionCam</span><span class="p">.</span><span class="n">pixelWidth</span> <span class="p">*</span> <span class="n">scale</span> <span class="p">!</span><span class="p">=</span> <span class="n">m_ReflectTexture</span><span class="p">.</span><span class="n">width</span><span class="p">|</span><span class="p">|</span>
+   <span class="n">ReflectionCam</span><span class="p">.</span><span class="n">pixelHeight</span> <span class="p">*</span> <span class="n">scale</span> <span class="p">!</span><span class="p">=</span> <span class="n">m_ReflectTexture</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">m_ReflectTexture</span><span class="p">)</span><span class="n">m_ReflectTexture</span><span class="p">.</span><span class="n">Release</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+    <span class="n">m_ReflectTexture</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RenderTexture</span><span class="p">(</span><span class="n">Mathf</span><span class="p">.</span><span class="n">FloorToInt</span><span class="p">(</span><span class="n">ReflectionCam</span><span class="p">.</span><span class="n">pixelWidth</span> <span class="p">*</span> <span class="n">scale</span><span class="p">)</span><span class="p">,</span>
+                                         <span class="n">Mathf</span><span class="p">.</span><span class="n">FloorToInt</span><span class="p">(</span><span class="n">ReflectionCam</span><span class="p">.</span><span class="n">pixelHeight</span> <span class="p">*</span> <span class="n">scale</span><span class="p">)</span><span class="p">,</span> <span class="m">2</span><span class="m">4</span><span class="p">)</span><span class="p">;</span>
+    <span class="n">m_ReflectTexture</span><span class="p">.</span><span class="n">hideFlags</span> <span class="p">=</span> <span class="n">HideFlags</span><span class="p">.</span><span class="n">DontSave</span><span class="p">;</span>
+
+    <span class="n">ReflectionCam</span><span class="p">.</span><span class="n">targetTexture</span> <span class="p">=</span> <span class="n">m_ReflectTexture</span><span class="p">;</span>
+    <span class="n">WaterPlane</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">Renderer</span><span class="p">&gt;</span><span class="p">(</span><span class="p">)</span><span class="p">.</span><span class="n">material</span><span class="p">.</span><span class="n">SetTexture</span><span class="p">(</span><span class="s">&#34;_ReflectTex&#34;</span><span class="p">,</span> <span class="n">m_ReflectTexture</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/08/image-20200808190325105.png" alt="image-20200808190325105" style="zoom:50%;" /></p>
+<p>终于有画面了！</p>
+<p>还有一些问题，比如渲染的面反了，比如水面下的部分也被反射了。</p>
+<p><a href="https://gameinstitute.qq.com/community/detail/106151">GAD | 镜面反射原理及实现</a></p>
+<p><a href="https://www.youtube.com/watch?v=cWpFZbjtSQg">CA | Portals</a></p>
+<p><a href="https://gameinstitute.qq.com/community/detail/106203">GAD |斜视锥体深度投影和裁剪-Oblique View Frustum Depth Projection and Clipping</a></p>
+<p>本来应该翻转消隐渲染正确表面，使用斜投影（Oblique）裁剪掉水下的物体。但总是会出现 <strong>很奇怪的效果</strong> ，如图上下移似乎使近裁剪面将反射裁剪掉了。因为参考的 water.cs 等脚本都不能在HDRP中使用，怀疑是 HDRP 有什么特殊处理。</p>
+<p><a href="https://blog.csdn.net/skylovecrayon/article/details/90812293">博客 | 似乎确实</a></p>
+<p><img src="https://gitee.com/GZ1A/image-hosting/raw/master/blog/2020/08/image-20200809131027478.png" alt="image-20200809131027478" style="zoom:50%;" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">// 开启裁剪不知道为什么就会出现问题
+//ReflectionCam.projectionMatrix = cam.CalculateObliqueMatrix(clipPlaneCameraSpace);
+GL.invertCulling = true;
+</code></pre></td></tr></table>
+</div>
+</div><p>资料过少，看官方文档也没有头绪&hellip;感觉已经超出我的能力范围了&hellip;建议暂时搁置。不过 HDRP 既然带来了这些限制，也当然有相应的优点。使用 Planar Reflection Probe 做个镜面反射暂时结尾吧（虽然看起来完全不一样）&raquo;&gt;</p>
+<p><img src="C:/Users/GZ1A/AppData/Roaming/Typora/typora-user-images/image-20200809134336076.png" alt="image-20200809134336076"></p>
+<blockquote>
+<h4 id="补充-使用-build-in-管线可以实现">补充 使用 Build in 管线可以实现</h4>
+<h4 id="srp-下的实现参考-博客--urp应用--0--镜面反射httpsacgmartcomrenderplanar-reflection-based-on-distance">SRP 下的实现参考 <a href="https://acgmart.com/render/planar-reflection-based-on-distance/">博客 | URP应用 – 0 – 镜面反射</a></h4>
+</blockquote>
 
     </div>
 
@@ -345,7 +454,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-      2020-07-19
+      2020-07-31
       
     </span>
   </p>
@@ -387,7 +496,7 @@
       
       <nav class="post-nav">
         
-          <a class="prev" href="/cool-water/">
+          <a class="prev" href="/%E4%BC%A0%E9%80%81%E9%97%A8/">
             
             <i class="iconfont">
               <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -397,12 +506,12 @@
 </svg>
 
             </i>
-            <span class="prev-text nav-default">水面复现</span>
+            <span class="prev-text nav-default">【CA】传送门</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         
-          <a class="next" href="/unity-%E7%BE%8E%E6%9C%AF%E5%B7%A5%E5%85%B7/">
-            <span class="next-text nav-default">【笔记】Unity 美术工具</span>
+          <a class="next" href="/%E8%AF%91screenposition.a/">
+            <span class="next-text nav-default">【译】Shader Graph 中 的 ScreenPosition.a 的含义</span>
             <span class="prev-text nav-mobile">下一篇</span>
             
             <i class="iconfont">
