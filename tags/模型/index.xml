@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>模型 on 昼阴夜阳</title>
+    <link>http://disorder.ink/tags/%E6%A8%A1%E5%9E%8B/</link>
+    <description>Recent content in 模型 on 昼阴夜阳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 08 Nov 2020 22:25:31 +0800</lastBuildDate>
+    
+	<atom:link href="http://disorder.ink/tags/%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>护盾法线偏移的接缝</title>
+      <link>http://disorder.ink/%E6%8A%A4%E7%9B%BE%E7%9A%84%E6%B3%95%E7%BA%BF/</link>
+      <pubDate>Sun, 08 Nov 2020 22:25:31 +0800</pubDate>
+      
+      <guid>http://disorder.ink/%E6%8A%A4%E7%9B%BE%E7%9A%84%E6%B3%95%E7%BA%BF/</guid>
+      <description>问题 做一个面片会起伏的护盾，却发现有这样的接缝。 调查 首先检查 Shader 中相关部分 1 2 v.vertex += heightControll * _FloatDistance * v.normal; o.pos = UnityObjectToClipPos(v.vertex); 就是很简单的往法线方向偏移了一下。然后到3d</description>
+    </item>
+    
+  </channel>
+</rss>

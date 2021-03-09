@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on 昼阴夜阳</title>
+    <link>http://disorder.ink/tags/python/</link>
+    <description>Recent content in Python on 昼阴夜阳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 05 Jan 2021 22:08:53 +0800</lastBuildDate>
+    
+	<atom:link href="http://disorder.ink/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python 笔记 函数</title>
+      <link>http://disorder.ink/python%E7%AC%94%E8%AE%B0%E4%BA%8C/</link>
+      <pubDate>Tue, 05 Jan 2021 22:08:53 +0800</pubDate>
+      
+      <guid>http://disorder.ink/python%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
+      <description>函数 函数定义函数代码块以 def 关键词开头，后接函数标识符名称和圆括号**()** 任何传入参数和自变量必须放在圆括号中间。圆括号之间可以用于定义参</description>
+    </item>
+    
+    <item>
+      <title>Python 笔记 语法基础</title>
+      <link>http://disorder.ink/python%E7%AC%94%E8%AE%B0%E4%B8%80/</link>
+      <pubDate>Sun, 27 Dec 2020 20:13:03 +0800</pubDate>
+      
+      <guid>http://disorder.ink/python%E7%AC%94%E8%AE%B0%E4%B8%80/</guid>
+      <description>语法基础 数据类型 数字 Number 用于存储数值的，不可改变的数据类型（改变等于分配一个新对象） 1 2 3 int1, int2, int3 = 13, -0o10, 0x6A # 0o 8进制 0x16进制 float1, float2 = 2e-98, 450.0 complex1, complex2 =</description>
+    </item>
+    
+  </channel>
+</rss>

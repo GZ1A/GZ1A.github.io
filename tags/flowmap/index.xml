@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FlowMap on 昼阴夜阳</title>
+    <link>http://disorder.ink/tags/flowmap/</link>
+    <description>Recent content in FlowMap on 昼阴夜阳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 15 Feb 2021 15:03:26 +0800</lastBuildDate>
+    
+	<atom:link href="http://disorder.ink/tags/flowmap/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>UE4 Shader FlowMap 燃烧</title>
+      <link>http://disorder.ink/ue4-shader-flowmap-%E7%87%83%E7%83%A7/</link>
+      <pubDate>Mon, 15 Feb 2021 15:03:26 +0800</pubDate>
+      
+      <guid>http://disorder.ink/ue4-shader-flowmap-%E7%87%83%E7%83%A7/</guid>
+      <description>知乎 | Flow Map 博客 | Flowmapped-Burn-Shader Flow Map Flow Map 就是控制UV动画的烘焙数据。始于水面流动的时候水面贴图要平移，但只平移是不够的，有点挤压扰动在里面才逼真。 预先烘焙</description>
+    </item>
+    
+  </channel>
+</rss>

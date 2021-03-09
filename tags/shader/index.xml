@@ -6,10 +6,37 @@
     <description>Recent content in Shader on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 31 Jul 2020 01:21:02 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 15 Feb 2021 15:03:26 +0800</lastBuildDate>
     
 	<atom:link href="http://disorder.ink/tags/shader/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>UE4 Shader FlowMap 燃烧</title>
+      <link>http://disorder.ink/ue4-shader-flowmap-%E7%87%83%E7%83%A7/</link>
+      <pubDate>Mon, 15 Feb 2021 15:03:26 +0800</pubDate>
+      
+      <guid>http://disorder.ink/ue4-shader-flowmap-%E7%87%83%E7%83%A7/</guid>
+      <description>知乎 | Flow Map 博客 | Flowmapped-Burn-Shader Flow Map Flow Map 就是控制UV动画的烘焙数据。始于水面流动的时候水面贴图要平移，但只平移是不够的，有点挤压扰动在里面才逼真。 预先烘焙</description>
+    </item>
+    
+    <item>
+      <title>UE4 Shader 高斯模糊</title>
+      <link>http://disorder.ink/ue4-shader-%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A/</link>
+      <pubDate>Sun, 14 Feb 2021 10:03:50 +0800</pubDate>
+      
+      <guid>http://disorder.ink/ue4-shader-%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A/</guid>
+      <description>参考 Unreal Engine 4 Custom Shaders Tutorial | raywenderlich.com 材质编辑器的节点系统是个很棒的工具，但节点也有一些限制，比如不能创建 循环 和 switch。不过通过创建自定义节点可以绕过这</description>
+    </item>
+    
+    <item>
+      <title>UE4 Shader 水墨</title>
+      <link>http://disorder.ink/ue4-shader-%E6%B0%B4%E5%A2%A8/</link>
+      <pubDate>Fri, 05 Feb 2021 23:43:45 +0800</pubDate>
+      
+      <guid>http://disorder.ink/ue4-shader-%E6%B0%B4%E5%A2%A8/</guid>
+      <description>目标效果 B站 | 【虚幻4】_水墨风格动画练习 最终效果 实现 思路 首先感谢UP主在评论区里讲解了这个效果的实现思路。 用菲涅尔做边缘，中间用墨迹贴图。</description>
+    </item>
     
     <item>
       <title>水面复现</title>

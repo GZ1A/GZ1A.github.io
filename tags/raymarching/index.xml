@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RayMarching on 昼阴夜阳</title>
+    <link>http://disorder.ink/tags/raymarching/</link>
+    <description>Recent content in RayMarching on 昼阴夜阳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 02 Feb 2021 23:01:11 +0800</lastBuildDate>
+    
+	<atom:link href="http://disorder.ink/tags/raymarching/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>UE4 RayMarching 史莱姆</title>
+      <link>http://disorder.ink/ue4-shader-%E5%8F%B2%E8%8E%B1%E5%A7%86/</link>
+      <pubDate>Tue, 02 Feb 2021 23:01:11 +0800</pubDate>
+      
+      <guid>http://disorder.ink/ue4-shader-%E5%8F%B2%E8%8E%B1%E5%A7%86/</guid>
+      <description>参考 【UE4】史莱姆材质制作流程 自定义节点 可以写入 GLSL 的节点。可以直接在代码属性里写入，也可以引用 ush 文件。 代码 文件放在 引擎路径\UE_4.26</description>
+    </item>
+    
+    <item>
+      <title>算法科普 Ordered Dithering</title>
+      <link>http://disorder.ink/%E7%AE%97%E6%B3%95%E7%A7%91%E6%99%AE-%E6%9C%89%E5%BA%8F%E6%8A%96%E5%8A%A8/</link>
+      <pubDate>Tue, 26 Jan 2021 20:17:55 +0800</pubDate>
+      
+      <guid>http://disorder.ink/%E7%AE%97%E6%B3%95%E7%A7%91%E6%99%AE-%E6%9C%89%E5%BA%8F%E6%8A%96%E5%8A%A8/</guid>
+      <description>有序抖动 WIKI | Ordered_dithering 让角色半透明：从 Ordered Dithering 说起 图像处理之 Dithering 抖动是有意应用的一种噪声形式，用于使量化误差随机化，从而防止出现大规模模式（例如图像中的色</description>
+    </item>
+    
+    <item>
+      <title>算法科普 Parallax Mapping</title>
+      <link>http://disorder.ink/%E7%AE%97%E6%B3%95%E7%A7%91%E6%99%AE-%E8%A7%86%E5%B7%AE%E8%B4%B4%E5%9B%BE/</link>
+      <pubDate>Tue, 26 Jan 2021 20:17:55 +0800</pubDate>
+      
+      <guid>http://disorder.ink/%E7%AE%97%E6%B3%95%E7%A7%91%E6%99%AE-%E8%A7%86%E5%B7%AE%E8%B4%B4%E5%9B%BE/</guid>
+      <description>视差贴图 Parallax Mapping 视差贴图是一种类似于法线贴图的技术，通过 欺骗用户 高效的提高纹理表面细节。 如图的砖墙由 两个三角形 渲染而成。 法线贴图改变了像素的法线</description>
+    </item>
+    
+    <item>
+      <title>算法科普 分形算法</title>
+      <link>http://disorder.ink/%E7%AE%97%E6%B3%95%E7%A7%91%E6%99%AE-%E5%88%86%E5%BD%A2%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Tue, 26 Jan 2021 20:17:55 +0800</pubDate>
+      
+      <guid>http://disorder.ink/%E7%AE%97%E6%B3%95%E7%A7%91%E6%99%AE-%E5%88%86%E5%BD%A2%E7%AE%97%E6%B3%95/</guid>
+      <description>参考 【分形之美 01】 【分形之美 02】 【分形之美 03】 基本概念 分形算法的基本思想就是 自相似。递归就是利用了自相似的性质，创建了自相似的函数来解</description>
+    </item>
+    
+    <item>
+      <title>算法科普 RayMarching</title>
+      <link>http://disorder.ink/%E7%AE%97%E6%B3%95%E7%A7%91%E6%99%AE-%E5%85%89%E7%BA%BF%E6%AD%A5%E8%BF%9B/</link>
+      <pubDate>Mon, 25 Jan 2021 21:13:35 +0800</pubDate>
+      
+      <guid>http://disorder.ink/%E7%AE%97%E6%B3%95%E7%A7%91%E6%99%AE-%E5%85%89%E7%BA%BF%E6%AD%A5%E8%BF%9B/</guid>
+      <description>参考 Ray Marching for Dummies! Shader Toy 3D SDF Ray Marching 初见 Ray Marching / Sphere Tracing Marching along the Ray 从相机参数出发，得到 ViewRay 射线检测，得到 距离 根据距离材质和灯光，得到 像素颜色 和Ray Tracing 区别： 在射线</description>
+    </item>
+    
+  </channel>
+</rss>

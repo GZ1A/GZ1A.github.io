@@ -1,6 +1,6 @@
 ---
 # 常用定义
-draft: false
+draft: ture
 
 title: "水面复现"
 date: 2020-07-31T01:21:02+09:00			# 创建时间

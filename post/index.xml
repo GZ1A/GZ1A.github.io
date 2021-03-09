@@ -6,18 +6,153 @@
     <description>Recent content in Posts on 昼阴夜阳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 10 Aug 2020 00:29:44 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 25 Feb 2021 23:34:28 +0800</lastBuildDate>
     
 	<atom:link href="http://disorder.ink/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>【CA】传送门</title>
-      <link>http://disorder.ink/%E4%BC%A0%E9%80%81%E9%97%A8/</link>
+      <title>Unity 音量全局控制 脚本和UI </title>
+      <link>http://disorder.ink/unity-%E5%85%A8%E5%B1%80%E9%9F%B3%E9%87%8F%E6%8E%A7%E5%88%B6/</link>
+      <pubDate>Thu, 25 Feb 2021 23:34:28 +0800</pubDate>
+      
+      <guid>http://disorder.ink/unity-%E5%85%A8%E5%B1%80%E9%9F%B3%E9%87%8F%E6%8E%A7%E5%88%B6/</guid>
+      <description>博客 | 使用Audio Mixer分别控制主音量、背景音乐和其他音效 详尽的操作步骤可以参考这篇博客。 需求分析 当我们做完了游戏的核心玩法，开始完善</description>
+    </item>
+    
+    <item>
+      <title>UE4 Shader FlowMap 燃烧</title>
+      <link>http://disorder.ink/ue4-shader-flowmap-%E7%87%83%E7%83%A7/</link>
+      <pubDate>Mon, 15 Feb 2021 15:03:26 +0800</pubDate>
+      
+      <guid>http://disorder.ink/ue4-shader-flowmap-%E7%87%83%E7%83%A7/</guid>
+      <description>知乎 | Flow Map 博客 | Flowmapped-Burn-Shader Flow Map Flow Map 就是控制UV动画的烘焙数据。始于水面流动的时候水面贴图要平移，但只平移是不够的，有点挤压扰动在里面才逼真。 预先烘焙</description>
+    </item>
+    
+    <item>
+      <title>UE4 Shader 高斯模糊</title>
+      <link>http://disorder.ink/ue4-shader-%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A/</link>
+      <pubDate>Sun, 14 Feb 2021 10:03:50 +0800</pubDate>
+      
+      <guid>http://disorder.ink/ue4-shader-%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A/</guid>
+      <description>参考 Unreal Engine 4 Custom Shaders Tutorial | raywenderlich.com 材质编辑器的节点系统是个很棒的工具，但节点也有一些限制，比如不能创建 循环 和 switch。不过通过创建自定义节点可以绕过这</description>
+    </item>
+    
+    <item>
+      <title>UE4 Shader 水墨</title>
+      <link>http://disorder.ink/ue4-shader-%E6%B0%B4%E5%A2%A8/</link>
+      <pubDate>Fri, 05 Feb 2021 23:43:45 +0800</pubDate>
+      
+      <guid>http://disorder.ink/ue4-shader-%E6%B0%B4%E5%A2%A8/</guid>
+      <description>目标效果 B站 | 【虚幻4】_水墨风格动画练习 最终效果 实现 思路 首先感谢UP主在评论区里讲解了这个效果的实现思路。 用菲涅尔做边缘，中间用墨迹贴图。</description>
+    </item>
+    
+    <item>
+      <title>UE4 RayMarching 史莱姆</title>
+      <link>http://disorder.ink/ue4-shader-%E5%8F%B2%E8%8E%B1%E5%A7%86/</link>
+      <pubDate>Tue, 02 Feb 2021 23:01:11 +0800</pubDate>
+      
+      <guid>http://disorder.ink/ue4-shader-%E5%8F%B2%E8%8E%B1%E5%A7%86/</guid>
+      <description>参考 【UE4】史莱姆材质制作流程 自定义节点 可以写入 GLSL 的节点。可以直接在代码属性里写入，也可以引用 ush 文件。 代码 文件放在 引擎路径\UE_4.26</description>
+    </item>
+    
+    <item>
+      <title>算法科普 Smooth Step</title>
+      <link>http://disorder.ink/%E7%AE%97%E6%B3%95%E7%A7%91%E6%99%AE-smoothstep/</link>
+      <pubDate>Thu, 28 Jan 2021 17:13:18 +0800</pubDate>
+      
+      <guid>http://disorder.ink/%E7%AE%97%E6%B3%95%E7%A7%91%E6%99%AE-smoothstep/</guid>
+      <description>SmoothStep 原理介绍 SmoothStep 使用例 定义 一个 Smooth 了的 Step 第一个式子就是一个范围映射，**（并经过 saturate）**映射到 [0,1] 上。而第二个式子的 [0,1] 间就是直观感受的</description>
+    </item>
+    
+    <item>
+      <title>算法科普 Ordered Dithering</title>
+      <link>http://disorder.ink/%E7%AE%97%E6%B3%95%E7%A7%91%E6%99%AE-%E6%9C%89%E5%BA%8F%E6%8A%96%E5%8A%A8/</link>
+      <pubDate>Tue, 26 Jan 2021 20:17:55 +0800</pubDate>
+      
+      <guid>http://disorder.ink/%E7%AE%97%E6%B3%95%E7%A7%91%E6%99%AE-%E6%9C%89%E5%BA%8F%E6%8A%96%E5%8A%A8/</guid>
+      <description>有序抖动 WIKI | Ordered_dithering 让角色半透明：从 Ordered Dithering 说起 图像处理之 Dithering 抖动是有意应用的一种噪声形式，用于使量化误差随机化，从而防止出现大规模模式（例如图像中的色</description>
+    </item>
+    
+    <item>
+      <title>算法科普 Parallax Mapping</title>
+      <link>http://disorder.ink/%E7%AE%97%E6%B3%95%E7%A7%91%E6%99%AE-%E8%A7%86%E5%B7%AE%E8%B4%B4%E5%9B%BE/</link>
+      <pubDate>Tue, 26 Jan 2021 20:17:55 +0800</pubDate>
+      
+      <guid>http://disorder.ink/%E7%AE%97%E6%B3%95%E7%A7%91%E6%99%AE-%E8%A7%86%E5%B7%AE%E8%B4%B4%E5%9B%BE/</guid>
+      <description>视差贴图 Parallax Mapping 视差贴图是一种类似于法线贴图的技术，通过 欺骗用户 高效的提高纹理表面细节。 如图的砖墙由 两个三角形 渲染而成。 法线贴图改变了像素的法线</description>
+    </item>
+    
+    <item>
+      <title>算法科普 分形算法</title>
+      <link>http://disorder.ink/%E7%AE%97%E6%B3%95%E7%A7%91%E6%99%AE-%E5%88%86%E5%BD%A2%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Tue, 26 Jan 2021 20:17:55 +0800</pubDate>
+      
+      <guid>http://disorder.ink/%E7%AE%97%E6%B3%95%E7%A7%91%E6%99%AE-%E5%88%86%E5%BD%A2%E7%AE%97%E6%B3%95/</guid>
+      <description>参考 【分形之美 01】 【分形之美 02】 【分形之美 03】 基本概念 分形算法的基本思想就是 自相似。递归就是利用了自相似的性质，创建了自相似的函数来解</description>
+    </item>
+    
+    <item>
+      <title>算法科普 RayMarching</title>
+      <link>http://disorder.ink/%E7%AE%97%E6%B3%95%E7%A7%91%E6%99%AE-%E5%85%89%E7%BA%BF%E6%AD%A5%E8%BF%9B/</link>
+      <pubDate>Mon, 25 Jan 2021 21:13:35 +0800</pubDate>
+      
+      <guid>http://disorder.ink/%E7%AE%97%E6%B3%95%E7%A7%91%E6%99%AE-%E5%85%89%E7%BA%BF%E6%AD%A5%E8%BF%9B/</guid>
+      <description>参考 Ray Marching for Dummies! Shader Toy 3D SDF Ray Marching 初见 Ray Marching / Sphere Tracing Marching along the Ray 从相机参数出发，得到 ViewRay 射线检测，得到 距离 根据距离材质和灯光，得到 像素颜色 和Ray Tracing 区别： 在射线</description>
+    </item>
+    
+    <item>
+      <title>UE4 笔记 （一） 导引</title>
+      <link>http://disorder.ink/ue4-%E7%AC%94%E8%AE%B0%E4%B8%80/</link>
+      <pubDate>Thu, 21 Jan 2021 00:18:54 +0800</pubDate>
+      
+      <guid>http://disorder.ink/ue4-%E7%AC%94%E8%AE%B0%E4%B8%80/</guid>
+      <description>材质编辑器界面操作基础 参考 文档 | 材质表达式参考文档 博客 | 材质节点大全 UE4 官方文档 官方教程平台 文档 | 材质编辑器参考 概念 使用材质表达式节点网络，构</description>
+    </item>
+    
+    <item>
+      <title>Python 笔记 函数</title>
+      <link>http://disorder.ink/python%E7%AC%94%E8%AE%B0%E4%BA%8C/</link>
+      <pubDate>Tue, 05 Jan 2021 22:08:53 +0800</pubDate>
+      
+      <guid>http://disorder.ink/python%E7%AC%94%E8%AE%B0%E4%BA%8C/</guid>
+      <description>函数 函数定义函数代码块以 def 关键词开头，后接函数标识符名称和圆括号**()** 任何传入参数和自变量必须放在圆括号中间。圆括号之间可以用于定义参</description>
+    </item>
+    
+    <item>
+      <title>Python 笔记 语法基础</title>
+      <link>http://disorder.ink/python%E7%AC%94%E8%AE%B0%E4%B8%80/</link>
+      <pubDate>Sun, 27 Dec 2020 20:13:03 +0800</pubDate>
+      
+      <guid>http://disorder.ink/python%E7%AC%94%E8%AE%B0%E4%B8%80/</guid>
+      <description>语法基础 数据类型 数字 Number 用于存储数值的，不可改变的数据类型（改变等于分配一个新对象） 1 2 3 int1, int2, int3 = 13, -0o10, 0x6A # 0o 8进制 0x16进制 float1, float2 = 2e-98, 450.0 complex1, complex2 =</description>
+    </item>
+    
+    <item>
+      <title>护盾法线偏移的接缝</title>
+      <link>http://disorder.ink/%E6%8A%A4%E7%9B%BE%E7%9A%84%E6%B3%95%E7%BA%BF/</link>
+      <pubDate>Sun, 08 Nov 2020 22:25:31 +0800</pubDate>
+      
+      <guid>http://disorder.ink/%E6%8A%A4%E7%9B%BE%E7%9A%84%E6%B3%95%E7%BA%BF/</guid>
+      <description>问题 做一个面片会起伏的护盾，却发现有这样的接缝。 调查 首先检查 Shader 中相关部分 1 2 v.vertex += heightControll * _FloatDistance * v.normal; o.pos = UnityObjectToClipPos(v.vertex); 就是很简单的往法线方向偏移了一下。然后到3d</description>
+    </item>
+    
+    <item>
+      <title>ScriptableObject 实例化</title>
+      <link>http://disorder.ink/scriptableobject/</link>
+      <pubDate>Thu, 22 Oct 2020 12:05:34 +0900</pubDate>
+      
+      <guid>http://disorder.ink/scriptableobject/</guid>
+      <description>论坛 | cloning of ScriptableObject 文档 | Object.Instantiate 想要实例化一个 ScriptableObject，从而原本的基础上动态修改，然而中文讨论完全搜不出来相关的&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>无法读源文件或磁盘</title>
+      <link>http://disorder.ink/%E6%97%A0%E6%B3%95%E8%AF%BB%E6%BA%90%E6%96%87%E4%BB%B6%E6%88%96%E7%A3%81%E7%9B%98/</link>
       <pubDate>Mon, 10 Aug 2020 00:29:44 +0900</pubDate>
       
-      <guid>http://disorder.ink/%E4%BC%A0%E9%80%81%E9%97%A8/</guid>
-      <description>从学 Unity 开始，每天固定刷知乎，刷B站，关注列表和收藏夹变厚的速度远超过我能消化的速度。大佬实在是太多了，真情实感觉得我好菜啊。逐渐被信息流淹没</description>
+      <guid>http://disorder.ink/%E6%97%A0%E6%B3%95%E8%AF%BB%E6%BA%90%E6%96%87%E4%BB%B6%E6%88%96%E7%A3%81%E7%9B%98/</guid>
+      <description>在iis中怎么新建虚拟目录 博客 | 无法复制：数据错误（循环冗余检查）的解决方法</description>
     </item>
     
     <item>
@@ -54,141 +189,6 @@
       
       <guid>http://disorder.ink/codingcat-%E7%BB%84%E5%90%88%E7%BA%B9%E7%90%86/</guid>
       <description>自己想学的时候，不做笔记就不会认真学。最近看到了有大佬翻译了 Coding Cat 的教程，很感谢了。快速学一下，练练手。先上参考。 微信 | 基础渲染系列（三）多样</description>
-    </item>
-    
-    <item>
-      <title>OpenCV 视频去雾小工具 </title>
-      <link>http://disorder.ink/%E8%A7%86%E9%A2%91%E5%8E%BB%E9%9B%BE%E5%B7%A5%E5%85%B7/</link>
-      <pubDate>Wed, 17 Jun 2020 02:12:11 +0900</pubDate>
-      
-      <guid>http://disorder.ink/%E8%A7%86%E9%A2%91%E5%8E%BB%E9%9B%BE%E5%B7%A5%E5%85%B7/</guid>
-      <description>虽然没有太多原创的工作，但接触了很多新的东西，记录一下。毕竟是肝（缝合）了通宵的数字图像处理课设。先上效果图 任务要求 借助 OpenCV 实现一个有着友好用</description>
-    </item>
-    
-    <item>
-      <title>【笔记】无人深空中的地形扫描 </title>
-      <link>http://disorder.ink/%E6%97%A0%E4%BA%BA%E6%B7%B1%E7%A9%BA%E6%89%AB%E6%8F%8F/</link>
-      <pubDate>Wed, 06 May 2020 21:12:22 +0900</pubDate>
-      
-      <guid>http://disorder.ink/%E6%97%A0%E4%BA%BA%E6%B7%B1%E7%A9%BA%E6%89%AB%E6%8F%8F/</guid>
-      <description>无人深空也玩过一段时间。刚好看见这个地形扫描实现的教程1，于是跟着实现了一下无人深空里的地形扫描。先上效果图 .mask { background-color: #252525; color: #252525; transition: color 0.5s;}.mask:hover { color: #ffff</description>
-    </item>
-    
-    <item>
-      <title>Unity Copying assembly XX failed 问题</title>
-      <link>http://disorder.ink/unity-copying-assembly-xx-failed-%E9%97%AE%E9%A2%98/</link>
-      <pubDate>Thu, 30 Apr 2020 05:41:26 +0800</pubDate>
-      
-      <guid>http://disorder.ink/unity-copying-assembly-xx-failed-%E9%97%AE%E9%A2%98/</guid>
-      <description>遇到过好多次了，这次往 Unity 里导入 3DMax 模型的时候又遇到了这个问题。 Copying assembly from &amp;lsquo;TempUnity.VSCode.Editor.dll&amp;rsquo; to &amp;lsquo;LibraryScriptAssembliesUnity.VSCode.Editor.dll&amp;rsquo; failed 原因 按参考链接最后的图中说的那样，主要考虑以下几种原因 文件正在使用</description>
-    </item>
-    
-    <item>
-      <title>笔试复盘定点爆破</title>
-      <link>http://disorder.ink/%E7%AC%94%E8%AF%95%E5%A4%8D%E7%9B%98%E5%AE%9A%E7%82%B9%E7%88%86%E7%A0%B4/</link>
-      <pubDate>Sun, 26 Apr 2020 14:58:02 +0900</pubDate>
-      
-      <guid>http://disorder.ink/%E7%AC%94%E8%AF%95%E5%A4%8D%E7%9B%98%E5%AE%9A%E7%82%B9%E7%88%86%E7%A0%B4/</guid>
-      <description>突然接到通知第二天要进行笔试，猝不及防，但第一次笔试还是想准备一下，所以最后一天去练习了一下 OJ。.mask { background-color: #252525; color: #252525; transition: color 0.5s;}.mask:hover { color: #fffff</description>
-    </item>
-    
-    <item>
-      <title>记 V-Ray 快速渲染</title>
-      <link>http://disorder.ink/vray%E5%BF%AB%E9%80%9F%E6%B8%B2%E6%9F%93/</link>
-      <pubDate>Mon, 20 Apr 2020 23:46:09 +0900</pubDate>
-      
-      <guid>http://disorder.ink/vray%E5%BF%AB%E9%80%9F%E6%B8%B2%E6%9F%93/</guid>
-      <description>《关于以为延期的动画作业其实要按时展示这件事》。本来还想好好建个什么东西，为了赶时间只能找个最快的整个相机游走。老方块人当场想到 MC，遂 B 站</description>
-    </item>
-    
-    <item>
-      <title>【博客升级】整活！在博客中添加黑幕</title>
-      <link>http://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E8%90%8C%E7%99%BE%E9%BB%91%E5%B9%95/</link>
-      <pubDate>Sun, 12 Apr 2020 00:02:58 +0800</pubDate>
-      
-      <guid>http://disorder.ink/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E8%90%8C%E7%99%BE%E9%BB%91%E5%B9%95/</guid>
-      <description>这段时间又出了好多事，再次认识到生命财产安全才是最重要的，脱离物质基础谈精神需求的都是耍流氓。同时风险管理得抓起来，小概率的事件不发生时谈笑</description>
-    </item>
-    
-    <item>
-      <title>【笔记】Shader 入门精要（十二）深度和法线纹理</title>
-      <link>http://disorder.ink/shaderbook-note-12/</link>
-      <pubDate>Mon, 30 Mar 2020 02:23:54 +0900</pubDate>
-      
-      <guid>http://disorder.ink/shaderbook-note-12/</guid>
-      <description>屏幕后处理除了利用图像的颜色信息，还可以利用深度和法线信息。这些信息不受纹理和光照的影响，能给出更多的细节。 获取深度和法线纹理 原理 深度纹理就</description>
-    </item>
-    
-    <item>
-      <title>【笔记】Shader 入门精要（十一）屏幕后处理</title>
-      <link>http://disorder.ink/shaderbook-note-11/</link>
-      <pubDate>Thu, 26 Mar 2020 19:18:43 +0900</pubDate>
-      
-      <guid>http://disorder.ink/shaderbook-note-11/</guid>
-      <description>屏幕后处理就是利用渲染纹理，在场景渲染完之后对图像进行操作从而实现艺术效果的技术。（这不就是数字图像处理嘛）先来做一些简单的后处理。 后处理脚</description>
-    </item>
-    
-    <item>
-      <title>【笔记】Shader 入门精要（十）动画效果</title>
-      <link>http://disorder.ink/shaderbook-note-10/</link>
-      <pubDate>Wed, 25 Mar 2020 12:03:14 +0900</pubDate>
-      
-      <guid>http://disorder.ink/shaderbook-note-10/</guid>
-      <description>引入时间变量，实现动画效果。 内置变量 Unity Shader 内置有许多时间相关的变量用于访问。 名称 t 分量 _Time 自该场景加载开始经过的时间 (t/20, t, 2t, 3t) _SinTime 时间的正弦值 (t/8, t/4, t/2,</description>
-    </item>
-    
-    <item>
-      <title>【笔记】Shader 入门精要（九）高级纹理</title>
-      <link>http://disorder.ink/shaderbook-note-9/</link>
-      <pubDate>Sun, 22 Mar 2020 20:45:32 +0900</pubDate>
-      
-      <guid>http://disorder.ink/shaderbook-note-9/</guid>
-      <description>本章学习更复杂的纹理。 立方体纹理 立方体纹理（Cubemap） 是**环境映射（Environment Mapping）**的一种实现。包含了立方</description>
-    </item>
-    
-    <item>
-      <title>【笔记】Shader 入门精要（八）复杂光照</title>
-      <link>http://disorder.ink/shaderbook-note-8/</link>
-      <pubDate>Thu, 19 Mar 2020 15:52:48 +0900</pubDate>
-      
-      <guid>http://disorder.ink/shaderbook-note-8/</guid>
-      <description>本章在处理更多数目类型光源的同时实现阴影。 Unity 渲染路径 渲染路径（Rendering Path) 决定了光照如何应用到 Unity Shader 中。主要分为前向渲染和延迟渲染。指</description>
-    </item>
-    
-    <item>
-      <title>【笔记】Shader 入门精要（七）透明效果</title>
-      <link>http://disorder.ink/shaderbook-note-7/</link>
-      <pubDate>Mon, 16 Mar 2020 05:00:26 +0900</pubDate>
-      
-      <guid>http://disorder.ink/shaderbook-note-7/</guid>
-      <description>每个片元都有颜色值、深度值和透明度属性。利用这个属性，通过透明度测试（Alpha Test）或者透明度混合（Alpha Blending）实现透</description>
-    </item>
-    
-    <item>
-      <title>【笔记】Shader 入门精要（六）基础纹理</title>
-      <link>http://disorder.ink/shaderbook-note-6/</link>
-      <pubDate>Sun, 08 Mar 2020 03:06:23 +0900</pubDate>
-      
-      <guid>http://disorder.ink/shaderbook-note-6/</guid>
-      <description>纹理最初的目的就是通过 纹理映射（texture mapping) 控制模型的外观，逐纹素（texel） 控制模型的颜色。保存了映射关系的 纹理映射坐标（textu</description>
-    </item>
-    
-    <item>
-      <title>【笔记】Shader 入门精要（五）基础光照</title>
-      <link>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/</link>
-      <pubDate>Thu, 05 Mar 2020 07:22:34 +0900</pubDate>
-      
-      <guid>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E4%BA%94/</guid>
-      <description>又是复习又是复习又是复习。可能这就是前置课程吧（指计算机图形学）。 原来复习完原理还要自己写着色器的啊，这波我的。图形学作业只要求了光追，确实</description>
-    </item>
-    
-    <item>
-      <title>【笔记】Shader 入门精要（四）Shader 基础</title>
-      <link>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/</link>
-      <pubDate>Mon, 02 Mar 2020 22:03:49 +0900</pubDate>
-      
-      <guid>http://disorder.ink/shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E7%AC%94%E8%AE%B0%E5%9B%9B/</guid>
-      <description>终于来到实践环节了！可喜可贺可喜可贺。 顶点/片元着色器 模型的每个顶点会调用顶点着色器。顶点间插值得到许多片元（像素）。每个片元会调用片元着色</description>
     </item>
     
   </channel>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>【CA】传送门 - 昼阴夜阳</title>
+  <title>Python 笔记 函数 - 昼阴夜阳</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="昼阴夜阳" />
-  <meta name="description" content="从学 Unity 开始，每天固定刷知乎，刷B站，关注列表和收藏夹变厚的速度远超过我能消化的速度。大佬实在是太多了，真情实感觉得我好菜啊。逐渐被信息流淹没" />
+  <meta name="description" content="函数 函数定义函数代码块以 def 关键词开头，后接函数标识符名称和圆括号**()** 任何传入参数和自变量必须放在圆括号中间。圆括号之间可以用于定义参" />
 
 
 
@@ -34,7 +34,7 @@
 <meta name="generator" content="Hugo 0.64.1" />
 
 
-<link rel="canonical" href="http://disorder.ink/%E4%BC%A0%E9%80%81%E9%97%A8/" />
+<link rel="canonical" href="http://disorder.ink/python%E7%AC%94%E8%AE%B0%E4%BA%8C/" />
 
 
 
@@ -58,23 +58,23 @@
 
 
 
-<meta property="og:title" content="【CA】传送门" />
-<meta property="og:description" content="从学 Unity 开始，每天固定刷知乎，刷B站，关注列表和收藏夹变厚的速度远超过我能消化的速度。大佬实在是太多了，真情实感觉得我好菜啊。逐渐被信息流淹没" />
+<meta property="og:title" content="Python 笔记 函数" />
+<meta property="og:description" content="函数 函数定义函数代码块以 def 关键词开头，后接函数标识符名称和圆括号**()** 任何传入参数和自变量必须放在圆括号中间。圆括号之间可以用于定义参" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://disorder.ink/%E4%BC%A0%E9%80%81%E9%97%A8/" />
-<meta property="article:published_time" content="2020-08-10T00:29:44+09:00" />
-<meta property="article:modified_time" content="2020-08-10T00:29:44+09:00" />
-<meta itemprop="name" content="【CA】传送门">
-<meta itemprop="description" content="从学 Unity 开始，每天固定刷知乎，刷B站，关注列表和收藏夹变厚的速度远超过我能消化的速度。大佬实在是太多了，真情实感觉得我好菜啊。逐渐被信息流淹没">
-<meta itemprop="datePublished" content="2020-08-10T00:29:44&#43;09:00" />
-<meta itemprop="dateModified" content="2020-08-10T00:29:44&#43;09:00" />
-<meta itemprop="wordCount" content="518">
+<meta property="og:url" content="http://disorder.ink/python%E7%AC%94%E8%AE%B0%E4%BA%8C/" />
+<meta property="article:published_time" content="2021-01-05T22:08:53+08:00" />
+<meta property="article:modified_time" content="2021-01-05T22:08:53+08:00" />
+<meta itemprop="name" content="Python 笔记 函数">
+<meta itemprop="description" content="函数 函数定义函数代码块以 def 关键词开头，后接函数标识符名称和圆括号**()** 任何传入参数和自变量必须放在圆括号中间。圆括号之间可以用于定义参">
+<meta itemprop="datePublished" content="2021-01-05T22:08:53&#43;08:00" />
+<meta itemprop="dateModified" content="2021-01-05T22:08:53&#43;08:00" />
+<meta itemprop="wordCount" content="673">
 
 
 
-<meta itemprop="keywords" content="Unity,游戏编程挑战," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="【CA】传送门"/>
-<meta name="twitter:description" content="从学 Unity 开始，每天固定刷知乎，刷B站，关注列表和收藏夹变厚的速度远超过我能消化的速度。大佬实在是太多了，真情实感觉得我好菜啊。逐渐被信息流淹没"/>
+<meta itemprop="keywords" content="Python," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python 笔记 函数"/>
+<meta name="twitter:description" content="函数 函数定义函数代码块以 def 关键词开头，后接函数标识符名称和圆括号**()** 任何传入参数和自变量必须放在圆括号中间。圆括号之间可以用于定义参"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -279,17 +279,17 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">【CA】传送门</h1>
+      <h1 class="post-title">Python 笔记 函数</h1>
       
       <div class="post-meta">
-        <time datetime="2020-08-10" class="post-time">
-          2020-08-10
+        <time datetime="2021-01-05" class="post-time">
+          2021-01-05
         </time>
         <div class="post-category">
             <a href="http://disorder.ink/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             
           </div>
-        <span class="more-meta"> 约 518 字 </span>
+        <span class="more-meta"> 约 673 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
 
         
@@ -311,7 +311,16 @@
   <div class="post-toc-content" style="text-align:left;">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#参考">参考</a></li>
+    <li><a href="#函数">函数</a>
+      <ul>
+        <li><a href="#函数定义函数代码块以-def-关键词开头后接函数标识符名称和圆括号">函数定义函数代码块以 def 关键词开头，后接函数标识符名称和圆括号**()**</a></li>
+        <li><a href="#参数传递">参数传递</a></li>
+        <li><a href="#参数类型">参数类型</a></li>
+        <li><a href="#引用外部库">引用外部库</a></li>
+        <li><a href="#遍历文件夹">遍历文件夹</a></li>
+        <li><a href="#处理文件">处理文件</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -320,18 +329,109 @@
 
     
     <div class="post-content">
-      <p>从学 Unity 开始，每天固定刷知乎，刷B站，关注列表和收藏夹变厚的速度远超过我能消化的速度。大佬实在是太多了，真情实感觉得我好菜啊。逐渐被信息流淹没，变得好高骛远，急功近利，然后发现做不到就失去信心，垂头丧气。</p>
-<p><strong>浮躁</strong>。</p>
-<p>于是决定找一找初心，为什么想做游戏。</p>
-<p>游戏玩的多自不必多说。但真正推动我，让我想向这个方向努力一把的还是因为寒假前看到的《游戏编程挑战：体积云》。亲手构建一个想象中的，看得见，摸得着<style type="text/css">.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}</style><span class="mask" title = 你知道的太多了>指可交互</span>的世界真是太酷了。当场在寝室里立下了 Flag，要在寒假里去实现这个效果。虽然因为太难并没能实现，但因此有了后面学 Shader，Unity，图形学的经历，也有了现在勉强入行，在游戏公司实习的机会。<style type="text/css">.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}</style><span class="mask" title = 你知道的太多了>虽然实习压榨了学习时间以至萌生退意</span></p>
-<p>所以找回初心，先从一步一步跟随着实现那些挑战开始。</p>
-<p>PS. 刚刚看了一个大佬的收藏夹，学习 Unity 至少 2 年，收藏的主题也是逐渐变态的。而我从接触 Unity 也就大半年。所以更多的是要积累。种一棵树最好的时间是十年前，其次是现在。<style type="text/css">.mask {    background-color: #252525;    color: #252525;    transition: color 0.5s;}.mask:hover {    color: #ffffff;}</style><span class="mask" title = 你知道的太多了>一直坚持，一年半以后我也能那么厉害</span>。</p>
-<blockquote>
-<p>加油，不要慌！</p>
-</blockquote>
-<h2 id="参考">参考</h2>
-<p><a href="https://www.bilibili.com/video/bv1w741147Df/">CA | 传送门</a></p>
+      <h2 id="函数">函数</h2>
+<h3 id="函数定义函数代码块以-def-关键词开头后接函数标识符名称和圆括号">函数定义函数代码块以 <strong>def</strong> 关键词开头，后接函数标识符名称和圆括号**()**</h3>
+<ul>
+<li>任何传入参数和自变量必须放在圆括号中间。圆括号之间可以用于定义参数</li>
+<li>函数的第一行语句可以使用文档字符串用于存放函数说明</li>
+<li>函数内容以冒号起始，并缩进</li>
+<li><strong>return [表达式]</strong> 结束函数，选择性地返回一个值给调用方。不带表达式的return相当于返回 None <code>&lt;class 'NoneType'&gt;</code></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">functionname</span><span class="p">(</span> <span class="n">parameters</span> <span class="p">)</span><span class="p">:</span>
+   <span class="sa"></span><span class="s2">&#34;&#34;&#34;</span><span class="s2">函数_文档字符串</span><span class="s2">&#34;&#34;&#34;</span>
+   <span class="o">&lt;</span><span class="n">function_suite</span><span class="o">&gt;</span>
+   <span class="k">return</span> <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="参数传递">参数传递</h3>
+<p>传递参数，就是对函数内新框架中的变量进行赋值。</p>
+<p>python 中一切都是对象，而根据赋值方式不同能分成 <code>不可变(immutable)对象</code> 和 <code>可变(mutable)对象</code></p>
+<p><strong>strings tuples numbers</strong> 是不可更改的对象，list dict 则是可以修改的对象。传递不可变对象时，类似 C++ 的值传递。否则类似引用传递。</p>
+<h3 id="参数类型">参数类型</h3>
+<h4 id="默认参数">默认参数</h4>
+<p>必须定义在所有非默认参数后</p>
+<p><code>para = &quot;default_value&quot;</code></p>
+<h4 id="不定长参数">不定长参数</h4>
+<p>最多只能有一个，如果放在其他参数前，进入后需要用关键词参数跳出这个参数（<code>para_name = value</code>）</p>
+<p>声明时不会命名，可以变长</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">functionname</span><span class="p">(</span><span class="p">[</span><span class="n">formal_args</span><span class="p">,</span><span class="p">]</span> <span class="o">*</span><span class="n">var_args_tuple</span> <span class="p">)</span><span class="p">:</span>
+   <span class="sa"></span><span class="s2">&#34;</span><span class="s2">函数_文档字符串</span><span class="s2">&#34;</span>
+   <span class="n">function_suite</span>
+   <span class="k">return</span> <span class="p">[</span><span class="n">expression</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>可以对 *var_args_tuple 进行遍历，从而逐个参数操作</p>
+<h3 id="引用外部库">引用外部库</h3>
+<p>模块(Module)，是一个 Python 文件，以 .py 结尾，包含了 Python 对象定义和Python语句。</p>
+<h4 id="引入模块">引入模块</h4>
+<p>在文件开头引入</p>
+<p><code>import module</code></p>
+<p>引入指定部分</p>
+<p><code>from modname import name,name... as nickname,...</code></p>
+<h3 id="遍历文件夹">遍历文件夹</h3>
+<p>用 os 模块的 walk() 方法，在目录树中遍历。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">dir</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">topdown</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">dirs</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="处理文件">处理文件</h3>
+<p>内置 open 函数，创建文件对象并读入对应文件。然后使用 file 类的函数进行处理文件内容。</p>
+<p>用 os 的函数处理文件本身信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">fo</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">foo.txt</span><span class="s2">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">a+</span><span class="s2">&#34;</span><span class="p">)</span>
+<span class="n">fo</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">append some text</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+<span class="n">fo</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fo</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
+<span class="n">fo</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="p">)</span>
 
+<span class="n">newname</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">foo_new.txt</span><span class="s2">&#34;</span>
+<span class="k">if</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">newname</span><span class="p">)</span><span class="p">)</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">foo_new.txt</span><span class="s2">&#34;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">foo.txt</span><span class="s2">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">foo_new.txt</span><span class="s2">&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     
@@ -344,7 +444,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-      2020-08-10
+      2021-01-05
       
     </span>
   </p>
@@ -378,17 +478,29 @@
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="http://disorder.ink/tags/unity/">Unity</a>
-          <a href="http://disorder.ink/tags/%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E6%8C%91%E6%88%98/">游戏编程挑战</a>
+          <a href="http://disorder.ink/tags/python/">Python</a>
           
         </div>
 
       
       <nav class="post-nav">
         
+          <a class="prev" href="/ue4-%E7%AC%94%E8%AE%B0%E4%B8%80/">
+            
+            <i class="iconfont">
+              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+            </i>
+            <span class="prev-text nav-default">UE4 笔记 （一） 导引</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         
-          <a class="next" href="/cool-water/">
-            <span class="next-text nav-default">水面复现</span>
+          <a class="next" href="/python%E7%AC%94%E8%AE%B0%E4%B8%80/">
+            <span class="next-text nav-default">Python 笔记 语法基础</span>
             <span class="prev-text nav-mobile">下一篇</span>
             
             <i class="iconfont">
@@ -504,7 +616,9 @@
 
   <span class="copyright-year">
     &copy;
-    2020
+    
+      2020 -
+    2021
     <span class="heart">
       
       <i class="iconfont">
